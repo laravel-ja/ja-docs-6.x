@@ -221,7 +221,7 @@ CSRF攻撃の可能性を防ぐため、Laravelの組み込みメール確認を
 
 **影響の可能性： 中程度**
 
-トランスレータのLang::trans`と`Lang::transChoice`メソッドは、`Lang::get`と`Lang::choice`へリネームしました。
+トランスレータの`Lang::trans`と`Lang::transChoice`メソッドは、`Lang::get`と`Lang::choice`へリネームしました。
 
 さらに、`Illuminate\Contracts\Translation\Translator`契約を自分で実装している場合は、その実装の`trans`と`transChoice`を`get`と`choice`へ更新してください。
 
