@@ -53,9 +53,9 @@ Laravelでは、データベースを駆動するアプリケーションのテ�
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {
@@ -79,8 +79,8 @@ Laravelでは、データベースを駆動するアプリケーションのテ�
 
 テスト実行前に、何件かのレコードをデータベースに挿入する必要があります。こうしたテストデータを作る時に、手動でそれぞれのカラムへ値を指定する代わりに、Laravelではモデルファクトリを使用し、[Eloquentモデル](/docs/{{version}}/eloquent)の各属性にデフォルト値を設定できます。手始めに、アプリケーションの`database/factories/UserFactory.php`ファイルを見てください。このファイルには初めからファクトリの定義が一つ含まれています。
 
-    use Illuminate\Support\Str;
     use Faker\Generator as Faker;
+    use Illuminate\Support\Str;
 
     $factory->define(App\User::class, function (Faker $faker) {
         return [
@@ -253,10 +253,10 @@ Laravelでは、データベースを駆動するアプリケーションのテ�
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
-    use OrderStatusesTableSeeder;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use OrderStatusesTableSeeder;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {

@@ -127,9 +127,9 @@ Monologはデフォルトで`production`や`local`のような、現在の環境
 
     namespace App\Http\Controllers;
 
+    use App\Http\Controllers\Controller;
     use App\User;
     use Illuminate\Support\Facades\Log;
-    use App\Http\Controllers\Controller;
 
     class UserController extends Controller
     {

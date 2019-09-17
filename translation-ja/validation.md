@@ -57,8 +57,8 @@ Laravelは入力されたデータに対するバリデーションの様々な�
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
+    use Illuminate\Http\Request;
 
     class PostController extends Controller
     {
@@ -341,8 +341,8 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
+    use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Validator;
 
     class PostController extends Controller
@@ -700,7 +700,7 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 <a name="rule-date-format"></a>
 #### date\_format:_フォーマット_
 
-バリデーションされる値が**フォーマット**定義と一致するか確認します。バリデーション時には`date`か`date_format`の**どちらか**を使用しなくてはならず、両方はできません。このバリデーションはPHPの[DateTime](https://www.php.net/manual/es/class.datetime.php)クラスがサポートするフォーマットをすべてサポートしています。
+バリデーションされる値が**フォーマット**定義と一致するか確認します。バリデーション時には`date`か`date_format`の**どちらか**を使用しなくてはならず、両方はできません。このバリデーションはPHPの[DateTime](https://www.php.net/manual/ja/class.datetime.php)クラスがサポートするフォーマットをすべてサポートしています。
 
 <a name="rule-different"></a>
 #### different:_フィールド_

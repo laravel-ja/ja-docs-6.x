@@ -62,9 +62,9 @@ Passportサービスプロバイダはフレームワークに対し、自身の
 
     namespace App;
 
-    use Laravel\Passport\HasApiTokens;
-    use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Notifications\Notifiable;
+    use Laravel\Passport\HasApiTokens;
 
     class User extends Authenticatable
     {
@@ -77,9 +77,9 @@ Passportサービスプロバイダはフレームワークに対し、自身の
 
     namespace App\Providers;
 
-    use Laravel\Passport\Passport;
-    use Illuminate\Support\Facades\Gate;
     use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+    use Illuminate\Support\Facades\Gate;
+    use Laravel\Passport\Passport;
 
     class AuthServiceProvider extends ServiceProvider
     {
@@ -225,10 +225,10 @@ Passportはデフォルトで、一年間有効な長期間持続するアクセ
 
 Passportが内部で使用するモデルは自由に拡張できます。そのためには、`Passport`クラスにより、カスタムモデルをPassportへ指示してください。
 
-    use App\Models\Passport\Client;
-    use App\Models\Passport\Token;
     use App\Models\Passport\AuthCode;
+    use App\Models\Passport\Client;
     use App\Models\Passport\PersonalAccessClient;
+    use App\Models\Passport\Token;
 
     /**
      * 全認証／認可の登録
@@ -498,9 +498,9 @@ OAuth2のパスワードグラントはモバイルアプリケーションの�
 
     namespace App;
 
-    use Laravel\Passport\HasApiTokens;
-    use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Notifications\Notifiable;
+    use Laravel\Passport\HasApiTokens;
 
     class User extends Authenticatable
     {
@@ -527,10 +527,10 @@ OAuth2のパスワードグラントはモバイルアプリケーションの�
 
     namespace App;
 
-    use Laravel\Passport\HasApiTokens;
-    use Illuminate\Support\Facades\Hash;
-    use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Notifications\Notifiable;
+    use Illuminate\Support\Facades\Hash;
+    use Laravel\Passport\HasApiTokens;
 
     class User extends Authenticatable
     {

@@ -217,6 +217,6 @@ Laravel6.0の新しいサブクエリSELECTの機能を使えば、全`destinati
 
 以前のLaravelリリースで提供していたVue／Bootstrapのスカフォールドに戻すには、`laravel/ui`パッケージをインストールし、`ui` Artisanコマンドを使用してフロントエンドスカフォールドをインストールします。
 
-    composer require laravel/ui
+    composer require laravel/ui --dev
 
     php artisan ui vue --auth

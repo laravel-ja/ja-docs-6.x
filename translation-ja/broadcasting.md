@@ -137,11 +137,11 @@ Laravelのイベントブロードキャストは、サーバサイドのLaravel
     namespace App\Events;
 
     use Illuminate\Broadcasting\Channel;
-    use Illuminate\Queue\SerializesModels;
-    use Illuminate\Broadcasting\PrivateChannel;
-    use Illuminate\Broadcasting\PresenceChannel;
     use Illuminate\Broadcasting\InteractsWithSockets;
+    use Illuminate\Broadcasting\PresenceChannel;
+    use Illuminate\Broadcasting\PrivateChannel;
     use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+    use Illuminate\Queue\SerializesModels;
 
     class ShippingStatusUpdated implements ShouldBroadcast
     {
@@ -199,11 +199,11 @@ Laravelへイベントをブロードキャストすることを知らせるた�
 
     use App\User;
     use Illuminate\Broadcasting\Channel;
-    use Illuminate\Queue\SerializesModels;
-    use Illuminate\Broadcasting\PrivateChannel;
-    use Illuminate\Broadcasting\PresenceChannel;
     use Illuminate\Broadcasting\InteractsWithSockets;
+    use Illuminate\Broadcasting\PresenceChannel;
+    use Illuminate\Broadcasting\PrivateChannel;
     use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+    use Illuminate\Queue\SerializesModels;
 
     class ServerCreated implements ShouldBroadcast
     {
@@ -393,8 +393,8 @@ HTTPルートと同様にチャンネルルートでも、暗黙あるいは明�
 
     namespace App\Broadcasting;
 
-    use App\User;
     use App\Order;
+    use App\User;
 
     class OrderChannel
     {

@@ -274,8 +274,8 @@ JSONPレスポンスを生成したい場合は、`json`メソッドと`withCall
 
     namespace App\Providers;
 
-    use Illuminate\Support\ServiceProvider;
     use Illuminate\Support\Facades\Response;
+    use Illuminate\Support\ServiceProvider;
 
     class ResponseMacroServiceProvider extends ServiceProvider
     {

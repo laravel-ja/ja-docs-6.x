@@ -39,8 +39,8 @@ Laravelはユニットテストも考慮して構築されています。実際�
 
     namespace Tests\Unit;
 
-    use Tests\TestCase;
     use Illuminate\Foundation\Testing\RefreshDatabase;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {

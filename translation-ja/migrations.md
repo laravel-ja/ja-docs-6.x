@@ -52,9 +52,9 @@ Laravelの`Schema`[ファサード](/docs/{{version}}/facades)は、テーブル
 
     <?php
 
-    use Illuminate\Support\Facades\Schema;
-    use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Database\Migrations\Migration;
+    use Illuminate\Database\Schema\Blueprint;
+    use Illuminate\Support\Facades\Schema;
 
     class CreateFlightsTable extends Migration
     {
@@ -300,6 +300,36 @@ Laravelの`Schema`[ファサード](/docs/{{version}}/facades)は、テーブル
 `->virtualAs($expression)`  |  virtual generatedカラムを生成(MySQLのみ)
 `->generatedAs($expression)`  |  指定のシーケンスオプションで、識別カラムを生成(PostgreSQLのみ)
 `->always()`  |  識別カラムの入力を上書きするシーケンス値を定義(PostgreSQLのみ)
+
+#### デフォルトExpression
+
+`default`修飾子は値か、`\Illuminate\Database\Query\Expression`インスタンスを引数に取ります。`Expression`インスタンスを使えば値をクオートしなくて済みますし、データベース特有の機能を使うこともできます。デフォルト値をJSONカラムに割り付ける状況で特に便利です。
+
+    <?php
+
+    use Illuminate\Support\Facades\Schema;
+    use Illuminate\Database\Schema\Blueprint;
+    use Illuminate\Database\Query\Expression;
+    use Illuminate\Database\Migrations\Migration;
+
+    class CreateFlightsTable extends Migration
+    {
+        /**
+         * マイグレーション実行
+         *
+         * @return void
+         */
+        public function up()
+        {
+            Schema::create('flights', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->json('movies')->default(new Expression('(JSON_ARRAY())'));
+                $table->timestamps();
+            });
+        }
+    }
+
+> {note} デフォルトExpressionのサポートはデータベースドライバ、データベースバージョン、フィールドタイプによります。互換性に関する適切なドキュメントを参照してください。また、データベース固有機能の使用は、特定のドライバーに強く結びついてしまうことにも注意してください。
 
 <a name="modifying-columns"></a>
 ### カラム変更

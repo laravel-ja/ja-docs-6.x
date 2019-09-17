@@ -21,9 +21,9 @@
 
     namespace App;
 
-    use Illuminate\Notifications\Notifiable;
     use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Notifications\Notifiable;
 
     class User extends Authenticatable implements MustVerifyEmail
     {
@@ -62,7 +62,7 @@
 
 メール確認に必要なビューは、`laravel/ui` Composerパッケージを使用して生成します。
 
-    composer require laravel/ui
+    composer require laravel/ui --dev
 
     php artisan ui vue --auth
 

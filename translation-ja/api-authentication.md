@@ -39,8 +39,8 @@
 
 `users`テーブルへ`api_token`カラムを追加したら、アプリケーションに登録している各ユーザーへ、ランダムなAPIトークンを割り付ける準備が整いました。ユーザーの登録で`User`モデル生成時に、トークンを割り付けるべきでしょう。`laravel/ui` Composerパッケージが提供する[認証スカフォールド](/docs/{{version}}/authentication#authentication-quickstart)を使用する場合は、`RegisterController`の`create`メソッドで行っています。
 
-    use Illuminate\Support\Str;
     use Illuminate\Support\Facades\Hash;
+    use Illuminate\Support\Str;
 
     /**
      * 登録バリデーション後に、新ユーザーインスタンスの生成
@@ -79,8 +79,8 @@
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Support\Str;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Str;
 
     class ApiTokenController extends Controller
     {

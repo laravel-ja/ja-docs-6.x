@@ -1021,6 +1021,18 @@ Eloquentリレーションは全てメソッドとして定義されているた
     echo $posts[0]->body;
     echo $posts[0]->comments_count;
 
+さらに、`loadCount`メソッドを使い、親モデルを取得した後からリレーションの件数をロードすることもできます。
+
+    $book = App\Book::first();
+
+    $book->loadCount('genres');
+
+Eagerロードのクエリに追加の制約を指定する必要がある場合は、ロードしたいリレーションをキーとする配列を渡すことができます。
+
+    $book->loadCount(['reviews' => function ($query) {
+        $query->where('rating', 5);
+    }])
+
 <a name="eager-loading"></a>
 ## Eagerロード
 

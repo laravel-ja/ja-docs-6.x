@@ -32,7 +32,7 @@
 
 Laravelはパスワードリセットリンクのメールを送信し、ユーザーのパスワードをリセットするために必要なロジックを全部含んでいる、`Auth\ForgotPasswordController`と`Auth\ResetPasswordController`を用意しています。パスワードリセットに必要な全ルートは、`laravel/ui` Composerパッケージを使用して生成できます。
 
-    composer require laravel/ui
+    composer require laravel/ui --dev
 
     php artisan ui vue --auth
 
@@ -41,7 +41,7 @@ Laravelはパスワードリセットリンクのメールを送信し、ユー�
 
 パスワードリセットに必要なすべてのビューは、`laravel/ui` Composerパッケージを使用して生成できます。
 
-    composer require laravel/ui
+    composer require laravel/ui --dev
 
     php artisan ui vue --auth
 

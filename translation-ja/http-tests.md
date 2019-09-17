@@ -19,9 +19,9 @@ Laravelはアプリケーションに対するHTTPリクエストを作成し、
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {
@@ -79,9 +79,9 @@ Laravelはアプリケーションに対するHTTPリクエストを作成し、
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {
@@ -201,11 +201,11 @@ LaravelはJSON APIとレスポンスをテストする数多くのヘルパを�
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
-    use Illuminate\Http\UploadedFile;
-    use Illuminate\Support\Facades\Storage;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Illuminate\Http\UploadedFile;
+    use Illuminate\Support\Facades\Storage;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {

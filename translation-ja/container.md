@@ -24,9 +24,9 @@ Laravelのサービスコンテナは、クラス間の依存を管理する強�
 
     namespace App\Http\Controllers;
 
-    use App\User;
-    use App\Repositories\UserRepository;
     use App\Http\Controllers\Controller;
+    use App\Repositories\UserRepository;
+    use App\User;
 
     class UserController extends Controller
     {
@@ -140,10 +140,10 @@ Laravelのサービスコンテナを深く理解することは、パワフル�
 
 時には、同じインターフェイスを使用した２つのクラスがあり、クラスごとに異なった実装を注入しなくてはならない場合もあるでしょう。たとえば、２つのコントローラが異なった`Illuminate\Contracts\Filesystem\Filesystem`[契約](/docs/{{version}}/contracts)の実装に依存している場合です。Laravelでは、このような振る舞いの定義をシンプルで、読み書きしやすくしています。
 
-    use Illuminate\Support\Facades\Storage;
     use App\Http\Controllers\PhotoController;
     use App\Http\Controllers\VideoController;
     use Illuminate\Contracts\Filesystem\Filesystem;
+    use Illuminate\Support\Facades\Storage;
 
     $this->app->when(PhotoController::class)
               ->needs(Filesystem::class)

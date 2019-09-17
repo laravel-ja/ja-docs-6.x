@@ -281,8 +281,8 @@ Webアプリケーションで、ファイルを保存する一般的なケー�
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
+    use Illuminate\Http\Request;
 
     class UserAvatarController extends Controller
     {
@@ -413,11 +413,11 @@ LaravelのFlysystem統合には、最初から様々な「ドライバ」が含�
 
     namespace App\Providers;
 
-    use Storage;
-    use League\Flysystem\Filesystem;
     use Illuminate\Support\ServiceProvider;
+    use League\Flysystem\Filesystem;
     use Spatie\Dropbox\Client as DropboxClient;
     use Spatie\FlysystemDropbox\DropboxAdapter;
+    use Storage;
 
     class DropboxServiceProvider extends ServiceProvider
     {

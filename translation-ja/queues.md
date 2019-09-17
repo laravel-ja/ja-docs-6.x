@@ -125,13 +125,13 @@ Redisキューを使用する場合、ワーカのループの繰り返しとRed
 
     namespace App\Jobs;
 
-    use App\Podcast;
     use App\AudioProcessor;
+    use App\Podcast;
     use Illuminate\Bus\Queueable;
-    use Illuminate\Queue\SerializesModels;
-    use Illuminate\Queue\InteractsWithQueue;
     use Illuminate\Contracts\Queue\ShouldQueue;
     use Illuminate\Foundation\Bus\Dispatchable;
+    use Illuminate\Queue\InteractsWithQueue;
+    use Illuminate\Queue\SerializesModels;
 
     class ProcessPodcast implements ShouldQueue
     {
@@ -259,9 +259,9 @@ handleメソッドの中でレート制限をする代わりに、レート制�
 
     namespace App\Http\Controllers;
 
+    use App\Http\Controllers\Controller;
     use App\Jobs\ProcessPodcast;
     use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
 
     class PodcastController extends Controller
     {
@@ -288,9 +288,9 @@ handleメソッドの中でレート制限をする代わりに、レート制�
 
     namespace App\Http\Controllers;
 
+    use App\Http\Controllers\Controller;
     use App\Jobs\ProcessPodcast;
     use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
 
     class PodcastController extends Controller
     {
@@ -320,9 +320,9 @@ handleメソッドの中でレート制限をする代わりに、レート制�
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
-    use App\Jobs\ProcessPodcast;
     use App\Http\Controllers\Controller;
+    use App\Jobs\ProcessPodcast;
+    use Illuminate\Http\Request;
 
     class PodcastController extends Controller
     {
@@ -372,9 +372,9 @@ handleメソッドの中でレート制限をする代わりに、レート制�
 
     namespace App\Http\Controllers;
 
+    use App\Http\Controllers\Controller;
     use App\Jobs\ProcessPodcast;
     use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
 
     class PodcastController extends Controller
     {
@@ -400,9 +400,9 @@ handleメソッドの中でレート制限をする代わりに、レート制�
 
     namespace App\Http\Controllers;
 
+    use App\Http\Controllers\Controller;
     use App\Jobs\ProcessPodcast;
     use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
 
     class PodcastController extends Controller
     {
@@ -721,13 +721,13 @@ Supervisorの詳細情報は、[Supervisorドキュメント](http://supervisord
 
     namespace App\Jobs;
 
-    use Exception;
-    use App\Podcast;
     use App\AudioProcessor;
+    use App\Podcast;
+    use Exception;
     use Illuminate\Bus\Queueable;
-    use Illuminate\Queue\SerializesModels;
-    use Illuminate\Queue\InteractsWithQueue;
     use Illuminate\Contracts\Queue\ShouldQueue;
+    use Illuminate\Queue\InteractsWithQueue;
+    use Illuminate\Queue\SerializesModels;
 
     class ProcessPodcast implements ShouldQueue
     {
@@ -779,8 +779,8 @@ Supervisorの詳細情報は、[Supervisorドキュメント](http://supervisord
     namespace App\Providers;
 
     use Illuminate\Support\Facades\Queue;
-    use Illuminate\Queue\Events\JobFailed;
     use Illuminate\Support\ServiceProvider;
+    use Illuminate\Queue\Events\JobFailed;
 
     class AppServiceProvider extends ServiceProvider
     {

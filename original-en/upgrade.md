@@ -14,8 +14,8 @@
 ## Medium Impact Changes
 
 <div class="content-list" markdown="1">
-- [Authentication `RegisterController`](#the-register-controller)
 - [Carbon 1.x No Longer Supported](#carbon-support)
+- [Redis Default Client](#redis-default-client)
 - [Database `Capsule::table` Method](#capsule-table)
 - [Eloquent Arrayable & `toArray`](#eloquent-to-array)
 - [Eloquent `BelongsTo::update` Method](#belongs-to-update)
@@ -56,13 +56,6 @@ Next, examine any 3rd party packages consumed by your application and verify you
 
 Authorization policies attached to controllers using the `authorizeResource` method should now define a `viewAny` method, which will be called when a user accesses the controller's `index` method. Otherwise, calls to the `index` method of the controller will be rejected as unauthorized.
 
-<a name="the-register-controller"></a>
-#### The `RegisterController` Controller
-
-**Likelihood Of Impact: Medium**
-
-If you are overriding the `register` or `registered` methods of Laravel's built-in `RegisterController`, you should ensure that you are calling `parent::register` and `parent::registered` from within your respective methods. The dispatching of the `Illuminate\Auth\Events\Registered` event and the logging in of the newly registered user has been moved to the `registered` method, so if you are overriding this method and not calling the parent method, the user registration process will fail.
-
 #### Authorization Responses
 
 **Likelihood Of Impact: Low**
@@ -102,6 +95,13 @@ Carbon 1.x [is no longer supported](https://github.com/laravel/framework/pull/28
 **Likelihood Of Impact: Optional**
 
 If you plan to utilize [Laravel Vapor](https://vapor.laravel.com), you should update all occurrences of `AWS_REGION` within your `config` directory to `AWS_DEFAULT_REGION`. In addition, you should update this environment variable's name in your `.env` file.
+
+<a name="redis-default-client"></a>
+#### Redis Default Client
+
+**Likelihood Of Impact: Medium**
+
+The default Redis client has changed from `predis` to `phpredis`. In order to keep using `predis`, ensure the `redis.client` configuration option is set to `predis` in your `config/database.php` configuration file.
 
 ### Database
 
@@ -232,6 +232,8 @@ In addition, if you are manually implementing the `Illuminate\Contracts\Translat
 
 The `Lang::get` and `Lang::getFromJson` methods have been consolidated. Calls to the `Lang::getFromJson` method should be updated to call `Lang::get`.
 
+> {note} You should run the `php artisan view:clear` Artisan command to avoid Blade errors related to the removal of `Lang::transChoice`, `Lang::trans`, and `Lang::getFromJson`.
+
 ### Mail
 
 #### Mandrill & SparkPost Drivers Removed
@@ -316,6 +318,14 @@ In previous releases of Laravel, passing associative array parameters to the `ro
 
     // Laravel 6.0: http://example.com/profile?status=active
     echo route('profile', ['status' => 'active']);    
+
+### Validation
+
+#### FormRequest `validationData` Method
+
+**Likelihood Of Impact: Low**
+
+The form request's `validationData` method was changed from `protected` to `public`. If you are overriding this method in your implementation, you should update the visibility to `public`.
 
 <a name="miscellaneous"></a>
 ### Miscellaneous

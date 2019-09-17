@@ -188,9 +188,9 @@ PHPUnitテストランナが通常受け付ける引数は、`dusk`コマンド�
     namespace Tests\Browser;
 
     use App\User;
-    use Tests\DuskTestCase;
-    use Laravel\Dusk\Chrome;
     use Illuminate\Foundation\Testing\DatabaseMigrations;
+    use Laravel\Dusk\Chrome;
+    use Tests\DuskTestCase;
 
     class ExampleTest extends DuskTestCase
     {
@@ -257,8 +257,8 @@ PHPUnitテストランナが通常受け付ける引数は、`dusk`コマンド�
 
     namespace App\Providers;
 
-    use Laravel\Dusk\Browser;
     use Illuminate\Support\ServiceProvider;
+    use Laravel\Dusk\Browser;
 
     class DuskServiceProvider extends ServiceProvider
     {
@@ -307,9 +307,9 @@ PHPUnitテストランナが通常受け付ける引数は、`dusk`コマンド�
     namespace Tests\Browser;
 
     use App\User;
-    use Tests\DuskTestCase;
-    use Laravel\Dusk\Chrome;
     use Illuminate\Foundation\Testing\DatabaseMigrations;
+    use Laravel\Dusk\Chrome;
+    use Tests\DuskTestCase;
 
     class ExampleTest extends DuskTestCase
     {
@@ -1340,10 +1340,10 @@ Duskをインストールすると、ベース`Page`クラスが`tests/Browser/P
 
     namespace Tests\Browser;
 
-    use Tests\DuskTestCase;
+    use Illuminate\Foundation\Testing\DatabaseMigrations;
     use Laravel\Dusk\Browser;
     use Tests\Browser\Components\DatePicker;
-    use Illuminate\Foundation\Testing\DatabaseMigrations;
+    use Tests\DuskTestCase;
 
     class ExampleTest extends DuskTestCase
     {
@@ -1396,6 +1396,10 @@ DustテストにCircleCIを使用する場合、以下の設定ファイルを�
                 - run:
                     name: Run Laravel Dusk Tests
                     command: php artisan dusk
+                    
+                - store_artifacts:
+                    path: tests/Browser/screenshots
+
 
 <a name="running-tests-on-codeship"></a>
 ### Codeship

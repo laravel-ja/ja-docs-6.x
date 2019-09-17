@@ -14,8 +14,8 @@
 ## 重要度が中程度の変更
 
 <div class="content-list" markdown="1">
-- [認証の`RegisterController`](#the-register-controller)
 - [Carbon 1.xのサポート停止](#carbon-support)
+- [Redisデフォルトクライアント](#redis-default-client)
 - [データベースの`Capsule::table`メソッド](#capsule-table)
 - [EloquentのArrayableと`toArray`](#eloquent-to-array)
 - [Eloquentの`BelongsTo::update`メソッド](#belongs-to-update)
@@ -56,13 +56,6 @@ PHP7.1は２０１９年１２月に積極的にメンテナンスされなく�
 
 `authorizeResource`メソッドを用いてコントラーへ付加している認可ポリシーは、`viewAny`メソッドを定義する必要があります。コントローラの`index`メソッドへユーザーがアクセスする時に呼び出されます。定義しないと非認可扱いとなり、コントローラの`index`メソッドへの呼び出しは拒否されます。
 
-<a name="the-register-controller"></a>
-#### `RegisterController`コントローラ
-
-**影響の可能性： 中程度**
-
-Laravelに組み込まれている`RegisterController`の`register`や`registered`メソッドをオーバーライドしている場合、`parent::register`や`parent::registered`を確実に呼び出してください。`Illuminate\Auth\Events\Registered`のディスパッチと新しく登録済みのユーザーのログインは、`registered`メソッドから外されました。そのため、このメソッドをオーバーライドし、親メソッドを呼び出していないと、ユーザー登録処理は失敗します。
-
 #### 認可レスポンス
 
 **影響の可能性： 低い**
@@ -102,6 +95,13 @@ Carbon 1.xのメンテナンス切れが近づいて来たため、[サポート
 **影響の可能性： 状況による**
 
 [Laravel Vapor](https://vapor.laravel.com)を利用する計画がある場合は、`config`ディレクトリ中のファイルのすべての`AWS_REGION`出現箇所を`AWS_DEFAULT_REGION`へ更新してください。更に、この環境変数の名前を`.env`ファイルに含めてください。
+
+<a name="redis-default-client"></a>
+#### Redisデフォルトクライアント
+
+**影響の可能性： 中程度**
+
+デフォルトのRedisクライアントを`predis`から`phpredis`へ変更しました。`predis`を使い続けるには、`config/database.php`設定ファイルの`redis.client`設定オプションを`predis`に指定してください。
 
 ### データベース
 
@@ -232,6 +232,8 @@ CSRF攻撃の可能性を防ぐため、Laravelの組み込みメール確認を
 
 `Lang::get`と`Lang::getFromJson`メソッドはまとめました。`Lang::getFromJson`メソッドの呼び出しは、`Lang::get`を呼び出すように更新してください。
 
+> {note} `Lang::transChoice`、`Lang::trans`、`Lang::getFromJson`の削除に関連するBladeエラーを防ぐために、`php artisan view:clear` Artisanコマンドを実行すべきでしょう。
+
 ### メール
 
 #### MandrillとSparkPostドライバの削除
@@ -316,6 +318,14 @@ CSRF攻撃の可能性を防ぐため、Laravelの組み込みメール確認を
 
     // Laravel6.0: http://example.com/profile?status=active
     echo route('profile', ['status' => 'active']);
+
+### バリデーション
+
+#### FormRequestの`validationData`メソッド
+
+**影響の可能性： 低い**
+
+リクエストの`validationData`メソッドを`protected`から`public`へ変更しました。皆さんの実装でこのメソッドをオーバーライドしている場合は、`public`の可視性へ変更してください。
 
 <a name="miscellaneous"></a>
 ### その他

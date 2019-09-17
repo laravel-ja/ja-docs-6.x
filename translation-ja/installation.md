@@ -5,6 +5,7 @@
     - [Laravelのインストール](#installing-laravel)
     - [設定](#configuration)
 - [Webサーバ設定](#web-server-configuration)
+    - [ディレクトリ設定](#directory-configuration)
     - [きれいなURL](#pretty-urls)
 
 <a name="installation"></a>
@@ -43,7 +44,7 @@ Laravelは[Composer](https://getcomposer.org)を依存パッケージの管理�
 皆さんのシステムの、どこへlaravel実行ファイルが設置されても動作するように、Composerのシステム全体のvendor/binディレクトリを`$PATH`へ登録してください。このディレクトリはオペレーティングシステムにより場所が異なります。通常は、以下の場所です。
 
 <div class="content-list" markdown="1">
-- macOS／GNU／Linuxディストリビューション： `$HOME/.composer/vendor/bin`
+- macOSとGNU／Linuxディストリビューション: `$HOME/.config/composer/vendor/bin`
 - Windows： `%USERPROFILE%\AppData\Roaming\Composer\vendor\bin`
 </div>
 
@@ -100,6 +101,11 @@ Laravelのその他の設定は、最初に指定する必要がありません�
 
 <a name="web-server-configuration"></a>
 ## Webサーバ設定
+
+<a name="directory-configuration"></a>
+### ディレクトリ設定
+
+Laravelは常にWebサーバで設定した「Webディレクトリ」のルートから提供する必要があります。「Webディレクトリ」のサブディレクトリでLaravelアプリケーションを提供しようと試みてはいけません。そうした試みはアプリケーションの中に存在するセンシティブなファイルを曝してしまう可能性があります。
 
 <a name="pretty-urls"></a>
 ### きれいなURL

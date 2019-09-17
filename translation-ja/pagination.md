@@ -29,8 +29,8 @@
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Support\Facades\DB;
     use App\Http\Controllers\Controller;
+    use Illuminate\Support\Facades\DB;
 
     class UserController extends Controller
     {
@@ -206,3 +206,5 @@ Laravelのペジネーター結果クラスは`Illuminate\Contracts\Support\Json
 `$results->previousPageUrl()`  |  前ページのURL取得
 `$results->total()`  |  データ領域にある、条件に一致するアイテムの総数（`simplePaginate`では使用できない）
 `$results->url($page)`  |  指定したページのURL取得
+`$results->getPageName()`  |  ページを保存するするために使用するクエリ文字変数を取得
+`$results->setPageName($name)`  |  ページを保存するために使用するクエリ文字変数を指定

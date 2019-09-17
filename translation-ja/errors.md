@@ -145,7 +145,7 @@ Laravelは可能である場合、文脈上のデータとして全ての例外�
         /**
          * 例外をＨＴＴＰレスポンスへレンダ
          *
-         * @param  \Illuminate\Http\Request
+         * @param  \Illuminate\Http\Request  $request
          * @return \Illuminate\Http\Response
          */
         public function render($request)

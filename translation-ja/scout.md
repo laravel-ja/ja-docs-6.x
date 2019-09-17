@@ -47,8 +47,8 @@ Scoutをインストールしたら、`vendor:publish` Artisanコマンドを使
 
     namespace App;
 
-    use Laravel\Scout\Searchable;
     use Illuminate\Database\Eloquent\Model;
+    use Laravel\Scout\Searchable;
 
     class Post extends Model
     {
@@ -85,8 +85,8 @@ Algoliaドライバを使用する場合、Algolia `id`と`secret`接続情報�
 
     namespace App;
 
-    use Laravel\Scout\Searchable;
     use Illuminate\Database\Eloquent\Model;
+    use Laravel\Scout\Searchable;
 
     class Post extends Model
     {
@@ -112,8 +112,8 @@ Algoliaドライバを使用する場合、Algolia `id`と`secret`接続情報�
 
     namespace App;
 
-    use Laravel\Scout\Searchable;
     use Illuminate\Database\Eloquent\Model;
+    use Laravel\Scout\Searchable;
 
     class Post extends Model
     {
@@ -143,8 +143,8 @@ Scoutはデフォルトとして、モデルの主キーを検索インデック
 
     namespace App;
 
-    use Laravel\Scout\Searchable;
     use Illuminate\Database\Eloquent\Model;
+    use Laravel\Scout\Searchable;
 
     class User extends Model
     {
@@ -413,9 +413,9 @@ Scoutは検索クエリに対して"WHERE"節を単に追加する方法も提�
 
     namespace App\Providers;
 
-    use Laravel\Scout\Builder;
-    use Illuminate\Support\ServiceProvider;
     use Illuminate\Support\Facades\Response;
+    use Illuminate\Support\ServiceProvider;
+    use Laravel\Scout\Builder;
 
     class ScoutMacroServiceProvider extends ServiceProvider
     {

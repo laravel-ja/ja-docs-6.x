@@ -82,8 +82,8 @@ Artisanに用意されているコマンドに加え、独自のカスタムコ�
 
     namespace App\Console\Commands;
 
-    use App\User;
     use App\DripEmailer;
+    use App\User;
     use Illuminate\Console\Command;
 
     class SendEmails extends Command
@@ -151,8 +151,8 @@ HTTPルートは定義していませんが、このファイルはアプリケ�
 
 コマンドの引数とオプションに付け加え、コマンドクロージャはタイプヒントによる追加の依存を受け取り、それらは[サービスコンテナ](/docs/{{version}}/container)により依存解決されます。
 
-    use App\User;
     use App\DripEmailer;
+    use App\User;
 
     Artisan::command('email:send {user}', function (DripEmailer $drip, $user) {
         $drip->send(User::find($user));

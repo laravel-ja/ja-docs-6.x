@@ -5,6 +5,7 @@
 - [JavaScriptの出力](#writing-javascript)
     - [Vueコンポーネントの出力](#writing-vue-components)
     - [Reactの使用](#using-react)
+- [プリセットの追加](#adding-presets)
 
 <a name="introduction"></a>
 ## イントロダクション
@@ -13,7 +14,7 @@ LaravelはJavaScriptやCSSプリプロセッサの使用を規定してはいま
 
 Laravelが提供するBootstrapとVueのスカフォールドは、Composerを使いインストールする`laravel/ui`パッケージに用意してあります。
 
-    composer require laravel/ui
+    composer require laravel/ui --dev
 
 `laravel/ui`パッケージをインストールできたら、`ui` Artisanコマンドを使いフロントエンドのスカフォールドをインストールします。
 
@@ -92,9 +93,24 @@ Vueコンポーネントの記述を学ぶことに興味があれば、Vueフ�
 
 JavaScriptアプリケーションでReactを使用するほうが好みであれば、VueスカフォールドをReactスカフォールドへ簡単に切り替えられます。
 
-    composer require laravel/ui
+    composer require laravel/ui --dev
 
     php artisan ui react
 
     // ログイン／ユーザー登録のスカフォールド
     php artisan ui react --auth
+
+<a name="adding-presets"></a>
+## プリセットの追加
+
+独自メソッドを`UiCommand`へ追加できるように、プリセットは「マクロ可能(macroable)」になっています。たとえば以下の例では、`UiCommand`へ`nextjs`メソッドのコードを追加しています。通常、プリセットマクロは[サービスプロバイダ](/docs/{{version}}/providers)で定義します。
+
+    use Laravel\Ui\UiCommand;
+
+    UiCommand::macro('nextjs', function (UiCommand $command) {
+        // 独自フロントエンドのスカフォールド…
+    });
+
+次に、`ui`コマンドで新しいプリセットを呼び出します。
+
+    php artisan ui nextjs

@@ -23,8 +23,8 @@ Laravelにはイベント、ジョブ、ファサードを最初からモック�
 
 Laravelのサービスコンテナにより、アプリケーションへ依存注入されるオブジェクトをモックする場合は、モックしたインスタンスをコンテナへ、`instance`結合する必要があります。これによりコンテナへ対象のオブジェクトそのものを構築する代わりに、モックしたインスタンスオブジェクトを使用するように指示します。
 
-    use Mockery;
     use App\Service;
+    use Mockery;
 
     $this->instance(Service::class, Mockery::mock(Service::class, function ($mock) {
         $mock->shouldReceive('process')->once();
@@ -55,11 +55,11 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
     use App\Jobs\ShipOrder;
-    use Illuminate\Support\Facades\Bus;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Illuminate\Support\Facades\Bus;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {
@@ -87,12 +87,12 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
-    use App\Events\OrderShipped;
     use App\Events\OrderFailedToShip;
-    use Illuminate\Support\Facades\Event;
+    use App\Events\OrderShipped;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Illuminate\Support\Facades\Event;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {
@@ -149,12 +149,12 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
 
     namespace Tests\Feature;
 
-    use App\Order;
-    use Tests\TestCase;
     use App\Events\OrderCreated;
-    use Illuminate\Support\Facades\Event;
+    use App\Order;
     use Illuminate\Foundation\Testing\RefreshDatabase;
+    use Illuminate\Support\Facades\Event;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {
@@ -185,11 +185,11 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
     use App\Mail\OrderShipped;
-    use Illuminate\Support\Facades\Mail;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Illuminate\Support\Facades\Mail;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {
@@ -235,12 +235,12 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
     use App\Notifications\OrderShipped;
-    use Illuminate\Support\Facades\Notification;
-    use Illuminate\Notifications\AnonymousNotifiable;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Illuminate\Notifications\AnonymousNotifiable;
+    use Illuminate\Support\Facades\Notification;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {
@@ -287,11 +287,11 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
     use App\Jobs\ShipOrder;
-    use Illuminate\Support\Facades\Queue;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Illuminate\Support\Facades\Queue;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {
@@ -334,11 +334,11 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
-    use Illuminate\Http\UploadedFile;
-    use Illuminate\Support\Facades\Storage;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Illuminate\Http\UploadedFile;
+    use Illuminate\Support\Facades\Storage;
+    use Tests\TestCase;
 
     class ExampleTest extends TestCase
     {
@@ -395,10 +395,10 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
 
     namespace Tests\Feature;
 
-    use Tests\TestCase;
-    use Illuminate\Support\Facades\Cache;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
+    use Illuminate\Support\Facades\Cache;
+    use Tests\TestCase;
 
     class UserControllerTest extends TestCase
     {

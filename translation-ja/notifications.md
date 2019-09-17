@@ -70,8 +70,8 @@ Laravelの各通知は、（通常、`app/Notifications`ディレクトリに設
 
     namespace App;
 
-    use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Notifications\Notifiable;
 
     class User extends Authenticatable
     {
@@ -125,8 +125,8 @@ Laravelの各通知は、（通常、`app/Notifications`ディレクトリに設
     namespace App\Notifications;
 
     use Illuminate\Bus\Queueable;
-    use Illuminate\Notifications\Notification;
     use Illuminate\Contracts\Queue\ShouldQueue;
+    use Illuminate\Notifications\Notification;
 
     class InvoicePaid extends Notification implements ShouldQueue
     {
@@ -265,8 +265,8 @@ Laravelの各通知は、（通常、`app/Notifications`ディレクトリに設
 
     namespace App;
 
-    use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Notifications\Notifiable;
 
     class User extends Authenticatable
     {
@@ -566,9 +566,9 @@ LaravelのMarkdownコンポーネントの全く新しいテーマを作成し�
 
     namespace App;
 
-    use Illuminate\Notifications\Notifiable;
     use Illuminate\Broadcasting\PrivateChannel;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Notifications\Notifiable;
 
     class User extends Authenticatable
     {
@@ -666,8 +666,8 @@ SMSメッセージにUnicode文字を含む場合は、`NexmoMessage`インス�
 
     namespace App;
 
-    use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Notifications\Notifiable;
 
     class User extends Authenticatable
     {
@@ -843,8 +843,8 @@ Slackメッセージに「添付」を追加することもできます。添付
 
     namespace App;
 
-    use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Notifications\Notifiable;
 
     class User extends Authenticatable
     {
@@ -966,11 +966,11 @@ Laravelはいくつかの通知チャンネルを用意していますが、他�
 
     namespace App\Notifications;
 
-    use Illuminate\Bus\Queueable;
-    use App\Channels\VoiceChannel;
     use App\Channels\Messages\VoiceMessage;
-    use Illuminate\Notifications\Notification;
+    use App\Channels\VoiceChannel;
+    use Illuminate\Bus\Queueable;
     use Illuminate\Contracts\Queue\ShouldQueue;
+    use Illuminate\Notifications\Notification;
 
     class InvoicePaid extends Notification
     {

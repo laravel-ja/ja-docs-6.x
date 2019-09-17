@@ -319,13 +319,12 @@ Eloquentの`all`メソッドはモデルテーブルの全レコードを結果�
 
 `select`と`addSelect`で利用できるサブクエリの機能を使えば全`destinations`と、一番早く目的地へ到着するのフライト名を１回のクエリで取得できます。
 
-    use App\Flight;
     use App\Destination;
+    use App\Flight;
 
     return Destination::addSelect(['last_flight' => Flight::select('name')
         ->whereColumn('destination_id', 'destinations.id')
         ->orderBy('arrived_at', 'desc')
-        ->latest()
         ->limit(1)
     ])->get();
 
@@ -337,7 +336,6 @@ Eloquentの`all`メソッドはモデルテーブルの全レコードを結果�
         Flight::select('arrived_at')
             ->whereColumn('destination_id', 'destinations.id')
             ->orderBy('arrived_at', 'desc')
-            ->latest()
             ->limit(1)
     )->get();
 
@@ -391,9 +389,9 @@ Eloquentの`all`メソッドはモデルテーブルの全レコードを結果�
 
     namespace App\Http\Controllers;
 
+    use App\Http\Controllers\Controller;
     use App\Flight;
     use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
 
     class FlightController extends Controller
     {
@@ -667,9 +665,9 @@ Eloquentの`all`メソッドはモデルテーブルの全レコードを結果�
 
     namespace App\Scopes;
 
-    use Illuminate\Database\Eloquent\Scope;
-    use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\Builder;
+    use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Scope;
 
     class AgeScope implements Scope
     {
@@ -726,8 +724,8 @@ Eloquentではクロージャを使ったグローバルスコープも定義で
 
     namespace App;
 
-    use Illuminate\Database\Eloquent\Model;
     use Illuminate\Database\Eloquent\Builder;
+    use Illuminate\Database\Eloquent\Model;
 
     class User extends Model
     {
@@ -873,9 +871,8 @@ Eloquentモデルは多くのイベントを発行します。`creating`、`crea
 
     namespace App;
 
-    use App\Events\UserSaved;
     use App\Events\UserDeleted;
-    use Illuminate\Notifications\Notifiable;
+    use App\Events\UserSaved;
     use Illuminate\Foundation\Auth\User as Authenticatable;
 
     class User extends Authenticatable
@@ -954,8 +951,8 @@ Eloquentイベントの定義とマップができたら、[イベントリス�
 
     namespace App\Providers;
 
-    use App\User;
     use App\Observers\UserObserver;
+    use App\User;
     use Illuminate\Support\ServiceProvider;
 
     class AppServiceProvider extends ServiceProvider

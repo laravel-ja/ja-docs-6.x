@@ -5,6 +5,7 @@
     - [Installing Laravel](#installing-laravel)
     - [Configuration](#configuration)
 - [Web Server Configuration](#web-server-configuration)
+    - [Directory Configuration](#directory-configuration)
     - [Pretty URLs](#pretty-urls)
 
 <a name="installation"></a>
@@ -43,7 +44,7 @@ First, download the Laravel installer using Composer:
 Make sure to place Composer's system-wide vendor bin directory in your `$PATH` so the laravel executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:
 
 <div class="content-list" markdown="1">
-- macOS and GNU / Linux Distributions: `$HOME/.composer/vendor/bin`
+- macOS and GNU / Linux Distributions: `$HOME/.config/composer/vendor/bin`
 - Windows: `%USERPROFILE%\AppData\Roaming\Composer\vendor\bin`
 </div>
 
@@ -100,6 +101,11 @@ You may also want to configure a few additional components of Laravel, such as:
 
 <a name="web-server-configuration"></a>
 ## Web Server Configuration
+
+<a name="directory-configuration"></a>
+### Directory Configuration
+
+Laravel should always be served out of the root of the "web directory" configured for your web server. You should not attempt to serve a Laravel application out of a sub-directory of the "web directory". Attempting to do so could expose sensitive files present within your application.
 
 <a name="pretty-urls"></a>
 ### Pretty URLs

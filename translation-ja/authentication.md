@@ -56,7 +56,7 @@ Laravelの認証機能は「ガード」と「プロバイダ」を中心概念�
 
 Laravelの`laravel/ui`パッケージは、認証に必要なルートとビューを全てあっという間にスカフォールドするための、シンプルなコマンドを少々提供しています。
 
-    composer require laravel/ui
+    composer require laravel/ui --dev
 
     php artisan ui vue --auth
 
@@ -418,8 +418,8 @@ PHP FastCGIを使用している場合、初期状態のままでHTTP基本認�
     namespace App\Providers;
 
     use App\Services\Auth\JwtGuard;
-    use Illuminate\Support\Facades\Auth;
     use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+    use Illuminate\Support\Facades\Auth;
 
     class AuthServiceProvider extends ServiceProvider
     {
@@ -491,9 +491,9 @@ HTTPリクエストをベースとした、カスタム認証システムを実�
 
     namespace App\Providers;
 
-    use Illuminate\Support\Facades\Auth;
     use App\Extensions\RiakUserProvider;
     use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+    use Illuminate\Support\Facades\Auth;
 
     class AuthServiceProvider extends ServiceProvider
     {
@@ -542,14 +542,13 @@ HTTPリクエストをベースとした、カスタム認証システムを実�
 
     namespace Illuminate\Contracts\Auth;
 
-    interface UserProvider {
-
+    interface UserProvider
+    {
         public function retrieveById($identifier);
         public function retrieveByToken($identifier, $token);
         public function updateRememberToken(Authenticatable $user, $token);
         public function retrieveByCredentials(array $credentials);
         public function validateCredentials(Authenticatable $user, array $credentials);
-
     }
 
 `retrieveById`関数は通常MySQLデータベースの自動増分IDのようなユーザーを表すキーを受け付けます。IDにマッチする`Authenticatable`実装が取得され、返されます。
@@ -571,15 +570,14 @@ HTTPリクエストをベースとした、カスタム認証システムを実�
 
     namespace Illuminate\Contracts\Auth;
 
-    interface Authenticatable {
-
+    interface Authenticatable
+    {
         public function getAuthIdentifierName();
         public function getAuthIdentifier();
         public function getAuthPassword();
         public function getRememberToken();
         public function setRememberToken($value);
         public function getRememberTokenName();
-
     }
 
 このインターフェイスはシンプルです。`getAuthIdentifierName`メソッドは、ユーザーの「主キー」フィールドの名前を返します。`getAuthIdentifier`メソッドはユーザーの主キーを返します。MySQLを裏で使用している場合、これは自動増分される主キーでしょう。`getAuthPassword`はユーザーのハッシュ済みのパスワードを返します。このインターフェイスはどのORMや抽象ストレージ層を使用しているかに関わらず、どんなUserクラスに対しても認証システムが動作するようにしてくれています。デフォルトでLaravelは`app`ディレクトリ中に、このインターフェイスを実装してる`User`クラスを持っています。ですから実装例として、このクラスを調べてみてください。

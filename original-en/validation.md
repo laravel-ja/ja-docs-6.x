@@ -57,8 +57,8 @@ Next, let's take a look at a simple controller that handles these routes. We'll 
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
+    use Illuminate\Http\Request;
 
     class PostController extends Controller
     {
@@ -341,8 +341,8 @@ If you do not want to use the `validate` method on the request, you may create a
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
+    use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Validator;
 
     class PostController extends Controller
@@ -700,7 +700,7 @@ The field under validation must be equal to the given date. The dates will be pa
 <a name="rule-date-format"></a>
 #### date_format:_format_
 
-The field under validation must match the given _format_. You should use **either** `date` or `date_format` when validating a field, not both. This validation rule supports all formats supported by PHP's [DateTime](https://www.php.net/manual/es/class.datetime.php) class.
+The field under validation must match the given _format_. You should use **either** `date` or `date_format` when validating a field, not both. This validation rule supports all formats supported by PHP's [DateTime](https://www.php.net/manual/en/class.datetime.php) class.
 
 <a name="rule-different"></a>
 #### different:_field_

@@ -38,9 +38,9 @@ Laravelのコマンドスケジューラは、Laravel自身の中でコマンド
 
     namespace App\Console;
 
-    use Illuminate\Support\Facades\DB;
     use Illuminate\Console\Scheduling\Schedule;
     use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+    use Illuminate\Support\Facades\DB;
 
     class Kernel extends ConsoleKernel
     {
@@ -115,12 +115,12 @@ Laravelのコマンドスケジューラは、Laravel自身の中でコマンド
 `->daily();`  |  毎日深夜１２時に実行
 `->dailyAt('13:00');`  |  毎日13:00に実行
 `->twiceDaily(1, 13);`  |  毎日1:00と13:00時に実行
-`->weekly();`  |  毎週実行
+`->weekly();`  |  毎週日曜日の00:00にタスク実行
 `->weeklyOn(1, '8:00');`  |  毎週月曜日の8:00時に実行
-`->monthly();`  |  毎月実行
+`->monthly();`  |  毎月１日の00:00にタスク実行
 `->monthlyOn(4, '15:00');`  |  毎月4日の15:00に実行
-`->quarterly();` |  四半期ごとに実行
-`->yearly();`  |  毎年実行
+`->quarterly();` |  四半期の初日の00:00にタスク実行
+`->yearly();`  |  毎年１月１日の00:00にタスク実行
 `->timezone('America/New_York');` | タイムゾーン設定
 
 これらのメソッドは週の特定の曜日だけに実行させるために、追加の制約と組み合わせ細かく調整できます。

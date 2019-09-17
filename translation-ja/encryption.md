@@ -25,9 +25,9 @@ Laravelのエンクリプタを使用する準備として、`config/app.php`設
 
     namespace App\Http\Controllers;
 
+    use App\Http\Controllers\Controller;
     use App\User;
     use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
 
     class UserController extends Controller
     {

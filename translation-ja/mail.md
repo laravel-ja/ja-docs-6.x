@@ -508,11 +508,11 @@ LaravelのMarkdownコンポーネントの全く新しいテーマを作成し�
 
     namespace App\Http\Controllers;
 
-    use App\Order;
+    use App\Http\Controllers\Controller;
     use App\Mail\OrderShipped;
+    use App\Order;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Mail;
-    use App\Http\Controllers\Controller;
 
     class OrderController extends Controller
     {

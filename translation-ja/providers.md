@@ -38,8 +38,8 @@ Laravelに含まれている`config/app.php`ファイルを開けば、`provider
 
     namespace App\Providers;
 
-    use Riak\Connection;
     use Illuminate\Support\ServiceProvider;
+    use Riak\Connection;
 
     class RiakServiceProvider extends ServiceProvider
     {
@@ -66,12 +66,12 @@ Laravelに含まれている`config/app.php`ファイルを開けば、`provider
 
     namespace App\Providers;
 
-    use App\Contracts\ServerProvider;
     use App\Contracts\DowntimeNotifier;
+    use App\Contracts\ServerProvider;
+    use App\Services\DigitalOceanServerProvider;
+    use App\Services\PingdomDowntimeNotifier;
     use App\Services\ServerToolsProvider;
     use Illuminate\Support\ServiceProvider;
-    use App\Services\PingdomDowntimeNotifier;
-    use App\Services\DigitalOceanServerProvider;
 
     class AppServiceProvider extends ServiceProvider
     {
@@ -160,9 +160,9 @@ Laravelは遅延サービスプロバイダが提示した全サービスのリ�
 
     namespace App\Providers;
 
-    use Riak\Connection;
-    use Illuminate\Support\ServiceProvider;
     use Illuminate\Contracts\Support\DeferrableProvider;
+    use Illuminate\Support\ServiceProvider;
+    use Riak\Connection;
 
     class RiakServiceProvider extends ServiceProvider implements DeferrableProvider
     {

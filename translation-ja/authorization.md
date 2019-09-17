@@ -133,8 +133,8 @@ Laravelは組み込み済みの[認証](/docs/{{version}}/authentication)サー�
 
 ここまでは、単純な論理値を返すゲートのみを見てきました。しかしながら、エラーメッセージを含んだ、より詳細なレスポンスを返したい場合もあるでしょう。そのためには、ゲートから`Illuminate\Auth\Access\Response`を返します。
 
-    use Illuminate\Support\Facades\Gate;
     use Illuminate\Auth\Access\Response;
+    use Illuminate\Support\Facades\Gate;
 
     Gate::define('edit-settings', function ($user) {
         return $user->isAdmin
@@ -208,10 +208,10 @@ Laravelは組み込み済みの[認証](/docs/{{version}}/authentication)サー�
 
     namespace App\Providers;
 
-    use App\Post;
     use App\Policies\PostPolicy;
-    use Illuminate\Support\Facades\Gate;
+    use App\Post;
     use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+    use Illuminate\Support\Facades\Gate;
 
     class AuthServiceProvider extends ServiceProvider
     {
@@ -265,8 +265,8 @@ Laravelは組み込み済みの[認証](/docs/{{version}}/authentication)サー�
 
     namespace App\Policies;
 
-    use App\User;
     use App\Post;
+    use App\User;
 
     class PostPolicy
     {
@@ -351,8 +351,8 @@ HTTPリクエストが認証済みユーザーにより開始されたもので�
 
     namespace App\Policies;
 
-    use App\User;
     use App\Post;
+    use App\User;
 
     class PostPolicy
     {
@@ -439,9 +439,9 @@ Laravelアプリケーションに含まれる`User`モデルは、アクショ�
 
     namespace App\Http\Controllers;
 
+    use App\Http\Controllers\Controller;
     use App\Post;
     use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
 
     class PostController extends Controller
     {
@@ -489,9 +489,9 @@ Laravelアプリケーションに含まれる`User`モデルは、アクショ�
 
     namespace App\Http\Controllers;
 
+    use App\Http\Controllers\Controller;
     use App\Post;
     use Illuminate\Http\Request;
-    use App\Http\Controllers\Controller;
 
     class PostController extends Controller
     {

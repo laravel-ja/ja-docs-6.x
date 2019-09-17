@@ -302,8 +302,8 @@ Laravelはリフレクションを使いリスナクラスをスキャンし、�
     namespace App\Listeners;
 
     use App\Events\OrderShipped;
-    use Illuminate\Queue\InteractsWithQueue;
     use Illuminate\Contracts\Queue\ShouldQueue;
+    use Illuminate\Queue\InteractsWithQueue;
 
     class SendShipmentNotification implements ShouldQueue
     {
@@ -333,8 +333,8 @@ Laravelはリフレクションを使いリスナクラスをスキャンし、�
     namespace App\Listeners;
 
     use App\Events\OrderShipped;
-    use Illuminate\Queue\InteractsWithQueue;
     use Illuminate\Contracts\Queue\ShouldQueue;
+    use Illuminate\Queue\InteractsWithQueue;
 
     class SendShipmentNotification implements ShouldQueue
     {
@@ -373,9 +373,9 @@ Laravelはリフレクションを使いリスナクラスをスキャンし、�
 
     namespace App\Http\Controllers;
 
-    use App\Order;
     use App\Events\OrderShipped;
     use App\Http\Controllers\Controller;
+    use App\Order;
 
     class OrderController extends Controller
     {

@@ -69,8 +69,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
 レスポンスを送り返す時に、JSONへ変換する必要のある属性の配列を返す、`toArray`メソッドを全リソースクラスで定義します。`$this`変数を使用し、直接モデルのプロパティへアクセスできる点に注目です。これはリソースクラスが、変換するためにアクセスするモデルの、プロパティとメソッドを自動的に仲介するからです。リソースが定義できたら、ルートやコントローラから返します。
 
-    use App\User;
     use App\Http\Resources\User as UserResource;
+    use App\User;
 
     Route::get('/user', function () {
         return new UserResource(User::find(1));
@@ -81,8 +81,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
 ページ付けしたリソースやコレクションを返す場合は、ルートかコントローラの中で、リソースインスタンスを生成する時に、`collection`メソッドを使用します。
 
-    use App\User;
     use App\Http\Resources\User as UserResource;
+    use App\User;
 
     Route::get('/user', function () {
         return UserResource::collection(User::all());
@@ -121,8 +121,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
 定義したコレクションリソースは、ルートかコントローラから返してください。
 
-    use App\User;
     use App\Http\Resources\UserCollection;
+    use App\User;
 
     Route::get('/users', function () {
         return new UserCollection(User::all());
@@ -150,8 +150,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
 `preserveKeys`プロパティが`true`にセットされると、コレクションのキーは保持されるようになります。
 
-    use App\User;
     use App\Http\Resources\User as UserResource;
+    use App\User;
 
     Route::get('/user', function () {
         return UserResource::collection(User::all()->keyBy->id);
@@ -214,8 +214,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
 リソースを定義したら、ルートかコントローラから、直接返してください。
 
-    use App\User;
     use App\Http\Resources\User as UserResource;
+    use App\User;
 
     Route::get('/user', function () {
         return new UserResource(User::find(1));
@@ -249,8 +249,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
 リソースは一つのモデルを配列へ変換するのに対し、コレクションリソースはモデルのコレクションを配列へ変換します。モデルタイプそれぞれに対し、コレクションリソースを絶対に定義する必要があるわけではありません。すべてのリソースは、簡単に「アドホック」なコレクションリソースを生成するために、`collection`メソッドを提供しています。
 
-    use App\User;
     use App\Http\Resources\User as UserResource;
+    use App\User;
 
     Route::get('/user', function () {
         return UserResource::collection(User::all());
@@ -285,8 +285,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
 １モデルを扱うリソースと同様にコレクションリソースも、ルートやコントローラから直接返してください。
 
-    use App\User;
     use App\Http\Resources\UserCollection;
+    use App\User;
 
     Route::get('/users', function () {
         return new UserCollection(User::all());
@@ -318,8 +318,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
     namespace App\Providers;
 
-    use Illuminate\Support\ServiceProvider;
     use Illuminate\Http\Resources\Json\Resource;
+    use Illuminate\Support\ServiceProvider;
 
     class AppServiceProvider extends ServiceProvider
     {
@@ -411,8 +411,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
 常にペジネータインスタンスをリソースの`collection`メソッドや、カスタムコレクションリソースへ渡せます。
 
-    use App\User;
     use App\Http\Resources\UserCollection;
+    use App\User;
 
     Route::get('/users', function () {
         return new UserCollection(User::paginate());
@@ -653,8 +653,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
 既に説明したように、リソースはルートかコントローラから直接返されます。
 
-    use App\User;
     use App\Http\Resources\User as UserResource;
+    use App\User;
 
     Route::get('/user', function () {
         return new UserResource(User::find(1));
@@ -662,8 +662,8 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
 
 しかし、利用者へ送信する前に、HTTPレスポンスをカスタマイズする必要が時々あります。リソースに対して`response`メソッドをチェーンしてください。このメソッドは、`Illuminate\Http\Response`インスタンスを返しますので、レスポンスヘッダを完全にコントロールできます。
 
-    use App\User;
     use App\Http\Resources\User as UserResource;
+    use App\User;
 
     Route::get('/user', function () {
         return (new UserResource(User::find(1)))
