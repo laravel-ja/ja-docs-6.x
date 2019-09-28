@@ -141,7 +141,7 @@ Laravelはテスト時にセッションを操作するたくさんのヘルパ�
 <a name="testing-json-apis"></a>
 ## JSON APIのテスト
 
-LaravelはJSON APIとレスポンスをテストする数多くのヘルパを用意しています。たとえば、`json`、`get`、`post`、`put`、`patch`、`delete`、`option`メソッドはそれぞれのHTTP動詞のリクエストを発生させるために使用します。これらのメソッドには簡単にデータやヘッダを渡せます。手始めに、`/user`に対する`POST`リクエストを作成し、期待したデータが返されることをアサートするテストを書いてみましょう。
+LaravelはJSON APIとレスポンスをテストする数多くのヘルパを用意しています。たとえば、`json`, `getJson`, `postJson`, `putJson`, `patchJson`, `deleteJson`, and `optionsJson`メソッドは、それぞれのHTTP動詞のJSONリクエストを発生させるために使用します。これらのメソッドには簡単にデータやヘッダを渡せます。手始めに、`/user`に対する`POST`リクエストを作成し、期待したデータが返されることをアサートするテストを書いてみましょう。
 
     <?php
 
@@ -154,7 +154,7 @@ LaravelはJSON APIとレスポンスをテストする数多くのヘルパを�
          */
         public function testBasicExample()
         {
-            $response = $this->json('POST', '/user', ['name' => 'Sally']);
+            $response = $this->postJson('/user', ['name' => 'Sally']);
 
             $response
                 ->assertStatus(201)
@@ -189,6 +189,30 @@ LaravelはJSON APIとレスポンスをテストする数多くのヘルパを�
                 ->assertExactJson([
                     'created' => true,
                 ]);
+        }
+    }
+
+<a name="verifying-json-paths"></a>
+### JSONパスの検証
+
+JSONレスポンスの特定パスに、指定したデータが含まれているかを検証したい場合は、`assertJsonPath`メソッドを使用します。
+
+    <?php
+
+    class ExampleTest extends TestCase
+    {
+        /**
+         * 基本的な機能テストの例
+         *
+         * @return void
+         */
+        public function testBasicExample()
+        {
+            $response = $this->json('POST', '/user', ['name' => 'Sally']);
+
+            $response
+                ->assertStatus(201)
+                ->assertJsonPath('team.owner.name', 'foo')
         }
     }
 
@@ -274,6 +298,7 @@ LaravelはJSON APIとレスポンスをテストする数多くのヘルパを�
 [assertJsonMissing](#assert-json-missing)
 [assertJsonMissingExact](#assert-json-missing-exact)
 [assertJsonMissingValidationErrors](#assert-json-missing-validation-errors)
+[assertJsonPath](#assert-json-path)
 [assertJsonStructure](#assert-json-structure)
 [assertJsonValidationErrors](#assert-json-validation-errors)
 [assertLocation](#assert-location)
@@ -414,6 +439,13 @@ LaravelはJSON APIとレスポンスをテストする数多くのヘルパを�
 レスポンスが指定したキーに対するJSONバリデーションエラーを含んていないことを宣言。
 
     $response->assertJsonMissingValidationErrors($keys);
+
+<a name="assert-json-path"></a>
+#### assertJsonPath
+
+レスポンスが特定のパスへ指定したデータを含んでいるかを宣言。
+
+    $response->assertJsonPath($path, array $data);
 
 <a name="assert-json-structure"></a>
 #### assertJsonStructure

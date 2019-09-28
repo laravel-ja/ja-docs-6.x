@@ -47,12 +47,12 @@
 
 Laravel Cashierは[Stripe](https://stripe.com)によるサブスクリプション（定期課金）サービスの読みやすく、スラスラと記述できるインターフェイスを提供します。これにより書くのが恐ろしくなるような、サブスクリプション支払いのための決まりきったコードのほとんどが処理できます。基本的なサブスクリプション管理に加え、Cashierはクーポン、サブスクリプションの変更、サブスクリプション数、キャンセル猶予期間、さらにインボイスのPDF発行まで行います。
 
-> {note} ブレーキングチェンジを防ぐために、CashierではStripeの固定APIバージョンを使用しています。Cashier10.1では、Stripeの`2019-08-14`付けAPIバージョンを使用しています。Stripeの新機能や機能向上を利用するため、マイナーリリースでもStripe APIのバージョンを更新することがあります。
-
 <a name="upgrading-cashier"></a>
 ## Cashierのアップデート
 
 新しいバージョンのCashierへアップグレードする場合は、[アップグレードガイド](https://github.com/laravel/cashier/blob/master/UPGRADE.md)を注意深く確認することが重要です。
+
+> {note} ブレーキングチェンジを防ぐために、CashierではStripeの固定APIバージョンを使用しています。Cashier10.1では、Stripeの`2019-08-14`付けAPIバージョンを使用しています。Stripeの新機能や機能向上を利用するため、マイナーリリースでもStripe APIのバージョンを更新することがあります。
 
 <a name="installation"></a>
 ## インストール

@@ -275,6 +275,15 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
             Notification::assertSentTo(
                 new AnonymousNotifiable, OrderShipped::class
             );
+
+            // Notification::route()メソッドで通知を現在のユーザーに送ったことをアサート
+            Notification::assertSentTo(
+                new AnonymousNotifiable,
+                OrderShipped::class,
+                function ($notification, $channels, $notifiable) use ($user) {
+                    return $notifiable->routes['mail'] === $user->email;
+                }
+            );
         }
     }
 

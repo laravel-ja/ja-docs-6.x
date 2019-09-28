@@ -1434,8 +1434,6 @@ Str::singular`メソッドは複数形を単数形へ変換します。このメ
 
 変数の値をダンプした後に実行を停止したい場合は、代わりに[`dd`](#method-dd)関数を使用してください。
 
-> {tip} すべての`dump`呼び出しをインターセプトし、ブラウザの代わりにコンソールウィンドウで表示する、Artisan `dump-server`コマンドが利用できます。
-
 <a name="method-encrypt"></a>
 #### `encrypt()` {#collection-method}
 

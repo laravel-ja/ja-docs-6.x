@@ -1474,6 +1474,8 @@ Duskのテスト実行に[Githubアクション](https://github.com/features/act
           - uses: actions/checkout@v1
           - name: Prepare The Environment
             run: cp .env.example .env
+          - name: Create Database
+            run: mysql --user="root" --password="root" -e "CREATE DATABASE my-database character set UTF8mb4 collate utf8mb4_bin;"
           - name: Install Composer Dependencies
             run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
           - name: Generate Application Key

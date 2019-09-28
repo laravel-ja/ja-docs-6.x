@@ -134,9 +134,17 @@ Horizonプロセスを`horizon:pause` Artisanコマンドで一時停止した�
 
 Horizonを実働サーバにデプロイする場合、`php artisan horizon`コマンドをプロセスモニタで監視し、予期せず終了した場合には再起動をかけるように設定する必要があります。サーバに新しいコードをデプロイしたときに、Horizonプロセスを停止指示する必要があります。その結果、プロセスモニタにより再起動され、コードの変更が反映されます。
 
+#### Supervisorのインストール
+
+SupervisorはLinuxオペレーティングシステムのプロセスモニターで、`horizon`システムが停止すると自動的に再起動してくれます。UbuntuへSupervisorをインストールするには、次のようにコマンドを入力します。
+
+    sudo apt-get install supervisor
+
+> {tip} Supervisorの設定を自分で行うのに圧倒されるようでしたら、[Laravel Forge](https://forge.laravel.com)の使用を考慮してください。LaravelプロジェクトのためにSupervisorを自動的にインストールし、設定します。
+
 #### Supervisor設定
 
-`horizon`プロセスを管理するため、Supervisorプロセスモニタを使用する場合は、以下の設定ファイルが利用できるでしょう。
+Supervisorの設定ファイルは通常`/etc/supervisor/conf.d`へ保存されています。このディレクトリの中では、Supervisorへプロセスをどのようにモニタリングするのかを指示するために、設定ファイルをいくつでも作成できます。一例として、`horizon.conf`ファイルを作成し、`horizon`プロセスを起動・監視してみましょう。
 
     [program:horizon]
     process_name=%(program_name)s
@@ -147,7 +155,17 @@ Horizonを実働サーバにデプロイする場合、`php artisan horizon`コ�
     redirect_stderr=true
     stdout_logfile=/home/forge/app.com/horizon.log
 
-> {tip} サーバ管理に自信がない場合は、[Laravel Forge](https://forge.laravel.com)の利用を検討してください。ForgeはHorizonと共に、モダンで堅牢なLaravelアプリケーションに必要なすべてをPHP7以上のサーバにプロビションします。
+#### Supervisorの起動
+
+設定ファイルが作成できたら、Supervisor設定をを更新し、起動するために次のようにコマンドを入力します。
+
+    sudo supervisorctl reread
+
+    sudo supervisorctl update
+
+    sudo supervisorctl start horizon
+
+Supervisorの詳細については、[Supervisorドキュメント](http://supervisord.org/index.html)をお読みください。
 
 <a name="tags"></a>
 ## タグ

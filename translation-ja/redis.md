@@ -13,7 +13,7 @@
 
 [Redis](https://redis.io)はオープンソースの進歩的なキー／値保存システムです。キーに[文字列](https://redis.io/topics/data-types#strings)、[ハッシュ](https://redis.io/topics/data-types#hashes)、[リスト](https://redis.io/topics/data-types#lists)、[セット](https://redis.io/topics/data-types#sets)、[ソート済みセット](https://redis.io/topics/data-types#sorted-sets)が使用できるため、データ構造サーバとしてよく名前が上がります。
 
-LaravelでRedis使用するには、PECLを使用して[PhpRedis](https://github.com/phpredis/phpredis) PHP拡張をインストールすることを推奨します。インストール方法は複雑ですが、Redisをヘビーユースするアプリケーションではより良いパフォーマンスが得られます。
+LaravelでRedis使用するには、PECLを使用して[PhpRedis](https://github.com/phpredis/phpredis) PHP拡張をインストールすることを推奨します。インストール方法は複雑ですが、Redisをヘビーユースするアプリケーションではより良いパフォーマンスが得られます
 
 もしくは、Composerで`predis/predis`パッケージをインストールすることもできます。
 

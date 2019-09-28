@@ -920,7 +920,7 @@ Passportはアクセストークン発行時とトークンリフレッシュ時
 <a name="testing"></a>
 ## テスト
 
-Passportの`actingAs`メソッドは、現在認証中のユーザーを指定知ると同時にスコープも指定します。`actingAs`メソッドの最初の引数はユーザーのインスタンスで、第２引数はユーザートークンに許可するスコープ配列を指定します。
+Passportの`actingAs`メソッドは、現在認証中のユーザーを指定すると同時にスコープも指定します。`actingAs`メソッドの最初の引数はユーザーのインスタンスで、第２引数はユーザートークンに許可するスコープ配列を指定します。
 
     use App\User;
     use Laravel\Passport\Passport;
@@ -935,4 +935,21 @@ Passportの`actingAs`メソッドは、現在認証中のユーザーを指定�
         $response = $this->post('/api/create-server');
 
         $response->assertStatus(201);
+    }
+
+Passportの`actingAsClient`メソッドは、現在認証中のクライアントを指定すると同時にスコープも指定します。`actingAsClient`メソッドの最初の引数はクライアントインスタンスで、第２引数はクライアントのトークンへ許可するスコープの配列です。
+
+    use Laravel\Passport\Client;
+    use Laravel\Passport\Passport;
+
+    public function testGetOrders()
+    {
+        Passport::actingAsClient(
+            factory(Client::class)->create(),
+            ['check-status']
+        );
+
+        $response = $this->get('/api/orders');
+
+        $response->assertStatus(200);
     }
