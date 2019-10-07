@@ -691,7 +691,7 @@ SMSメッセージにUnicode文字を含む場合は、`NexmoMessage`インス�
 <a name="slack-prerequisites"></a>
 ### 事前要件
 
-Slackを通して通知を遅れるようにするには、ComposerでSlackの通知チャンネルをインストールしてください。
+Slackを通して通知を送れるようにするには、ComposerでSlackの通知チャンネルをインストールしてください。
 
     composer require laravel/slack-notification-channel
 
