@@ -94,7 +94,7 @@
 
     $user->first_name = 'Sally';
 
-上記の場合、`setFirstNameAttribute`メソッドが呼び出され、`Sallay`の値が渡されます。このミューテタはそれから名前に`strtolower`を適用し、その値を`$attributes`内部配列へ設定します。
+上記の場合、`setFirstNameAttribute`メソッドが呼び出され、`Sally`の値が渡されます。このミューテタはそれから名前に`strtolower`を適用し、その値を`$attributes`内部配列へ設定します。
 
 <a name="date-mutators"></a>
 ## 日付ミューテタ
