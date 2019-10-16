@@ -38,6 +38,14 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
         $mock->shouldReceive('process')->once();
     });
 
+オブジェクトのいくつかのメソッドだけをモックする必要があるなら、`partialMock`メソッドが使えます。モックしていないメソッドは、呼び出し時に通常通りに実行されます。
+
+    use App\Service;
+
+    $this->partialMock(Service::class, function ($mock) {
+        $mock->shouldReceive('process')->once();
+    });
+
 同様に、オブジェクトをスパイしたい場合は、Laravelの便利な`Mockery::spy`ラッパーであり、ベースのテストケースクラスで提供している`spy`メソッドを用います。
 
     use App\Service;

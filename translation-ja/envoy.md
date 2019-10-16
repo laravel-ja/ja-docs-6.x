@@ -71,6 +71,10 @@ Envoyの全タスクはプロジェクトルートの`Envoy.blade.php`ファイ�
         # ...
     @endtask
 
+ストーリーやタスクを取り込むため、他のEnvoyファイルをインポートすることもできます。インポートすればそれらのファイルのタスクをこのファイルで定義しているかのように実行できます。`@import`ディレクティブは`Envoy.blade.php`ファイルの先頭で指定してください。
+
+    @import('package/Envoy.blade.php')
+
 <a name="variables"></a>
 ### 変数
 

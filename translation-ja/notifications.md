@@ -31,6 +31,7 @@
 - [SMS通知](#sms-notifications)
     - [事前要件](#sms-prerequisites)
     - [SMS通知のフォーマット](#formatting-sms-notifications)
+    - [ショートコード通知のフォーマット](#formatting-shortcode-notifications)
     - [発信元電話番号のカスタマイズ](#customizing-the-from-number)
     - [SMS通知のルート指定](#routing-sms-notifications)
 - [Slack通知](#slack-notifications)
@@ -595,11 +596,11 @@ LaravelのSMS通知送信は、[Nexmo](https://www.nexmo.com/)を使用します
 
     composer require laravel/nexmo-notification-channel
 
-次に、`config/services.php`設定ファイルへ設定オプションをいくつか追加する必要があります。設定例として、以下の設定をコピーして編集してください。
+これにより[`nexmo/laravel`](https://github.com/Nexmo/nexmo-laravel)パッケージもインストールされます。このパッケージは[自身の設定ファイル](https://github.com/Nexmo/nexmo-laravel/blob/master/config/nexmo.php)を持っています。`NEXMO_KEY`と`NEXMO_SECRET`の環境変数を使い、Nexmoパブリックキーとシークレットキーを指定できます。
+
+次に、`config/services.php`設定ファイルへ設定オプションを追加する必要があります。設定例として、以下の設定をコピーして編集してください。
 
     'nexmo' => [
-        'key' => env('NEXMO_KEY'),
-        'secret' => env('NEXMO_SECRET'),
         'sms_from' => '15556666666',
     ],
 
@@ -621,6 +622,29 @@ SMSとしての通知をサポートするには、通知クラスに`toNexmo`�
         return (new NexmoMessage)
                     ->content('Your SMS message content');
     }
+
+<a name="formatting-shortcode-notifications"></a>
+### ショートコード通知のフォーマット
+
+Nexmoアカウントで事前に定義したメッセージテンプレートである、ショートコード通知の送信もLaravelはサポートしています。通知のタイプ（`alert`、`2fa`、`marketing`など）と、そのテンプレートに埋め込むカスタム値を指定します。
+
+    /**
+     * 通知のNexmo／ショートコードプレゼンテーションを取得する
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function toShortcode($notifiable)
+    {
+        return [
+            'type' => 'alert',
+            'custom' => [
+                'code' => 'ABC123',
+            ];
+        ];
+    }
+
+> {tip} [SMS通知のルート指定](#routing-sms-notifications)と同様に、通知モデル`routeNotificationForShortcode`メソッドを実装する必要があります。
 
 #### Unicodeコンテンツ
 

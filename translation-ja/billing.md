@@ -7,6 +7,7 @@
     - [Billableモデル](#billable-model)
     - [APIキー](#api-keys)
     - [通貨設定](#currency-configuration)
+    - [ログ](#logging)
 - [顧客](#customers)
     - [顧客の生成](#creating-customers)
 - [支払い方法](#payment-methods)
@@ -122,6 +123,13 @@ Caishierの通貨設定に付け加え、インボイスで表示する金額の
     CASHIER_CURRENCY_LOCALE=nl_BE
 
 > {note} `en`以外のローケルを指定する場合は、サーバ設定で`ext-intl` PHP拡張がインストールされているのを確認してください。
+
+<a name="logging"></a>
+#### ログ
+
+Stripeに関連する例外をすべてログする時に使用できるログチャンネルをCashierでは指定できます。`CASHIER_LOGGER`環境変数を使用し、ログチャンネルを指定します。
+
+    CASHIER_LOGGER=default
 
 <a name="customers"></a>
 ## 顧客
@@ -369,6 +377,12 @@ Stripeがサポートしている追加のフィールドについてのさら�
 `subscribedToPlan`メソッドは、そのユーザーがStripeのプランIDで指定したプランを購入しているかを確認します。以下の例では、ユーザーの`main`サブスクリプションが、購入され有効な`monthly`プランであるかを確認しています。
 
     if ($user->subscribedToPlan('monthly', 'main')) {
+        //
+    }
+
+`subscribedToPlan`メソッドに配列を渡せば、ユーザーの`main`サブスクリプションが、購入され有効な`monthly`か`yearly`プランであるかを判定できます。
+
+    if ($user->subscribedToPlan(['monthly', 'yearly'], 'main')) {
         //
     }
 
@@ -794,7 +808,7 @@ SCA規制は支払いの確認と処理を行うため、頻繁に追加の検�
 
 別の方法として、Stripeに支払いの処理を任せることもできます。この場合、支払い確認ページへリダイレクトする代わりに、Stripeダッシュボードで[Stripeの自動支払いメール](https://dashboard.stripe.com/account/billing/automatic)を瀬一定する必要があります。しかしながら、`IncompletePayment`例外を捉えたら、支払い確認方法の詳細がメールで送られることをユーザーへ知らせる必要があります。
 
-不完全な支払いの例外は、`Billable`のユーザーに対する`charge`、`invoiceFor`、`invoice`メソッドで投げられる可能性があります。スクリプションが処理される時、`SubscriptionBuilder`の`create`メソッドと、`Susbcription`モデルの`incrementAndInvoice`、`swapAndInvoice`メソッドは、例外を投げるでしょう。
+不完全な支払いの例外は、`Billable`のユーザーに対する`charge`、`invoiceFor`、`invoice`メソッドで投げられる可能性があります。スクリプションが処理される時、`SubscriptionBuilder`の`create`メソッドと、`Subscription`モデルの`incrementAndInvoice`、`swapAndInvoice`メソッドは、例外を投げるでしょう。
 
 #### 不十分と期日超過の状態
 

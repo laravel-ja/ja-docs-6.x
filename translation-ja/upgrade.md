@@ -72,6 +72,21 @@ PHP7.1は２０１９年１２月に積極的にメンテナンスされなく�
      */
     public function __construct($allowed, $message = '', $code = null)
 
+#### 「Deny」レスポンスを返す
+
+**影響の可能性： 低い**
+
+以前のリリースのLaravelでは即時に例外が投げられるため、ポリシーメソッドから`deny`メソッドの値を返す必要はありませんでした。しかしながら現在はLaravelのドキュメント通りに、ポリシーから`deny`メソッドの値を返す必要があります。
+
+    public function update(User $user, Post $post)
+    {
+        if (! $user->role->isEditor()) {
+            return $this->deny("You must be an editor to edit this post.")
+        }
+
+        return $user->id === $post->user_id;
+    }
+
 <a name="auth-access-gate-contract"></a>
 #### `Illuminate\Contracts\Auth\Access\Gate`契約
 

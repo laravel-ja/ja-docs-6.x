@@ -377,7 +377,7 @@ After checking if the request validation failed, you may use the `withErrors` me
 <a name="automatic-redirection"></a>
 ### Automatic Redirection
 
-If you would like to create a validator instance manually but still take advantage of the automatic redirection offered by the requests's `validate` method, you may call the `validate` method on an existing validator instance. If validation fails, the user will automatically be redirected or, in the case of an AJAX request, a JSON response will be returned:
+If you would like to create a validator instance manually but still take advantage of the automatic redirection offered by the request's `validate` method, you may call the `validate` method on an existing validator instance. If validation fails, the user will automatically be redirected or, in the case of an AJAX request, a JSON response will be returned:
 
     Validator::make($request->all(), [
         'title' => 'required|unique:posts|max:255',
@@ -590,6 +590,7 @@ Below is a list of all available validation rules and their function:
 [Not Regex](#rule-not-regex)
 [Nullable](#rule-nullable)
 [Numeric](#rule-numeric)
+[Password](#rule-password)
 [Present](#rule-present)
 [Regular Expression](#rule-regex)
 [Required](#rule-required)
@@ -765,7 +766,7 @@ The example above will apply the `RFCValidation` and `DNSCheckValidation` valida
 - `filter`: `FilterEmailValidation`
 </div>
 
-The `filter` validator, which uses PHP's `filter_var` function under the hood, ships with Laravel and is Laravel's pre-5.8 behavior.
+The `filter` validator, which uses PHP's `filter_var` function under the hood, ships with Laravel and is Laravel's pre-5.8 behavior. The `dns` and `spoof` validators require the PHP `intl` extension.
 
 <a name="rule-ends-with"></a>
 #### ends_with:_foo_,_bar_,...
@@ -947,6 +948,13 @@ The field under validation may be `null`. This is particularly useful when valid
 #### numeric
 
 The field under validation must be numeric.
+
+<a name="rule-password"></a>
+#### password
+
+The field under validation must match the authenticated user's password. You may specify an authentication guard using the rule's first parameter:
+
+    'password' => 'password:api'
 
 <a name="rule-present"></a>
 #### present

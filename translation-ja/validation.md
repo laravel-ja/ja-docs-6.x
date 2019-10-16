@@ -590,6 +590,7 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 [正規表現不一致](#rule-not-regex)
 [NULL許可](#rule-nullable)
 [数値](#rule-numeric)
+[パスワード](#rule-password)
 [存在](#rule-present)
 [正規表現](#rule-regex)
 [必須](#rule-required)
@@ -765,7 +766,7 @@ _ratio_制約は、横／縦比を表します。`3/2`という指定も、`1.5`
 - `filter`: `FilterEmailValidation`
 </div>
 
-`filter`バリデーションは内部でPHPの`filter_var`関数を使用しており、Laravel5.8以前の動作を行います。
+`filter`バリデータは内部でPHPの`filter_var`関数を使用しており、Laravel5.8以前の動作を行います。`dns`と`spoof`バリデータを使用するには、PHPの`intl`拡張が必要です。
 
 <a name="rule-ends-with"></a>
 #### ends_with:_foo_,_bar_,...
@@ -947,6 +948,13 @@ MIMEタイプと対応する拡張子の完全なリストは、[https://svn.apa
 #### numeric
 
 フィールドは数値であることをバリデートします。
+
+<a name="rule-password"></a>
+#### password
+
+認証中のユーザーのパスワードと一致することをバリデートします。ルールの最初のパラメータとして、認証ガードを指定できます。
+
+    'password' => 'password:api'
 
 <a name="rule-present"></a>
 #### present

@@ -141,6 +141,7 @@ Laravelのサービスコンテナを深く理解することは、パワフル�
 時には、同じインターフェイスを使用した２つのクラスがあり、クラスごとに異なった実装を注入しなくてはならない場合もあるでしょう。たとえば、２つのコントローラが異なった`Illuminate\Contracts\Filesystem\Filesystem`[契約](/docs/{{version}}/contracts)の実装に依存している場合です。Laravelでは、このような振る舞いの定義をシンプルで、読み書きしやすくしています。
 
     use App\Http\Controllers\PhotoController;
+    use App\Http\Controllers\UploadController;
     use App\Http\Controllers\VideoController;
     use Illuminate\Contracts\Filesystem\Filesystem;
     use Illuminate\Support\Facades\Storage;

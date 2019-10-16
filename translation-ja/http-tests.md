@@ -302,6 +302,7 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 [assertJsonStructure](#assert-json-structure)
 [assertJsonValidationErrors](#assert-json-validation-errors)
 [assertLocation](#assert-location)
+[assertNoContent](#assert-no-content)
 [assertNotFound](#assert-not-found)
 [assertOk](#assert-ok)
 [assertPlainCookie](#assert-plain-cookie)
@@ -403,7 +404,7 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 
 レスポンスが指定したJSONデータを持っていることを宣言。
 
-    $response->assertJson(array $data);
+    $response->assertJson(array $data, $strict = false);
 
 <a name="assert-json-count"></a>
 #### assertJsonCount
@@ -445,7 +446,7 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 
 レスポンスが特定のパスへ指定したデータを含んでいるかを宣言。
 
-    $response->assertJsonPath($path, array $data);
+    $response->assertJsonPath($path, array $data, $strict = false);
 
 <a name="assert-json-structure"></a>
 #### assertJsonStructure
@@ -467,6 +468,13 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 レスポンスの`Location`ヘッダが、指定したURIを持つことを宣言。
 
     $response->assertLocation($uri);
+
+<a name="assert-no-content"></a>
+#### assertNoContent
+
+レスポンスが指定したステータスコードを持ち、コンテンツを持たないことを宣言。
+
+    $response->assertNoContent($status = 204);
 
 <a name="assert-not-found"></a>
 #### assertNotFound

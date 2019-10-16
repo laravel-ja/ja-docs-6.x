@@ -10,7 +10,7 @@
 <a name="introduction"></a>
 ## イントロダクション
 
-LaravelはJavaScriptやCSSプリプロセッサの使用を規定してはいませんが、開発時点の元としてほとんどのアプリケーションで役立つだろう[Bootstrap](https://getbootstrap.com)と[Vue](https://vuejs.org)を提供しています。これらのフロントエンドパッケージをインストールするため、Laravelは[NPM](https://www.npmjs.org)を使用しています。
+LaravelはJavaScriptやCSSプリプロセッサの使用を規定してはいませんが、開発時点の元としてほとんどのアプリケーションで役立つだろう[Bootstrap](https://getbootstrap.com)や[React](https://reactjs.org/)、[Vue](https://vuejs.org)を提供しています。これらのフロントエンドパッケージをインストールするため、Laravelは[NPM](https://www.npmjs.org)を使用しています。
 
 Laravelが提供するBootstrapとVueのスカフォールドは、Composerを使いインストールする`laravel/ui`パッケージに用意してあります。
 

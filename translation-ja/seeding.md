@@ -100,9 +100,9 @@
 
     php artisan db:seed --class=UsersTableSeeder
 
-もしくはマイグレーションをロールバックし再実行する`migrate:refresh`コマンドを使っても、データベースに初期値を設定できます。このコマンドはデータベースを完全に作成し直したい場合に便利です。
+もしくはテーブルをすべてドロップし、マイグレーションを再実行する`migrate:fresh`コマンドを使っても、データベースに初期値を設定できます。このコマンドはデータベースを完全に作成し直したい場合に便利です。
 
-    php artisan migrate:refresh --seed
+    php artisan migrate:fresh --seed
 
 <a name="forcing-seeding-production"></a>
 #### 実働環境でのシーダの強制実行

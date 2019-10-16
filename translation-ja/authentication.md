@@ -8,6 +8,7 @@
     - [認証](#included-authenticating)
     - [認証済みユーザーの取得](#retrieving-the-authenticated-user)
     - [ルートの保護](#protecting-routes)
+    - [パスワード確認](#password-confirmation)
     - [認証回数制限](#login-throttling)
 - [手動のユーザー認証](#authenticating-users)
     - [継続ログイン](#remembering-users)
@@ -207,6 +208,19 @@ Laravelの`laravel/ui`パッケージは、認証に必要なルートとビュ�
     {
         $this->middleware('auth:api');
     }
+
+<a name="password-confirmation"></a>
+### パスワード確認
+
+アプリケーションの特定の領域へアクセスを許す前に、パスワードの確認を要求したい場合もあります。たとえば、アプリケーションでユーザーが支払いの設定を変更する前に、この確認を行ったほうが良いでしょう。
+
+このためにLaravelは、`password.confirm`ミドルウェアを提供しています。`password.confirm`ミドルウェアを指定したルートはパスワード確認のスクリーンへリダイレクトされ、続けるには入力する必要があります。
+
+    Route::get('/settings/security', function () {
+        // ユーザーは続けるためにパスワードの入力が必要
+    })->middleware(['auth', 'password.confirm']);
+
+ユーザーがパスワード確認に成功すると、最初にアクセスしようとしていたルートへリダイレクトされます。デフォルトではパスワード確認後、そのユーザーは３時間パスワードを再確認する必要はありません。`auth.password_timeout`設定オプションを使用すれば、再確認までの時間をカスタマイズできます。
 
 <a name="login-throttling"></a>
 ### 認証回数制限

@@ -1195,7 +1195,7 @@ Eagerロードのクエリに追加の制約を指定する必要がある場合
 
 Eagerロードに追加の制約をかける必要があるなら、ロードしたい関連へ配列のキーを付け渡してください。配列地は、クエリインスタンスを受け取る「クロージャ」でなければなりません。
 
-    $books->load(['author' => function ($query) {
+    $author->load(['books' => function ($query) {
         $query->orderBy('published_date', 'asc');
     }]);
 

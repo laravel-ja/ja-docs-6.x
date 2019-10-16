@@ -183,6 +183,10 @@ WebのUIとAPIルートへ適用できる、一般的なミドルウェアを含
     Route::group(['middleware' => ['web']], function () {
         //
     });
+    
+    Route::middleware(['web', 'subscribed'])->group(function () { 
+        //
+    });
 
 > {tip} `RouteServiceProvider`により、`routes/web.php`ファイルでは、`web`ミドルウェアグループが自動的に適用されます。
 

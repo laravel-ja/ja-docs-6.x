@@ -490,7 +490,7 @@ MinioはAmazon S3と互換性のあるAPIを持つ、オープンソースなオ
 
     minio: true
 
-デフォルトのMinioは、9600ポートで使用します。`http://homestead:9600/`を閲覧すると、Minioのコントロールパネルへアクセスできます。デフォルトアクセスキーは`homestead`、デフォルトのシークレットキーは`secretkey`です。Minioへアクセスする場合、常にリージョン`us-east-1`を使用する必要があります。
+デフォルトのMinioは、9600ポートで使用します。`http://localhost:9600/`を閲覧すると、Minioのコントロールパネルへアクセスできます。デフォルトアクセスキーは`homestead`、デフォルトのシークレットキーは`secretkey`です。Minioへアクセスする場合、常にリージョン`us-east-1`を使用する必要があります。
 
 Minioを使用するために、`config/filesystems.php`設定ファイルの中の、S3ディスク設定を調整する必要があります。ディスク設定へ、`use_path_style_endpoint`オプションを追加し、同時に`url`キーを`endpoint`へ変更する必要があります。
 
@@ -509,7 +509,7 @@ Minioを使用するために、`config/filesystems.php`設定ファイルの中
     AWS_ACCESS_KEY_ID=homestead
     AWS_SECRET_ACCESS_KEY=secretkey
     AWS_DEFAULT_REGION=us-east-1
-    AWS_URL=http://homestead:9600
+    AWS_URL=http://localhost:9600
 
 バケットをセットアップするには、Homestead設定ファイルに`buckets`ディレクティブを追加してください。
 

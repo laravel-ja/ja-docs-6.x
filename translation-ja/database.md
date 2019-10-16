@@ -14,10 +14,10 @@
 LaravelはSQLを直接使用する場合でも、[Fluentクエリビルダ](/docs/{{version}}/queries)や[Eloquent ORM](/docs/{{version}}/eloquent)を使う時でも、データベースの取り扱いをとても簡単にしてくれます。現在、Laravelは以下のデータベースシステムを使用しています。
 
 <div class="content-list" markdown="1">
-- MySQL
-- PostgreSQL
-- SQLite
-- SQL Server
+- MySQL 5.6+ ([バージョンポリシー](https://en.wikipedia.org/wiki/MySQL#Release_history))
+- PostgreSQL 9.4+ ([バージョンポリシー](https://www.postgresql.org/support/versioning/))
+- SQLite 3.8.8+
+- SQL Server 2017+ ([バージョンポリシー](https://support.microsoft.com/en-us/lifecycle/search))
 </div>
 
 <a name="configuration"></a>

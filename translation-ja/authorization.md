@@ -125,7 +125,7 @@ Laravelは組み込み済みの[認証](/docs/{{version}}/authentication)サー�
     });
 
     if (Gate::check('create-post', [$category, $extraFlag])) {
-        // The user can create the post...
+        // このユーザーはポストを新規作成できる
     }
 
 <a name="gate-responses"></a>
