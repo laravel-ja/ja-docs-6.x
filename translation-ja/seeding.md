@@ -14,7 +14,7 @@
 <a name="writing-seeders"></a>
 ## シーダクラス定義
 
-シーダーを生成するには、`make:seeder` [Artisanコマンド](/docs/{{version}}/artisan)を実行します。フレームワークが生成するシーダーは全て`database/seeds`ディレクトリに設置されます。
+シーダを生成するには、`make:seeder` [Artisanコマンド](/docs/{{version}}/artisan)を実行します。フレームワークが生成するシーダは全て`database/seeds`ディレクトリに設置されます。
 
     php artisan make:seeder UsersTableSeeder
 
