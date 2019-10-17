@@ -1,4 +1,4 @@
-name: CI
+name: 事前チェック
 
 on: [push]
 
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
     - name: ファイル構成が等しいことを確認
       run: |
         en="$(ls original-en | tr -d [:cntrl:][:space:])"
