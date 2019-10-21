@@ -537,11 +537,11 @@ OAuth2のパスワードグラントはモバイルアプリケーションの�
         use HasApiTokens, Notifiable;
 
         /**
-        * Passportパスワードグラントのために、ユーザーのパスワードをバリデート
-        *
-        * @param  string $password
-        * @return bool
-        */
+         * Passportパスワードグラントのために、ユーザーのパスワードをバリデート
+         *
+         * @param  string $password
+         * @return bool
+         */
         public function validateForPassportPasswordGrant($password)
         {
             return Hash::check($password, $this->password);

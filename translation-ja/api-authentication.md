@@ -54,7 +54,7 @@
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'api_token' => Str::random(60),
+            'api_token' => Str::random(80),
         ]);
     }
 
@@ -92,7 +92,7 @@
          */
         public function update(Request $request)
         {
-            $token = Str::random(60);
+            $token = Str::random(80);
 
             $request->user()->forceFill([
                 'api_token' => hash('sha256', $token),

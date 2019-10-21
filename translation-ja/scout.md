@@ -376,7 +376,7 @@ Scoutは検索クエリに対して"WHERE"節を単に追加する方法も提�
     abstract public function search(Builder $builder);
     abstract public function paginate(Builder $builder, $perPage, $page);
     abstract public function mapIds($results);
-    abstract public function map($results, $model);
+    abstract public function map(Builder $builder, $results, $model);
     abstract public function getTotalCount($results);
     abstract public function flush($model);
 
