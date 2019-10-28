@@ -286,6 +286,7 @@ Laravel provides a variety of custom assertion methods for your [PHPUnit](https:
 [assertCookieExpired](#assert-cookie-expired)
 [assertCookieNotExpired](#assert-cookie-not-expired)
 [assertCookieMissing](#assert-cookie-missing)
+[assertCreated](#assert-created)
 [assertDontSee](#assert-dont-see)
 [assertDontSeeText](#assert-dont-see-text)
 [assertExactJson](#assert-exact-json)
@@ -356,6 +357,13 @@ Assert that the response contains the given cookie and it is not expired:
 Assert that the response does not contains the given cookie:
 
     $response->assertCookieMissing($cookieName);
+
+<a name="assert-created"></a>
+#### assertCreated
+
+Assert that the response has a 201 status code:
+
+    $response->assertCreated();
 
 <a name="assert-dont-see"></a>
 #### assertDontSee
@@ -556,14 +564,14 @@ Assert that the session has a given list of values:
 <a name="assert-session-has-errors"></a>
 #### assertSessionHasErrors
 
-Assert that the session contains an error for the given field:
+Assert that the session contains an error for the given `$keys`. If `$keys` is an associative array, assert that the session contains a specific error message (value) for each field (key):
 
     $response->assertSessionHasErrors(array $keys, $format = null, $errorBag = 'default');
 
 <a name="assert-session-has-errors-in"></a>
 #### assertSessionHasErrorsIn
 
-Assert that the session has the given errors:
+Assert that the session contains an error for the given `$keys`, within a specific error bag. If `$keys` is an associative array, assert that the session contains a specific error message (value) for each field (key), within the error bag:
 
     $response->assertSessionHasErrorsIn($errorBag, $keys = [], $format = null);
 

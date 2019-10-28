@@ -1306,6 +1306,7 @@ Duskをインストールすると、ベース`Page`クラスが`tests/Browser/P
         {
             return [
                 '@date-field' => 'input.datepicker-input',
+                '@year-list' => 'div > div.datepicker-years',
                 '@month-list' => 'div > div.datepicker-months',
                 '@day-list' => 'div > div.datepicker-days',
             ];
@@ -1315,13 +1316,17 @@ Duskをインストールすると、ベース`Page`クラスが`tests/Browser/P
          * 指定日付のセレクト
          *
          * @param  \Laravel\Dusk\Browser  $browser
+         * @param  int  $year
          * @param  int  $month
          * @param  int  $day
          * @return void
          */
-        public function selectDate($browser, $month, $day)
+        public function selectDate($browser, $year, $month, $day)
         {
             $browser->click('@date-field')
+                    ->within('@year-list', function ($browser) use ($year) {
+                        $browser->click($year);
+                    });
                     ->within('@month-list', function ($browser) use ($month) {
                         $browser->click($month);
                     })
@@ -1357,7 +1362,7 @@ Duskをインストールすると、ベース`Page`クラスが`tests/Browser/P
             $this->browse(function (Browser $browser) {
                 $browser->visit('/')
                         ->within(new DatePicker, function ($browser) {
-                            $browser->selectDate(1, 2018);
+                            $browser->selectDate(2019, 1, 30);
                         })
                         ->assertSee('January');
             });
@@ -1396,7 +1401,7 @@ DustテストにCircleCIを使用する場合、以下の設定ファイルを�
                 - run:
                     name: Run Laravel Dusk Tests
                     command: php artisan dusk
-                    
+
                 - store_artifacts:
                     path: tests/Browser/screenshots
 

@@ -539,7 +539,7 @@ OAuth2のパスワードグラントはモバイルアプリケーションの�
         /**
          * Passportパスワードグラントのために、ユーザーのパスワードをバリデート
          *
-         * @param  string $password
+         * @param  string  $password
          * @return bool
          */
         public function validateForPassportPasswordGrant($password)

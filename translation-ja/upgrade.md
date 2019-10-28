@@ -334,6 +334,16 @@ CSRF攻撃の可能性を防ぐため、Laravelの組み込みメール確認を
     // Laravel6.0: http://example.com/profile?status=active
     echo route('profile', ['status' => 'active']);
 
+`action`ヘルパと`URL::action`メソッドもこの変更の影響を受けます。
+
+    Route::get('/profile/{id}', 'ProfileController@show');
+
+    // Laravel5.8: http://example.com/profile/1
+    echo action('ProfileController@show', ['profile' => 1]);
+
+    // Laravel6.0: http://example.com/profile?profile=1
+    echo action('ProfileController@show', ['profile' => 1]);
+
 ### バリデーション
 
 #### FormRequestの`validationData`メソッド

@@ -19,10 +19,12 @@ Laravelが提供するBootstrapとVueのスカフォールドは、Composerを�
 `laravel/ui`パッケージをインストールできたら、`ui` Artisanコマンドを使いフロントエンドのスカフォールドをインストールします。
 
     // 基本的なスカフォールドを生成
+    php artisan ui bootstrap
     php artisan ui vue
     php artisan ui react
 
     // ログイン／ユーザー登録スカフォールドを生成
+    php artisan ui bootstrap --auth
     php artisan ui vue --auth
     php artisan ui react --auth
 

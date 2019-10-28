@@ -286,6 +286,7 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 [assertCookieExpired](#assert-cookie-expired)
 [assertCookieNotExpired](#assert-cookie-not-expired)
 [assertCookieMissing](#assert-cookie-missing)
+[assertCreated](#assert-created)
 [assertDontSee](#assert-dont-see)
 [assertDontSeeText](#assert-dont-see-text)
 [assertExactJson](#assert-exact-json)
@@ -356,6 +357,13 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 レスポンスが指定したクッキーを持っていないことを宣言。
 
     $response->assertCookieMissing($cookieName);
+
+<a name="assert-created"></a>
+#### assertCreated
+
+レスポンスが２０１ステータスコードを持っていることを宣言。
+
+    $response->assertCreated();
 
 <a name="assert-dont-see"></a>
 #### assertDontSee
@@ -556,14 +564,14 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 <a name="assert-session-has-errors"></a>
 #### assertSessionHasErrors
 
-セッションが指定したフィールドに対するエラーを含んでいることを宣言。
+セッションが指定した`$keys`に対するエラーを持っていることを宣言する。`$keys`が連想配列の場合、それぞれのフィールド(key)に対し指定したエラーメッセージ（値）をセッションが持っていることを宣言する。
 
     $response->assertSessionHasErrors(array $keys, $format = null, $errorBag = 'default');
 
 <a name="assert-session-has-errors-in"></a>
 #### assertSessionHasErrorsIn
 
-セッションが指定したエラーを持っていることを宣言。
+セッションが指定したエラーバッグの中に、指定した`$keys`のエラーを持っていることを宣言する。`$keys`が連想配列の場合はエラーバッグの中に、それぞれのフィールド(key)に対し指定したエラーメッセージ（値）をセッションが持っていることを宣言する。
 
     $response->assertSessionHasErrorsIn($errorBag, $keys = [], $format = null);
 
