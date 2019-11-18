@@ -834,6 +834,7 @@ NULL値を指定すると、空の配列が返ってきます。
 #### `Str::afterLast()` {#collection-method}
 
 `Str::afterLast`メソッドは、文字列で指定した値が現れる最後の場所から、後ろの部分を返します。
+
     use Illuminate\Support\Str;
 
     $slice = Str::afterLast('App\Http\Controllers\Controller', '\');

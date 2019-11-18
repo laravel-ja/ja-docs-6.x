@@ -716,8 +716,7 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 <a name="rule-digits-between"></a>
 #### digits_between:_最小値_,_最大値_
 
-フィールドが**整数で**、桁数が**最小値**から**最大値**の間であることをバリデートしま
-す。
+フィールドが**整数で**、桁数が**最小値**から**最大値**の間であることをバリデートします。
 
 <a name="rule-dimensions"></a>
 #### dimensions

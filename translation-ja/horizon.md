@@ -23,7 +23,7 @@ Horizon（水平線、展望）は、Laravelで動作するRedisキューのた�
 </p>
 
 <a name="upgrading"></a>
-#### Horizonのアップグレード
+## Horizonのアップグレード
 
 Horizonの新しいメジャーバージョンへアップグレードする場合は、[アップグレードガイド](https://github.com/laravel/horizon/blob/master/UPGRADE.md)を注意深く読み込むことが重要です。
 
