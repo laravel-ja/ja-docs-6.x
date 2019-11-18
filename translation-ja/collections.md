@@ -2370,13 +2370,20 @@ staticの`unwrap`メソッドは適用可能な場合、指定値からコレク
 
 `whereInstanceOf`メソッドは、コレクションを指定したクラスタイプによりフィルタリングします。
 
+    use App\User;
+    use App\Post;
+
     $collection = collect([
         new User,
         new User,
         new Post,
     ]);
 
-    return $collection->whereInstanceOf(User::class);
+    $filtered = $collection->whereInstanceOf(User::class);
+
+    $filtered->all();
+
+    // [App\User, App\User]
 
 <a name="method-wherenotbetween"></a>
 #### `whereNotBetween()` {#collection-method}
@@ -2683,3 +2690,20 @@ staticの`wrap`メソッドは適用可能であれば、指定値をコレク�
     // 1
     // 2
     // 3
+
+<a name="method-remember"></a>
+#### `remember()` {#collection-method}
+
+`remember`メソッドは扱った値を覚え、それらを再度扱う場合でも再取得しない新しいレイジーコレクションを返します。
+
+    $users = User::cursor()->remember();
+
+    // まだ、クエリは実行されない
+
+    $users->take(5)->all();
+
+    // クエリが実行され、最初の５つのユーザーがデータベースよりハイドレートされる
+
+    $users->take(20)->all();
+
+    // 最初の５ユーザーはコレクションキャッシュから、残りはデータベースからハイドレートされる

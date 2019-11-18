@@ -166,6 +166,10 @@ Laravelのファイルシステム統合はSFTPできちんと動作します。
 
     $exists = Storage::disk('s3')->exists('file.jpg');
 
+`missing`メソッドは、そのディスクにファイルが存在しないことを判定するために使用します。
+
+    $missing = Storage::disk('s3')->missing('file.jpg');
+
 <a name="downloading-files"></a>
 ### ファイルのダウンロード
 
@@ -345,7 +349,7 @@ LaravelのFlysystem統合では、複数のプラットフォームにおける�
 
     $visibility = Storage::getVisibility('file.jpg');
 
-    Storage::setVisibility('file.jpg', 'public')
+    Storage::setVisibility('file.jpg', 'public');
 
 <a name="deleting-files"></a>
 ## ファイル削除
@@ -422,7 +426,7 @@ LaravelのFlysystem統合には、最初から様々な「ドライバ」が含�
     class DropboxServiceProvider extends ServiceProvider
     {
         /**
-         * コンテナ結合の登録
+         * 全アプリケーションサービスの登録
          *
          * @return void
          */

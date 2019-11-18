@@ -620,7 +620,7 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 <a name="rule-active-url"></a>
 #### active_url
 
-フィールドが、`dns_get_record` PHP関数により、有効なAかAAAAレコードであることをバリデートします。
+フィールドが、`dns_get_record` PHP関数により、有効なAかAAAAレコードであることをバリデートします。`dns_get_record`へ渡す前に、`parse_url` PHP関数により指定したURLのホスト名を切り出します。
 
 <a name="rule-after"></a>
 #### after:_日付_
@@ -716,7 +716,8 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 <a name="rule-digits-between"></a>
 #### digits_between:_最小値_,_最大値_
 
-フィールドが**整数で**、桁数が**最小値**から**最大値**の間であることをバリデートします。
+フィールドが**整数で**、桁数が**最小値**から**最大値**の間であることをバリデートしま
+す。
 
 <a name="rule-dimensions"></a>
 #### dimensions
@@ -725,9 +726,9 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 
     'avatar' => 'dimensions:min_width=100,min_height=200'
 
-使用可能なパラメータは、_min\_width_、_max\_width_、_min\_height_、_max\_height_、_width_、_height_、_ratio_です。
+使用可能なパラメータは、**min\_width**、**max\_width**、**min\_height**、**max\_height**、**width_、_height**、**ratio**です。
 
-_ratio_制約は、横／縦比を表します。`3/2`という指定も、`1.5`のようにfloatでの指定も可能です。
+**ratio**制約は、横／縦比を表します。`3/2`という指定も、`1.5`のようにfloatでの指定も可能です。
 
     'avatar' => 'dimensions:ratio=3/2'
 

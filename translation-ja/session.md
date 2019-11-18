@@ -59,7 +59,9 @@ HTTP駆動のアプリケーションはステートレスのため、リクエ�
 
 #### Redis
 
-RedisセッションをLaravelで使用する前に、Composerで`predis/predis`パッケージ(~1.0)をインストールする必要があります。Redis接続は`database`設定ファイルで設定します。`session`設定ファイルでは、`connection`オプションで、どのRedis接続をセッションで使用するか指定します。
+RedisセッションをLaravelで使用する前に、PECLによりPhpRedis PHP拡張、もしくはComposerで`predis/predis`パッケージ(~1.0)をインストールする必要があります。Redis設定の詳細は、[Laravelのドキュメント](/docs/{{version}}/redis#configuration)をご覧ください。
+
+> {tip} `session`設定ファイルでは、`connection`オプションで、どのRedis接続をセッションで使用するか指定します。
 
 <a name="using-the-session"></a>
 ## セッションの使用
@@ -164,7 +166,7 @@ Laravelでセッションを操作するには、主に２つの方法があり�
 <a name="flash-data"></a>
 ### フラッシュデータ
 
-次のリクエスト間だけセッションにアイテムを保存したいことは良くあります。`flash`メソッドを使ってください。`flash`メソッドは直後のHTTPリクエストの間だけセッションにデータを保存します。それ以降は削除されます。フラッシュデータは主にステータスメッセージなど継続しない情報に便利です。
+次のリクエスト間だけセッションにアイテムを保存したいことがあります。`flash`メソッドを使ってください。`flash`メソッドは現在と直後のHTTPリクエストの間だけ、セッションにデータを保存し、それ以降は削除します。フラッシュデータは主にステータスメッセージなど、持続しない情報に便利です。
 
     $request->session()->flash('status', 'Task was successful!');
 
@@ -247,7 +249,7 @@ Laravelに組み込まれている`LoginController`を使用していれば、�
     class SessionServiceProvider extends ServiceProvider
     {
         /**
-         * コンテナ結合の登録
+         * 全アプリケーションサービスの登録
          *
          * @return void
          */

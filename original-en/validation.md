@@ -620,7 +620,7 @@ The field under validation must be _yes_, _on_, _1_, or _true_. This is useful f
 <a name="rule-active-url"></a>
 #### active_url
 
-The field under validation must have a valid A or AAAA record according to the `dns_get_record` PHP function.
+The field under validation must have a valid A or AAAA record according to the `dns_get_record` PHP function. The hostname of the provided URL is extracted using the `parse_url` PHP function before being passed to `dns_get_record`.
 
 <a name="rule-after"></a>
 #### after:_date_
@@ -716,7 +716,7 @@ The field under validation must be _numeric_ and must have an exact length of _v
 <a name="rule-digits-between"></a>
 #### digits_between:_min_,_max_
 
-The field under validation must have a length between the given _min_ and _max_.
+The field under validation must be _numeric_ and must have a length between the given _min_ and _max_.
 
 <a name="rule-dimensions"></a>
 #### dimensions

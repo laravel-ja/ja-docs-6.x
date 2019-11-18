@@ -137,7 +137,7 @@ Algoliaドライバを使用する場合、Algolia `id`と`secret`接続情報�
 <a name="configuring-the-model-id"></a>
 ### モデルIDの設定
 
-Scoutはデフォルトとして、モデルの主キーを検索インデックスへ保存するユニークなIDとして使用します。この振る舞いをカスタマイズしたい場合は、モデルの`getScoutKey`メソッドをオーバーライドしてください。
+Scoutはデフォルトとして、モデルの主キーを検索インデックスへ保存するユニークなIDとして使用します。この振る舞いをカスタマイズしたい場合は、モデルの`getScoutKey`と`getScoutKeyName`メソッドをオーバーライドしてください。
 
     <?php
 
@@ -158,6 +158,16 @@ Scoutはデフォルトとして、モデルの主キーを検索インデック
         public function getScoutKey()
         {
             return $this->email;
+        }
+
+         /**
+         * モデルのインデックスに使用するキー名の取得
+         *
+         * @return mixed
+         */
+        public function getScoutKeyName()
+        {
+            return 'email';
         }
     }
 

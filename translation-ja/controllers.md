@@ -8,6 +8,7 @@
 - [コントローラミドルウェア](#controller-middleware)
 - [リソースコントローラ](#resource-controllers)
     - [部分的なリソースルート](#restful-partial-resource-routes)
+    - [ネストしたリソース](#restful-nested-resources)
     - [リソースルートの命名](#restful-naming-resource-routes)
     - [リソースルートパラメータの命名](#restful-naming-resource-route-parameters)
     - [リソースURIのローカライズ](#restful-localizing-resource-uris)
@@ -213,6 +214,15 @@ APIに使用するリソースルートを宣言する場合、`create`や`edit`
 `create`や`edit`メソッドを含まないAPIリソースコントローラを素早く生成するには、`make:controller`コマンドを実行する際、`--api`スイッチを使用してください。
 
     php artisan make:controller API/PhotoController --api
+
+<a name="restful-nested-resources"></a>
+### ネストしたリソース
+
+ネストした」リソースへのルートを定義する場合も起きるでしょう。たとえば、電話リソースが複数の「コメント」を持ち、コメントは一つの電話に所属しているとしましょう。リソースコントローラを「ネスト」するには、「ドット」記法をルート定義で使用します。
+
+    Route::resource('photos.comments', 'PhotoCommentController');
+
+このルートにより、次のようなURLでアクセスされる、「ネスト」されたリソースが定義されます： photos/{photos}/comments/{comments}
 
 <a name="restful-naming-resource-routes"></a>
 ### リソースルートの命名

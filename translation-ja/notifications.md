@@ -153,6 +153,7 @@ Laravelの各通知は、（通常、`app/Notifications`ディレクトリに設
 
     Notification::route('mail', 'taylor@example.com')
                 ->route('nexmo', '5555555555')
+                ->route('slack', 'https://hooks.slack.com/services/...')
                 ->notify(new InvoicePaid($invoice));
 
 <a name="mail-notifications"></a>
@@ -772,7 +773,7 @@ Slackを通して通知を送れるようにするには、ComposerでSlackの�
     {
         return (new SlackMessage)
                     ->from('Laravel')
-                    ->image('https://laravel.com/favicon.png')
+                    ->image('https://laravel.com/img/favicon/favicon.ico')
                     ->content('This will display the Laravel logo next to the message');
     }
 

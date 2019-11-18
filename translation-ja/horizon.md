@@ -22,6 +22,15 @@ Horizon（水平線、展望）は、Laravelで動作するRedisキューのた�
 <img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1537195039/photos/Test.png">
 </p>
 
+<a name="upgrading"></a>
+#### Horizonのアップグレード
+
+Horizonの新しいメジャーバージョンへアップグレードする場合は、[アップグレードガイド](https://github.com/laravel/horizon/blob/master/UPGRADE.md)を注意深く読み込むことが重要です。
+
+付け加えて、Horizonのアセットを再公開も必要です。
+
+    php artisan horizon:assets
+
 <a name="installation"></a>
 ## インストール
 
@@ -40,15 +49,6 @@ Laravelが[失敗したキュー済みのジョブ](/docs/{{version}}/queues#dea
     php artisan queue:failed-table
 
     php artisan migrate
-
-<a name="upgrading"></a>
-#### Horizonのアップグレード
-
-Horizonの新しいメジャーバージョンへアップグレードする場合は、[アップグレードガイド](https://github.com/laravel/horizon/blob/master/UPGRADE.md)を注意深く読み込むことが重要です。
-
-付け加えて、Horizonのアセットを再公開も必要です。
-
-    php artisan horizon:assets
 
 <a name="configuration"></a>
 ### 設定

@@ -1,6 +1,7 @@
 # 貢献ガイド
 
 - [バグレポート](#bug-reports)
+- [質問のサポート](#support-questions)
 - [コア開発の議論](#core-development-discussion)
 - [どのブランチ？](#which-branch)
 - [アセットのコンパイル](#compiled-assets)
@@ -8,6 +9,7 @@
 - [コーディングスタイル](#coding-style)
     - [PHPDoc](#phpdoc)
     - [StyleCI](#styleci)
+- [行動規範](#code-of-conduct)
 
 <a name="bug-reports"></a>
 ## バグレポート
@@ -35,6 +37,20 @@ LaravelのソースコードはGitHubで管理され、各Laravelプロジェク
 - [Laravel Socialite](https://github.com/laravel/socialite)
 - [Laravel Telescope](https://github.com/laravel/telescope)
 - [Laravel Website](https://github.com/laravel/laravel.com-next)
+</div>
+
+<a name="support-questions"></a>
+## 質問のサポート
+
+LaravelのGitHubイシュートラッカーは、Laravelのヘルプやサポートの提供を目的としていません。代わりに以下のチャンネルを利用してください。
+
+<div class="content-list" markdown="1">
+- [Laracasts Forums](https://laracasts.com/discuss)
+- [Laravel.io Forums](https://laravel.io/forum)
+- [StackOverflow](https://stackoverflow.com/questions/tagged/laravel)
+- [Discord](https://discordapp.com/invite/KxwQuKb)
+- [Larachat](https://larachat.co)
+- [IRC](https://webchat.freenode.net/?nick=artisan&channels=%23laravel&prompt=1)
 </div>
 
 <a name="core-development-discussion"></a>
@@ -94,3 +110,15 @@ Laravelは[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/
 ### StyleCI
 
 コードのスタイルが完璧でなくても心配ありません。プルリクエストがマージされたあとで、[StyleCI](https://styleci.io/)が自動的にスタイルを修正し、Laravelリポジトリへマージします。これにより、コードスタイルではなく、貢献の内容へ集中することができます。
+
+<a name="code-of-conduct"></a>
+## 行動規範
+
+Laravelの行動規範はRubyの行動規範を基にしています。行動規範の違反はTaylor Otwell(taylor@laravel.com)へ報告してください。
+
+<div class="content-list" markdown="1">
+- 参加者は反対意見に寛容であること。
+- 参加者は個人攻撃や個人的な発言の誹謗に陥らぬように言動に気をつけてください。
+- 相手の言動を解釈する時、参加者は常に良い意図だと仮定してください。
+- 嫌がらせと考えるのがふさわしい振る舞いは、寛容に扱いません。
+</div>

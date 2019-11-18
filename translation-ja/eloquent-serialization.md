@@ -178,39 +178,3 @@ EloquentモデルがJSONへ変換される場合、JSONオブジェクトへ属�
         'birthday' => 'date:Y-m-d',
         'joined_at' => 'datetime:Y-m-d H:00',
     ];
-
-#### Carbonによる、グローバルなカスタマイズ
-
-Laravelは[Carbon](https://github.com/briannesbitt/Carbon)（日付と時刻を扱うライブラリ）を拡張しており、JSONへシリアライズするために便利なカスタマイズ方法を提供しています。アプリケーション上のすべての日付と時刻が、Carbonによりどのようにシリアライズされるかをカスタマイズするために、`Carbon::serializeUsing`メソッドを使います。`Carbon::serializeUsing`メソッドは、JSONへのシリアライズのために日付時刻の文字列形式を返すクロージャを引数に取ります。
-
-    <?php
-
-    namespace App\Providers;
-
-    use Illuminate\Support\Carbon;
-    use Illuminate\Support\ServiceProvider;
-
-    class AppServiceProvider extends ServiceProvider
-    {
-        /**
-         * コンテナ結合の登録
-         *
-         * @return void
-         */
-        public function register()
-        {
-            //
-        }
-
-        /**
-         * 全アプリケーションサービスの初期処理
-         *
-         * @return void
-         */
-        public function boot()
-        {
-            Carbon::serializeUsing(function ($carbon) {
-                return $carbon->format('U');
-            });
-        }
-    }

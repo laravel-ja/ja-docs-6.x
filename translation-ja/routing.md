@@ -364,7 +364,7 @@ Laravelはタイプヒントされた変数名とルートセグメント名が�
         parent::boot();
 
         Route::bind('user', function ($value) {
-            return App\User::where('name', $value)->first() ?? abort(404);
+            return App\User::where('name', $value)->firstOrFail();
         });
     }
 
@@ -378,7 +378,7 @@ Laravelはタイプヒントされた変数名とルートセグメント名が�
      */
     public function resolveRouteBinding($value)
     {
-        return $this->where('name', $value)->first() ?? abort(404);
+        return $this->where('name', $value)->firstOrFail();
     }
 
 <a name="fallback-routes"></a>

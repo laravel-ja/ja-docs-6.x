@@ -30,6 +30,8 @@ Laravelのローカリゼーション機能はアプリケーションで多言�
         'welcome' => 'Welcome to our application'
     ];
 
+> {note} 地域によって異なる言語では、ISO 15897に従った言語ディレクトリを名付けるべきでしょう。たとえば、ブリティッシュ・イングリッシュでは、"en-gb"の代わりに、"en_GB"を使用するべきです。
+
 <a name="configuring-the-locale"></a>
 ### ロケールの設定
 

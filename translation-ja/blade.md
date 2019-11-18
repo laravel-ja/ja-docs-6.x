@@ -627,7 +627,7 @@ Bladeでは`directive`メソッドを使い、自分のカスタムディレク�
     class AppServiceProvider extends ServiceProvider
     {
         /**
-         * コンテナのバインド登録
+         * 全アプリケーションサービスの登録
          *
          * @return void
          */
@@ -682,4 +682,8 @@ Bladeでは`directive`メソッドを使い、自分のカスタムディレク�
         // アプリケーションはtesting環境
     @else
         // アプリケーションは、local環境でもtesting環境でもない
+    @endenv
+
+    @unlessenv('production')
+        // アプリケーションは、production環境でない
     @endenv

@@ -1,6 +1,7 @@
 # Laravel Passport
 
 - [イントロダクション](#introduction)
+- [Passportのアップグレード](#upgrading)
 - [インストール](#installation)
     - [フロントエンド・クイックスタート](#frontend-quickstart)
     - [Passportのデプロイ](#deploying-passport)
@@ -40,6 +41,11 @@
 Laravelでは古典的なログインフォームによる認証は、簡単に実行できるようになっています。では、APIに関してはどうでしょうか？　通常APIでは、ユーザーの認証にトークンを使用し、リクエスト間のセッション状態は保持されません。Laravelアプリケーションのために、完全なOAuth2サーバの実装を提供するLaravel Passportを使えば、短時間で簡単にAPI認証ができます。Passportは、Andy MillingtonとSimon Hampによりメンテナンスされている、[League OAuth2サーバ](https://github.com/thephpleague/oauth2-server)上に構築しています。
 
 > {note} このドキュメントは皆さんが、OAuth2に慣れていることを前提にしています。OAuth2について知らなければ、この先を続けて読む前に、一般的な[用語](https://oauth2.thephpleague.com/terminology/)とOAuth2の機能について予習してください。
+
+<a name="upgrading"></a>
+## Passportのアップグレード
+
+Passportの新しいメジャーバーションへアップグレードする場合は、注意深く[アップグレードガイド](https://github.com/laravel/passport/blob/master/UPGRADE.md)をレビューしてください。
 
 <a name="installation"></a>
 ## インストール
@@ -223,7 +229,16 @@ Passportはデフォルトで、一年間有効な長期間持続するアクセ
 <a name="overriding-default-models"></a>
 ### デフォルトモデルのオーバーライド
 
-Passportが内部で使用するモデルは自由に拡張できます。そのためには、`Passport`クラスにより、カスタムモデルをPassportへ指示してください。
+Passportが内部で使用するモデルは自由に拡張できます。
+
+    use App\Models\Passport\Client as PassportClient;
+
+    class Client extends PassportClient
+    {
+        // ...
+    }
+
+それから、`Passport`クラスを通して、カスタムモデルを指示します。
 
     use App\Models\Passport\AuthCode;
     use App\Models\Passport\Client;
@@ -864,7 +879,7 @@ API構築時にJavaScriptアプリケーションから、自分のAPIを利用�
         \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
     ],
 
-> {note} ミドルウェアの指定の中で、確実に`EncryptCookies`ミドルウェアを`CreateFreshApiToken`ミドルウェアよりも前にリストしてください。
+> {note} ミドルウェアの指定の中で、`CreateFreshApiToken`ミドルウェアを確実に最後へリストしてください。
 
 このPassportミドルウェアは`laravel_token`クッキーを送信するレスポンスへ付加します。このクッキーはPassportが、皆さんのJavaScriptアプリケーションからのAPIリクエストを認可するために使用する、暗号化されたJWTを含んでいます。これで、アクセストークンを明示的に渡さなくても、あなたのアプリケーションのAPIへリクエストを作成できるようになります。
 

@@ -324,7 +324,7 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
     class AppServiceProvider extends ServiceProvider
     {
         /**
-         * コンテナ結合の登録
+         * 全アプリケーションサービスの登録
          *
          * @return void
          */

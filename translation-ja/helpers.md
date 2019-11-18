@@ -78,7 +78,9 @@ Laravelは様々な、グローバル「ヘルパ」PHP関数を用意してい�
 [e](#method-e)
 [preg_replace_array](#method-preg-replace-array)
 [Str::after](#method-str-after)
+[Str::afterLast](#method-str-after-last)
 [Str::before](#method-str-before)
+[Str::beforeLast](#method-str-before-last)
 [Str::camel](#method-camel-case)
 [Str::contains](#method-str-contains)
 [Str::containsAll](#method-str-contains-all)
@@ -828,6 +830,16 @@ NULL値を指定すると、空の配列が返ってきます。
 
     // ' my name'
 
+<a name="method-str-after-last"></a>
+#### `Str::afterLast()` {#collection-method}
+
+`Str::afterLast`メソッドは、文字列で指定した値が現れる最後の場所から、後ろの部分を返します。
+    use Illuminate\Support\Str;
+
+    $slice = Str::afterLast('App\Http\Controllers\Controller', '\');
+
+    // 'Controller'
+
 <a name="method-str-before"></a>
 #### `Str::before()` {#collection-method}
 
@@ -838,6 +850,17 @@ NULL値を指定すると、空の配列が返ってきます。
     $slice = Str::before('This is my name', 'my name');
 
     // 'This is '
+
+<a name="method-str-before-last"></a>
+#### `Str::beforeLast()` {#collection-method}
+
+`Str::beforeLast`メソッドは、文字列で指定した値が現れる最初の場所から、前の部分を返します。
+
+    use Illuminate\Support\Str;
+
+    $slice = Str::beforeLast('This is my name', 'is');
+
+    // 'This '
 
 <a name="method-camel-case"></a>
 #### `Str::camel()` {#collection-method}

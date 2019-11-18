@@ -7,6 +7,7 @@
 - [日付ミューテタ](#date-mutators)
 - [属性キャスト](#attribute-casting)
     - [配列とJSONのキャスト](#array-and-json-casting)
+    - [日付のキャスト](#date-casting)
 
 <a name="introduction"></a>
 ## イントロダクション

@@ -44,7 +44,7 @@ Laravelに含まれている`config/app.php`ファイルを開けば、`provider
     class RiakServiceProvider extends ServiceProvider
     {
         /**
-         * コンテナへの結合登録
+         * 全アプリケーションサービスの登録
          *
          * @return void
          */

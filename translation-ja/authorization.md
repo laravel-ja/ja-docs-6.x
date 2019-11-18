@@ -299,7 +299,7 @@ Laravelは組み込み済みの[認証](/docs/{{version}}/authentication)サー�
      *
      * @param  \App\User  $user
      * @param  \App\Post  $post
-     * @return bool
+     * @return \Illuminate\Auth\Access\Response
      */
     public function update(User $user, Post $post)
     {

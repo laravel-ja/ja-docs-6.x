@@ -183,8 +183,8 @@ WebのUIとAPIルートへ適用できる、一般的なミドルウェアを含
     Route::group(['middleware' => ['web']], function () {
         //
     });
-    
-    Route::middleware(['web', 'subscribed'])->group(function () { 
+
+    Route::middleware(['web', 'subscribed'])->group(function () {
         //
     });
 
@@ -254,7 +254,7 @@ WebのUIとAPIルートへ適用できる、一般的なミドルウェアを含
 <a name="terminable-middleware"></a>
 ## 終了処理ミドルウェア
 
-ミドルウェアは場合により、HTTPレスポンスを送った後に、何か作業する必要が起きます。たとえば、Laravelに含まれている"session"ミドルウェアには、レスポンスをブラウザに送った後に、ストレージにセッションデータを書き込む処理が含まれています。ミドルウェアに`terminate`メソッドを定義しWebサーバがFastCGIを使用している場合、レスポンスがブラウザへ送られた後に自動的に呼び出されます。
+ミドルウェアは場合により、HTTPレスポンスを送った後に、何か作業する必要が起きます。ミドルウェアに`terminate`メソッドを定義しWebサーバがFastCGIを使用している場合、レスポンスがブラウザへ送られた後に自動的に呼び出されます。
 
     <?php
 
