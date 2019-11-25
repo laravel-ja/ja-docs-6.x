@@ -210,6 +210,16 @@ Laravelのルーティングコンポーネントは、`/`を除くすべての�
 
     $url = route('profile', ['id' => 1]);
 
+配列に追加のパラメーターを渡した場合、そうしたキー／値ペアは自動的にクエリ文字列として生成されるURLへ追加されます。
+
+    Route::get('user/{id}/profile', function ($id) {
+        //
+    })->name('profile');
+
+    $url = route('profile', ['id' => 1, 'photos' => 'yes']);
+
+    // /user/1/profile?photos=yes
+
 #### 現在ルートの検査
 
 現在のリクエストが指定した名前付きルートのものであるかを判定したい場合は、Routeインスタンスの`named`メソッドを使います。たとえば、ルートミドルウェアから、現在のルート名を判定できます。

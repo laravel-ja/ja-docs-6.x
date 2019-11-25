@@ -1372,6 +1372,8 @@ Duskをインストールすると、ベース`Page`クラスが`tests/Browser/P
 <a name="continuous-integration"></a>
 ## 継続的インテグレーション
 
+> {note} 持続的インテグレーション設定ファイルを追加する前に、`.env.testing`ファイルへ`http://127.0.0.1:8000`の値の`APP_URL`エントリがあることを確認してください。
+
 <a name="running-tests-on-circle-ci"></a>
 ### CircleCI
 
@@ -1384,6 +1386,8 @@ DustテストにCircleCIを使用する場合、以下の設定ファイルを�
                 - run: sudo apt-get install -y libsqlite3-dev
                 - run: cp .env.testing .env
                 - run: composer install -n --ignore-platform-reqs
+                - run: php artisan key:generate
+                - run: php artisan dusk:chrome-driver
                 - run: npm install
                 - run: npm run production
                 - run: vendor/bin/phpunit
@@ -1416,6 +1420,7 @@ Duskのテストを[Codeship](https://codeship.com)で実行するには、以�
     mkdir -p ./bootstrap/cache
     composer install --no-interaction --prefer-dist
     php artisan key:generate
+    php artisan dusk:chrome-driver
     nohup bash -c "php artisan serve 2>&1 &" && sleep 5
     php artisan dusk
 
@@ -1456,6 +1461,7 @@ Duskテストを[Heroku CI](https://www.heroku.com/continuous-integration)上で
       - cp .env.testing .env
       - travis_retry composer install --no-interaction --prefer-dist --no-suggest
       - php artisan key:generate
+      - php artisan dusk:chrome-driver
 
     before_script:
       - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
@@ -1493,8 +1499,3 @@ Duskのテスト実行に[Githubアクション](https://github.com/features/act
             run: php artisan serve > /dev/null 2>&1 &
           - name: Run Dusk Tests
             run: php artisan dusk
-
-
-`.env.testing`ファイルの中で、`APP_URL`値を調整します。
-
-    APP_URL=http://127.0.0.1:8000

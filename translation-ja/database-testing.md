@@ -284,4 +284,18 @@ Laravelは、多くのデータベースアサーションを[PHPUnit](https://p
 ------------- | ---------------------------------------------------------------------------
 `$this->assertDatabaseHas($table, array $data);`  |  指定したデータが、テーブルに存在することをアサート
 `$this->assertDatabaseMissing($table, array $data);`  |  指定したデータが、テーブルに含まれないことをアサート
+`$this->assertDeleted($table, array $data);`  |  指定したレコードが削除されていることをアサート
 `$this->assertSoftDeleted($table, array $data);`  |  指定したレコードがソフトデリートされていることをアサート
+
+レコードの削除・ソフト削除のアサートに便利なよう、`assertDeleted`と`assertSoftDeleted`ヘルパへはモデルが渡せるようになっています。その場合、モデルの主キーを利用します。
+
+たとえば、モデルファクトリをテストで使用する場合に、アプリケーションでデータベースからそのレコードが確実に削除されているかをテストするために、これらのヘルパへモデルを渡せます。
+
+  public function testDatabase()
+  {
+      $user = factory(App\User::class)->create();
+
+      // アプリケーションで操作する
+
+      $this->assertDeleted($user);
+  }

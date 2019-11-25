@@ -44,7 +44,7 @@ Laravelは[Composer](https://getcomposer.org)を依存パッケージの管理�
 皆さんのシステムの、どこへlaravel実行ファイルが設置されても動作するように、Composerのシステム全体のvendor/binディレクトリを`$PATH`へ登録してください。このディレクトリはオペレーティングシステムにより場所が異なります。通常は、以下の場所です。
 
 <div class="content-list" markdown="1">
-- macOSとGNU／Linuxディストリビューション: `$HOME/.config/composer/vendor/bin`
+- macOSとGNU／Linuxディストリビューション: `$HOME/.composer/vendor/bin`
 - Windows： `%USERPROFILE%\AppData\Roaming\Composer\vendor\bin`
 </div>
 

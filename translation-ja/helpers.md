@@ -36,6 +36,7 @@ Laravelは様々な、グローバル「ヘルパ」PHP関数を用意してい�
 [Arr::forget](#method-array-forget)
 [Arr::get](#method-array-get)
 [Arr::has](#method-array-has)
+[Arr::isAssoc](#method-array-isassoc)
 [Arr::last](#method-array-last)
 [Arr::only](#method-array-only)
 [Arr::pluck](#method-array-pluck)
@@ -344,6 +345,21 @@ Laravelは様々な、グローバル「ヘルパ」PHP関数を用意してい�
     // true
 
     $contains = Arr::has($array, ['product.price', 'product.discount']);
+
+    // false
+
+<a name="method-array-isassoc"></a>
+#### `Arr::isAssoc()` {#collection-method}
+
+`Arr::isAssoc`は指定された配列が、連想配列の場合に`true`を返します。０から始まる連続した数値キーを持たない場合に「連想」配列であると判断します。
+
+    use Illuminate\Support\Arr;
+
+    $isAssoc = Arr::isAssoc(['product' => ['name' => 'Desk', 'price' => 100]]);
+
+    // true
+
+    $isAssoc = Arr::isAssoc([1, 2, 3]);
 
     // false
 
@@ -914,6 +930,19 @@ NULL値を指定すると、空の配列が返ってきます。
     $result = Str::endsWith('This is my name', 'name');
 
     // true
+
+
+もしくは値の配列を渡し、文字列が指定した値のいずれかで終わるかを判定できます。
+
+    use Illuminate\Support\Str;
+
+    $result = Str::endsWith('This is my name', ['name', 'foo']);
+
+    // true
+
+    $result = Str::endsWith('This is my name', ['this', 'foo']);
+
+    // false
 
 <a name="method-str-finish"></a>
 #### `Str::finish()` {#collection-method}

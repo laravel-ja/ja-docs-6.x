@@ -115,7 +115,7 @@ Bladeビューはグローバルな`view`ヘルパを使用し、ルートから
 
     @componentFirst(['custom.alert', 'alert'])
         <strong>Whoops!</strong> Something went wrong!
-    @endcomponent
+    @endcomponentfirst
 
 一つのコンポーネントに対し、複数のスロットを定義するのも、役立つことがあるでしょう。"title"を注入できるようにalertコンポーネントを改造してみましょう。名前付きスロットは、名前に一致する変数を"echo"します。
 
@@ -529,9 +529,13 @@ Bladeの`@include`ディレクディブを使えば、ビューの中から簡�
 
     @includeIf('view.name', ['some' => 'data'])
 
-指定した論理条件にもとづいて`@include`したい場合は、`@includeWhen`ディレクティブを使用します。
+指定した論理条件が`true`の場合に`@include`したい場合は、`@includeWhen`ディレクティブを使用します。
 
     @includeWhen($boolean, 'view.name', ['some' => 'data'])
+
+指定した論理条件が`false`の場合に`@include`したい場合は、`@includeUnless`ディレクティブを使用します。
+
+    @includeUnless($boolean, 'view.name', ['some' => 'data'])
 
 指定するビューの配列から、最初に存在するビューを読み込むには、`includeFirst`ディレクティブを使用します。
 

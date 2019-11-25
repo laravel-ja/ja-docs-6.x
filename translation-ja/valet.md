@@ -107,31 +107,13 @@ Valetでは`valet use php@version`コマンドにより、PHPバージョンを�
 
 Valetインストールをアップデートするには、ターミナルで`composer global update`コマンドを実行します。アップグレードできたら、`valet install`コマンドを実行し、必要な設定ファイルの追加アップグレードを行うのは、グッドプラクティスです。
 
-#### Valet2.0へのアップグレード
-
-Valet 2.0では、Valetの裏で動作するWebサーバをCaddyからNginxへ移動しました。このバージョン並行するは、以下のコマンドを実行し、既存のCaddyデーモンを停止し、アンインストールしてください。
-
-    valet stop
-    valet uninstall
-
-次に、Valetの最新バージョンへアップグレードします。Valetをどのようにインストールしたかにより、通常GitかComposerを使用して行います。ValetをComposerによりインストールしている場合は、最新のメジャーバージョンにアップデートするために、以下のコマンドを実行してください。
-
-    composer global require laravel/valet
-
-真新しいValetのソースコードがダウンロードできたら、`install`コマンドを実行します。
-
-    valet install
-    valet restart
-
-アップグレードできたら、`park`と`link`をやり直してください。
-
 <a name="serving-sites"></a>
 ## サイト動作
 
 Valetがインストールできたら、サイトを動作させる準備ができました。Laravelサイトを動作させるために役立つ、`park`と`link`の２コマンドを用意しています。
 
 <a name="the-park-command"></a>
-**`park`コマンド**
+#### `park`コマンド
 
 <div class="content-list" markdown="1">
 - `mkdir ~/Sites`のように、Mac上に新しいディレクトリを作成ししてください。次に`cd ~/Sites`し、`valet park`を実行します。このコマンドはカレントワーキングディレクトリをValetがサイトを探す親パスとして登録します。
@@ -142,7 +124,7 @@ Valetがインストールできたら、サイトを動作させる準備がで
 **必要なのはこれだけです。** これで"parked"ディレクトリ内で作成されたLaravelプロジェクトは、`http://フォルダ名.test`規約に従い、自動的に動作します。
 
 <a name="the-link-command"></a>
-**`link`コマンド**
+#### `link`コマンド
 
 `link`コマンドは`park`のように親ディレクトリを指定するのではなく、各ディレクトリ中で一つのサイトを動作させるのに便利です。
 
@@ -156,7 +138,7 @@ Valetがインストールできたら、サイトを動作させる準備がで
 > {tip} 複数の（サブ）ドメインで同じプロジェクトを動かすために、`valet link`を使用できます。サブドメインや他のドメインをプロジェクトに追加するためには、プロジェクトフォルダから`valet link subdomain.app-name`を実行します。
 
 <a name="securing-sites"></a>
-**TLSによる安全なサイト**
+#### TLSを使ったサイト安全化
 
 Valetはデフォルトで通常のHTTP通信で接続します。しかし、HTTP/2を使った暗号化されたTLSで通信したい場合は、`secure`コマンドを使ってください。たとえば、`laravel.test`ドメインでValetによりサイトが動作している場合、以下のコマンドを実行することで安全な通信を行います。
 

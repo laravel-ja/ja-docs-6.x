@@ -81,7 +81,7 @@
 
 #### Redis
 
-Redisブロードキャスタを使用する場合は、Predisライブラリをインストールする必要があります。
+Redisブロードキャスタを使用する場合は、phpredis PHP拡張をPECLを使いインストールするか、PredisライブラリをComposerを使用しインストールする必要があります。
 
     composer require predis/predis
 

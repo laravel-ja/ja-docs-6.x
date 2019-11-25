@@ -606,7 +606,7 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 <a name="assert-successful"></a>
 #### assertSuccessful
 
-レスポンスが成功(200)ステータスコードであることを宣言。
+レスポンスが成功（２００以上、３００未満）ステータスコードであることを宣言。
 
     $response->assertSuccessful();
 

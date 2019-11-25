@@ -103,7 +103,7 @@ Redisキューを使用する場合、ワーカのループの繰り返しとRed
 <div class="content-list" markdown="1">
 - Amazon SQS: `aws/aws-sdk-php ~3.0`
 - Beanstalkd: `pda/pheanstalk ~4.0`
-- Redis: `predis/predis ~1.0`
+- Redis: `predis/predis ~1.0`、もしくはphpredis PHP拡張
 </div>
 
 <a name="creating-jobs"></a>

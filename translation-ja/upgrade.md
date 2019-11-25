@@ -24,6 +24,7 @@
 - [多言語化の`Lang::getFromJson`メソッド](#get-from-json)
 - [キュー再試行制限](#queue-retry-limit)
 - [メール確認再送信Route](#email-verification-route)
+- [メール確認ルートの変更](#email-verification-route-change)
 - [`Input`ファサード](#the-input-facade)
 </div>
 
@@ -217,6 +218,13 @@ CSRF攻撃の可能性を防ぐため、Laravelの組み込みメール確認を
 **影響の可能性： 低い**
 
 `Illuminate\Contracts\Auth\MustVerifyEmail`契約へ新たに、`getEmailForVerification`メソッドを追加しました。この契約を自分で実装している場合は、このメソッドを実装してください。このメソッドはオブジェクトに関連したメールアドレスを返します。`App\User`モデルで`Illuminate\Auth\MustVerifyEmail`トレイトを使用している場合は、このトレイトの実装でメソッドを実装しているため、必要な変更はありません。
+
+<a name="email-verification-route-change"></a>
+#### メール確認ルートの変更
+
+**影響の可能性： 中程度**
+
+メール確認ルートは`/email/verify/{id}`から`/email/verify/{id}/{hash}`へ変更しました。Laravel6.xへアップグレードする前のバージョンから送信されたメール確認メールは無効になり、４０４ページが表示されます。望むのであれば、古い認証のURLパスに合うルートを定義し、ユーザーへメールアドレスを再ベリファイするように情報メッセージを表示しましょう。
 
 <a name="helpers"></a>
 ### ヘルパ
