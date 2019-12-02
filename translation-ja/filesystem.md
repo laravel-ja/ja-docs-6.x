@@ -192,7 +192,7 @@ Laravelのファイルシステム統合はSFTPできちんと動作します。
 
 #### 一時的なURL
 
-`s3`ドライバを使用して保存したファイルに対し、指定ファイルの一時的なURLを作成する場合は、`temporaryUrl`メソッドを使用します。このメソッドはパスと、URLの有効期限を指定する`DateTime`インスタンスを引数に取ります。
+`s3`ドライバを使用して保存したファイルに対し、指定ファイルの一時的なURLを作成する場合は、`temporaryUrl`メソッドを使用します。このメソッドはパスとURLの有効期限を指定する、`DateTime`インスタンスを引数に取ります。
 
     $url = Storage::temporaryUrl(
         'file.jpg', now()->addMinutes(5)

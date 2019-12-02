@@ -291,11 +291,11 @@ Laravelは、多くのデータベースアサーションを[PHPUnit](https://p
 
 たとえば、モデルファクトリをテストで使用する場合に、アプリケーションでデータベースからそのレコードが確実に削除されているかをテストするために、これらのヘルパへモデルを渡せます。
 
-  public function testDatabase()
-  {
-      $user = factory(App\User::class)->create();
+    public function testDatabase()
+    {
+        $user = factory(App\User::class)->create();
 
-      // アプリケーションで操作する
+        // アプリケーションで操作する
 
-      $this->assertDeleted($user);
-  }
+        $this->assertDeleted($user);
+    }

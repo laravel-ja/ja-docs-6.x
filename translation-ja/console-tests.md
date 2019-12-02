@@ -3,6 +3,7 @@
 - [イントロダクション](#introduction)
 - [入出力の期待値](#expecting-input-and-output)
 
+<a name="introduction"></a>
 ## イントロダクション
 
 HTTPテストを簡単にするのに加えて、ユーザー入力を尋ねるコンソールアプリケーションテストに対するシンプルなAPIも、Laravelは提供しています。

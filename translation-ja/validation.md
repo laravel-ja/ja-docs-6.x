@@ -792,6 +792,10 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 
     'email' => 'exists:connection.staff,email'
 
+テーブル名を直接指定する代わりに、Eloquentモデルを指定することもできます。
+
+    'user_id' => 'exists:App\User,id'
+
 バリデーションルールで実行されるクエリをカスタマイズしたい場合は、ルールをスラスラと定義できる`Rule`クラスを使ってください。下の例では、`|`文字を区切りとして使用する代わりに、バリデーションルールを配列として指定しています。
 
     use Illuminate\Validation\Rule;
@@ -1058,7 +1062,11 @@ MIMEタイプと対応する拡張子の完全なリストは、[https://svn.apa
 
 フィールドが、指定されたデータベーステーブルに存在しないことをバリデートします。
 
-**カスタムカラム名の指定**
+**カスタムテーブル／カラム名の指定**
+
+テーブル名を直接指定する代わりに、Eloquentモデルを指定することもできます。
+
+    'email' => 'unique:App\User,email_address'
 
 `column`オプションは、フィールドに対応するデータベースカラムを指定するために使用します。`column`オプションを指定しない場合、フィールド名が使用されます。
 

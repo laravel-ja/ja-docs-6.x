@@ -660,7 +660,7 @@ API構築時、Eloquentモデルと、アプリケーションユーザーに対
         return new UserResource(User::find(1));
     });
 
-しかし、利用者へ送信する前に、HTTPレスポンスをカスタマイズする必要が時々あります。リソースに対して`response`メソッドをチェーンしてください。このメソッドは、`Illuminate\Http\Response`インスタンスを返しますので、レスポンスヘッダを完全にコントロールできます。
+しかし、利用者へ送信する前に、HTTPレスポンスをカスタマイズする必要が時々起こるでしょう。リソースに対して`response`メソッドをチェーンしてください。このメソッドは、`Illuminate\Http\JsonResponse`インスタンスを返しますので、レスポンスヘッダを完全にコントロールできます。
 
     use App\Http\Resources\User as UserResource;
     use App\User;
