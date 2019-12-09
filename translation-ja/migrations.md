@@ -224,7 +224,7 @@ Laravelの`Schema`[ファサード](/docs/{{version}}/facades)は、テーブル
 `$table->decimal('amount', 8, 2);`  |  有効（全体）桁数と小数点以下桁数指定のDECIMALカラム
 `$table->double('amount', 8, 2);`  |  有効（全体）桁数と小数点以下桁数指定のDOUBLEカラム
 `$table->enum('level', ['easy', 'hard']);`  |  ENUMカラム
-`$table->float('amount', 8, 2);`  |  有効（全体桁数）／小数点以下桁数指定のFLOATカラム
+`$table->float('amount', 8, 2);`  |  有効（全体）桁数／小数点以下桁数指定のFLOATカラム
 `$table->geometry('positions');`  |  GEOMETRYカラム
 `$table->geometryCollection('positions');`  |  GEOMETRYCOLLECTIONカラム
 `$table->increments('id');`  |  符号なしINTを使用した自動増分ID（主キー）
@@ -265,7 +265,7 @@ Laravelの`Schema`[ファサード](/docs/{{version}}/facades)は、テーブル
 `$table->tinyIncrements('id');`  |  符号なしTINYINTを使用した自動増分ID（主キー）
 `$table->tinyInteger('votes');`  |  TINYINTカラム
 `$table->unsignedBigInteger('votes');`  |  符号なしBIGINTカラム
-`$table->unsignedDecimal('amount', 8, 2);`  |  有効（全体桁数）／小数点以下桁数指定の符号なしDECIMALカラム
+`$table->unsignedDecimal('amount', 8, 2);`  |  有効（全体）桁数／小数点以下桁数指定の符号なしDECIMALカラム
 `$table->unsignedInteger('votes');`  |  符号なしINTカラム
 `$table->unsignedMediumInteger('votes');`  |  符号なしMEDIUMINTカラム
 `$table->unsignedSmallInteger('votes');`  |  符号なしSMALLINTカラム
