@@ -365,7 +365,7 @@ HTTPリクエストが認証済みユーザーにより開始されたもので�
          */
         public function update(?User $user, Post $post)
         {
-            return $user->id === $post->user_id;
+            return optional($user)->id === $post->user_id;
         }
     }
 

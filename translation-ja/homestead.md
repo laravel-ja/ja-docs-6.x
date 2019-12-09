@@ -567,7 +567,7 @@ Minioを使用するために、`config/filesystems.php`設定ファイルの中
 <a name="multiple-php-versions"></a>
 ### 複数のPHPバージョン
 
-Homestead6から、同一仮想マシン上での複数PHPバージョンをサポートを開始しました。`Homestead.yaml`ファイルで、特定のサイトでどのバージョンのPHPを使用するのかを指定できます。利用できるPHPバージョンは、"5.6"、"7.0"、"7.1"、"7.2"、"7.3（デフォルト）"です。
+Homestead6から、同一仮想マシン上での複数PHPバージョンをサポートを開始しました。`Homestead.yaml`ファイルで、特定のサイトでどのバージョンのPHPを使用するのかを指定できます。利用できるPHPバージョンは、"5.6"、"7.0"、"7.1"、"7.2"、"7.3"、"7.4（デフォルト）"です。
 
     sites:
         - map: homestead.test
@@ -581,6 +581,7 @@ Homestead6から、同一仮想マシン上での複数PHPバージョンをサ�
     php7.1 artisan list
     php7.2 artisan list
     php7.3 artisan list
+    php7.4 artisan list
 
 Homestead仮想マシンの中で、以下のコマンドを実行することにより、デフォルトCLIバージョンを変更することも可能です。
 
@@ -589,6 +590,7 @@ Homestead仮想マシンの中で、以下のコマンドを実行すること�
     php71
     php72
     php73
+    php74
 
 <a name="web-servers"></a>
 ### Webサービス

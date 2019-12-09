@@ -943,6 +943,17 @@ Eloquentイベントの定義とマップができたら、[イベントリス�
         {
             //
         }
+
+        /**
+         * Userの"forceDeleted"イベントを処理
+         *
+         * @param  \App\User  $user
+         * @return void
+         */
+        public function forceDeleted(User $user)
+        {
+            //
+        }
     }
 
 オブザーバを登録するには、監視したいモデルに対し、`observe`メソッドを使用します。サービスプロバイダの一つの、`boot`メソッドで登録します。以下の例では、`AppServiceProvider`でオブザーバを登録しています。

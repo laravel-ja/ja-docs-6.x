@@ -44,12 +44,6 @@ Horizonをインストールしたら、`horizon:install` Artisanコマンドを
 
     php artisan horizon:install
 
-Laravelが[失敗したキュー済みのジョブ](/docs/{{version}}/queues#dealing-with-failed-jobs):を保存するために使用する、`failed_jobs`を生成することもできます。
-
-    php artisan queue:failed-table
-
-    php artisan migrate
-
 <a name="configuration"></a>
 ### 設定
 

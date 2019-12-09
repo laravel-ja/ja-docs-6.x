@@ -217,12 +217,12 @@ Laravelの`Schema`[ファサード](/docs/{{version}}/facades)は、テーブル
 `$table->bigInteger('votes');`  |  BIGINTカラム
 `$table->binary('data');`  |  BLOBカラム
 `$table->boolean('confirmed');`  |  BOOLEANカラム
-`$table->char('name', 100);`  |  オプションの文字長を指定するCHARカラム
+`$table->char('name', 100);`  |  文字長を指定するCHARカラム
 `$table->date('created_at');`  |  DATEカラム
-`$table->dateTime('created_at');`  |  DATETIMEカラム
-`$table->dateTimeTz('created_at');`  |  タイムゾーン付きDATETIMEカラム
-`$table->decimal('amount', 8, 2);`  |  有効（全体桁数）／小数点以下桁数指定のDECIMALカラム
-`$table->double('amount', 8, 2);`  |  有効（全体桁数）／小数点以下桁数指定のDOUBLEカラム
+`$table->dateTime('created_at', 0);`  |  有効（全体）桁数指定のDATETIMEカラム
+`$table->dateTimeTz('created_at', 0);`  |  タイムゾーンと有効（全体）桁数指定のDATETIMEカラム
+`$table->decimal('amount', 8, 2);`  |  有効（全体）桁数と小数点以下桁数指定のDECIMALカラム
+`$table->double('amount', 8, 2);`  |  有効（全体）桁数と小数点以下桁数指定のDOUBLEカラム
 `$table->enum('level', ['easy', 'hard']);`  |  ENUMカラム
 `$table->float('amount', 8, 2);`  |  有効（全体桁数）／小数点以下桁数指定のFLOATカラム
 `$table->geometry('positions');`  |  GEOMETRYカラム
@@ -245,23 +245,23 @@ Laravelの`Schema`[ファサード](/docs/{{version}}/facades)は、テーブル
 `$table->multiPolygon('positions');`  |  MULTIPOLYGONカラム
 `$table->nullableMorphs('taggable');`  |  NULL値可能な`morphs()`カラム
 `$table->nullableUuidMorphs('taggable');`  |  `uuidMorphs()`をNULL値可能で追加
-`$table->nullableTimestamps();`  |  `timestamps()`メソッドの別名
+`$table->nullableTimestamps(0);`  |  `timestamps()`メソッドの別名
 `$table->point('position');`  |  POINTカラム
 `$table->polygon('positions');`  |  POLYGONカラム
 `$table->rememberToken();`  |  VARCHAR(100)でNULL値可能な`remember_token`を追加
 `$table->set('flavors', ['strawberry', 'vanilla']);`  |  SETカラム
 `$table->smallIncrements('id');`  |  符号なしSMALLINTを使用した自動増分ID（主キー）
 `$table->smallInteger('votes');`  |  SMALLINTカラム
-`$table->softDeletes();`  |  ソフトデリートのためにNULL値可能な`deleted_at` TIMESTAMPカラム追加
-`$table->softDeletesTz();`  |  ソフトデリートのためにNULL値可能な`deleted_at`タイムゾーン付きTIMESTAMPカラム追加
-`$table->string('name', 100);`  |  オプションの文字長を指定したVARCHARカラム
+`$table->softDeletes(0);`  |  ソフトデリートのためにNULL値可能で有効（全体）桁数指定の`deleted_at` TIMESTAMPカラム追加
+`$table->softDeletesTz(0);`  |  ソフトデリートのためにNULL値可能でタイムゾーン付き、有効（全体）桁数指定の`deleted_at` TIMESTAMPカラム追加
+`$table->string('name', 100);`  |  文字長を指定したVARCHARカラム
 `$table->text('description');`  |  TEXTカラム
-`$table->time('sunrise');`  |  TIMEカラム
-`$table->timeTz('sunrise');`  |  タイムゾーン付きTIMEカラム
-`$table->timestamp('added_on');`  |  TIMESTAMPカラム
-`$table->timestampTz('added_on');`  |  タイムゾーン付きTIMESTAMPカラム
-`$table->timestamps();`  |  NULL値可能な`created_at`と`updated_at`カラム追加
-`$table->timestampsTz();`  |  タイムゾーン付きのNULL値可能な`created_at`と`updated_at`カラム追加
+`$table->time('sunrise', 0);`  |  有効（全体）桁数指定のTIMEカラム
+`$table->timeTz('sunrise', 0);`  |  タイムゾーン付き、有効（全体）桁数指定のTIMEカラム
+`$table->timestamp('added_on', 0);`  |  有効（全体）桁数指定のTIMESTAMPカラム
+`$table->timestampTz('added_on', 0);`  |  タイムゾーン付き、有効（全体）桁数指定のTIMESTAMPカラム
+`$table->timestamps(0);`  |  有効（全体）桁数指定でNULL値可能な`created_at`と`updated_at`カラム追加
+`$table->timestampsTz(0);`  |  タイムゾーン付きで、有効（全体）桁数指定、NULL値可能な`created_at`と`updated_at`カラム追加
 `$table->tinyIncrements('id');`  |  符号なしTINYINTを使用した自動増分ID（主キー）
 `$table->tinyInteger('votes');`  |  TINYINTカラム
 `$table->unsignedBigInteger('votes');`  |  符号なしBIGINTカラム

@@ -38,6 +38,7 @@
 
 実行時に`Collection`クラスメソッドを追加できるように、コレクションは「マクロ使用可能」です。例として、`Collection`クラスへ`toUpper`メソッドを追加してみましょう。
 
+    use Illuminate\Support\Collection;
     use Illuminate\Support\Str;
 
     Collection::macro('toUpper', function () {
@@ -620,7 +621,7 @@
 
     $collection = collect([]);
 
-    $collection->every(function($value, $key) {
+    $collection->every(function ($value, $key) {
         return $value > 2;
     });
 
@@ -2208,9 +2209,9 @@ staticの`unwrap`メソッドは適用可能な場合、指定値からコレク
 
     $collection = collect(['michael', 'tom']);
 
-    $collection->whenEmpty(function($collection) {
+    $collection->whenEmpty(function ($collection) {
         return $collection->push('adam');
-    }, function($collection) {
+    }, function ($collection) {
         return $collection->push('taylor');
     });
 
@@ -2249,9 +2250,9 @@ staticの`unwrap`メソッドは適用可能な場合、指定値からコレク
 
     $collection = collect();
 
-    $collection->whenNotEmpty(function($collection) {
+    $collection->whenNotEmpty(function ($collection) {
         return $collection->push('adam');
-    }, function($collection) {
+    }, function ($collection) {
         return $collection->push('taylor');
     });
 

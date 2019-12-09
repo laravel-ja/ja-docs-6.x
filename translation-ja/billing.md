@@ -694,7 +694,7 @@ Cashierは課金の失敗時に、サブスクリプションを自動的にキ�
         '\App\Http\Controllers\WebhookController@handleWebhook'
     );
 
-CashierはWebhookを受け取ると、`Laravel\Cashier\Events\WebhookReceived`イベントを発行します。そして、WebhookがCashierにより処理されると、`Laravel\Cashier\Events\WebhookWebhookHandled`イベントを発行します。両方のイベント共にStripeのWebhookの完全なペイロードを持っています。
+CashierはWebhookを受け取ると、`Laravel\Cashier\Events\WebhookReceived`イベントを発行します。そして、WebhookがCashierにより処理されると、`Laravel\Cashier\Events\WebhookHandled`イベントを発行します。両方のイベント共にStripeのWebhookの完全なペイロードを持っています。
 
 <a name="handling-failed-subscriptions"></a>
 ### サブスクリプション不可

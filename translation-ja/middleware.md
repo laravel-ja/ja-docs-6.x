@@ -277,4 +277,16 @@ WebのUIとAPIルートへ適用できる、一般的なミドルウェアを含
 
 `terminate`メソッドはリクエストとレスポンスの両方を受け取ります。終了処理可能なミドルウェアを定義したら、`app/Http/Kernel.php`ファイルでルートのリスト、もしくはグローバルミドルウェアのリストへ追加してください。
 
-ミドルウェアの`terminate`メソッド呼び出し時に、Laravelは[サービスコンテナ](/docs/{{version}}/container)から真新しいミドルウェアのインスタンスを依存解決します。`handle`と`terminate`メソッドの呼び出しで同一のミドルウェアインスタンスを使用したい場合は、コンテナの`singleton`メソッドを使用し、ミドルウェアを登録してください。
+ミドルウェアの`terminate`メソッド呼び出し時に、Laravelは[サービスコンテナ](/docs/{{version}}/container)から真新しいミドルウェアのインスタンスを依存解決します。`handle`と`terminate`メソッドの呼び出しで同一のミドルウェアインスタンスを使用したい場合は、コンテナの`singleton`メソッドを使用し、ミドルウェアを登録してください。通常、`AppServiceProvider.php`の`register`メソッドの中で登録します。
+
+    use App\Http\Middleware\TerminableMiddleware;
+
+    /**
+     * 全アプリケーションサービスの登録
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->singleton(TerminableMiddleware::class);
+    }

@@ -38,6 +38,7 @@ As mentioned above, the `collect` helper returns a new `Illuminate\Support\Colle
 
 Collections are "macroable", which allows you to add additional methods to the `Collection` class at run time. For example, the following code adds a `toUpper` method to the `Collection` class:
 
+    use Illuminate\Support\Collection;
     use Illuminate\Support\Str;
 
     Collection::macro('toUpper', function () {
@@ -620,7 +621,7 @@ If the collection is empty, `every` will return true:
 
     $collection = collect([]);
 
-    $collection->every(function($value, $key) {
+    $collection->every(function ($value, $key) {
         return $value > 2;
     });
 
@@ -2208,9 +2209,9 @@ The `whenEmpty` method will execute the given callback when the collection is em
 
     $collection = collect(['michael', 'tom']);
 
-    $collection->whenEmpty(function($collection) {
+    $collection->whenEmpty(function ($collection) {
         return $collection->push('adam');
-    }, function($collection) {
+    }, function ($collection) {
         return $collection->push('taylor');
     });
 
@@ -2249,9 +2250,9 @@ The `whenNotEmpty` method will execute the given callback when the collection is
 
     $collection = collect();
 
-    $collection->whenNotEmpty(function($collection) {
+    $collection->whenNotEmpty(function ($collection) {
         return $collection->push('adam');
-    }, function($collection) {
+    }, function ($collection) {
         return $collection->push('taylor');
     });
 

@@ -327,11 +327,13 @@ Eloquentは、`Comment`モデルに対する外部キーを自動的に決める
 
 #### 中間テーブルのカラムを使った関係のフィルタリング
 
-リレーション定義時に、`wherePivot`や`wherePivotIn`を使い、`belongsToMany`が返す結果をフィルタリングすることも可能です。
+リレーション定義時に、`wherePivot`や`wherePivotIn`、`wherePivotNotIn`を使い、`belongsToMany`が返す結果をフィルタリングすることも可能です。
 
     return $this->belongsToMany('App\Role')->wherePivot('approved', 1);
 
     return $this->belongsToMany('App\Role')->wherePivotIn('priority', [1, 2]);
+
+    return $this->belongsToMany('App\Role')->wherePivotNotIn('priority', [1, 2]);
 
 <a name="defining-custom-intermediate-table-models"></a>
 ### カスタム中間テーブルモデルの定義
