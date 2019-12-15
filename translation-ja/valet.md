@@ -13,13 +13,14 @@
 - [カスタムValetドライバ](#custom-valet-drivers)
     - [ローカルドライバ](#local-drivers)
 - [その他のValetコマンド](#other-valet-commands)
+- [Valetのディレクトリとファイル](#valet-directories-and-files)
 
 <a name="introduction"></a>
 ## イントロダクション
 
-Valet（ベレット：従者）はMacミニマニストのためのLaravel開発環境です。Vagrantも不要、`/etc/hosts`ファイルも不要です。更に、ローカルトンネルを使って、サイトを公開し、シェアすることもできます。*ええ、私達はこういうのも好きなんですよね。*
+Valet（ベレット：従者）はMacミニマニストのためのLaravel開発環境です。Vagrantも不要、/etc/hostsファイルも不要です。更に、ローカルトンネルを使って、サイトを公開し、シェアすることもできます。**ええ、私達はこういうのも好きなんですよね。**
 
-Laravel Valetはマシン起動時にバックグランドで[Nginx](https://www.nginx.com/)がいつも実行されるように、Macを設定します。そのため、[DnsMasq](https://en.wikipedia.org/wiki/Dnsmasq)を使用し、Valetは`*.test`ドメインへの全リクエストを、ローカルマシンへインストールしたサイトへ向けるようにプロキシ動作します。
+Laravel Valetはマシン起動時にバックグランドで[Nginx](https://www.nginx.com/)がいつも実行されるように、Macを設定します。そのため、[DnsMasq](https://en.wikipedia.org/wiki/Dnsmasq)を使用し、Valetは`*.test`ドメインへの全リクエストを、ローカルマシンへインストール済みサイトへ向けプロキシ動作します。
 
 言い換えれば、大体7MBのRAMを使う、とても早いLaravelの開発環境です。ValetはVagrantやHomesteadを完全に置き換えるものではありませんが、柔軟な基礎、特にスピード重視であるか、RAMが限られているマシンで動作させるのには、素晴らしい代替になります。
 
@@ -74,7 +75,7 @@ ValetとHomesteadのどちらを選んでも、Laravelの開発環境に向け�
 
 <div class="content-list" markdown="1">
 - `brew update`で最新バージョンの[Homebrew](https://brew.sh/)をインストール、もしくはアップデートしてください。
-- Homebrewを使い、`brew install php`でPHP7.3をインストールしてください。
+- Homebrewを使い、`brew install php`でPHP7.4をインストールしてください。
 - [Composer](https://getcomposer.org)をインストールしてください。
 - `composer global require laravel/valet`でValetをインストールしてください。`~/.composer/vendor/bin`ディレクトリが実行パスに含まれていることを確認してください。
 - `valet install`コマンドを実行してください。これによりValetとDnsMasqがインストール／設定され、システム起動時に起動されるValetのデーモンが登録されます。
@@ -101,6 +102,12 @@ Valetでは`valet use php@version`コマンドにより、PHPバージョンを�
     valet use php@7.2
 
     valet use php
+
+> {note} 複数のPHPバージョンをインストールしている場合でも、Valetは一度に一つのPHPバージョンのみを提供します。
+
+#### インストレーションのリセット
+
+Valetインストレーションが正しく動作せずに問題が起きた時は、`composer global update`の後に、`valet install`を実行してください。これによりインストール済みのValetがリセットされ、様々な問題が解決されます。稀にValetを「ハードリセット」する必要がある場合があり、その場合は`valet install`の前に`valet uninstall --force`を実行してください。
 
 <a name="upgrading"></a>
 ### アップグレード
@@ -284,4 +291,28 @@ Valetでサポートされていない、他のフレームワークやCMSでPHP
 `valet start` | Valetデーモンをスタートします。
 `valet stop` | Valetデーモンを停止します。
 `valet trust` | Valetコマンド実行でパスワード入力をしなくて済むように、BrewとValetへsudoersファイルを追加します。
-`valet uninstall` | Valetデーモンをアンインストールします。
+`valet uninstall` | Valetをアンインストールします。手動で削除する場合のインストラクションを表示します。`--force`パラメータを指定した場合は、Valetすべてを強制的に削除します。
+
+<a name="valet-directories-and-files"></a>
+## Valetのディレクトリとファイル
+
+Valet環境の問題を追求／解決するときに役立つ、ディレクトリとファイルの一覧です。
+
+ファイル／ディレクトリ | 説明
+--------- | -----------
+`~/.config/valet/` | Valetの設定すべてが含まれます。このフォルダのバックアップを管理しておきましょう。
+`~/.config/valet/dnsmasq.d/` | DNSMasqの設定が含まれます。
+`~/.config/valet/Drivers/` | Contains custom Valet drivers.カスタムValetドライバが含まれます。
+`~/.config/valet/Extensions/` | カスタムValet拡張／コマンドが含まれます。
+`~/.config/valet/Nginx/` | Valetが生成したNginxサイト設定すべてが含まれます。生成済みファイルは`install`、`secure`、`tld`コマンド実行時に再生成されます。
+`~/.config/valet/Sites/` | リンク済みプロジェクへのシンボリックリンクすべてが含まれます。
+`~/.config/valet/config.json` | Valetの主設定ファイルです。
+`~/.config/valet/valet.sock` | ValetのNginx設定で指定されているPHP-FPMソケットです。PHPが正しく実行されているときのみ存在します。
+`~/.config/valet/Log/fpm-php.www.log` | PHPエラーのユーザーログです。
+`~/.config/valet/Log/nginx-error.log` | Nginxエラーのユーザーログです。
+`/usr/local/var/log/php-fpm.log` | PHP-FPMエラーのシステムログです。
+`/usr/local/var/log/nginx` | Nginxのアクセスとエラーログが含まれます。
+`/usr/local/etc/php/X.X/conf.d` | 様々なPHP設定に使用される`*.ini`ファイルが含まれます。
+`/usr/local/etc/php/X.X/php-fpm.d/valet-fpm.conf` | PHP-FPMプール設定ファイルです。
+`~/.composer/vendor/laravel/valet/cli/stubs/secure.valet.conf` | サイト認証を構築するのに使用されるデフォルトNginx設定です。
+

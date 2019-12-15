@@ -321,8 +321,6 @@ Queryワッチャーは、アプリケーションにより実行された全ク
 <a name="redis-watcher"></a>
 ### Redisワッチャー
 
-> {note} Redisワッチャーを利用するには、Redisイベントを有効にする必要があります。`app/Providers/AppServiceProvider.php`ファイルの`boot`メソッドの中で、`Redis::enableEvents()`を呼び出すことで有効にできます。
-
 Redisワッチャーはアプリケーションで実行された全Redisコマンドを記録します。Redisをキャッシュで利用する場合、キャッシュコマンドもRedisワッチャーにより記録されます。
 
 <a name="request-watcher"></a>

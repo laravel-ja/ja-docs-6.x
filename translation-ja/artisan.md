@@ -26,20 +26,32 @@ ArtisanはLaravelに含まれているコマンドラインインターフェイ
 
     php artisan list
 
-全てのコマンドは「ヘルプ」が用意されており、説明と使用できる引数、オプションを表示します。ヘルプを表示するには`help`に続いてコマンド名を入力してください。
+全てのコマンドに説明と使用できる引数、オプションを表示する「ヘルプ」を用意しています。ヘルプを表示するには`help`に続いてコマンド名を入力してください。
 
     php artisan help migrate
 
 <a name="tinker"></a>
 ### Tinker（REPL）
 
-全てのLaravelアプリケーションには、[PsySH](https://github.com/bobthecow/psysh)パッケージによるREPLである、Tinkerが含まれています。Tinkerにより、Laravel全体のEloquent ORM、ジョブ、イベントなどをコマンドラインから操作できます。Tinker環境に入るには、`tinker` Artisanコマンドを実行します。
+Laravel Tinkerは、LaravelフレームワークのためのパワフルなREPLです。[PsySH](https://github.com/bobthecow/psysh)パッケージを利用しています。
+
+#### インストール
+
+LaravelアプリケーションはTinkerをデフォルトで含んでいます。しかし必要に応じ、Composerにより自分でインストールすることもできます。
+
+    composer require laravel/tinker
+
+#### 使用法
+
+TinkerによりコマンドラインでEloquent ORM、ジョブ、イベントなど、Laravelアプリケーション全体を操作できます。Tinker環境を利用するには、`tinker` Artisanコマンドを実行してください。
 
     php artisan tinker
 
 `vendor:publish`コマンドにより、Tinkerの設定ファイルを公開することもできます。
 
     php artisan vendor:publish --provider="Laravel\Tinker\TinkerServiceProvider"
+
+> {note} ジョブをキューの中へ置くために、`dispatch`ヘルパ関数と`Dispatchable`クラスの`dispatch`メソッドは、ガベージコレクションに依存しています。そのため、Tinkerを使う場合には、ディスパッチするジョブには`Bus::dispatch`か`Queue::push`を使用してください。
 
 #### コマンドホワイトリスト
 

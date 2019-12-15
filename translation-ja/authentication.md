@@ -85,20 +85,9 @@ Laravelの`laravel/ui`パッケージは、認証に必要なルートとビュ�
 
 #### パスのカスタマイズ
 
-ユーザーが認証に成功すると、`/home`のURIへリダイレクトします。これをカスタマイズするには、`LoginController`、`RegisterController`、`ResetPasswordController`、`VerificationController`の`redirectTo`プロパティで、認証後のリダイレクト先の場所を定義してください。
+ユーザーが認証に成功すると、`/home`のURIへリダイレクトします。認証後のリダイレクトパスをカスタマイズするには、`RouteServiceProvider`の中で`HOME`定数を定義してください。
 
-    protected $redirectTo = '/';
-
-次に、ユーザーをリダイレクトさせるときの新しいURIを使用するために、`RedirectIfAuthenticated`ミドルウェアの`handle`メソッドを更新する必要があります。
-
-リダイレクトパスをカスタマイズするロジックが必要な場合は、`redirectTo`プロパティの代わりに`redirectTo`メソッドを定義してください。
-
-    protected function redirectTo()
-    {
-        return '/path';
-    }
-
-> {tip} `redirectTo`メソッドは、`redirectTo`プロパティより優先されます。
+    public const HOME = '/home';
 
 #### ユーザー名のカスタマイズ
 
