@@ -13,7 +13,7 @@
 <a name="introduction"></a>
 ## イントロダクション
 
-Laravel provides a very fluent API for making HTTP requests to your application and examining the output. For example, take a look at the feature test defined below:
+アプリケーションに対しHTTPリクエストを作成し、出力を調べるために、Laravelはとても読み書きしやすいAPIを提供しています。
 
     <?php
 
