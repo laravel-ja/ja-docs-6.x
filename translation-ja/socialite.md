@@ -118,6 +118,8 @@ Socialiteを使用する前に、アプリケーションで使用するOAuthサ
 
     return Socialite::driver('google')->stateless()->user();
 
+> {note} ステートレスな認証は、認証にOAuth1.0を使用しているTwitterドライバでは利用できません。
+
 <a name="retrieving-user-details"></a>
 ## ユーザー詳細情報の取得
 

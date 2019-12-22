@@ -4,13 +4,14 @@
 - [ファクトリの生成](#generating-factories)
 - [各テスト後のデータベースリセット](#resetting-the-database-after-each-test)
 - [ファクトリの記述](#writing-factories)
+    - [ファクトリの拡張](#extending-factories)
     - [ファクトリステート](#factory-states)
     - [ファクトリコールバック](#factory-callbacks)
 - [ファクトリの使用](#using-factories)
     - [モデルの生成](#creating-models)
     - [モデルの保存](#persisting-models)
     - [リレーション](#relationships)
-- [Using Seeds](#using-seeds)
+- [シーダの使用](#using-seeds)
 - [使用可能なアサーション](#available-assertions)
 
 <a name="introduction"></a>
@@ -29,7 +30,7 @@ Laravelでは、データベースを駆動するアプリケーションのテ�
 
 データベースにデータが存在しないことをアサートする、`assertDatabaseMissing`ヘルパを使うこともできます。
 
-`assertDatabaseHas`メソッドやその他のヘルパは、皆さんが便利に使ってもらうため用意しています。PHPUnitの組み込みアサートメソッドは、テストで自由に使用できます。
+`assertDatabaseHas`メソッドやその他のヘルパは、皆さんが便利に使ってもらうため用意しています。PHPUnitの組み込みアサートメソッドは、機能テストで自由に使用できます。
 
 <a name="generating-factories"></a>
 ## ファクトリの生成
@@ -98,6 +99,17 @@ Laravelでは、データベースを駆動するアプリケーションのテ�
 
 > {tip} Fakerのローケルは、`config/app.php`設定ファイルの`faker_locale`オプションで指定できます。
 
+<a name="extending-factories"></a>
+### ファクトリの拡張
+
+モデルを拡張する場合、テストやシーディングで子モデルのファクトリ属性を活用するため、ファクトリも同様に拡張すると便利です。これを実現するため、ファクトリビルダの`raw`メソッドを呼び出し、指定したファクトリの属性配列をそのまま取得できます。
+
+    $factory->define(App\Admin::class, function (Faker\Generator $faker) {
+        return factory(App\User::class)->raw([
+            // ...
+        ]);
+    });
+
 <a name="factory-states"></a>
 ### ファクトリステート
 
@@ -144,7 +156,7 @@ Laravelでは、データベースを駆動するアプリケーションのテ�
 <a name="creating-models"></a>
 ### モデルの生成
 
-ファクトリを定義し終えたら、テストかデータベースのシーディング（初期値設定）ファイルの中で、グローバルな`factory`関数を使用してモデルインスタンスを生成できます。では、モデル生成の例をいくつか見てみましょう。最初は`make`メソッドでモデルを生成し、データベースには保存しない方法です。
+ファクトリを定義し終えたら、機能テストかデータベースのシーディング（初期値設定）ファイルの中で、グローバルな`factory`関数を使用してモデルインスタンスを生成できます。では、モデル生成の例をいくつか見てみましょう。最初は`make`メソッドでモデルを生成し、データベースには保存しない方法です。
 
     public function testDatabase()
     {
@@ -243,7 +255,7 @@ Laravelでは、データベースを駆動するアプリケーションのテ�
 <a name="using-seeds"></a>
 ## シーダの使用
 
-テストでデータベースへ初期値を設定するために、[データベースシーダ](/docs/{{version}}/seeding)を使いたい場合は、`seed`メソッドを使用してください。デフォルトで`seed`メソッドは、他のシーダを全部実行する`DatabaseSeeder`を返します。もしくは、`seed`メソッドへ特定のシーダクラス名を渡してください。
+機能テストでデータベースへ初期値を設定するために、[データベースシーダ](/docs/{{version}}/seeding)を使いたい場合は、`seed`メソッドを使用してください。デフォルトで`seed`メソッドは、他のシーダを全部実行する`DatabaseSeeder`を返します。もしくは、`seed`メソッドへ特定のシーダクラス名を渡してください。
 
     <?php
 
@@ -278,7 +290,7 @@ Laravelでは、データベースを駆動するアプリケーションのテ�
 <a name="available-assertions"></a>
 ## 使用可能なアサーション
 
-Laravelは、多くのデータベースアサーションを[PHPUnit](https://phpunit.de/)テスト向けに提供しています。
+Laravelは、多くのデータベースアサーションを[PHPUnit](https://phpunit.de/)機能テスト向けに提供しています。
 
 メソッド  | 説明
 ------------- | ---------------------------------------------------------------------------

@@ -148,6 +148,9 @@ Supervisorの設定ファイルは通常`/etc/supervisor/conf.d`へ保存され�
     user=forge
     redirect_stderr=true
     stdout_logfile=/home/forge/app.com/horizon.log
+    stopwaitsecs=3600
+
+> {note} 一番時間がかかるジョブが消費する秒数より大きな値を`stopwaitsecs`へ必ず指定してください。そうしないと、Supervisorは処理が終了する前に、そのジョブをキルしてしまうでしょう。
 
 #### Supervisorの起動
 

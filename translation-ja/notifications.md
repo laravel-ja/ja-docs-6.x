@@ -278,11 +278,15 @@ Laravelの各通知は、（通常、`app/Notifications`ディレクトリに設
          * メールチャンネルに対する通知をルートする
          *
          * @param  \Illuminate\Notifications\Notification  $notification
-         * @return string
+         * @return array|string
          */
         public function routeNotificationForMail($notification)
         {
+            // メールアドレスのみを返す場合
             return $this->email_address;
+
+            // 名前とメールアドレスを返す場合
+            return [$this->email_address => $this->name];
         }
     }
 

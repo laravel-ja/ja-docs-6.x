@@ -12,6 +12,7 @@
     - [フォームリクエストの認可](#authorizing-form-requests)
     - [エラーメッセージのカスタマイズ](#customizing-the-error-messages)
     - [バリデーション属性のカスタマイズ](#customizing-the-validation-attributes)
+    - [バリデーション前の入力準備](#prepare-input-for-validation)
 - [バリデータの生成](#manually-creating-validators)
     - [自動リダイレクト](#automatic-redirection)
     - [名前付きエラーバッグ](#named-error-bags)
@@ -330,6 +331,25 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
         return [
             'email' => 'email address',
         ];
+    }
+
+<a name="prepare-input-for-validation"></a>
+### バリデーション前の入力準備
+
+バリデーションルールを適用する前に、リクエストのデータをサニタイズする必要がある場合は、`prepareForValidation`メソッドを使用します。
+
+    use Illuminate\Support\Str;
+
+    /**
+     * バリーデーションのためにデータを準備
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'slug' => Str::slug($this->slug),
+        ]);
     }
 
 <a name="manually-creating-validators"></a>

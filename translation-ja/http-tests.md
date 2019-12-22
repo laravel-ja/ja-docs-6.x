@@ -13,7 +13,7 @@
 <a name="introduction"></a>
 ## イントロダクション
 
-Laravelはアプリケーションに対するHTTPリクエストを作成し、出力を検査するためのとても記述的なAPIを用意しています。例として、以下のテストをご覧ください。
+Laravel provides a very fluent API for making HTTP requests to your application and examining the output. For example, take a look at the feature test defined below:
 
     <?php
 
@@ -267,7 +267,7 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 <a name="response-assertions"></a>
 ### レスポンスのアサート
 
-[PHPUnit](https://phpunit.de/)テスト用に、数多くの追加アサートメソッドをLaravelは提供しています。以下のアサートで、`json`、`get`、`post`、`put`、`delete`テストメソッドから返されたレスポンスへアクセスしてください。
+[PHPUnit](https://phpunit.de/)機能テスト用に、数多くの追加アサートメソッドをLaravelは提供しています。以下のアサートで、`json`、`get`、`post`、`put`、`delete`テストメソッドから返されたレスポンスへアクセスしてください。
 
 <style>
     .collection-method-list > p {
@@ -648,7 +648,7 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 <a name="authentication-assertions"></a>
 ### 認証のアサート
 
-Laravelは、[PHPUnit](https://phpunit.de/)テストのために認証関連の様々なアサーションも提供しています。
+Laravelは、[PHPUnit](https://phpunit.de/)機能テストのために認証関連の様々なアサーションも提供しています。
 
 メソッド           |                 説明
 ------------------------------------------ | --------------------------------------------

@@ -688,8 +688,11 @@ Supervisorの設定ファイルは、通常`/etc/supervisor/conf.d`ディレク�
     numprocs=8
     redirect_stderr=true
     stdout_logfile=/home/forge/app.com/worker.log
+    stopwaitsecs=3600
 
 この例の`numprocs`ディレクティブは、Supervisorに全部で８つのqueue:workプロセスを実行・監視し、落ちている時は自動的に再起動するように指示しています。`command`ディレクティブの`queue:work sqs`の部分を変更し、希望のキュー接続に合わせてください。
+
+> {note} 一番時間がかかるジョブが消費する秒数より大きな値を`stopwaitsecs`へ必ず指定してください。そうしないと、Supervisorは処理が終了する前に、そのジョブをキルしてしまうでしょう。
 
 #### Supervisorの起動
 
