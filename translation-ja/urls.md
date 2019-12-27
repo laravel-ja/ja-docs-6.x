@@ -98,7 +98,7 @@ Laravelでは名前付きルートに対し、簡単に「署名付きURL」を�
 
 #### 署名付きルートリクエストの検査
 
-送信されてきたリクエストが有効な著名を持っているかを検査するには、送信された`Request`に対して、`hasValidSignature`メソッドを呼び出します。
+送信されてきたリクエストが有効な署名を持っているかを検査するには、送信された`Request`に対して、`hasValidSignature`メソッドを呼び出します。
 
     use Illuminate\Http\Request;
 
@@ -123,7 +123,7 @@ Laravelでは名前付きルートに対し、簡単に「署名付きURL」を�
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
     ];
 
-このミドルウェアをカーネルへ登録できたら、ルートで指定できます。送信されたリクエストは有効な著名を持っていない場合、このミドルウェアは自動的に`403`エラーレスポンスを返します。
+このミドルウェアをカーネルへ登録できたら、ルートで指定できます。送信されたリクエストは有効な署名を持っていない場合、このミドルウェアは自動的に`403`エラーレスポンスを返します。
 
     Route::post('/unsubscribe/{user}', function (Request $request) {
         // ...

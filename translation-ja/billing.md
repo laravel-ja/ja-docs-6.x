@@ -712,7 +712,7 @@ CashierはWebhookを受け取ると、`Laravel\Cashier\Events\WebhookReceived`�
 <a name="verifying-webhook-signatures"></a>
 ### Webフック署名の確認
 
-Webフックを安全にするため、[StripeのWebフック著名](https://stripe.com/docs/webhooks/signatures)が利用できます。便利に利用できるように、Cashierは送信されてきたWebフックリクエストが有効なものか確認するミドルウェアをあらかじめ用意しています。
+Webフックを安全にするため、[StripeのWebフック署名](https://stripe.com/docs/webhooks/signatures)が利用できます。便利に利用できるように、Cashierは送信されてきたWebフックリクエストが有効なものか確認するミドルウェアをあらかじめ用意しています。
 
 Webhookの確認を有効にするには、`.env`ファイル中の`STRIPE_WEBHOOK_SECRET`環境変数を確実に設定してください。Stripeアカウントのダッシュボードから取得される、Webhookの`secret`を指定します。
 
