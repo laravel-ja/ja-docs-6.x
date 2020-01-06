@@ -552,6 +552,14 @@ DuskはJavaScriptダイアログを操作する、様々なメソッドを提供
     // テキストを最大１秒待つ
     $browser->waitForText('Hello World', 1);
 
+ページに表示されている指定したテキストが削除されるまで待ちたい場合は、`waitUntilMissingText`メソッドを使います。
+
+    // テキストが削除されるまで最大５秒間待つ
+    $browser->waitUntilMissingText('Hello World');
+
+    // テキストが削除されるまで最大１秒間待つ
+    $browser->waitUntilMissingText('Hello World', 1);
+
 #### リンクの待機
 
 ページに指定したリンクテキストが表示されるまで待つ場合は、`waitForLink`メソッドを使います。
