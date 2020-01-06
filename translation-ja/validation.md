@@ -805,12 +805,12 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 <a name="rule-exclude-if"></a>
 #### exclude_if:_他のフィールド_,_値_
 
-_他のフィールド_が_値_と等しい場合、`validate`と`validated`メソッドが返すリクエストデータから、バリデーション指定下のフィールドが除外されます。
+**他のフィールド**が**値**と等しい場合、`validate`と`validated`メソッドが返すリクエストデータから、バリデーション指定下のフィールドが除外されます。
 
 <a name="rule-exclude-unless"></a>
 #### exclude_unless:_他のフィールド_,_値_
 
-_他のフィールド_が_値_と等しくない場合、`validate`と`validated`メソッドが返すリクエストデータから、バリデーション指定下のフィールドが除外されます。
+**他のフィールド**が**値**と等しくない場合、`validate`と`validated`メソッドが返すリクエストデータから、バリデーション指定下のフィールドが除外されます。
 
 <a name="rule-exists"></a>
 #### exists:_テーブル_,_カラム_
