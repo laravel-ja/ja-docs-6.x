@@ -117,6 +117,13 @@ Laravelは入力されたデータに対するバリデーションの様々な�
         'body' => ['required'],
     ]);
 
+エラーメッセージを持っている[エラーバッグ](#named-error-bags)を指定する場合は、`validateWithBag`メソッドを使用します。
+
+    $request->validateWithBag('blog', [
+        'title' => ['required', 'unique:posts', 'max:255'],
+        'body' => ['required'],
+    ]);
+
 #### 最初のバリデーション失敗時に停止
 
 最初のバリデーションに失敗したら、残りのバリデーションルールの判定を停止したいことも、時々あります。このためには、`bail`ルールを使ってください。
@@ -589,6 +596,8 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 [別々](#rule-distinct)
 [メールアドレス](#rule-email)
 [文字列終了](#rule-ends-with)
+[条件一致時フィールド除外](#rule-exclude_if)
+[条件不一致時フィールド除外](#rule-exclude_unless)
 [存在（データベース）](#rule-exists)
 [ファイル](#rule-file)
 [充満](#rule-filled)
@@ -792,6 +801,16 @@ Laravelは`TrimStrings`と`ConvertEmptyStringsToNull`ミドルウェアをアプ
 #### ends_with:_foo_,_bar_,...
 
 フィールドの値が、指定された値で終わることをバリデートします。
+
+<a name="rule-exclude-if"></a>
+#### exclude_if:_他のフィールド_,_値_
+
+_他のフィールド_が_値_と等しい場合、`validate`と`validated`メソッドが返すリクエストデータから、バリデーション指定下のフィールドが除外されます。
+
+<a name="rule-exclude-unless"></a>
+#### exclude_unless:_他のフィールド_,_値_
+
+_他のフィールド_が_値_と等しくない場合、`validate`と`validated`メソッドが返すリクエストデータから、バリデーション指定下のフィールドが除外されます。
 
 <a name="rule-exists"></a>
 #### exists:_テーブル_,_カラム_

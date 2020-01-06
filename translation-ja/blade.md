@@ -18,7 +18,7 @@
     - [CSRFフィールド](#csrf-field)
     - [Methodフィールド](#method-field)
     - [バリデーションエラー](#validation-errors)
-- [サブビューの読み込み](#including-sub-views)
+- [サブビューの読み込み](#including-subviews)
     - [コレクションのレンダビュー](#rendering-views-for-collections)
 - [スタック](#stacks)
 - [サービス注入](#service-injection)
@@ -113,7 +113,7 @@ Bladeビューはグローバルな`view`ヘルパを使用し、ルートから
 
 そのコンポーネントへ利用する可能性があるビューの配列を指定し、存在する最初のビューをロードするようにLaravelへ指示するには、`componentFirst`ディレクティブを使用してください。
 
-    @componentFirst(['custom.alert', 'alert'])
+    @componentfirst(['custom.alert', 'alert'])
         <strong>Whoops!</strong> Something went wrong!
     @endcomponentfirst
 
@@ -508,7 +508,7 @@ HTMLフォームでは、`PUT`、`PATCH`、`DELETE`リクエストを作成で�
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 
-<a name="including-sub-views"></a>
+<a name="including-subviews"></a>
 ## サブビューの読み込み
 
 Bladeの`@include`ディレクディブを使えば、ビューの中から簡単に他のBladeビューを取り込めます。読み込み元のビューで使用可能な変数は、取り込み先のビューでも利用可能です。

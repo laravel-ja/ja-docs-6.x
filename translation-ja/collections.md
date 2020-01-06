@@ -7,7 +7,8 @@
 - [Higher Order Message](#higher-order-messages)
 - [レイジーコレクション](#lazy-collections)
     - [イントロダクション](#lazy-collection-introduction)
-    - [The Enumerable Contract](#the-enumerable-contract)
+    - [レイジーコレクションの生成](#creating-lazy-collections)
+    - [Enumerable契約](#the-enumerable-contract)
     - [レイジーコレクションメソッド](#lazy-collection-methods)
 
 <a name="introduction"></a>

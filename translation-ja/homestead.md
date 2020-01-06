@@ -59,6 +59,7 @@ HomesteadはWindowsやMac、Linuxシステム上で実行でき、NginxやPHP、
 <div id="software-list" markdown="1">
 - Ubuntu 18.04
 - Git
+- PHP 7.4
 - PHP 7.3
 - PHP 7.2
 - PHP 7.1
@@ -627,7 +628,7 @@ PHP CLIアプリケーションをデバッグするには、Vagrant Box内で�
 
 Webサーバへのリクエストを生成する機能テストのデバッグの場合、デバッグを開始するためにカスタムヘッダやクッキーを付与するようにテストを変更するよりは、自動的に起動するほうが簡単です。Xdebugを自動的に起動するように強制するには、Vagrant Boxの中で以下のように`/etc/php/7.x/fpm/conf.d/20-xdebug.ini`を変更してください。
 
-    ; Homestead.ymlで別のIPアドレスのサブセットを指定している場合は、このアドレスを合わせてください
+    ; Homestead.yamlで別のIPアドレスのサブセットを指定している場合は、このアドレスを合わせてください
     xdebug.remote_host = 192.168.10.1
     xdebug.remote_autostart = 1
 
@@ -727,7 +728,7 @@ Homesteadの更新を開始する前に、現在の仮想マシンを削除す�
 
 上記のコマンドにより、最新のHomesteadコードがGitHubリポジトリよりpullされ、最新のタグをフェッチし、タグ付けされた最新のリリースをチェックアウトします。安定リリースバージョンの最新版は、[GitHubリリースページ](https://github.com/laravel/homestead/releases)で見つけてください。
 
-プロジェクトの`composer.json`ファイルによりHomesteadをインストールしている場合は、`composer.json`ファイルに`"laravel/homestead": "^9"`が含まれていることを確認し、依存コンポーネントをアップデートしてください。
+プロジェクトの`composer.json`ファイルによりHomesteadをインストールしている場合は、`composer.json`ファイルに`"laravel/homestead": "^10"`が含まれていることを確認し、依存コンポーネントをアップデートしてください。
 
     composer update
 

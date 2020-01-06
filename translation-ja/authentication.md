@@ -409,7 +409,9 @@ PHP FastCGIを使用している場合、初期状態のままでHTTP基本認�
 <a name="invalidating-sessions-on-other-devices"></a>
 ### 他のデバイス上のセッションを無効化
 
-さらにLaravelは、現在のユーザーの現在のデバイス上のセッションを切らずに、他のデバイス上のセッションを無効化し、「ログアウト」させるメカニズムを提供しています。これを使用するには、`app/Http/Kernel.php`クラスの`web`ミドルウェアグループ中に、`Illuminate\Session\Middleware\AuthenticateSession`ミドルウェアが存在し、コメントを外すのを確実に行ってください。
+さらにLaravelは現在のユーザーの現在のデバイス上のセッションを無効化せずに、他のデバイス上のセッションを無効化し、「ログアウト」させるメカニズムを提供しています。通常この機能は、ユーザーがパスワードを変更した場合に現在のデバイスの認証を保持したまま、他のデバイスのセッションを切断したいときに便利でしょう。
+
+これを使用するには、`app/Http/Kernel.php`クラスの`web`ミドルウェアグループ中に、`Illuminate\Session\Middleware\AuthenticateSession`ミドルウェアが存在し、コメントを確実に外してください。
 
     'web' => [
         // ...

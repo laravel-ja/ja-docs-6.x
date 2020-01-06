@@ -2,6 +2,7 @@
 
 - [Introduction](#introduction)
     - [Customizing Request Headers](#customizing-request-headers)
+    - [Cookies](#cookies)
     - [Debugging Responses](#debugging-responses)
 - [Session / Authentication](#session-and-authentication)
 - [Testing JSON APIs](#testing-json-apis)
@@ -69,6 +70,26 @@ You may use the `withHeaders` method to customize the request's headers before i
     }
 
 > {tip} The CSRF middleware is automatically disabled when running tests.
+
+<a name="cookies"></a>
+### Cookies
+
+You may use the `withCookie` or `withCookies` methods to set cookie values before making a request. The `withCookie` method accepts a cookie name and value as its two arguments, while the `withCookies` method accepts an array of name / value pairs:
+
+    <?php
+
+    class ExampleTest extends TestCase
+    {
+        public function testCookies()
+        {
+            $response = $this->withCookie('color', 'blue')->get('/');
+
+            $response = $this->withCookies([
+                'color' => 'blue',
+                'name' => 'Taylor',
+            ])->get('/');
+        }
+    }
 
 <a name="debugging-responses"></a>
 ### Debugging Responses

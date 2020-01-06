@@ -183,16 +183,17 @@ Stripe.jsライブラリを使い、Stripe要素をフォームに付け加え�
         cardElement.mount('#card-element');
     </script>
 
-これで[Stripeの`handleCardSetup`メソッド](https://stripe.com/docs/stripe-js/reference#stripe-handle-card-setup)を使用してカードを検証し、Stripeから安全な「支払い方法識別子」を取得できます。
+これで[Stripeの`confirmCardSetup`メソッド](https://stripe.com/docs/js/setup_intents/confirm_card_setup)を使用してカードを検証し、Stripeから安全な「支払い方法識別子」を取得できます。
 
     const cardHolderName = document.getElementById('card-holder-name');
     const cardButton = document.getElementById('card-button');
     const clientSecret = cardButton.dataset.secret;
 
     cardButton.addEventListener('click', async (e) => {
-        const { setupIntent, error } = await stripe.handleCardSetup(
-            clientSecret, cardElement, {
-                payment_method_data: {
+        const { setupIntent, error } = await stripe.confirmCardSetup(
+            clientSecret, {
+                payment_method: {
+                    card: cardElement,
                     billing_details: { name: cardHolderName.value }
                 }
             }
@@ -207,7 +208,7 @@ Stripe.jsライブラリを使い、Stripe要素をフォームに付け加え�
 
 Stripeによりカードが検証されたら、顧客に付け加えた`setupIntent.payment_method`の結果をLaravelアプリケーションへ渡すことができます。支払い方法は[新しい支払い方法を追加](#adding-payment-methods)するのと、[デフォルトの支払い方法を使用](#updating-the-default-payment-method)する、どちらかが選べます。[新しい支払い方法を追加](#adding-payment-methods)の支払いメソッド識別子を即時に使用することもできます。
 
-> {tip} Setup Intentsと顧客支払いの詳細情報の収集に関するより詳しい情報は、[Stripeが提供している概要](https://stripe.com/docs/payments/cards/saving-cards#saving-card-without-payment)をご覧ください。
+> {tip} Setup Intentsと顧客支払いの詳細情報の収集に関するより詳しい情報は、[Stripeが提供している概要](https://stripe.com/docs/payments/save-and-reuse#php)をご覧ください。
 
 #### 一回のみの課金に対する支払い方法
 

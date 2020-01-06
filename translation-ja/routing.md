@@ -11,7 +11,7 @@
 - [ルートグループ](#route-groups)
     - [ミドルウェア](#route-group-middleware)
     - [名前区間](#route-group-namespaces)
-    - [サブドメインルーティング](#route-group-sub-domain-routing)
+    - [サブドメインルーティング](#route-group-subdomain-routing)
     - [ルートプレフィックス](#route-group-prefixes)
     - [ルート名プリフィックス](#route-group-name-prefixes)
 - [モデル結合ルート](#route-model-binding)
@@ -273,7 +273,7 @@ Laravelのルーティングコンポーネントは、`/`を除くすべての�
 
 `App\Http\Controllers`名前空間をコントローラルート登録時に毎回指定しなくても済むように、デフォルトで`RouteServiceProvider`が名前空間グループの中で`routes.php`ファイルを読み込み、指定していることを覚えておいてください。これにより、先頭の`App\Http\Controllers`名前空間を省略でき、続きの部分を指定するだけで済みます。
 
-<a name="route-group-sub-domain-routing"></a>
+<a name="route-group-subdomain-routing"></a>
 ### サブドメインルーティング
 
 ルートグループはワイルドカードサブドメインをルート定義するためにも使えます。サブドメインの部分を取り出しルートやコントローラで使用するために、ルートURIにおけるルートパラメーターのように指定できます。サブドメインはグループを定義する前に、`domain`メソッドを呼び出し指定します。

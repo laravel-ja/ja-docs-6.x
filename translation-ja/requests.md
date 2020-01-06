@@ -121,7 +121,7 @@
 [PSR-7規約](https://www.php-fig.org/psr/psr-7/)は、リクエストとレスポンスを含めたHTTPメッセージのインターフェイスを規定しています。PSR-7リクエストのインスタンスを受け取りたければ、ライブラリーをいくつかインストールする必要があります。LaravelはLaravelリクエストとレスポンスをPSR-7互換の実装に変換するために、**Symfony HTTPメッセージブリッジコンポーネント**を使用しています。
 
     composer require symfony/psr-http-message-bridge
-    composer require zendframework/zend-diactoros
+    composer require nyholm/psr7
 
 これらのライブラリをインストールし、ルートクロージャかコントローラメソッドで、リクエストインターフェイスをタイプヒントで指定すれば、PSR-7リクエストを取得できます。
 

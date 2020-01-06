@@ -117,6 +117,13 @@ Alternatively, validation rules may be specified as arrays of rules instead of a
         'body' => ['required'],
     ]);
 
+If you would like to specify the [error bag](#named-error-bags) in which the error messages should be placed, you may use the `validateWithBag` method:
+
+    $request->validateWithBag('blog', [
+        'title' => ['required', 'unique:posts', 'max:255'],
+        'body' => ['required'],
+    ]);
+
 #### Stopping On First Validation Failure
 
 Sometimes you may wish to stop running validation rules on an attribute after the first validation failure. To do so, assign the `bail` rule to the attribute:
@@ -589,6 +596,8 @@ Below is a list of all available validation rules and their function:
 [Distinct](#rule-distinct)
 [E-Mail](#rule-email)
 [Ends With](#rule-ends-with)
+[Exclude If](#rule-exclude_if)
+[Exclude Unless](#rule-exclude_unless)
 [Exists (Database)](#rule-exists)
 [File](#rule-file)
 [Filled](#rule-filled)
@@ -792,6 +801,16 @@ The `filter` validator, which uses PHP's `filter_var` function under the hood, s
 #### ends_with:_foo_,_bar_,...
 
 The field under validation must end with one of the given values.
+
+<a name="rule-exclude-if"></a>
+#### exclude_if:_anotherfield_,_value_
+
+The field under validation will be excluded from the request data returned by the `validate` and `validated` methods if the _anotherfield_ field is equal to _value_.
+
+<a name="rule-exclude-unless"></a>
+#### exclude_unless:_anotherfield_,_value_
+
+The field under validation will be excluded from the request data returned by the `validate` and `validated` methods unless _anotherfield_'s field is equal to _value_.
 
 <a name="rule-exists"></a>
 #### exists:_table_,_column_

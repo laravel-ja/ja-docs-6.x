@@ -2,6 +2,7 @@
 
 - [イントロダクション](#introduction)
     - [リクエストヘッダのカスタマイズ](#customizing-request-headers)
+    - [クッキー](#cookies)
     - [レスポンスのデバッグ](#debugging-responses)
 - [セッション／認証](#session-and-authentication)
 - [JSON APIのテスト](#testing-json-apis)
@@ -69,6 +70,26 @@
     }
 
 > {tip} テスト実行時、CSRFミドルウェアは自動的に無効になります。
+
+<a name="cookies"></a>
+### クッキー
+
+リクエスト作成時に、`withCookie`メソッドや`withCookies`メソッドを使用し、クッキーの値を設定できます。`withCookie`メソッドは引数を２つ取り、クッキーの名前と値です。もう一つの`withCookies`メソッドは、名前／値ペアの配列を引数に取ります。
+
+    <?php
+
+    class ExampleTest extends TestCase
+    {
+        public function testCookies()
+        {
+            $response = $this->withCookie('color', 'blue')->get('/');
+
+            $response = $this->withCookies([
+                'color' => 'blue',
+                'name' => 'Taylor',
+            ])->get('/');
+        }
+    }
 
 <a name="debugging-responses"></a>
 ### レスポンスのデバッグ

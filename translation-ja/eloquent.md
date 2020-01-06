@@ -354,6 +354,19 @@ Eloquentの`all`メソッドはモデルテーブルの全レコードを結果�
 
     $flights = App\Flight::find([1, 2, 3]);
 
+最初の結果が見つからない場合に、他のクエリやアクションの結果を取得したい場合もあると思います。`firstOr`メソッドは見つかった最初の結果を返すか、クエリ結果が見つからなかった場合にはコールバックを実行します。コールバックの結果は`firstOr`メソッドの結果になります。
+
+    $model = App\Flight::where('legs', '>', 100)->firstOr(function () {
+            // ...
+    });
+
+`firstOr`メソッドは、取得したいカラムの配列を引数に指定できます。
+
+    $model = App\Flight::where('legs', '>', 100)
+                ->firstOr(['id', 'legs'], function () {
+                    // ...
+                });
+
 #### Not Found例外
 
 モデルが見つからない時に、例外を投げたい場合もあります。これは特にルートやコントローラの中で便利です。`findOrFail`メソッドとクエリの最初の結果を取得する`firstOrFail`メソッドは、該当するレコードが見つからない場合に`Illuminate\Database\Eloquent\ModelNotFoundException`例外を投げます。

@@ -1016,7 +1016,7 @@ NULL値を指定すると、空の配列が返ってきます。
 <a name="method-str-plural"></a>
 #### `Str::plural()` {#collection-method}
 
-`Str::plural`メソッドは単数形を複数形へ変換します。このメソッドは現在英語のみサポートしています。
+`Str::plural`メソッドは単語一文字の文字列の単数形を複数形へ変換します。このメソッドは現在英語のみサポートしています。
 
     use Illuminate\Support\Str;
 

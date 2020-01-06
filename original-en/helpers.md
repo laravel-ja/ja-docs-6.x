@@ -537,7 +537,7 @@ You may also sort the array by the results of the given Closure:
 <a name="method-array-sort-recursive"></a>
 #### `Arr::sortRecursive()` {#collection-method}
 
-The `Arr::sortRecursive` method recursively sorts an array using the `sort` function for numeric sub=arrays and `ksort` for associative sub-arrays:
+The `Arr::sortRecursive` method recursively sorts an array using the `sort` function for numeric sub=arrays and `ksort` for associative subarrays:
 
     use Illuminate\Support\Arr;
 
@@ -1016,7 +1016,7 @@ The `Str::orderedUuid` method generates a "timestamp first" UUID that may be eff
 <a name="method-str-plural"></a>
 #### `Str::plural()` {#collection-method}
 
-The `Str::plural` method converts a string to its plural form. This function currently only supports the English language:
+The `Str::plural` method converts a single word string to its plural form. This function currently only supports the English language:
 
     use Illuminate\Support\Str;
 
