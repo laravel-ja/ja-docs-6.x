@@ -12,6 +12,9 @@
     - [Managing Clients](#managing-clients)
     - [Requesting Tokens](#requesting-tokens)
     - [Refreshing Tokens](#refreshing-tokens)
+- [Authorization Code Grant with PKCE](#code-grant-pkce)
+    - [Creating The Client](#creating-a-auth-pkce-grant-client)
+    - [Requesting Tokens](#requesting-auth-pkce-grant-tokens)
 - [Password Grant Tokens](#password-grant-tokens)
     - [Creating A Password Grant Client](#creating-a-password-grant-client)
     - [Requesting Tokens](#requesting-password-grant-tokens)
@@ -231,7 +234,7 @@ By default, Passport issues long-lived access tokens that expire after one year.
 
 You are free to extend the models used internally by Passport:
 
-    use App\Models\Passport\Client as PassportClient;
+    use Laravel\Passport\Client as PassportClient;
 
     class Client extends PassportClient
     {
@@ -453,6 +456,88 @@ If your application issues short-lived access tokens, users will need to refresh
     return json_decode((string) $response->getBody(), true);
 
 This `/oauth/token` route will return a JSON response containing `access_token`, `refresh_token`, and `expires_in` attributes. The `expires_in` attribute contains the number of seconds until the access token expires.
+
+<a name="code-grant-pkce"></a>
+## Authorization Code Grant with PKCE
+
+The Authorization Code grant with "Proof Key for Code Exchange" (PKCE) is a secure way to authenticate single page applications or native applications to access your API. This grant should be used when you can't guarantee that the client secret will be stored confidentiality or in order to mitigate the threat of having the authorization code intercepted by an attacker. A combination of a "code verifier" and a "code challenge" replaces the client secret when exchanging the authorization code for an access token.
+
+<a name="creating-a-auth-pkce-grant-client"></a>
+### Creating The Client
+
+Before your application can issue tokens via the authorization code grant with PKCE, you will need to create a PKCE-enabled client. You may do this using the `passport:client` command with the `--public` option:
+
+    php artisan passport:client --public
+
+<a name="requesting-auth-pkce-grant-tokens"></a>
+### Requesting Tokens
+
+#### Code Verifier & Code Challenge
+
+As this authorization grant does not provide a client secret, developers will need to generate a combination of a code verifier and a code challenge in order to request a token.
+
+The code verifier should be a random string of between 43 and 128 characters containing letters, numbers and  `"-"`, `"."`, `"_"`, `"~"`, as defined in the [RFC 7636 specification](https://tools.ietf.org/html/rfc7636).
+
+The code challenge should be a Base64 encoded string with URL and filename-safe characters. The trailing `'='` characters should be removed and no line breaks, whitespace, or other additional characters should be present.
+
+    $encoded = base64_encode(hash('sha256', $code_verifier, true));
+
+    $codeChallenge = strtr(rtrim($encoded, '='), '+/', '-_');
+
+#### Redirecting For Authorization
+
+Once a client has been created, you may use the client ID and the generated code verifier and code challenge to request an authorization code and access token from your application. First, the consuming application should make a redirect request to your application's `/oauth/authorize` route:
+
+    Route::get('/redirect', function (Request $request) {
+        $request->session()->put('state', $state = Str::random(40));
+
+        $request->session()->put('code_verifier', $code_verifier = Str::random(128));
+
+        $codeChallenge = strtr(rtrim(
+            base64_encode(hash('sha256', $code_verifier, true))
+        , '='), '+/', '-_');
+
+        $query = http_build_query([
+            'client_id' => 'client-id',
+            'redirect_uri' => 'http://example.com/callback',
+            'response_type' => 'code',
+            'scope' => '',
+            'state' => $state,
+            'code_challenge' => $codeChallenge,
+            'code_challenge_method' => 'S256',
+        ]);
+
+        return redirect('http://your-app.com/oauth/authorize?'.$query);
+    });
+
+#### Converting Authorization Codes To Access Tokens
+
+If the user approves the authorization request, they will be redirected back to the consuming application. The consumer should verify the `state` parameter against the value that was stored prior to the redirect, as in the standard Authorization Code Grant.
+
+If the state parameter matches, the consumer should issue a `POST` request to your application to request an access token. The request should include the authorization code that was issued by your application when the user approved the authorization request along with the originally generated code verifier:
+
+    Route::get('/callback', function (Request $request) {
+        $state = $request->session()->pull('state');
+
+        $codeVerifier = $request->session()->pull('code_verifier');
+
+        throw_unless(
+            strlen($state) > 0 && $state === $request->state,
+            InvalidArgumentException::class
+        );
+
+        $response = (new GuzzleHttp\Client)->post('http://your-app.com/oauth/token', [
+            'form_params' => [
+                'grant_type' => 'authorization_code',
+                'client_id' => 'client-id',
+                'redirect_uri' => 'http://example.com/callback',
+                'code_verifier' => $codeVerifier,
+                'code' => $request->code,
+            ],
+        ]);
+
+        return json_decode((string) $response->getBody(), true);
+    });
 
 <a name="password-grant-tokens"></a>
 ## Password Grant Tokens

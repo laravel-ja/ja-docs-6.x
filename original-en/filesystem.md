@@ -334,6 +334,16 @@ By default, this method will use your default disk. If you would like to specify
         'avatars/'.$request->user()->id, 's3'
     );
 
+#### Other File Information
+
+If you would like to get original name of the uploaded file, you may do so using the `getClientOriginalName` method:
+
+    $name = $request->file('avatar')->getClientOriginalName();
+
+The `extension` method may be used to get the file extension of the uploaded file:
+
+    $extension = $request->file('avatar')->extension();
+
 <a name="file-visibility"></a>
 ### File Visibility
 

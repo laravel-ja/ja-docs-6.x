@@ -334,6 +334,16 @@ Webアプリケーションで、ファイルを保存する一般的なケー�
         'avatars/'.$request->user()->id, 's3'
     );
 
+#### 他のファイル情報
+
+アップロードしたファイルの元の名前を知りたい場合は、`getClientOriginalName`メソッドを使います。
+
+    $name = $request->file('avatar')->getClientOriginalName();
+
+アップロードしたファイルの拡張子を知りたい場合は、`extension`メソッドを使います。
+
+    $extension = $request->file('avatar')->extension();
+
 <a name="file-visibility"></a>
 ### ファイル視認性
 

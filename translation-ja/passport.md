@@ -12,6 +12,9 @@
     - [クライアント管理](#managing-clients)
     - [トークンのリクエスト](#requesting-tokens)
     - [トークンのリフレッシュ](#refreshing-tokens)
+- [PKCEを使った認可コードグラント](#code-grant-pkce)
+    - [クライアント生成](#creating-a-auth-pkce-grant-client)
+    - [トークンのリクエスト](#requesting-auth-pkce-grant-tokens)
 - [パスワードグラントのトークン](#password-grant-tokens)
     - [パスワードグラントクライアントの作成](#creating-a-password-grant-client)
     - [トークンのリクエスト](#requesting-password-grant-tokens)
@@ -38,9 +41,9 @@
 <a name="introduction"></a>
 ## イントロダクション
 
-Laravelでは古典的なログインフォームによる認証は、簡単に実行できるようになっています。では、APIに関してはどうでしょうか？　通常APIでは、ユーザーの認証にトークンを使用し、リクエスト間のセッション状態は保持されません。Laravelアプリケーションのために、完全なOAuth2サーバの実装を提供するLaravel Passportを使えば、短時間で簡単にAPI認証ができます。Passportは、Andy MillingtonとSimon Hampによりメンテナンスされている、[League OAuth2サーバ](https://github.com/thephpleague/oauth2-server)上に構築しています。
+Laravelでは古典的なログインフォームによる認証は、簡単に実行できるようになっています。では、APIに関してはどうでしょうか？通常APIでは、ユーザーの認証にトークンを使用し、リクエスト間のセッション状態は保持されません。Laravelアプリケーションのために、完全なOAuth2サーバの実装を提供するLaravel Passportを使えば、短時間で簡単にAPI認証ができます。Passportは、Andy MillingtonとSimon Hampによりメンテナンスされている、[League OAuth2サーバ](https://github.com/thephpleague/oauth2-server)上に構築しています。
 
-> {note} このドキュメントは皆さんが、OAuth2に慣れていることを前提にしています。OAuth2について知らなければ、この先を続けて読む前に、一般的な[用語](https://oauth2.thephpleague.com/terminology/)とOAuth2の機能について予習してください。
+> {note} このドキュメントは、皆さんがOAuth2に慣れていることを前提にしています。OAuth2について知らなければ、この先を続けて読む前に、一般的な[用語](https://oauth2.thephpleague.com/terminology/)とOAuth2の機能について予習してください。
 
 <a name="upgrading"></a>
 ## Passportのアップグレード
@@ -231,7 +234,7 @@ Passportはデフォルトで、一年間有効な長期間持続するアクセ
 
 Passportが内部で使用するモデルは自由に拡張できます。
 
-    use App\Models\Passport\Client as PassportClient;
+    use Laravel\Passport\Client as PassportClient;
 
     class Client extends PassportClient
     {
@@ -453,6 +456,88 @@ JSON APIは`web`と`auth`ミドルウェアにより保護されています。�
     return json_decode((string) $response->getBody(), true);
 
 この`/oauth/token`ルートは、`access_token`、`refresh_token`、`expires_in`属性を含むJSONレスポンスを返します。`expires_in`属性は、アクセストークンが無効になるまでの秒数を含んでいます。
+
+<a name="code-grant-pkce"></a>
+## PKCEを使った認可コードグラント
+
+"Proof Key for Code Exchange" (PKCE)を使用する認可コードグラントは、シングルページアプリケーションやネイティブアプリケーションが、APIへアクセスするための安全な認証方法です。このグラントはクライアントの秘密コードが確実に保存できないか、もしくは認可コード横取り攻撃の危険を軽減する必要がある場合に、必ず使用すべきです。アクセストークンのために認可コードを交換するときに、クライアントの秘密コードを「コードベリファイヤ(code verifier)」と「コードチャレンジ(code challenge)」のコンピネーションに置き換えます。
+
+<a name="creating-a-auth-pkce-grant-client"></a>
+### クライアント生成
+
+PKCEを使用した認可コードグラントを通じてトークンを発行できるようにする前に、PKCE可能なクライアントを生成する必要があります。`passport:client`コマンドを`--public`オプション付きで実行してください。
+
+    php artisan passport:client --public
+
+<a name="requesting-auth-pkce-grant-tokens"></a>
+### トークンのリクエスト
+
+#### コードベリファイヤとコードチャレンジ
+
+この認可グラントではクライアント秘密コードが提供されないため、開発者はトークンを要求するためにコードベリファイヤとコードチャレンジのコンビネーションを生成する必要があります。
+
+コードベリファイヤは[RFC 7636仕様](https://tools.ietf.org/html/rfc7636)で定義されている通り、４３から１２８文字の文字、数字、`"-"`、`"."`、`"_"`、`"~"`を含んだランダムな文字列の必要があります。
+
+コードチャレンジはURL／ファイルネームセーフな文字をBase64エンコードしたものである必要があります。文字列終端の`'='`文字を削除し、ラインブレイクやホワイトスペースを含まず、その他はそのままにします。
+
+    $encoded = base64_encode(hash('sha256', $code_verifier, true));
+
+    $codeChallenge = strtr(rtrim($encoded, '='), '+/', '-_');
+
+#### 認可のリダイレクト
+
+クライアントが生成できたら、アプリケーションから認可コードとアクセストークンをリクエストするために、クライアントIDと生成したコードベリファイヤ、コードチャレンジを使用します。最初に、認可要求側のアプリケーションは、あなたのアプリケーションの`/oauth/authorize`ルートへのリダイレクトリクエストを生成する必要があります。
+
+    Route::get('/redirect', function (Request $request) {
+        $request->session()->put('state', $state = Str::random(40));
+
+        $request->session()->put('code_verifier', $code_verifier = Str::random(128));
+
+        $codeChallenge = strtr(rtrim(
+            base64_encode(hash('sha256', $code_verifier, true))
+        , '='), '+/', '-_');
+
+        $query = http_build_query([
+            'client_id' => 'client-id',
+            'redirect_uri' => 'http://example.com/callback',
+            'response_type' => 'code',
+            'scope' => '',
+            'state' => $state,
+            'code_challenge' => $codeChallenge,
+            'code_challenge_method' => 'S256',
+        ]);
+
+        return redirect('http://your-app.com/oauth/authorize?'.$query);
+    });
+
+#### 認可コードをアクセストークンへ変換
+
+ユーザーが認可リクエストを承認すると、認可要求側のアプリケーションへリダイレクで戻されます。認可要求側では認可コードグラントの規約に従い、リダイレクトの前に保存しておいた値と、`state`パラメータを検証する必要があります。
+
+stateパラメータが一致したら、要求側はアクセストークンをリクエストするために、あなたのアプリケーションへ`POST`リクエストを発行する必要があります。そのリクエストは最初に生成したコードベリファイヤと同時に、ユーザーが認可リクエストを承認したときにあなたのアプリケーションが発行した認可コードを持っている必要があります。
+
+    Route::get('/callback', function (Request $request) {
+        $state = $request->session()->pull('state');
+
+        $codeVerifier = $request->session()->pull('code_verifier');
+
+        throw_unless(
+            strlen($state) > 0 && $state === $request->state,
+            InvalidArgumentException::class
+        );
+
+        $response = (new GuzzleHttp\Client)->post('http://your-app.com/oauth/token', [
+            'form_params' => [
+                'grant_type' => 'authorization_code',
+                'client_id' => 'client-id',
+                'redirect_uri' => 'http://example.com/callback',
+                'code_verifier' => $codeVerifier,
+                'code' => $request->code,
+            ],
+        ]);
+
+        return json_decode((string) $response->getBody(), true);
+    });
 
 <a name="password-grant-tokens"></a>
 ## パスワードグラントのトークン
