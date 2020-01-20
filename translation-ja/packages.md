@@ -7,6 +7,7 @@
 - [リソース](#resources)
     - [設定](#configuration)
     - [マイグレーション](#migrations)
+    - [ファクトリ](#factories)
     - [ルート](#routes)
     - [翻訳](#translations)
     - [ビュー](#views)
@@ -150,6 +151,25 @@ Laravelアプリケーションの`config/app.php`設定ファイルには、Lar
     }
 
 パッケージのマイグレーションが登録されると、`php artisan migrate`コマンド実行時に、自動的にパッケージのマイグレーションも行われます。アプリケーションの`database/migrations`ディレクトリへ公開する必要はありません。
+
+<a name="factories"></a>
+### ファクトリ
+
+パッケージに[データベースファクトリ](/docs/{{version}}/database-testing#writing-factories)を含める場合は、Laravelにどのようにロードするかを教えるために、`loadFactoriesFrom`メソッドを使用してください。`loadFactoriesFrom`メソッドの唯一の引数は、パッケージのファクトリへのパスです。
+
+    /**
+     * 全アプリケーションサービスの初期起動
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->loadFactoriesFrom(__DIR__.'/path/to/factories');
+    }
+
+パッケージのファクトリを登録したら、アプリケーションで使用できます。
+
+    factory(Package\Namespace\Model::class)->create();
 
 <a name="translations"></a>
 ### 言語ファイル

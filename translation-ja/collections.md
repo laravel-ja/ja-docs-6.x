@@ -371,6 +371,8 @@
 
 このメソッドは、[`contains`](#method-contains)メソッドと使用方法は同じです。しかし、「厳密」な値の比較を行います。
 
+> {tip} [Eloquentコレクション](/docs/{{version}}/eloquent-collections#method-contains)の使用時は、このメソッドの振る舞いは変わります。
+
 <a name="method-count"></a>
 #### `count()` {#collection-method}
 
@@ -478,6 +480,8 @@
     $diff->all();
 
     // [1, 3, 5]
+
+> {tip} [Eloquentコレクション](/docs/{{version}}/eloquent-collections#method-contains)の使用時は、このメソッドの振る舞いは変わります。
 
 <a name="method-diffassoc"></a>
 #### `diffAssoc()` {#collection-method}
@@ -642,6 +646,8 @@
     // ['product_id' => 1]
 
 `except`の正反対の機能は、[only](#method-only)メソッドです。
+
+> {tip} [Eloquentコレクション](/docs/{{version}}/eloquent-collections#method-contains)の使用時は、このメソッドの振る舞いは変わります。
 
 <a name="method-filter"></a>
 #### `filter()` {#collection-method}
@@ -976,6 +982,8 @@
     $intersect->all();
 
     // [0 => 'Desk', 2 => 'Chair']
+
+> {tip} [Eloquentコレクション](/docs/{{version}}/eloquent-collections#method-contains)の使用時は、このメソッドの振る舞いは変わります。
 
 <a name="method-intersectbykeys"></a>
 #### `intersectByKeys()` {#collection-method}
@@ -1350,6 +1358,8 @@ staticの`make`メソッドは、新しいコレクションインスタンス�
     // ['product_id' => 1, 'name' => 'Desk']
 
 `only`の正反対の機能は、 [except](#method-except)メソッドです。
+
+> {tip} [Eloquentコレクション](/docs/{{version}}/eloquent-collections#method-contains)の使用時は、このメソッドの振る舞いは変わります。
 
 <a name="method-pad"></a>
 #### `pad()` {#collection-method}
@@ -2085,6 +2095,8 @@ sliceメソッドはデフォルトでキー値を保持したまま返します
     */
 
 `unique`メソッドは、アイテムの判定に「緩い」比較を使用します。つまり、同じ値の文字列と整数値は等しいと判定します。「厳密」な比較でフィルタリングしたい場合は、[`uniqueStrict`](#method-uniquestrict)メソッドを使用してください。
+
+> {tip} [Eloquentコレクション](/docs/{{version}}/eloquent-collections#method-contains)の使用時は、このメソッドの振る舞いは変わります。
 
 <a name="method-uniquestrict"></a>
 #### `uniqueStrict()` {#collection-method}

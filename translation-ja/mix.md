@@ -317,6 +317,16 @@ Webpack設定をすべてカスタマイズしたい場合は、`node_modules/la
         mix.version();
     }
 
+#### MixのベースURLのカスタマイズ
+
+アプリケーションから独立して、MixがコンパイルしたアセットをCDNへデプロイしている場合は、`mix`関数が生成するベースURLを変更する必要があります。そのためには、`config/app.php`設定ファイルへ`mix_url`設定オプションを追加してください。
+
+    'mix_url' => env('MIX_ASSET_URL', null)
+
+MixのURLを設定後、`mix`関数はアセットへのURLを生成する場合に、設定したURLを使用します。
+
+    https://cdn.example.com/js/app.js?id=1964becbdd96414518cd
+
 <a name="browsersync-reloading"></a>
 ## Browsersyncリロード
 

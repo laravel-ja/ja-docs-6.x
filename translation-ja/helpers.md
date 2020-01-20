@@ -88,6 +88,7 @@ Laravelは様々な、グローバル「ヘルパ」PHP関数を用意してい�
 [Str::endsWith](#method-ends-with)
 [Str::finish](#method-str-finish)
 [Str::is](#method-str-is)
+[Str::isUuid](#method-str-is-uuid)
 [Str::kebab](#method-kebab-case)
 [Str::limit](#method-str-limit)
 [Str::orderedUuid](#method-str-ordered-uuid)
@@ -971,6 +972,21 @@ NULL値を指定すると、空の配列が返ってきます。
     // true
 
     $matches = Str::is('baz*', 'foobar');
+
+    // false
+
+<a name="method-str-is-uuid"></a>
+#### `Str::isUuid()` {#collection-method}
+
+`Str::isUuid`メソッドは、指定した文字列が有効なUUIDであることを判定します。
+
+    use Illuminate\Support\Str;
+
+    $isUuid = Str::isUuid('a0a2a2d2-0b87-4a18-83f2-2529882be2de');
+
+    // true
+
+    $isUuid = Str::isUuid('laravel');
 
     // false
 

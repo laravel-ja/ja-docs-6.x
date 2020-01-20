@@ -304,6 +304,8 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
 
     namespace Tests\Feature;
 
+    use App\Jobs\AnotherJob;
+    use App\Jobs\FinalJob;
     use App\Jobs\ShipOrder;
     use Illuminate\Foundation\Testing\RefreshDatabase;
     use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -316,7 +318,7 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
         {
             Queue::fake();
 
-            // Assert that no jobs were pushed...
+            // ジョブが投入されていないことをアサート
             Queue::assertNothingPushed();
 
             // 注文の実行コード…
@@ -334,10 +336,16 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
             // ジョブが投入されなかったことをアサート
             Queue::assertNotPushed(AnotherJob::class);
 
-            // 指定のチェーンにより、ジョブが投入されたことをアサート
+            // ジョブが指定したジョブチェーンで投入され、クラスが一致していることをアサート
             Queue::assertPushedWithChain(ShipOrder::class, [
                 AnotherJob::class,
                 FinalJob::class
+            ]);
+
+            // ジョブが指定したジョブチェーンで投入され、クラスとプロパティ両方が一致していることをアサート
+            Queue::assertPushedWithChain(ShipOrder::class, [
+                new AnotherJob('foo'),
+                new FinalJob('bar'),
             ]);
         }
     }
