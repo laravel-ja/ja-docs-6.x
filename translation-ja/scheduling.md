@@ -176,7 +176,7 @@ Laravelのコマンドスケジューラは、Laravel自身の中でコマンド
         return true;
     });
 
-`skip`メソッドは`when`をひっくり返したものです。`skip`メソッドへ渡したクロージャが`true`を返した時、スケジュールタスクは実行されます。
+`skip`メソッドは`when`をひっくり返したものです。`skip`メソッドへ渡したクロージャが`true`を返した時、スケジュールタスクは実行されません。
 
     $schedule->command('emails:send')->daily()->skip(function () {
         return true;
