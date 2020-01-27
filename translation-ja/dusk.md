@@ -1342,7 +1342,7 @@ Duskをインストールすると、ベース`Page`クラスが`tests/Browser/P
             $browser->click('@date-field')
                     ->within('@year-list', function ($browser) use ($year) {
                         $browser->click($year);
-                    });
+                    })
                     ->within('@month-list', function ($browser) use ($month) {
                         $browser->click($month);
                     })

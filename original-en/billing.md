@@ -42,6 +42,7 @@
 - [Strong Customer Authentication (SCA)](#strong-customer-authentication)
     - [Payments Requiring Additional Confirmation](#payments-requiring-additional-confirmation)
     - [Off-session Payment Notifications](#off-session-payment-notifications)
+- [Stripe SDK](#stripe-sdk)
 
 <a name="introduction"></a>
 ## Introduction
@@ -384,7 +385,7 @@ The `subscribedToPlan` method may be used to determine if the user is subscribed
     if ($user->subscribedToPlan('monthly', 'default')) {
         //
     }
-    
+
 By passing an array to the `subscribedToPlan` method, you may determine if the user's `default` subscription is actively subscribed to the `monthly` or the `yearly` plan:
 
     if ($user->subscribedToPlan(['monthly', 'yearly'], 'default')) {
@@ -855,3 +856,12 @@ Since SCA regulations require customers to occasionally verify their payment det
 To ensure that off-session payment confirmation notifications are delivered, verify that [Stripe webhooks are configured](#handling-stripe-webhooks) for your application and the `invoice.payment_action_required` webhook is enabled in your Stripe dashboard. In addition, your `Billable` model should also use Laravel's `Illuminate\Notifications\Notifiable` trait.
 
 > {note} Notifications will be sent even when customers are manually making a payment that requires additional confirmation. Unfortunately, there is no way for Stripe to know that the payment was done manually or "off-session". But, a customer will simply see a "Payment Successful" message if they visit the payment page after already confirming their payment. The customer will not be allowed to accidentally confirm the same payment twice and incur an accidental second charge.
+
+<a name="stripe-sdk"></a>
+## Stripe SDK
+
+Many of Cashier's objects are wrappers around Stripe SDK objects. If you would like to interact with the Stripe objects directly, you may conveniently retrieve them using the `asStripe` method:
+
+    $stripeSubscription = $subscription->asStripeSubscription();
+
+    $stripeSubscription->update(['application_fee_percent' => 5]);

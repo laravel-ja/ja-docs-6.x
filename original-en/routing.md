@@ -439,6 +439,24 @@ You may also combine this functionality with dynamic rate limits. For example, i
         });
     });
 
+#### Rate Limit Segments
+
+Typically, you will probably specify one rate limit for your entire API. However, your application may require different rate limits for different segments of your API. If this is the case, you will need to pass a segment name as the third argument to the `throttle` middleware:
+
+    Route::middleware('auth:api')->group(function () {
+        Route::middleware('throttle:60,1,default')->group(function () {
+            Route::get('/servers', function () {
+                //
+            });
+        });
+
+        Route::middleware('throttle:60,1,deletes')->group(function () {
+            Route::delete('/servers/{id}', function () {
+                //
+            });
+        });
+    });
+
 <a name="form-method-spoofing"></a>
 ## Form Method Spoofing
 

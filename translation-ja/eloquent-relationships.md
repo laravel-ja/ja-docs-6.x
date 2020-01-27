@@ -225,7 +225,25 @@ Eloquentは、`Comment`モデルに対する外部キーを自動的に決める
 <a name="many-to-many"></a>
 ### 多対多
 
-多対多の関係は`hasOne`と`hasMany`リレーションよりも多少複雑な関係です。このような関係として、ユーザー(user)が多くの役目(roles)を持ち、役目(role)も大勢のユーザー(users)に共有されるという例が挙げられます。たとえば多くのユーザーは"管理者"の役目を持っています。`users`、`roles`、`role_user`の３テーブルがこの関係には必要です。`role_user`テーブルは関係するモデル名をアルファベット順に並べたもので、`user_id`と`role_id`を持つ必要があります。
+多対多の関係は`hasOne`と`hasMany`リレーションよりも多少複雑な関係です。このような関係として、ユーザー(user)が多くの役目(roles)を持ち、役目(role)も大勢のユーザー(users)に共有されるという例が挙げられます。たとえば多くのユーザーは"管理者"の役目を持っています。
+
+#### テーブル構造
+
+この関係を定義するには、`users`、`roles`、`role_user`の３テーブルが必要です。`role_user`テーブルは関係するモデル名をアルファベット順に並べたもので、`user_id`と`role_id`を持つ必要があります。
+
+    users
+        id - integer
+        name - string
+
+    roles
+        id - integer
+        name - string
+
+    role_user
+        user_id - integer
+        role_id - integer
+
+#### モデル構造
 
 多対多リレーションは`belongsToMany`メソッド呼び出しを記述することで定義します。例として`User`モデルに`roles`メソッドを定義してみましょう。
 
@@ -928,7 +946,7 @@ Eloquentリレーションは全てメソッドとして定義されているた
     use Illuminate\Database\Eloquent\Builder;
 
     $posts = App\Post::whereDoesntHave('comments.author', function (Builder $query) {
-        $query->where('banned', 1);
+        $query->where('banned', 0);
     })->get();
 
 <a name="querying-polymorphic-relationships"></a>

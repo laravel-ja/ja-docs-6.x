@@ -349,7 +349,7 @@ In addition to retrieving all of the records for a given table, you may also ret
 
     // Retrieve the first model matching the query constraints...
     $flight = App\Flight::where('active', 1)->first();
-    
+
     // Shorthand for retrieving the first model matching the query constraints...
     $flight = App\Flight::firstWhere('active', 1);
 
@@ -453,6 +453,48 @@ Updates can also be performed against any number of models that match a given qu
 The `update` method expects an array of column and value pairs representing the columns that should be updated.
 
 > {note} When issuing a mass update via Eloquent, the `saving`, `saved`, `updating`, and `updated` model events will not be fired for the updated models. This is because the models are never actually retrieved when issuing a mass update.
+
+#### Examining Attribute Changes
+
+Eloquent provides the `isDirty`, `isClean`, and `wasChanged` methods to examine the internal state of your model and determine how it's attributes have changed from when they were originally loaded.
+
+The `isDirty` method determines if any attributes have been changed since the model was loaded. You may pass a specific attribute name to determine if a particular attribute is dirty. The `isClean` method is the opposite of `isDirty` and also accepts an optional attribute argument:
+
+    $user = User::create([
+        'first_name' => 'Taylor',
+        'last_name' => 'Otwell',
+        'title' => 'Developer',
+    ]);
+
+    $user->title = 'Painter';
+
+    $user->isDirty(); // true
+    $user->isDirty('title'); // true
+    $user->isDirty('first_name'); // false
+
+    $user->isClean(); // false
+    $user->isClean('title'); // false
+    $user->isClean('first_name'); // true
+
+    $user->save();
+
+    $user->isDirty(); // false
+    $user->isClean(); // true
+
+The `wasChanged` method determines if any attributes were changed when the model was last saved within the current request cycle. You may also pass an attribute name to see if a particular attribute was changed:
+
+    $user = User::create([
+        'first_name' => 'Taylor',
+        'last_name' => 'Otwell',
+        'title' => 'Developer',
+    ]);
+
+    $user->title = 'Painter';
+    $user->save();
+
+    $user->wasChanged(); // true
+    $user->wasChanged('title'); // true
+    $user->wasChanged('first_name'); // false
 
 <a name="mass-assignment"></a>
 ### Mass Assignment

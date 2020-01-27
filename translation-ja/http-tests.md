@@ -94,7 +94,7 @@
 <a name="debugging-responses"></a>
 ### レスポンスのデバッグ
 
-アプリケーションへ送るテストリクエストを作成し終えたら、レスポンスの内容を確認し、デバッグするために`dump`と`dumpHeaders`メソッドが使用できます。
+アプリケーションへ送るテストリクエストを作成し終えたら、レスポンスの内容を確認し、デバッグするために`dump`と`dumpHeaders`、`dumpSession`メソッドが使用できます。
 
     <?php
 
@@ -116,6 +116,8 @@
             $response = $this->get('/');
 
             $response->dumpHeaders();
+
+            $response->dumpSession();
 
             $response->dump();
         }

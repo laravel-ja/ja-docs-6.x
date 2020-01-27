@@ -42,6 +42,7 @@
 - [堅牢な顧客認証 (SCA)](#strong-customer-authentication)
     - [支払い要求の追加確認](#payments-requiring-additional-confirmation)
     - [非セッション確立時の支払い通知](#off-session-payment-notifications)
+- [Stripe SDK](#stripe-sdk)
 
 <a name="introduction"></a>
 ## イントロダクション
@@ -855,3 +856,12 @@ SCA規制は、サブスクリプションが有効なときにも、時々支�
 非セッション時の支払い確認通知が確実に届くように、[StripeのWebhookが設定されており](#handling-stripe-webhooks)、Stripeのダッシュボードで`invoice.payment_action_required` Webhookが有効になっていることを確認してください。さらに、`Billable`モデルがLaravelの`Illuminate\Notifications\Notifiable`トレイトを使用していることも確認してください。
 
 > {note} 定期課金でなく、顧客が自分で支払った場合でも追加の確認が要求された場合は、その顧客に通知が送られます。残念ながら、Stripeはその支払いが手動や「非セッション時」であることを知る方法がありません。しかし、顧客は支払いを確認した後に支払いページを閲覧したら、「支払いが完了しました」メッセージを確認できます。その顧客は同じ支払いを２度行い、二重に課金されるアクシデントに陥ることを防ぐことができるでしょう。
+
+<a name="stripe-sdk"></a>
+## Stripe SDK
+
+CashierのオブジェクトはStripe SDKオブジェクト上にラップされています。Stripe SDKオブジェクトを直接操作したい場合は、`asStripe`メソッドを使い簡単に取得できます。
+
+    $stripeSubscription = $subscription->asStripeSubscription();
+
+    $stripeSubscription->update(['application_fee_percent' => 5]);
