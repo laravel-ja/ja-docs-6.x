@@ -81,7 +81,7 @@ Laravelのサービスコンテナを深く理解することは、パワフル�
 サービスプロバイダの中からは、いつでも`$this->app`プロパティにより、コンテナへアクセスできます。`bind`メソッドへ登録したいクラス名かインターフェイス名と、クラスのインスタンスを返す「クロージャ」を引数として渡せば、結合を登録できます。
 
     $this->app->bind('HelpSpot\API', function ($app) {
-        return new HelpSpot\API($app->make('HttpClient'));
+        return new \HelpSpot\API($app->make('HttpClient'));
     });
 
 コンテナ自身がリゾルバ―の引数として渡されることに注目してください。これで構築中の依存を解決するためにも、コンテナを利用できます。
@@ -91,14 +91,14 @@ Laravelのサービスコンテナを深く理解することは、パワフル�
 `singleton`メソッドは、クラスやインターフェイスが一度だけ依存解決されるようにコンテナに登録します。一度シングルトン結合が解決されるとそれ以降、この結合が参照されるたび、コンテナは同じオブジェクトインスタンスを返します。
 
     $this->app->singleton('HelpSpot\API', function ($app) {
-        return new HelpSpot\API($app->make('HttpClient'));
+        return new \HelpSpot\API($app->make('HttpClient'));
     });
 
 #### インスタンス結合
 
 既に存在するオブジェクトのインスタンスを`instance`メソッドを用いて、コンテナに結合することもできます。指定されたインスタンスが、以降のコンテナで呼び出されるたびに返されます。
 
-    $api = new HelpSpot\API(new HttpClient);
+    $api = new \HelpSpot\API(new HttpClient);
 
     $this->app->instance('HelpSpot\API', $api);
 
@@ -258,7 +258,7 @@ Laravelのサービスコンテナを深く理解することは、パワフル�
         // どんなタイプのオブジェクトをコンテナが解決した場合でも呼び出される
     });
 
-    $this->app->resolving(HelpSpot\API::class, function ($api, $app) {
+    $this->app->resolving(\HelpSpot\API::class, function ($api, $app) {
         // "HelpSpot\API"クラスのオブジェクトをコンテナが解決した場合に呼び出される
     });
 

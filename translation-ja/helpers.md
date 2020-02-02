@@ -839,7 +839,7 @@ NULL値を指定すると、空の配列が返ってきます。
 <a name="method-str-after"></a>
 #### `Str::after()` {#collection-method}
 
-`Str::after`関数は、指定した値に続く文字列を全て返します。
+`Str::after`関数は、指定した値に続く文字列を全て返します。文字列中に指定値が存在しない場合は、文字列全体を返します。
 
     use Illuminate\Support\Str;
 
@@ -850,7 +850,7 @@ NULL値を指定すると、空の配列が返ってきます。
 <a name="method-str-after-last"></a>
 #### `Str::afterLast()` {#collection-method}
 
-`Str::afterLast`メソッドは、文字列で指定した値が現れる最後の場所から、後ろの部分を返します。
+`Str::afterLast`メソッドは、文字列で指定した値が現れる最後の場所から、後ろの部分を返します。文字列中に指定値が存在しない場合は、文字列全体を返します。
 
     use Illuminate\Support\Str;
 

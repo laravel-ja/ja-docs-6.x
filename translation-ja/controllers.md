@@ -224,6 +224,24 @@ APIに使用するリソースルートを宣言する場合、`create`や`edit`
 
 このルートにより、次のようなURLでアクセスされる、「ネスト」されたリソースが定義されます： photos/{photos}/comments/{comments}
 
+#### Shallowネスト
+
+子のIDが既に一意な識別子になってる場合、親子両方のIDをURIに含める必要は全くありません。主キーの自動増分のように、一意の識別子をURIセグメント中でモデルを識別するために使用しているのなら、「shallow（浅い）ネスト」を使用できます。
+
+    Route::resource('photos.comments', 'CommentController')->shallow();
+
+上記のルート定義により、以下のルートが用意されます。
+
+動詞      | URI                               | アクション       | ルート名
+----------|-----------------------------------|--------------|---------------------
+GET       | `/photos/{photo}/comments`        | index        | photos.comments.index
+GET       | `/photos/{photo}/comments/create` | create       | photos.comments.create
+POST      | `/photos/{photo}/comments`        | store        | photos.comments.store
+GET       | `/comments/{comment}`             | show         | comments.show
+GET       | `/comments/{comment}/edit`        | edit         | comments.edit
+PUT/PATCH | `/comments/{comment}`             | update       | comments.update
+DELETE    | `/comments/{comment}`             | destroy      | comments.destroy
+
 <a name="restful-naming-resource-routes"></a>
 ### リソースルートの命名
 

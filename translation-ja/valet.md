@@ -185,8 +185,18 @@ Nginx設定を更新したら、設定の変更を反映するために`valet re
 
     <?php
 
+    // foo.testサイトのために、$_SERVER['key']へ"value"をセットする
     return [
-        'WEBSITE_NAME' => 'My Blog',
+        'foo' => [
+            'key' => 'value',
+        ],
+    ];
+
+    // 全サイトのために、$_SERVER['key']へ"value"をセットする
+    return [
+        '*' => [
+            'key' => 'value',
+        ],
     ];
 
 <a name="custom-valet-drivers"></a>

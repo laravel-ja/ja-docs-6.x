@@ -384,7 +384,7 @@ JSON APIは`web`と`auth`ミドルウェアにより保護されています。�
 
     php artisan vendor:publish --tag=passport-views
 
-ファーストパーティクライアントにより認可中のように、認可プロンプトをとばしたい場合もあり得ます。クライアントモデルへ`skipsAuthorization`メソッドを定義することで実現できます。`skipsAuthorization`がクライアントは認証されるとして`true`を返すと、そのユーザーをすぐに`redirect_uri`へリダイレクトで戻します。
+ファーストパーティクライアントにより認可中のような場合、認可プロンプトをとばしたい場合もあり得ます。[`Client`モデルを拡張し](#overriding-default-models)、`skipsAuthorization`メソッドを定義することで実現できます。`skipsAuthorization`がクライアントは認証済みとして`true`を返すと、そのユーザーをすぐに`redirect_uri`へリダイレクトで戻します。
 
     <?php
 

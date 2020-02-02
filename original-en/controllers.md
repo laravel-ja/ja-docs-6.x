@@ -224,6 +224,24 @@ Sometimes you may need to define routes to a "nested" resource. For example, a p
 
 This route will register a "nested" resource that may be accessed with URLs like the following: photos/{photos}/comments/{comments}.
 
+#### Shallow Nesting
+
+Often, it is not entirely necessary to have both the parent and the child IDs within a URI since the child ID is already a unique identifier. When using unique identifier such as auto-incrementing primary keys to identify your models in URI segments, you may choose to use "shallow nesting":
+
+    Route::resource('photos.comments', 'CommentController')->shallow();
+
+The route definition above will define the following routes:
+
+Verb      | URI                               | Action       | Route Name
+----------|-----------------------------------|--------------|---------------------
+GET       | `/photos/{photo}/comments`        | index        | photos.comments.index
+GET       | `/photos/{photo}/comments/create` | create       | photos.comments.create
+POST      | `/photos/{photo}/comments`        | store        | photos.comments.store
+GET       | `/comments/{comment}`             | show         | comments.show
+GET       | `/comments/{comment}/edit`        | edit         | comments.edit
+PUT/PATCH | `/comments/{comment}`             | update       | comments.update
+DELETE    | `/comments/{comment}`             | destroy      | comments.destroy
+
 <a name="restful-naming-resource-routes"></a>
 ### Naming Resource Routes
 

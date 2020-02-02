@@ -66,7 +66,7 @@ Monologはデフォルトで`production`や`local`のような、現在の環境
 
 #### Slackチャンネルの設定
 
-`slack`チャンネルには、`url`設定オプションが必須です。このURLはSlackチームに対して設定されている、[incoming webhook](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks)へのURLと一致させる必要があります。
+`slack`チャンネルには、`url`設定オプションが必須です。このURLはSlackチームに対して設定されている、[incoming webhook](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks)へのURLと一致させる必要があります。デフォルトでSlackは`critical`レベル以上のログのみを受け付けます。しかしながら、`logging`設定ファイルでこれを調整可能です。
 
 <a name="building-log-stacks"></a>
 ### ログスタックの構築

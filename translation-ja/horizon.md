@@ -119,6 +119,10 @@ Horizonプロセスを`horizon:pause` Artisanコマンドで一時停止した�
 
     php artisan horizon:continue
 
+`horizon:status` Artisanコマンドにより、Horizonプロセスの現在の状態を確認できます。
+
+    php artisan horizon:status
+
 マシン上のマスタHorizonプロセスを穏やかに終了させたい場合は、`horizon:terminate` Artisanコマンドを使用します。現在処理中のジョブが完了した後に、Horizonは停止します。
 
     php artisan horizon:terminate

@@ -425,7 +425,9 @@ PHP FastCGIを使用している場合、初期状態のままでHTTP基本認�
 
     Auth::logoutOtherDevices($password);
 
-> {note} `logoutOtherDevices`メソッドが起動すると、ユーザーの他のセッションは全て無効になります。つまり、以前に認証済みの全てのガードが、「ログアウト」されます。
+`logoutOtherDevices`メソッドが起動すると、ユーザーの他のセッションは全て無効になります。つまり、以前に認証済みの全てのガードが、「ログアウト」されます。
+
+> {note} `login`ルートに対するルート名をカスタマイズしながら、`AuthenticateSession`ミドルウェアを使用している場合は、アプリケーションの例外ハンドラにある`unauthenticated`メソッドをオーバーライドし、ログインページへユーザーを確実にリダイレクトしてください。
 
 <a name="adding-custom-guards"></a>
 ## カスタムガードの追加

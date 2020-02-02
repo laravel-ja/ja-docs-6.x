@@ -356,6 +356,16 @@ HTTPルートは定義していませんが、このファイルはアプリケ�
 
     $name = $this->choice('What is your name?', ['Taylor', 'Dayle'], $defaultIndex);
 
+さらに`choice`メソッドは、オプションとして第４、第５引数を取ることができます。有効な回答として選べる最大個数と、複数選択を許可するかどうかです。
+
+    $name = $this->choice(
+        'What is your name?',
+        ['Taylor', 'Dayle'],
+        $defaultIndex,
+        $maxAttempts = null,
+        $allowMultipleSelections = false
+    );
+
 <a name="writing-output"></a>
 ### 出力の書き出し
 
