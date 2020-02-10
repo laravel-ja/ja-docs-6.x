@@ -256,7 +256,7 @@ LaravelクエリビルダはアプリケーションをSQLインジェクショ�
 「クロスジョイン」を実行するときは、接合したいテーブル名を指定し、`crossJoin`メソッドを使ってください。クロスジョインにより、最初のテーブルと指定したテーブルとの、デカルト積を生成します。
 
     $users = DB::table('sizes')
-                ->crossJoin('colours')
+                ->crossJoin('colors')
                 ->get();
 
 #### 上級のJOIN文

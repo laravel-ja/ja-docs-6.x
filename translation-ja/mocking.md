@@ -347,6 +347,9 @@ Laravelのサービスコンテナにより、アプリケーションへ依存�
                 new AnotherJob('foo'),
                 new FinalJob('bar'),
             ]);
+
+            // ジョブチェーンを使わずに、ジョブが投入されたことをアサート
+            Queue::assertPushedWithoutChain(ShipOrder::class);
         }
     }
 

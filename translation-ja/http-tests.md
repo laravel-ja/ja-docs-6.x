@@ -284,6 +284,10 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 
     UploadedFile::fake()->create('document.pdf', $sizeInKilobytes);
 
+ファイルが返すべきMIMEタイプを明示的に定義するために、このメソッドに`$mimeType`引数を必要に応じて渡すことも可能です。
+
+    UploadedFile::fake()->create('document.pdf', $sizeInKilobytes, 'application/pdf');
+
 <a name="available-assertions"></a>
 ## 利用可能なアサート
 

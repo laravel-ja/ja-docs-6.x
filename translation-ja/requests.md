@@ -405,7 +405,7 @@ TLS／SSL証明を行うロードバランサの裏でアプリケーション�
         /**
          * このアプリケーションで信用するプロキシ
          *
-         * @var array
+         * @var string|array
          */
         protected $proxies = [
             '192.168.1.1',
@@ -429,6 +429,6 @@ Amazon AWSや他の「クラウド」ロードバランサプロバイダを使�
     /**
      * このアプリケーションで信用するプロキシ
      *
-     * @var array
+     * @var string|array
      */
     protected $proxies = '*';
