@@ -153,7 +153,7 @@ Bladeコンポーネントをサブディレクトリへ保存している場合
 
     Blade::component('components.alert', 'alert');
 
-コンポーネントへ別名を付けたら、ディレクティブでレンダできます。」
+コンポーネントへ別名を付けたら、ディレクティブでレンダできます。
 
     @alert(['type' => 'danger'])
         You are not allowed to access this resource!
