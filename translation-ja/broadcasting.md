@@ -48,7 +48,7 @@
 
 #### CSRFトークン
 
-[Laravel Echo](#installing-laravel-echo)は、現在のセッションのCSRFトークンへアクセスする必要があります。アプリケーションの`head` HTML要素を確認し、SCRFトークンを含むように`meta`タグを定義してください。
+[Laravel Echo](#installing-laravel-echo)は、現在のセッションのCSRFトークンへアクセスする必要があります。アプリケーションの`head` HTML要素を確認し、CSRFトークンを含むように`meta`タグを定義してください。
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
