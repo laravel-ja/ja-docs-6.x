@@ -1103,7 +1103,7 @@ NULL値を指定すると、空の配列が返ってきます。
 <a name="method-str-singular"></a>
 #### `Str::singular()` {#collection-method}
 
-Str::singular`メソッドは複数形を単数形へ変換します。このメソッドは、現在英語のみサポートしています。
+`Str::singular`メソッドは複数形を単数形へ変換します。このメソッドは、現在英語のみサポートしています。
 
     use Illuminate\Support\Str;
 
