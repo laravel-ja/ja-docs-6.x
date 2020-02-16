@@ -18,6 +18,7 @@
 - [モデル削除](#deleting-models)
     - [ソフトデリート](#soft-deleting)
     - [ソフトデリート済みモデルのクエリ](#querying-soft-deleted-models)
+- [複製モデル](#replicating-models)
 - [クエリスコープ](#query-scopes)
     - [グローバルスコープ](#global-scopes)
     - [ローカルスコープ](#local-scopes)
@@ -706,6 +707,25 @@ Eloquentの`all`メソッドはモデルテーブルの全レコードを結果�
 
     // 関係するモデルを全部完全に削除する
     $flight->history()->forceDelete();
+
+<a name="replicating-models"></a>
+## 複製モデル
+
+`replicate`メソッドを用いて、あるモデルインスタンスの未保存なコピーを作成できます。これは共通の同じ属性をたくさん持つモデルインスタンスを作成したい場合に特に便利です。
+
+    $shipping = App\Address::create([
+        'type' => 'shipping',
+        'line_1' => '123 Example Street',
+        'city' => 'Victorville',
+        'state' => 'CA',
+        'postcode' => '90001',
+    ]);
+
+    $billing = $shipping->replicate()->fill([
+        'type' => 'billing'
+    ]);
+
+    $billing->save();
 
 <a name="query-scopes"></a>
 ## クエリスコープ

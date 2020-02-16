@@ -448,7 +448,7 @@ You may even send a "hot key" to the primary CSS selector that contains your app
 
     $browser->keys('.app', ['{command}', 'j']);
 
-> {tip} All modifier keys are wrapped in `{}` characters, and match the constants defined in the `Facebook\WebDriver\WebDriverKeys` class, which can be [found on GitHub](https://github.com/facebook/php-webdriver/blob/community/lib/WebDriverKeys.php).
+> {tip} All modifier keys are wrapped in `{}` characters, and match the constants defined in the `Facebook\WebDriver\WebDriverKeys` class, which can be [found on GitHub](https://github.com/php-webdriver/php-webdriver/blob/master/lib/WebDriverKeys.php).
 
 <a name="using-the-mouse"></a>
 ### Using The Mouse
@@ -1277,7 +1277,7 @@ Components are similar to Dusk’s “page objects”, but are intended for piec
 <a name="generating-components"></a>
 ### Generating Components
 
-To generate a component, use the `dusk:component` Artisan command. New components are placed in the `test/Browser/Components` directory:
+To generate a component, use the `dusk:component` Artisan command. New components are placed in the `tests/Browser/Components` directory:
 
     php artisan dusk:component DatePicker
 

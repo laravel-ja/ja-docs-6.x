@@ -448,7 +448,7 @@ Duskはフォームと入力要素を操作する、様々なメソッドを提�
 
     $browser->keys('.app', ['{command}', 'j']);
 
-> {tip} モデファイヤキーは`{}`文字で囲み、`Facebook\WebDriver\WebDriverKeys`クラスで定義されている定数を指定します。[GitHubで確認](https://github.com/facebook/php-webdriver/blob/community/lib/WebDriverKeys.php)できます。
+> {tip} モデファイヤキーは`{}`文字で囲み、`Facebook\WebDriver\WebDriverKeys`クラスで定義されている定数を指定します。[GitHubで確認](https://github.com/php-webdriver/php-webdriver/blob/master/lib/WebDriverKeys.php)できます。
 
 <a name="using-the-mouse"></a>
 ### マウスの使用
@@ -1277,7 +1277,7 @@ Duskをインストールすると、ベース`Page`クラスが`tests/Browser/P
 <a name="generating-components"></a>
 ### コンポーネント生成
 
-コンポーネントを生成するには、`dusk:component` Artisanコマンドを使用します。新しいコンポーネントは、`test/Browser/Components`ディレクトリに設置されます。
+コンポーネントを生成するには、`dusk:component` Artisanコマンドを使用します。新しいコンポーネントは、`tests/Browser/Components`ディレクトリに設置されます。
 
     php artisan dusk:component DatePicker
 

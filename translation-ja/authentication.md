@@ -288,14 +288,6 @@ Laravelの認証サービスには`Auth`[ファサード](/docs/{{version}}/faca
 
     Auth::logout();
 
-さらにLaravelは、現在のデバイス上のユーザーのみアプリケーションからログアウトさせるメソッドと、他のデバイス上のユーザーをアプリケーションからログアウトさせるメソッドも提供します。
-
-    Auth::logoutCurrentDevice();
-
-    Auth::logoutOtherDevices();
-
-> {note} `logoutOtherDevices`を使用する前に、`Illuminate\Session\Middleware\AuthenticateSession::class`ミドルウェアが存在し、HTTPカーネルの`web`[ミドルウェアグループ](/docs/{{version}}/middleware#middleware-groups)で確実に有効にしてください。
-
 <a name="remembering-users"></a>
 ### 継続ログイン
 

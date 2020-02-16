@@ -51,6 +51,7 @@ Socialiteを使用する前に、アプリケーションで使用するOAuthサ
 
     namespace App\Http\Controllers\Auth;
 
+    use App\Http\Controllers\Controller;
     use Socialite;
 
     class LoginController extends Controller

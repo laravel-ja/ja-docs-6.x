@@ -352,6 +352,18 @@ WHEREの結合にチェーンで`or`節をクエリに追加できます。`orWh
                         ->orWhere('name', 'John')
                         ->get();
 
+括弧の中で"or"条件をまとめる必要がある場合は、`orWhere`メソッドの最初の引数にクロージャを渡してください。
+
+    $users = DB::table('users')
+                ->where('votes', '>', 100)
+                ->orWhere(function($query) {
+                    $query->where('name', 'Abigail')
+                          ->where('votes', '>', 50);
+                })
+                ->get();
+
+    // SQL: select * from users where votes > 100 or (name = 'Abigail' and votes > 50)
+
 #### その他のWHERE節
 
 **whereBetween / orWhereBetween**

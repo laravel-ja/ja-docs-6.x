@@ -119,6 +119,54 @@ Carbon 1.xのメンテナンス切れが近づいて来たため、[サポート
 
 デフォルトのRedisクライアントを`predis`から`phpredis`へ変更しました。`predis`を使い続けるには、`config/database.php`設定ファイルの`redis.client`設定オプションを`predis`に指定してください。
 
+<a name="dynamodb-cache-store"></a>
+#### DynamoDBキャッシュ保存
+
+**影響の可能性： 条件による**
+
+[Laravel Vapor](https://vapor.laravel.com)の使用を計画している場合は、`config/cache.php`ファイルに`dynamodb`保存のオプションを含むように変更してください。
+
+    <?php
+    return [
+        ...
+        'stores' => [
+            ...
+            'dynamodb' => [
+                'driver' => 'dynamodb',
+                'key' => env('AWS_ACCESS_KEY_ID'),
+                'secret' => env('AWS_SECRET_ACCESS_KEY'),
+                'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+                'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
+                'endpoint' => env('DYNAMODB_ENDPOINT'),
+            ],
+        ],
+        ...
+    ];
+
+<a name="sqs-environment-variables"></a>
+#### SQS環境変数
+
+**影響の可能性： 条件による**
+
+[Laravel Vapor](https://vapor.laravel.com)の使用を計画している場合は、`config/queue.php`ファイルに`sqs`接続の環境変数オプションを含むように変更してください。
+
+    <?php
+    return [
+        ...
+        'connections' => [
+            ...
+            'sqs' => [
+                'driver' => 'sqs',
+                'key' => env('AWS_ACCESS_KEY_ID'),
+                'secret' => env('AWS_SECRET_ACCESS_KEY'),
+                'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
+                'queue' => env('SQS_QUEUE', 'your-queue-name'),
+                'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+            ],
+        ],
+        ...
+    ];
+
 ### データベース
 
 <a name="capsule-table"></a>

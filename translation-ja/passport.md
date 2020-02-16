@@ -912,7 +912,7 @@ Passportには、指定されたスコープが許可されているトークン
 
     Route::get('/orders', function () {
         // アクセストークンは"check-status"と"place-orders"、両スコープを持っている
-    })->middleware('scopes:check-status,place-orders');
+    })->middleware(['auth:api', 'scopes:check-status,place-orders']);
 
 #### 一部のスコープの確認
 
@@ -920,7 +920,7 @@ Passportには、指定されたスコープが許可されているトークン
 
     Route::get('/orders', function () {
         // アクセストークンは、"check-status"か"place-orders"、どちらかのスコープを持っている
-    })->middleware('scope:check-status,place-orders');
+    })->middleware(['auth:api', 'scope:check-status,place-orders']);
 
 #### トークンインスタンスでのスコープチェック
 
