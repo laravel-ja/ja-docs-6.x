@@ -39,7 +39,7 @@
 
 ローカル開発環境を含め、PHP開発全体を愉快なものにしようとLaravelは努力しています。[Vagrant](https://vagrantup.com)は、仮想マシンの管理と事前設定を行う、簡単でエレガントな手段を提供しています。
 
-Laravel Homestead（入植農地、「ホームステード」）はパッケージを事前に済ませた、Laravel公式の"box"で、PHPやWebサーバ、その他のサーバソフトウェアをローカルマシンにインストールする必要なく、素晴らしい開発環境を準備できます。オペレーティングシステムでごちゃごちゃになる心配はもうありません！　Vagrant boxは完全に使い捨てできます。何かの調子が悪くなれば壊して、数分のうちにそのboxを再生成できます！
+Laravel Homestead（入植農地、「ホームステード」）はパッケージを事前にインストールしたLaravel公式の"box"です。PHPやWebサーバ、その他のサーバソフトウェアをローカルマシンにインストールする必要なく、素晴らしい開発環境を準備できます。オペレーティングシステムでごちゃごちゃになる心配はもうありません！　Vagrant boxは完全に使い捨てできます。何かの調子が悪くなれば壊して、数分のうちにそのboxを再生成できます！
 
 HomesteadはWindowsやMac、Linuxシステム上で実行でき、NginxやPHP、MySQL、PostgreSQL、Redis、Memcached、Node、他にも素晴らしいLaravelアプリケーションを開発するために必要となるものすべてを含んでいます。
 
@@ -127,7 +127,7 @@ HomesteadはWindowsやMac、Linuxシステム上で実行でき、NginxやPHP、
 <a name="first-steps"></a>
 ### 最初の段階
 
-Homestead環境を起動する前に[Vagrant](https://www.vagrantup.com/downloads.html)と共に、[VirtualBox 6.x](https://www.virtualbox.org/wiki/Downloads)か、[VMWare](https://www.vmware.com)、[Parallels](https://www.parallels.com/products/desktop/)、[Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)をインストールする必要があります。全ソフトウェア共に簡単に使用できるビジュアルインストーラが、人気のあるオペレーティングシステム全てに用意されています。
+Homestead環境を起動する前に[Vagrant](https://www.vagrantup.com/downloads.html)と共に、[VirtualBox 6.x](https://www.virtualbox.org/wiki/Downloads)か、[VMWare](https://www.vmware.com)、[Parallels](https://www.parallels.com/products/desktop/)、[Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)をインストールする必要があります。全ソフトウェア共に簡単に使用できるビジュアルインストーラが、人気のあるオペレーティングシステムすべてに用意されています。
 
 VMwareプロバイダを使用するには、VMware Fusion/Workstationと[VMware Vagrantプラグイン](https://www.vagrantup.com/vmware)を購入する必要があります。無料ではありませんが、VMwareが提供する共有フォルダは最初からよりスピーディーです。
 
@@ -216,7 +216,7 @@ Homesteadリポジトリをクローンしたら、`Homestead.yaml`設定ファ�
 
 #### Nginxサイトの設定
 
-Nginxには詳しくない？　問題ありません。`sites`プロパティでHomestead環境上のフォルダと「ドメイン」を簡単にマップできます。サイト設定のサンプルは、`Homestead.yaml`ファイルに含まれています。これも必要に応じ、Homestead環境へサイトを好きなだけ追加してください。便利に使えるように、Homesteadは皆さんが作業する全てのLaravelプロジェクトの仮想環境を提供します。
+Nginxには詳しくない？　問題ありません。`sites`プロパティでHomestead環境上のフォルダと「ドメイン」を簡単にマップできます。サイト設定のサンプルは、`Homestead.yaml`ファイルに含まれています。これも必要に応じ、Homestead環境へサイトを好きなだけ追加してください。便利に使えるよう、Homesteadは皆さんが作業するすべてのLaravelプロジェクトの仮想環境を提供します。
 
     sites:
         - map: homestead.test
@@ -229,7 +229,7 @@ Nginxには詳しくない？　問題ありません。`sites`プロパティ�
 <a name="hostname-resolution"></a>
 #### ホスト名の解決
 
-Homesteadでは自動的にホストを解決できるように、`mDNS`によりホスト名を公開しています。`Homestead.yaml`ファイルで、`hostname: homestead`とセットすれば、このホストは`homestead.local`で使用できます。MacOS、iOS、Linuxディストリビューションでは`mDNS`がデフォルトでサポートされています。Windowsでは、[Bonjour Print Services for Windows](https://support.apple.com/kb/DL999?viewlocale=en_US&locale=en_US)をインストールする必要があります。
+Homesteadでは自動的にホストを解決できるように、`mDNS`によりホスト名を公開しています。`Homestead.yaml`ファイルで、`hostname: homestead`とセットすれば、このホストは`homestead.local`で使用できます。macOS、iOS、Linuxディストリビューションでは`mDNS`がデフォルトでサポートされています。Windowsでは、[Bonjour Print Services for Windows](https://support.apple.com/kb/DL999?viewlocale=en_US&locale=en_US)をインストールする必要があります。
 
 自動ホスト名を一番活用できるのは、Homesteadを「プロジェクトごと」にインストールした場合でしょう。もし、一つのHomesteadインスタンスで複数のサイトをホストしている場合は、`hosts`ファイルにWebサイトの「ドメイン」を追加してください。`hosts`ファイルはHomesteadへのリクエストをHomestead環境へ転送してくれます。MacとLinuxでは、`/etc/hosts`にこのファイルがあります。Windows環境では、`C:\Windows\System32\drivers\etc\hosts`です。次の行のように追加してください。
 
@@ -404,7 +404,7 @@ Homesteadでは、MySQLやMariaDBの状態をスナップショットし、[Logi
 <a name="adding-additional-sites"></a>
 ### サイトの追加
 
-Homestead環境をプロビジョニングし、実働した後に、LaravelアプリケーションをNginxサイトへ追加したいこともあるでしょう。希望するだけのLaravelアプリケーションを一つのHomestead環境上で実行することができます。新しいサイトを追加するには、`Homestead.yaml`ファイルへ追加します。
+Homestead環境をプロビジョニングし、実働した後に、LaravelアプリケーションをNginxサイトへ追加したいこともあるでしょう。希望するだけのLaravelアプリケーションを一つのHomestead環境上で実行できます。新しいサイトを追加するには、`Homestead.yaml`ファイルへ追加します。
 
     sites:
         - map: homestead.test
@@ -422,7 +422,7 @@ Vagrantが"hosts"ファイルを自動的に管理しない場合は、新しい
 <a name="site-types"></a>
 #### サイトタイプ
 
-Laravelベースではないプロジェクトも簡単に実行できるようにするため、Homesteadは様々なタイプのサイトをサポートしています。たとえば、`symfony2`サイトタイプを使えば、HomesteadにSymfonyアプリケーションを簡単に追加できます。
+Laravelベースではないプロジェクトも簡単に実行できるようにするため、Homesteadはさまざまなタイプのサイトをサポートしています。たとえば、`symfony2`サイトタイプを使えば、HomesteadにSymfonyアプリケーションを簡単に追加できます。
 
     sites:
         - map: symfony2.test
@@ -473,7 +473,7 @@ Homesteadサイトで`schedule:run`コマンドを実行したい場合は、サ
 <a name="configuring-mailhog"></a>
 ### Mailhogの設定
 
-Mailhogを使用すると、簡単に送信するメールを捉えることができ、受信者に実際に届けなくとも内容を調べることができます。これを使用するには、`.env`ファイルのメール設定を以下のように更新します。
+Mailhogを使用すると、簡単に送信するメールを捉えることができ、受信者へ実際に届けなくとも内容を調べることができます。これを使用するには、`.env`ファイルのメール設定を以下のように更新します。
 
     MAIL_DRIVER=smtp
     MAIL_HOST=localhost
@@ -611,9 +611,9 @@ Homesteadは、デフォルトで`1025`ポートをリッスンする、Postfix�
 <a name="debugging-web-requests"></a>
 ### XdebugによるWebリクエストのデバッグ
 
-Homesteadは[Xdebug](https://xdebug.org)を使用するステップデバッグをサポートしています。例えば、ブラウザからWebページをロードし、実行中のコードのインスペクションと変更ができるようにPHPをIDEに接続します。
+Homesteadは[Xdebug](https://xdebug.org)を使用するステップデバッグをサポートしています。たとえば、ブラウザからWebページをロードし、実行中のコードのインスペクションと変更ができるようにPHPをIDEに接続します。
 
-デフォルトでXdebugは実行されており、接続を待っています。CLIでXdebugを有効にする必要があれば、Vagrant boxの中で`sudo phpenmod xdebug`コマンドを実行してください。次に、IDEのインストラクションに従って、デバッギングを有効にします。最後に、ブラウザでXdebugを起動する拡張か、[bookmarklet](https://www.jetbrains.com/phpstorm/marklets/)を設定してください。
+デフォルトでXdebugは実行されており、接続を待っています。CLIでXdebugを有効にする必要があれば、Vagrant boxの中で`sudo phpenmod xdebug`コマンドを実行してください。次に、IDEのインストラクションにしたがい、デバッギングを有効にします。最後に、ブラウザでXdebugを起動する拡張か、[bookmarklet](https://www.jetbrains.com/phpstorm/marklets/)を設定してください。
 
 > {note} XdebugはPHPの実行を極端に遅くしてしまいます。Xdebugを無効にするには、Vagrant Boxで`sudo phpdismod xdebug`を実行し、FPMサービスを再起動します。
 
@@ -626,7 +626,7 @@ PHP CLIアプリケーションをデバッグするには、Vagrant Box内で�
 
 #### Xdebugの自動スタート
 
-Webサーバへのリクエストを生成する機能テストのデバッグの場合、デバッグを開始するためにカスタムヘッダやクッキーを付与するようにテストを変更するよりは、自動的に起動するほうが簡単です。Xdebugを自動的に起動するように強制するには、Vagrant Boxの中で以下のように`/etc/php/7.x/fpm/conf.d/20-xdebug.ini`を変更してください。
+Webサーバへのリクエストを生成する機能テストのデバッグの場合、デバッグを開始するためにカスタムヘッダやクッキーを付与するようにテストを変更するよりは、自動的に起動するほうが簡単です。Xdebugを自動的に起動するよう強制するには、Vagrant Boxの中で以下のように`/etc/php/7.x/fpm/conf.d/20-xdebug.ini`を変更してください。
 
     ; Homestead.yamlで別のIPアドレスのサブセットを指定している場合は、このアドレスを合わせてください
     xdebug.remote_host = 192.168.10.1
@@ -648,7 +648,7 @@ Blackfireを有効にするためには、Homestead設定ファイルの"feature
             client_id: "client_id"
             client_token: "client_value"
 
-Blackfireサーバ設定項目とクライアント設定項目には、[ユーザーアカウントが必要です](https://blackfire.io/signup)。BlackfireはCLIツールやブラウザー拡張を含んだ、アプリケーションのプロファイルに使用する様々なオプションを用意しています。[詳細についてはBlackfireのドキュメント](https://blackfire.io/docs/cookbooks/index)をご覧ください。
+Blackfireサーバ設定項目とクライアント設定項目には、[ユーザーアカウントが必要です](https://blackfire.io/signup)。BlackfireはCLIツールやブラウザー拡張を含んだ、アプリケーションのプロファイルに使用するさまざまなオプションを用意しています。[詳細についてはBlackfireのドキュメント](https://blackfire.io/docs/cookbooks/index)をご覧ください。
 
 ### XHGuiを使用した、PHPパフォーマンスのプロファイリング
 
@@ -661,7 +661,7 @@ Blackfireサーバ設定項目とクライアント設定項目には、[ユー�
             type: "apache"
             xhgui: 'true'
 
-サイトが既に存在する場合は、設定を更新した後に`vagrant provision`を必ず実行してください。
+サイトがすでに存在する場合は、設定を更新した後に`vagrant provision`を必ず実行してください。
 
 Webリクエストをプロファイルするには、リクエストのクエリパラメータに`xhgui=on`を付加してください。XHGuiは以降のリクエストでこのクエリリクエスト値を付ける必要がないように、リクエストへ自動的にクッキーを追加します。アプリケーションのプロファイル結果を見るには、`http://your-site.test/xhgui`をブラウザで開いてください。
 
@@ -671,7 +671,7 @@ XHGuiを使用してCLIリクエストのプロファイルを取る場合は、
 
 CLIプロファイル結果は、Webのプロファイル結果と同じ方法で確認できます。
 
-プロファイルはスクリプトの実行を低下させるため、実際のリクエストの２倍ほどの実時間になることに注意しましょう。そのため、実際の数字ではなく、常に向上パーセンテージで比較してください。また、デバッガで中断している時間も実行時間に含まれることを認識しておきましょう。
+プロファイルはスクリプトの実行を低下させるため、実際のリクエストの２倍ほどの実時間になることへ注意しましょう。そのため、実際の数字ではなく、常に向上パーセンテージで比較してください。また、デバッガで中断している時間も実行時間に含まれることを認識しておきましょう。
 
 パフォーマンスのプロファイルは非常にディスクスペースを喰うため、数日で自動的に削除されます。
 

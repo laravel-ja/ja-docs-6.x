@@ -30,7 +30,7 @@
 
 > {tip} **さくっと始めたいですか？** 真新しくインストールしたLaravelアプリケーションに`laravel/ui` Composerパッケージをインストールし、`php artisan ui vue --auth`を実行してください。データベースをマイグレーションし、`http://your-app.test/register`かアプリケーションに割り付けた別のURLをブラウザでアクセスしましょう。これらのコマンドが、認証システム全体のスカフォールドの面倒見ます。
 
-Laravelでは簡単に認証が実装できます。実のところ、ほぼ全て最初から設定済みです。認証の設定ファイルは`config/auth.php`に用意してあり、認証サービスの振る舞いを調整できるように、読みやすいコメント付きでたくさんのオプションが用意されています。
+Laravelでは簡単に認証が実装できます。実のところ、ほぼすべて最初から設定済みです。認証の設定ファイルは`config/auth.php`に用意してあり、認証サービスの振る舞いを調整できるように、読みやすいコメント付きでたくさんのオプションが用意されています。
 
 Laravelの認証機能は「ガード」と「プロバイダ」を中心概念として構成されています。ガードは各リクエストごとに、どのようにユーザーを認証するかを定義します。たとえば、Laravelにはセッションストレージとクッキーを使いながら状態を維持する`session`ガードが用意されています。
 
@@ -50,12 +50,12 @@ Laravelの認証機能は「ガード」と「プロバイダ」を中心概念�
 <a name="authentication-quickstart"></a>
 ## 認証クイックスタート
 
-`App\Http\Controllers\Auth`名前空間下に多くの組み込み済み認証コントローラがLaravelにより用意されています。`RegisterController`は新ユーザーの登録、`LoginController`は認証処理、`ForgotPasswordController`はパスワードリセットのためのメールリンク処理、`ResetPasswordController`はパスワードリセット処理を行います。各コントローラは必要なメソッドを含むトレイトを使用しています。多くのアプリケーションでは、これらのコントローラを変更する必要は全くありません。
+`App\Http\Controllers\Auth`名前空間下に多くの組み込み済み認証コントローラがLaravelにより用意されています。`RegisterController`は新ユーザーの登録、`LoginController`は認証処理、`ForgotPasswordController`はパスワードリセットのためのメールリンク処理、`ResetPasswordController`はパスワードリセット処理を行います。各コントローラは必要なメソッドを含むトレイトを使用しています。多くのアプリケーションでは、これらのコントローラを変更する必要はまったくありません。
 
 <a name="included-routing"></a>
 ### ルート定義
 
-Laravelの`laravel/ui`パッケージは、認証に必要なルートとビューを全てあっという間にスカフォールドするための、シンプルなコマンドを少々提供しています。
+Laravelの`laravel/ui`パッケージは、認証に必要なルートとビューをすべてあっという間にスカフォールドするための、シンプルなコマンドを少々提供しています。
 
     composer require laravel/ui --dev
 
@@ -100,7 +100,7 @@ Laravelの`laravel/ui`パッケージは、認証に必要なルートとビュ�
 
 #### ガードのカスタマイズ
 
-更に、登録済みユーザーを認証するために使用する「ガード」をカスタマイズすることも可能です。`LoginController`、 `RegisterController`、`ResetPasswordController`で`guard`メソッドを定義してください。メソッドからガードインスタンスを返してください。
+さらに、登録済みユーザーを認証するために使用する「ガード」をカスタマイズすることも可能です。`LoginController`、 `RegisterController`、`ResetPasswordController`で`guard`メソッドを定義してください。メソッドからガードインスタンスを返してください。
 
     use Illuminate\Support\Facades\Auth;
 
@@ -115,7 +115,7 @@ Laravelの`laravel/ui`パッケージは、認証に必要なルートとビュ�
 
 `RegisterController`の`validator`メソッドはアプリケーションの新しいユーザーに対するバリデーションルールで構成されています。このメソッドはお気に召すまま自由に変更してください。
 
-`RegisterController`の`create`メソッドは新しい`App\User`レコードを[Eloquent ORM](/docs/{{version}}/eloquent)を使用し、データベースに作成することに責任を持っています。データベースの必要に合わせて自由にこのメソッドを変更してください。
+`RegisterController`の`create`メソッドは新しい`App\User`レコードを[Eloquent ORM](/docs/{{version}}/eloquent)を使用し、データベースへ作成することに責任を持っています。データベースの必要に合わせて自由にこのメソッドを変更してください。
 
 <a name="retrieving-the-authenticated-user"></a>
 ### 認証済みユーザーの取得
@@ -154,7 +154,7 @@ Laravelの`laravel/ui`パッケージは、認証に必要なルートとビュ�
 
 #### 現在のユーザーが認証されているか調べる
 
-ユーザーが既にアプリケーションにログインしているかを調べるには、`Auth`ファサードの`check`メソッドが使えます。認証時に`true`を返します。
+ユーザーがすでにアプリケーションにログインしているかを調べるには、`Auth`ファサードの`check`メソッドが使えます。認証時に`true`を返します。
 
     use Illuminate\Support\Facades\Auth;
 
@@ -173,7 +173,7 @@ Laravelの`laravel/ui`パッケージは、認証に必要なルートとビュ�
         // 認証済みのユーザーのみが入れる
     })->middleware('auth');
 
-[コントローラ](/docs/{{version}}/controllers)を使っていれば、ルート定義に付加する代わりに、コントローラのコンストラクターで`middleware`メソッドを呼び出すことができます。
+[コントローラ](/docs/{{version}}/controllers)を使っていれば、ルート定義へ付加する代わりに、コントローラのコンストラクターで`middleware`メソッドを呼び出すことができます。
 
     public function __construct()
     {
@@ -260,7 +260,7 @@ Laravelの認証サービスには`Auth`[ファサード](/docs/{{version}}/faca
 
 `attempt`メソッドは、認証が成功すれば`true`を返します。失敗時は`false`を返します。
 
-リダイレクタ―の`intended`メソッドは、認証フィルターにかかる前にアクセスしようとしていたURLへ、ユーザーをリダイレクトしてくれます。そのリダイレクトが不可能な場合の移動先として、フォールバックURIをこのメソッドに指定してください。
+リダイレクタの`intended`メソッドは、認証フィルターで引っかかる前にアクセスしようとしていたURLへ、ユーザーをリダイレクトしてくれます。そのリダイレクトが不可能な場合の移動先として、フォールバックURIをこのメソッドに指定してください。
 
 #### 追加条件の指定
 
@@ -274,7 +274,7 @@ Laravelの認証サービスには`Auth`[ファサード](/docs/{{version}}/faca
 
 #### 特定のGuardインスタンスへのアクセス
 
-`Auth`ファサードの`guard`メソッドにより、使用したいガードインスタンスを指定できます。これにより全く異なった認証用のモデルやユーザーテーブルを使い、アプリケーションの別々の部分に対する認証を管理することができます。
+`Auth`ファサードの`guard`メソッドにより、使用したいガードインスタンスを指定できます。これによりまったく異なった認証用のモデルやユーザーテーブルを使い、アプリケーションの別々の部分に対する認証が管理できます。
 
 `guard`メソッドへ渡すガード名は、`auth.php`認証ファイルのguards設定の一つと対応している必要があります。
 
@@ -291,7 +291,7 @@ Laravelの認証サービスには`Auth`[ファサード](/docs/{{version}}/faca
 <a name="remembering-users"></a>
 ### 継続ログイン
 
-アプリケーションでログイン維持(Remember me)機能を持たせたい場合は、`attempt`メソッドの第２引数に論理値を指定します。ユーザーが自分でログアウトしない限り、認証が無期限に持続するようになります。"remember me"トークンを保存するために使用する文字列の`remember_token`カラムを`users`テーブルに持たせる必要があります。
+アプリケーションでログイン維持(Remember me)機能を持たせたい場合は、`attempt`メソッドの第２引数に論理値を指定します。ユーザーが自分でログアウトしない限り、認証を無期限に保持します。"remember me"トークンを保存するために使用する文字列の`remember_token`カラムを`users`テーブルに持たせる必要があります。
 
     if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
         // このメンバーは継続ログインされる
@@ -310,7 +310,7 @@ Laravelの認証サービスには`Auth`[ファサード](/docs/{{version}}/faca
 
 #### Userインスタンスによる認証
 
-既に存在しているユーザーインスタンスでアプリケーションにログインさせる必要があれば、`login`メソッドにそのユーザーインスタンスを指定し呼び出してください。指定されたオブジェクトは`Illuminate\Contracts\Auth\Authenticatable`[契約](/docs/{{version}}/contracts)を実装している必要があります。Laravelが用意している`App\User`モデルはこのインターフェイスを実装しています。
+すでに存在しているユーザーインスタンスでアプリケーションにログインさせる必要があれば、`login`メソッドにそのユーザーインスタンスを指定し呼び出してください。指定されたオブジェクトは`Illuminate\Contracts\Auth\Authenticatable`[契約](/docs/{{version}}/contracts)を実装している必要があります。Laravelが用意している`App\User`モデルはこのインターフェイスを実装しています。
 
     Auth::login($user);
 
@@ -359,7 +359,7 @@ PHP FastCGIを使用している場合、初期状態のままでHTTP基本認�
 <a name="stateless-http-basic-authentication"></a>
 ### ステートレスなHTTP基本認証
 
-セッションの識別クッキーを用いずにHTTP基本認証を使用することもできます。これは特にAPI認証に便利です。実装するには、`onceBasic`メソッドを呼び出す[ミドルウェアを定義](/docs/{{version}}/middleware)してください。`onceBasic`メソッドが何もレスポンスを返さなかった場合、リクエストをアプリケーションの先の処理へ通します。
+セッションの識別クッキーを用いずにHTTP基本認証を使用することもできます。これはとくにAPI認証に便利です。実装するには、`onceBasic`メソッドを呼び出す[ミドルウェアを定義](/docs/{{version}}/middleware)してください。`onceBasic`メソッドが何もレスポンスを返さなかった場合、リクエストをアプリケーションの先の処理へ通します。
 
     <?php
 
@@ -417,7 +417,7 @@ PHP FastCGIを使用している場合、初期状態のままでHTTP基本認�
 
     Auth::logoutOtherDevices($password);
 
-`logoutOtherDevices`メソッドが起動すると、ユーザーの他のセッションは全て無効になります。つまり、以前に認証済みの全てのガードが、「ログアウト」されます。
+`logoutOtherDevices`メソッドが起動すると、ユーザーの他のセッションはすべて無効になります。つまり、以前に認証済みのすべてのガードが「ログアウト」されます。
 
 > {note} `login`ルートに対するルート名をカスタマイズしながら、`AuthenticateSession`ミドルウェアを使用している場合は、アプリケーションの例外ハンドラにある`unauthenticated`メソッドをオーバーライドし、ログインページへユーザーを確実にリダイレクトしてください。
 
@@ -547,7 +547,7 @@ HTTPリクエストをベースとした、カスタム認証システムを実�
 <a name="the-user-provider-contract"></a>
 ### ユーザープロバイダ契約
 
-`Illuminate\Contracts\Auth\UserProvider`は、MySQLやRiakなどのような持続性のストレージシステムに対する`Illuminate\Contracts\Auth\Authenticatable`の実装を取得することだけに責任を持っています。これらの２つのインターフェイスはユーザーデータがどのように保存されているか、それを表すのがどんなタイプのクラスなのかに関わらず、認証メカニズムを機能し続けるために役立っています。
+`Illuminate\Contracts\Auth\UserProvider`は、MySQLやRiakなどのような持続性のストレージシステムに対する`Illuminate\Contracts\Auth\Authenticatable`の実装を取得することだけに責任を持っています。これらの２つのインターフェイスはユーザーデータがどのように保存されているか、それを表すのがどんなタイプのクラスなのかにかかわらず、認証メカニズムを機能し続けるために役立っています。
 
 `Illuminate\Contracts\Auth\UserProvider`契約を見てみましょう。
 
@@ -593,12 +593,12 @@ HTTPリクエストをベースとした、カスタム認証システムを実�
         public function getRememberTokenName();
     }
 
-このインターフェイスはシンプルです。`getAuthIdentifierName`メソッドは、ユーザーの「主キー」フィールドの名前を返します。`getAuthIdentifier`メソッドはユーザーの主キーを返します。MySQLを裏で使用している場合、これは自動増分される主キーでしょう。`getAuthPassword`はユーザーのハッシュ済みのパスワードを返します。このインターフェイスはどのORMや抽象ストレージ層を使用しているかに関わらず、どんなUserクラスに対しても認証システムが動作するようにしてくれています。デフォルトでLaravelは`app`ディレクトリ中に、このインターフェイスを実装してる`User`クラスを持っています。ですから実装例として、このクラスを調べてみてください。
+このインターフェイスはシンプルです。`getAuthIdentifierName`メソッドは、ユーザーの「主キー」フィールドの名前を返します。`getAuthIdentifier`メソッドはユーザーの主キーを返します。MySQLを裏で使用している場合、これは自動増分される主キーでしょう。`getAuthPassword`はユーザーのハッシュ済みのパスワードを返します。このインターフェイスはどのORMや抽象ストレージ層を使用しているかにかかわらず、どんなUserクラスに対しても認証システムが動作するようにしてくれています。デフォルトでLaravelは`app`ディレクトリ中に、このインターフェイスを実装してる`User`クラスを持っています。ですから実装例として、このクラスを調べてみてください。
 
 <a name="events"></a>
 ## イベント
 
-Laravelは認証処理の過程で、様々な[イベント](/docs/{{version}}/events)を発行します。`EventServiceProvider`の中で、こうしたイベントに対するリスナを設定できます。:
+Laravelは認証処理の過程で、さまざまな[イベント](/docs/{{version}}/events)を発行します。`EventServiceProvider`の中で、こうしたイベントに対するリスナを設定できます。:
 
     /**
      * アプリケーションに指定されたイベントリスナ

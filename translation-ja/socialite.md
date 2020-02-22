@@ -106,7 +106,7 @@ Socialiteを使用する前に、アプリケーションで使用するOAuthサ
         ->scopes(['read:user', 'public_repo'])
         ->redirect();
 
-`setScopes`メソッドを使用し、存在するスコープを全てオーバーライトできます。
+`setScopes`メソッドを使用し、存在するスコープをすべてオーバーライトできます。
 
     return Socialite::driver('github')
         ->setScopes(['read:user', 'public_repo'])
@@ -115,7 +115,7 @@ Socialiteを使用する前に、アプリケーションで使用するOAuthサ
 <a name="stateless-authentication"></a>
 ## ステートレスな認証
 
-`stateless`メソッドはセッション状態の確認を無効にするために使用します。これはAPIへソーシャル認証を追加する場合に便利です。
+`stateless`メソッドは、セッション状態の確認を無効化するために使用します。これはAPIへソーシャル認証を追加する場合に便利です。
 
     return Socialite::driver('google')->stateless()->user();
 

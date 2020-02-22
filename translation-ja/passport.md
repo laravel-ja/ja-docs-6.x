@@ -162,7 +162,7 @@ Passport Vueコンポーネントを公開（Laravel用語で開発者が変更�
         require('./components/passport/PersonalAccessTokens.vue').default
     );
 
-> {note} バージョン5.7.19以前のLaravelでは、コンポーネントを登録する時にコンソールエラーが出る時に、`.default`を追加します。この変更については、[Laravel Mix v4.0.0リリースノート](https://github.com/JeffreyWay/laravel-mix/releases/tag/v4.0.0)で説明がなされています。
+> {note} バージョン5.7.19以前のLaravelでは、コンポーネントを登録する時にコンソールエラーが出る時に、`.default`を追加します。この変さらについては、[Laravel Mix v4.0.0リリースノート](https://github.com/JeffreyWay/laravel-mix/releases/tag/v4.0.0)で説明がなされています。
 
 コンポーネントを登録したら、アセットを再コンパイルするため`npm run dev`を確実に実行してください。アセットの再コンパイルが済んだら、クライアントとパーソナルアクセストークンを作成し始めるために、アプリケーションのテンプレートへコンポーネントを指定しましょう。
 
@@ -329,7 +329,7 @@ JSON APIは`web`と`auth`ミドルウェアにより保護されています。�
 
 #### `PUT /oauth/clients/{client-id}`
 
-このルートはクライアントを更新するために使用します。それには２つのデータが必要です。クライアントの`name`と`redirect`のURLです。`redirect`のURLは許可のリクエストが承認されるか、拒否されたあとのユーザーのリダイレクト先です。このルートは更新されたクライアントインスタンスを返します。
+このルートはクライアントを更新するために使用します。それには２つのデータが必要です。クライアントの`name`と`redirect`のURLです。`redirect`のURLは許可のリクエストが承認されるか、拒否され後のユーザーのリダイレクト先です。このルートは更新されたクライアントインスタンスを返します。
 
     const data = {
         name: 'New Client Name',
@@ -374,7 +374,7 @@ JSON APIは`web`と`auth`ミドルウェアにより保護されています。�
         return redirect('http://your-app.com/oauth/authorize?'.$query);
     });
 
-> {tip} `/oauth/authorize`ルートは、既に`Passport::routes`メソッドが定義づけていることを覚えておいてください。このルートを自分で定義する必要はありません。
+> {tip} `/oauth/authorize`ルートは、すでに`Passport::routes`メソッドが定義づけていることを覚えておいてください。このルートを自分で定義する必要はありません。
 
 #### リクエストの承認
 
@@ -465,7 +465,7 @@ JSON APIは`web`と`auth`ミドルウェアにより保護されています。�
 <a name="creating-a-auth-pkce-grant-client"></a>
 ### クライアント生成
 
-PKCEを使用した認可コードグラントを通じてトークンを発行できるようにする前に、PKCE可能なクライアントを生成する必要があります。`passport:client`コマンドを`--public`オプション付きで実行してください。
+PKCEを使用した認可コードグラントを通じトークンを発行する前に、PKCE可能なクライアントを生成する必要があります。`passport:client`コマンドを`--public`オプション付きで実行してください。
 
     php artisan passport:client --public
 
@@ -547,7 +547,7 @@ OAuth2のパスワードグラントはモバイルアプリケーションの�
 <a name="creating-a-password-grant-client"></a>
 ### パスワードグラントクライアントの作成
 
-パスワードグラントによりあなたのアプリケーションがトークンを発行できるようにする前に、パスワードグラントクライアントを作成する必要があります。それには、`passport:client`コマンドで`--password`を使用してください。すでに`passport:install`コマンドを実行済みの場合、このコマンドを実行する必要はありません。
+パスワードグラントにより、あなたのアプリケーションがトークンを発行する前に、パスワードグラントクライアントを作成する必要があります。それには、`passport:client`コマンドで`--password`を使用してください。すでに`passport:install`コマンドを実行済みの場合、このコマンドを実行する必要はありません。
 
     php artisan passport:client --password
 
@@ -683,7 +683,7 @@ OAuth2のパスワードグラントはモバイルアプリケーションの�
         return redirect('http://your-app.com/oauth/authorize?'.$query);
     });
 
-> {tip} `/oauth/authorize`ルートは、既に`Passport::routes`メソッドが定義づけていることを覚えておいてください。このルートを自分で定義する必要はありません。
+> {tip} `/oauth/authorize`ルートは、すでに`Passport::routes`メソッドが定義づけていることを覚えておいてください。このルートを自分で定義する必要はありません。
 
 <a name="client-credentials-grant-tokens"></a>
 ## クライアント認証情報グラントトークン
@@ -739,11 +739,11 @@ OAuth2のパスワードグラントはモバイルアプリケーションの�
 <a name="creating-a-personal-access-client"></a>
 ### パーソナルアクセスクライアントの作成
 
-あなたのアプリケーションでパーソナルアクセストークンを発行できるようにする前に、パーソナルアクセスクライアントを作成する必要があります。`--personal`オプションを付け、`passport:client`コマンドを実行すれば、作成できます。`passport:install`コマンドを実行済みの場合、このコマンドを実行する必要はありません。
+あなたのアプリケーションでパーソナルアクセストークンを発行する前に、パーソナルアクセスクライアントを作成する必要があります。`--personal`オプションを付け、`passport:client`コマンドを実行すれば、作成できます。`passport:install`コマンドを実行済みの場合、このコマンドを実行する必要はありません。
 
     php artisan passport:client --personal
 
-既にパーソナルアクセスクライアントを定義済みの場合は、それを使用することを`personalAccessClientId`メソッドを使用しPassportへ指定します。通常、このメソッドは`AuthServiceProvider`の`boot`メソッドから呼び出します。
+すでにパーソナルアクセスクライアントを定義済みの場合は、それを使用することを`personalAccessClientId`メソッドを使用しPassportへ指定します。通常、このメソッドは`AuthServiceProvider`の`boot`メソッドから呼び出します。
 
     /**
      * 全認証／認可の登録
@@ -791,7 +791,7 @@ JSON APIは`web`と`auth`ミドルウェアにより保護されています。�
 
 #### `GET /oauth/personal-access-tokens`
 
-このルートは認証中のユーザーが作成したパーソナルアクセストークンを全て返します。ユーザーがトークンの編集や削除を行うため、全トークンをリストするために主に使われます。
+このルートは認証中のユーザーが作成したパーソナルアクセストークンをすべて返します。ユーザーがトークンの編集や削除を行うため、全トークンをリストするために主に使われます。
 
     axios.get('/oauth/personal-access-tokens')
         .then(response => {
@@ -908,7 +908,7 @@ Passportには、指定されたスコープが許可されているトークン
 
 #### 全スコープの確認
 
-`scopes`ミドルウェアは、リストしたスコープが**全て**、送信されてきたリクエストのアクセストークンに含まれていることを確認するため、ルートへ指定します。
+`scopes`ミドルウェアは、リストしたスコープが**すべて**、送信されてきたリクエストのアクセストークンに含まれていることを確認するため、ルートへ指定します。
 
     Route::get('/orders', function () {
         // アクセストークンは"check-status"と"place-orders"、両スコープを持っている
@@ -924,7 +924,7 @@ Passportには、指定されたスコープが許可されているトークン
 
 #### トークンインスタンスでのスコープチェック
 
-アクセストークンが確認されたリクエストがアプリケーションにやってきた後でも、認証済みの`User`インスタンスへ`tokenCan`メソッドを使用し、トークンが指定したスコープを持っているかを確認できます。
+アクセストークンを確認されたリクエストがアプリケーションにやってきた後でも、認証済みの`User`インスタンスへ`tokenCan`メソッドを使用し、トークンが指定したスコープを持っているかを確認できます。
 
     use Illuminate\Http\Request;
 
@@ -955,7 +955,7 @@ Passportには、指定されたスコープが許可されているトークン
 <a name="consuming-your-api-with-javascript"></a>
 ## APIをJavaScriptで利用
 
-API構築時にJavaScriptアプリケーションから、自分のAPIを利用できたらとても便利です。このAPI開発のアプローチにより、世界中で共有されるのと同一のAPIを自身のアプリケーションで使用できるようになります。自分のWebアプリケーションやモバイルアプリケーション、サードパーティアプリケーション、そして様々なパッケージマネージャ上で公開するSDKにより、同じAPIが使用されます。
+API構築時にJavaScriptアプリケーションから、自分のAPIを利用できたらとても便利です。このAPI開発のアプローチにより、世界中で共有されるのと同一のAPIを自身のアプリケーションで使用できるようになります。自分のWebアプリケーションやモバイルアプリケーション、サードパーティアプリケーション、そしてさまざまなパッケージマネージャ上で公開するSDKにより、同じAPIが使用されます。
 
 通常、皆さんのAPIをJavaScriptアプリケーションから使用しようとするなら、アプリケーションに対しアクセストークンを自分で送り、それを毎回リクエストするたび、一緒にアプリケーションへ渡す必要があります。しかし、Passportにはこれを皆さんに変わって処理するミドルウェアが用意してあります。必要なのは`app/Http/Kernel.php`ファイル中の、`web`ミドルウェアグループに対し、`CreateFreshApiToken`ミドルウェアを追加することだけです。
 

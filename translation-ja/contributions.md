@@ -58,12 +58,12 @@ LaravelのGitHubイシュートラッカーは、Laravelのヘルプやサポー
 
 新機能や、現存のLaravelの振る舞いについて改善を提言したい場合は、Laravelアイデア[issueボード](https://github.com/laravel/ideas/issues)へおねがいします。新機能を提言する場合は自発的に、それを完動させるのに必要な、コードを最低限でも実装してください。
 
-バグ、新機能、既存機能の実装についてのざっくばらんな議論は、[Laravel Discord server](https://discordapp.com/invite/mPZNm7A)の`#internals`チャンネルで行っています。LaravelのメンテナーであるTaylor Otwellは、通常ウイークエンドの午前８時から５時まで（America/Chicago標準時、UTC-6:00）接続しています。他の時間帯では、時々接続しています。
+バグ、新機能、既存機能の実装についてのざっくばらんな議論は、[Laravel Discord server](https://discordapp.com/invite/mPZNm7A)の`#internals`チャンネルで行っています。LaravelのメンテナーであるTaylor Otwellは、通常ウイークエンドの午前８時から５時まで（America/Chicago標準時、UTC-6:00）接続しています。他の時間帯では、ときどき接続しています。
 
 <a name="which-branch"></a>
 ## どのブランチ？
 
-**全ての**バグフィックスは、最新の安定ブランチ,もしくは[現行のLTSブランチ](/docs/{{version}}/releases#support-policy)へ送ってください。次のリリースの中にだけ存在している機能に対する修正でない限り、決してバグフィックスを`master`ブランチに送っては**いけません**。
+**すべての**バグフィックスは最新の安定ブランチ、もしくは[現行のLTSブランチ](/docs/{{version}}/releases#support-policy)へ送ってください。次のリリースの中にだけ存在している機能に対する修正でない限り、決してバグフィックスを`master`ブランチに送っては**いけません**。
 
 現在のリリースと**完全な後方コンパティビリティ**を持っている**マイナー**な機能は、最新の安定ブランチへ送ってください。
 
@@ -74,7 +74,7 @@ LaravelのGitHubイシュートラッカーは、Laravelのヘルプやサポー
 <a name="compiled-assets"></a>
 ## アセットのコンパイル
 
-`laravel/laravel`リポジトリの`resources/sass`や`resources/js`下のほとんどのファイルのように、コンパイル済みファイルに影響を及ぼすファイルへ変更を行う場合、コンパイル済みファイルをコミットしないでください。大きなファイルサイズであるため、メンテナは実際レビューできません。悪意のあるコードをLaravelへ紛れ込ませる方法を提供してしまいます。これを防御的に防ぐため、全てのコンパイル済みファイルはLaravelメンテナが生成し、コミットします。
+`laravel/laravel`リポジトリの`resources/sass`や`resources/js`下のほとんどのファイルのように、コンパイル済みファイルに影響を及ぼすファイルへ変更を行う場合、コンパイル済みファイルをコミットしないでください。大きなファイルサイズであるため、メンテナは実際レビューできません。悪意のあるコードをLaravelへ紛れ込ませる方法を提供してしまいます。これを防御的に防ぐため、すべてのコンパイル済みファイルはLaravelメンテナが生成し、コミットします。
 
 <a name="security-vulnerabilities"></a>
 ## セキュリティ脆弱性
@@ -109,7 +109,7 @@ Laravelは[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/
 <a name="styleci"></a>
 ### StyleCI
 
-コードのスタイルが完璧でなくても心配ありません。プルリクエストがマージされたあとで、[StyleCI](https://styleci.io/)が自動的にスタイルを修正し、Laravelリポジトリへマージします。これにより、コードスタイルではなく、貢献の内容へ集中することができます。
+コードのスタイルが完璧でなくても心配ありません。プルリクエストがマージされた後で、[StyleCI](https://styleci.io/)が自動的にスタイルを修正し、Laravelリポジトリへマージします。これによりコードスタイルではなく、貢献の内容へ集中できます。
 
 <a name="code-of-conduct"></a>
 ## 行動規範

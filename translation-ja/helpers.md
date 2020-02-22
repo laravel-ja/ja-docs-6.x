@@ -6,7 +6,7 @@
 <a name="introduction"></a>
 ## イントロダクション
 
-Laravelは様々な、グローバル「ヘルパ」PHP関数を用意しています。これらの多くはフレームワーク自身で使用されています。便利なものが見つかれば、皆さんのアプリケーションでも大いに活用してください。
+Laravelはさまざまな、グローバル「ヘルパ」PHP関数を用意しています。これらの多くはフレームワーク自身で使用されています。便利なものが見つかれば、皆さんのアプリケーションでも大いに活用してください。
 
 <a name="available-methods"></a>
 ## 使用可能なメソッド
@@ -279,7 +279,7 @@ Laravelは様々な、グローバル「ヘルパ」PHP関数を用意してい�
 
     // 200
 
-デフォルト値を３つ目の引数で指定することもできます。この値はテストでどの値もテストにパスしない場合に返されます。
+デフォルト値を３つ目の引数で指定することもできます。この値はテストでどの値もテストへパスしない場合に返されます。
 
     use Illuminate\Support\Arr;
 
@@ -401,7 +401,7 @@ Laravelは様々な、グローバル「ヘルパ」PHP関数を用意してい�
 <a name="method-array-pluck"></a>
 #### `Arr::pluck()` {#collection-method}
 
-`Arr::pluck`メソッドは配列中の指定キーに対する値を全て取得します。
+`Arr::pluck`メソッドは配列中の指定キーに対する値をすべて取得します。
 
     use Illuminate\Support\Arr;
 
@@ -839,7 +839,7 @@ NULL値を指定すると、空の配列が返ってきます。
 <a name="method-str-after"></a>
 #### `Str::after()` {#collection-method}
 
-`Str::after`関数は、指定した値に続く文字列を全て返します。文字列中に指定値が存在しない場合は、文字列全体を返します。
+`Str::after`関数は、指定した値に続く文字列をすべて返します。文字列中に指定値が存在しない場合は、文字列全体を返します。
 
     use Illuminate\Support\Str;
 
@@ -993,7 +993,7 @@ NULL値を指定すると、空の配列が返ってきます。
 <a name="method-kebab-case"></a>
 #### `Str::kebab()` {#collection-method}
 
-`Str::kebab`メソッドは、指定した文字列をケバブ-ケース（`kebab-case`）に変換します。
+`Str::kebab`メソッドは、指定した文字列をケバブケース（`kebab-case`）に変換します。
 
     use Illuminate\Support\Str;
 
@@ -1415,7 +1415,7 @@ NULL値を指定すると、空の配列が返ってきます。
 <a name="method-class-uses-recursive"></a>
 #### `class_uses_recursive()` {#collection-method}
 
-`class_uses_recursive`関数は、すべての親で使われているものも含め、クラス中で使用されているトレイトを全て返します。
+`class_uses_recursive`関数は、すべての親で使われているものも含め、クラス中で使用されているトレイトをすべて返します。
 
     $traits = class_uses_recursive(App\User::class);
 
@@ -1520,7 +1520,7 @@ NULL値を指定すると、空の配列が返ってきます。
     // APP_ENVがセットされていない場合、'production'が返る
     $env = env('APP_ENV', 'production');
 
-> {note} 開発期間中に`config:cache`コマンドを実行する場合は、設定ファイルの中で必ず`env`関数だけを使用してください。設定ファイルがキャッシュされると、`.env`ファイルはロードされなくなり、`env`関数の呼び出しは全て`null`を返します。
+> {note} 開発期間中に`config:cache`コマンドを実行する場合は、設定ファイルの中で必ず`env`関数だけを使用してください。設定ファイルがキャッシュされると、`.env`ファイルはロードされなくなり、`env`関数の呼び出しはすべて`null`を返します。
 
 <a name="method-event"></a>
 #### `event()` {#collection-method}
@@ -1709,7 +1709,7 @@ NULL値を指定すると、空の配列が返ってきます。
 
     $value = session('key');
 
-キー／値ペアの配列を渡し、値を設定することができます。
+キー／値ペアの配列を渡し、値を設定できます。
 
     session(['chairs' => 7, 'instruments' => 3]);
 

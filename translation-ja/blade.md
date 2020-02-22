@@ -147,7 +147,7 @@ Bladeビューはグローバルな`view`ヘルパを使用し、ルートから
 
 #### コンポーネントの別名
 
-Bladeコンポーネントをサブディレクトリへ保存している場合、簡単にアクセスできるようにエイリアスを使いたくなります。たとえば、`resources/views/components/alert.blade.php`へBladeコンポーネントを保存していると想像してください。`component`メソッドを使い、`components.alert`コンポーネントの別名を`alert`と名付けられます。通常、`AppServiceProvider`の`boot`メソッドで別名を指定します。
+Bladeコンポーネントをサブディレクトリへ保存している場合でも簡単にアクセスできるよう、エイリアスを使いたくなります。たとえば、`resources/views/components/alert.blade.php`へBladeコンポーネントを保存していると想像してください。`component`メソッドを使い、`components.alert`コンポーネントの別名を`alert`と名付けられます。通常、`AppServiceProvider`の`boot`メソッドで別名を指定します。
 
     use Illuminate\Support\Facades\Blade;
 
@@ -194,7 +194,7 @@ Bladeビューに渡されたデータは、波括弧で変数を囲うことで
 
 #### JSONのレンダ
 
-JavaScriptの変数を初期化するために、配列をビューに渡してJSONとして描画することができます。
+JavaScriptの変数を初期化するために、配列をビューに渡してJSONとして描画できます。
 
     <script>
         var app = <?php echo json_encode($array); ?>;
@@ -243,7 +243,7 @@ Blade（およびLaravelの`e`ヘルパ）はデフォルトで、HTMLエンテ�
 <a name="blade-and-javascript-frameworks"></a>
 ### BladeとJavaScriptフレームワーク
 
-多くのJavaScriptフレームワークでも、与えられた式をブラウザに表示するために波括弧を使っていますので、`@`シンボルでBladeレンダリングエンジンに波括弧の展開をしないように指示することが可能です。
+与えられた式をブラウザに表示するため、多くのJavaScriptフレームワークでも波括弧を使っているので、`@`シンボルでBladeレンダリングエンジンに波括弧の展開をしないように指示することが可能です。
 
     <h1>Laravel</h1>
 
@@ -285,7 +285,7 @@ Blade（およびLaravelの`e`ヘルパ）はデフォルトで、HTMLエンテ�
         あなたはログインしていません。
     @endunless
 
-さらに、既に説明したように`@isset`と`@empty`ディレクティブも、同名のPHP関数の便利なショートカットとして使用できます。
+さらに、すでに説明したように`@isset`と`@empty`ディレクティブも、同名のPHP関数の便利なショートカットとして使用できます。
 
     @isset($records)
         // $recordsは定義済みでnullでない
@@ -496,7 +496,7 @@ HTMLフォームでは、`PUT`、`PATCH`、`DELETE`リクエストを作成で�
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 
-複数のフォームで構成されたページで、バリデーションエラーを取得するために、`@error`ディレクティブの第２引数として[特定のエラーバッグの名前](/docs/{{version}}/validation#named-error-bags)を渡せます。
+複数のフォームにより構成されたページで、バリデーションエラーを取得するために、`@error`ディレクティブの第２引数として[特定のエラーバッグの名前](/docs/{{version}}/validation#named-error-bags)が渡せます。
 
     <!-- /resources/views/auth.blade.php -->
 
@@ -545,7 +545,7 @@ Bladeの`@include`ディレクディブを使えば、ビューの中から簡�
 
 #### サブビューのエイリアス
 
-Bladeのサブビューがサブディレクトリへ設置されている場合、簡潔にアクセスできるようにエイリアスを使用できます。たとえば、以下の内容のBladeサブビューが、`resources/views/includes/input.blade.php`へ保存されていると想像してください。
+Bladeのサブビューがサブディレクトリへ設置されている場合でも簡潔にアクセスできるよう、エイリアスを使用できます。たとえば、以下の内容のBladeサブビューが、`resources/views/includes/input.blade.php`へ保存されていると想像してください。
 
     <input type="{{ $type ?? 'text' }}">
 
@@ -617,7 +617,7 @@ Bladeはさらに、他のビューやレイアウトでレンダできるよう
 <a name="extending-blade"></a>
 ## Blade拡張
 
-Bladeでは`directive`メソッドを使い、自分のカスタムディレクティブを定義することができます。Bladeコンパイラがそのカスタムディレクティブを見つけると、そのディレクティブに渡される引数をコールバックへの引数として呼び出します。
+Bladeでは`directive`メソッドを使い、自分のカスタムディレクティブを定義できます。Bladeコンパイラがそのカスタムディレクティブを見つけると、そのディレクティブに渡される引数をコールバックへの引数として呼び出します。
 
 次の例は`@datetime($var)`ディレクティブを作成し、渡される`DateTime`インスタンスの`$var`をフォーマットします。
 
@@ -662,7 +662,7 @@ Bladeでは`directive`メソッドを使い、自分のカスタムディレク�
 <a name="custom-if-statements"></a>
 ### カスタムif文
 
-シンプルなカスタム条件文を定義する時、必要以上にカスタムディレクティブのプログラミングが複雑になってしまうことが、時々起きます。そのため、Bladeはクロージャを使用し、カスタム条件ディレクティブを素早く定義できるように、`Blade::if`メソッドを提供しています。例として、現在のアプリケーション環境をチェックするカスタム条件を定義してみましょう。`AppServiceProvider`の`boot`メソッドで行います。
+シンプルなカスタム条件文を定義する時、必要以上にカスタムディレクティブのプログラミングが複雑になってしまうことが、ときどき起きます。そのため、Bladeはクロージャを使用し、カスタム条件ディレクティブを素早く定義できるように、`Blade::if`メソッドを提供しています。例として、現在のアプリケーション環境をチェックするカスタム条件を定義してみましょう。`AppServiceProvider`の`boot`メソッドで行います。
 
     use Illuminate\Support\Facades\Blade;
 

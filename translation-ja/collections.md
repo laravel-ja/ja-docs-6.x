@@ -23,7 +23,7 @@
         return empty($name);
     });
 
-ご覧の通り、`Collection`クラスは裏にある配列をマップ操作してから要素削除するメソッドをチェーンでスムーズにつなげてくれます。つまり元のコレクションは不変であり、全ての`Collection`メソッドは新しい`Collection`インスタンスを返します。
+ご覧の通り、`Collection`クラスは裏にある配列をマップ操作してから要素削除するメソッドをチェーンでスムーズにつなげてくれます。つまり元のコレクションは不変であり、すべての`Collection`メソッドは新しい`Collection`インスタンスを返します。
 
 <a name="creating-collections"></a>
 ### コレクション生成
@@ -59,7 +59,7 @@
 <a name="available-methods"></a>
 ## 利用可能なメソッド
 
-このドキュメントの残りで、`Collection`クラスで使用できる各メソッドを解説します。これらのメソッドは、全て裏の配列をスラスラと操作するためにチェーンで繋げられることを覚えておきましょう。また、ほとんどのメソッドは新しい`Collection`インスタンスを返しますので、必要であればコレクションのオリジナルコピーを利用できるように変更しません。
+このドキュメントの残りで、`Collection`クラスで使用できる各メソッドを解説します。これらのメソッドは、すべて裏の配列をスラスラと操作するためにチェーンで繋げられることを覚えておきましょう。また、ほとんどのメソッドは新しい`Collection`インスタンスを返しますので、必要であればコレクションのオリジナルコピーを利用できるように変更しません。
 
 <style>
     #collection-method-list > p {
@@ -246,7 +246,7 @@
 
     // [[1, 2, 3, 4], [5, 6, 7]]
 
-このメソッドは特に[Bootstrap](https://getbootstrap.com/docs/4.1/layout/grid)のようなグリッドシステムを[ビュー](/docs/{{version}}/views)で操作する場合に便利です。[Eloquent](/docs/{{version}}/eloquent)モデルのコレクションがあり、グリッドで表示しようとしているところを想像してください。
+このメソッドはとくに[Bootstrap](https://getbootstrap.com/docs/4.1/layout/grid)のようなグリッドシステムを[ビュー](/docs/{{version}}/views)で操作する場合に便利です。[Eloquent](/docs/{{version}}/eloquent)モデルのコレクションがあり、グリッドで表示しようとしているところを想像してください。
 
     @foreach ($products->chunk(3) as $chunk)
         <div class="row">
@@ -295,7 +295,7 @@
 
     // [1, 2, 3]
 
-`collect`メソッドは、[レイジーコレクション](#lazy-collections)を通常の`Collection`インスタンスへ変換するのに特に便利です。
+`collect`メソッドは、[レイジーコレクション](#lazy-collections)を通常の`Collection`インスタンスへ変換するのにとくに便利です。
 
     $lazyCollection = LazyCollection::make(function () {
         yield 1;
@@ -313,7 +313,7 @@
 
     // [1, 2, 3]
 
-> {tip} `collect`メソッドは`Enumerable`のインスタンスがあり、それをレイジーコレクションでなくする必要がある場合、特に便利です。`collect()`は`Enumerable`契約の一部であり、`Collection`インスタンスを取得するため安全に使用できます。
+> {tip} `collect`メソッドは`Enumerable`のインスタンスがあり、それをレイジーコレクションでなくする必要がある場合、とくに便利です。`collect()`は`Enumerable`契約の一部であり、`Collection`インスタンスを取得するため安全に使用できます。
 
 <a name="method-concat"></a>
 #### `concat()` {#collection-method}
@@ -387,7 +387,7 @@
 <a name="method-countBy"></a>
 #### `countBy()` {#collection-method}
 
-`countBy`メソッドはコレクションに出現する値をカウントします。デフォルトでこのメソッドは、出現する全ての要素をカウントします。
+`countBy`メソッドはコレクションに出現する値をカウントします。デフォルトでこのメソッドは、出現するすべての要素をカウントします。
 
     $collection = collect([1, 2, 2, 2, 3]);
 
@@ -685,7 +685,7 @@
 
     // 3
 
-`first`メソッドに引数を付けなければ、コレクションの最初の要素を取得できます。コレクションが空なら`null`が返ります。
+`first`メソッドに引数を付けなければ、コレクションの最初の要素を取得できます。コレクションが空なら`null`を返します。
 
     collect([1, 2, 3, 4])->first();
 
@@ -870,7 +870,7 @@
         ]
     */
 
-文字列で`key`を指定する代わりに、コールバックを渡すことができます。コール―バックはグループとしてまとめるキーの値を返す必要があります。
+文字列で`key`を指定する代わりに、コールバックを渡すことができます。コールバックはグループとしてまとめるキーの値を返す必要があります。
 
     $grouped = $collection->groupBy(function ($item, $key) {
         return substr($item['account_id'], -3);
@@ -1649,7 +1649,7 @@ staticの`make`メソッドは、新しいコレクションインスタンス�
 
     // 1
 
-検索は「緩い」比較で行われます。つまり、整数値を持つ文字列は、同じ値の整数と等しいと判断されます。「厳格」な比較を行いたい場合は`true`をメソッドの第２引数に渡します。
+検索は「緩い」比較で行われます。つまり、整数値を持つ文字列は、同じ値の整数に等しいと判断されます。「厳格」な比較を行いたい場合は`true`をメソッドの第２引数に渡します。
 
     $collection->search('4', true);
 
@@ -2000,7 +2000,7 @@ sliceメソッドはデフォルトでキー値を保持したまま返します
         ]
     */
 
-> {note} `toArray`は、ネストした`Arrayable`インスタンスのオブジェクト全てを配列へ変換します。裏の配列をそのまま取得したい場合は、代わりに[`all`](#method-all)メソッドを使用してください。
+> {note} `toArray`は、ネストした`Arrayable`インスタンスのオブジェクトすべてを配列へ変換します。裏の配列をそのまま取得したい場合は、代わりに[`all`](#method-all)メソッドを使用してください。
 
 <a name="method-tojson"></a>
 #### `toJson()` {#collection-method}
@@ -2033,7 +2033,7 @@ sliceメソッドはデフォルトでキー値を保持したまま返します
 <a name="method-union"></a>
 #### `union()` {#collection-method}
 
-`union`メソッドは指定した配列をコレクションへ追加します。既にコレクションにあるキーが、オリジナル配列に含まれている場合は、オリジナルコレクションの値が優先されます。
+`union`メソッドは指定した配列をコレクションへ追加します。すでにコレクションにあるキーが、オリジナル配列に含まれている場合は、オリジナルコレクションの値が優先されます。
 
     $collection = collect([1 => ['a'], 2 => ['b']]);
 
@@ -2516,7 +2516,7 @@ staticの`wrap`メソッドは適用可能であれば、指定値をコレク�
 
 すでに強力な`Collection`クラスを補足するために、`LazyCollection`クラスはPHPの[PHPジェネレータ](https://www.php.net/manual/ja/language.generators.overview.php)を活用しています。巨大なデータセットをメモリ使用を抑えて利用する目的のためです。
 
-たとえば、アプリケーションで数ギガバイトのログを処理する必要があり、ログを解析するためにLaravelのコレクションメソッドを活用するとしましょう。ファイル全体をメモリに一度に読み込む代わりに、レイジーコレクションなら毎回ファイルの小さな部分だけをメモリに保持するだけで済みます。
+たとえば、アプリケーションで数ギガバイトのログを処理する必要があり、ログを解析するためにLaravelのコレクションメソッドを活用するとしましょう。ファイル全体をメモリへ一度で読み込む代わりに、レイジーコレクションなら毎回ファイルの小さな部分だけをメモリに保持するだけで済みます。
 
     use App\LogEntry;
     use Illuminate\Support\LazyCollection;
@@ -2567,7 +2567,7 @@ staticの`wrap`メソッドは適用可能であれば、指定値をコレク�
 <a name="the-enumerable-contract"></a>
 ### Enumerable契約
 
-`Collection`クラスのほとんど全てのメソッドが、`LazyCollection`クラス上でも利用できます。両クラスは`Illuminate\Support\Enumerable`契約を実装しており、以下のメソッドを定義しています。
+`Collection`クラスのほとんどすべてのメソッドが、`LazyCollection`クラス上でも利用できます。両クラスは`Illuminate\Support\Enumerable`契約を実装しており、以下のメソッドを定義しています。
 
 <div id="collection-method-list" markdown="1">
 

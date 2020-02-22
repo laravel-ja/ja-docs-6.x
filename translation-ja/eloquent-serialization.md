@@ -118,7 +118,7 @@ EloquentモデルがJSONへ変換される場合、JSONオブジェクトへ属�
 <a name="appending-values-to-json"></a>
 ## JSONへ値を追加
 
-モデルを配列やJSONへキャストするとき、データベースに対応するカラムがない属性の配列を追加する必要がある場合も時々あります。これを行うには、最初にその値の[アクセサ](/docs/{{version}}/eloquent-mutators)を定義します。
+モデルを配列やJSONへキャストするとき、データベースに対応するカラムがない属性の配列を追加する必要がある場合もときどきあります。これを行うには、最初にその値の[アクセサ](/docs/{{version}}/eloquent-mutators)を定義します。
 
     <?php
 
@@ -157,7 +157,7 @@ EloquentモデルがJSONへ変換される場合、JSONオブジェクトへ属�
         protected $appends = ['is_admin'];
     }
 
-`appends`リストに属性を追加すれば、モデルの配列とJSON形式両方に含まれるようになります。`appends`配列の属性もモデルの`visible`と`hidden`の設定に従い動作します。
+`appends`リストに属性を追加すれば、モデルの配列とJSON形式両方へ含まれるようになります。`appends`配列の属性もモデルの`visible`と`hidden`の設定に従い動作します。
 
 #### 実行時の追加
 

@@ -103,7 +103,7 @@ LaravelクエリビルダはアプリケーションをSQLインジェクショ�
 <a name="chunking-results"></a>
 ### 結果の分割
 
-数千のデータベースレコードを扱う場合は`chunk`メソッドの使用を考慮してください。このメソッドは一度に小さな「かたまり(chunk)」で結果を取得し、このチャンクは処理のために「クロージャ」に渡されます。このメソッドは数千のレコードを処理する[Artisanコマンド](/docs/{{version}}/artisan)を書くときに便利です。`users`レコード全体から一度に１００レコードずつチャンクを処理する例を見てください。
+数千のデータベースレコードを扱う場合は`chunk`メソッドの使用を考慮してください。このメソッドは一度に小さな「かたまり(chunk)」で結果を取得し、このチャンクは処理のために「クロージャ」へ渡されます。このメソッドは数千のレコードを処理する[Artisanコマンド](/docs/{{version}}/artisan)を書くときに便利です。`users`レコード全体から一度に１００レコードずつチャンクを処理する例を見てください。
 
     DB::table('users')->orderBy('id')->chunk(100, function ($users) {
         foreach ($users as $user) {
@@ -160,7 +160,7 @@ LaravelクエリビルダはアプリケーションをSQLインジェクショ�
 
 #### SELECT節の指定
 
-常にデータベースレコードの全カラムは必要ではないでしょう。クエリの`select`節を`select`メソッドで指定できます。
+常にデータベースレコードの全カラムが必要ではないでしょう。クエリの`select`節を`select`メソッドで指定できます。
 
     $users = DB::table('users')->select('name', 'email as user_email')->get();
 
@@ -168,7 +168,7 @@ LaravelクエリビルダはアプリケーションをSQLインジェクショ�
 
     $users = DB::table('users')->distinct()->get();
 
-既にクエリビルダインスタンスがあり、select節にカラムを追加したい場合は`addSelect`メソッドを使ってください。
+すでにクエリビルダインスタンスがあり、select節にカラムを追加したい場合は`addSelect`メソッドを使ってください。
 
     $query = DB::table('users')->select('name');
 
@@ -177,7 +177,7 @@ LaravelクエリビルダはアプリケーションをSQLインジェクショ�
 <a name="raw-expressions"></a>
 ## SQL文
 
-時々、クエリの中でSQLを直接使用したいことがあります。エスケープなしのSQLを使用する場合は`DB::raw`メソッドを使用します。
+ときどき、クエリの中でSQLを直接使用したいことがあります。エスケープなしのSQLを使用する場合は`DB::raw`メソッドを使用します。
 
     $users = DB::table('users')
                          ->select(DB::raw('count(*) as user_count, status'))
@@ -190,7 +190,7 @@ LaravelクエリビルダはアプリケーションをSQLインジェクショ�
 <a name="raw-methods"></a>
 ### rawメソッド
 
-`DB::raw`を使用する代わりに、クエリの様々な箇所へSQL文を挿入する、以降のメソッドも使用できます。
+`DB::raw`を使用する代わりに、クエリのさまざまな箇所へSQL文を挿入する、以降のメソッドも使用できます。
 
 #### `selectRaw`
 
@@ -269,7 +269,7 @@ LaravelクエリビルダはアプリケーションをSQLインジェクショ�
             })
             ->get();
 
-JOINに"where"節を使用したい場合はjoinの中で`where`や`orWhere`を使用して下さい。２つのカラムを比べる代わりに、これらのメソッドは値とカラムを比較します。
+JOINに"where"節を使用したい場合はjoinの中で`where`や`orWhere`を使用してください。２つのカラムを比べる代わりに、これらのメソッドは値とカラムを比較します。
 
     DB::table('users')
             ->join('contacts', function ($join) {
@@ -559,7 +559,7 @@ JSON配列を長さでクエリするには、`whereJsonLength`を使います�
 
 #### inRandomOrder
 
-`inRandomOrder`メソッドはクエリ結果をランダムな順番にしたい時に使用します。たとえば、以下のコードはランダムにユーザーを一人取得します。
+`inRandomOrder`メソッドはクエリ結果をランダム順にする場合で使用します。たとえば、以下のコードはランダムにユーザーを一人取得します。
 
     $randomUser = DB::table('users')
                     ->inRandomOrder()
@@ -567,7 +567,7 @@ JSON配列を長さでクエリするには、`whereJsonLength`を使います�
 
 #### groupBy / having
 
-`groupBy`と`having`メソッドはクエリ結果をグループにまとめるために使用します。`having`メソッドは`where`メソッドと似た使い方です。
+`groupBy`と`having`メソッドはクエリ結果をグループへまとめるために使用します。`having`メソッドは`where`メソッドと似た使い方です。
 
     $users = DB::table('users')
                     ->groupBy('account_id')
@@ -599,7 +599,7 @@ JSON配列を長さでクエリするには、`whereJsonLength`を使います�
 <a name="conditional-clauses"></a>
 ## 条件節
 
-ある条件がtrueの場合の時のみ、クエリへ特定の文を適用したい場合があります。例えば特定の入力値がリクエストに含まれている場合に、`where`文を適用する場合です。`when`メソッドで実現できます。
+ある条件がtrueの場合の時のみ、クエリへ特定の文を適用したい場合があります。たとえば特定の入力値がリクエストに含まれている場合に、`where`文を適用する場合です。`when`メソッドで実現できます。
 
     $role = $request->input('role');
 
@@ -714,14 +714,14 @@ JSONカラムを更新する場合は、JSONオブジェクト中の適切なキ
 
     DB::table('users')->where('votes', '>', 100)->delete();
 
-全レコードを削除し、自動増分のIDを0にリセットするためにテーブルをTRUNCATEしたい場合は、`truncate`メソッドを使います。
+全レコードを削除し、自動増分のIDを0へリセットするためにテーブルをTRUNCATEしたい場合は、`truncate`メソッドを使います。
 
     DB::table('users')->truncate();
 
 <a name="pessimistic-locking"></a>
 ## 悲観的ロック
 
-クエリビルダは、`SELECT`文で「悲観的ロック」を行うための機能をいくつか持っています。SELECT文を実行する間「共有ロック」をかけたい場合は、`sharedLock`メソッドをクエリに指定して下さい。共有ロックはトランザクションがコミットされるまで、SELECTしている行が更新されることを防ぎます。
+クエリビルダは、`SELECT`文で「悲観的ロック」を行うための機能をいくつか持っています。SELECT文を実行する間「共有ロック」をかけたい場合は、`sharedLock`メソッドをクエリに指定してください。共有ロックはトランザクションがコミットされるまで、SELECTしている行が更新されることを防ぎます。
 
     DB::table('users')->where('votes', '>', 100)->sharedLock()->get();
 

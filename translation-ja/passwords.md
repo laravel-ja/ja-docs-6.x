@@ -19,7 +19,7 @@
 <a name="resetting-database"></a>
 ## データベースの検討事項
 
-利用を始めるには、`App\User`モデルが`Illuminate\Contracts\Auth\CanResetPassword`契約を実装しているか確認してください。フレームワークに用意されている`App\User`モデルでは、既にこのインターフェイスが実装されています。`Illuminate\Auth\Passwords\CanResetPassword`トレイトで、このインターフェイスで実装する必要のあるメソッドが定義されています。
+利用を始めるには、`App\User`モデルが`Illuminate\Contracts\Auth\CanResetPassword`契約を実装しているか確認してください。フレームワークに用意されている`App\User`モデルでは、すでにこのインターフェイスが実装されています。`Illuminate\Auth\Passwords\CanResetPassword`トレイトで、このインターフェイスで実装する必要のあるメソッドが定義されています。
 
 #### リセットトークンテーブルマイグレーションの生成
 

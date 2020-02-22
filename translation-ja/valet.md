@@ -18,11 +18,11 @@
 <a name="introduction"></a>
 ## イントロダクション
 
-Valet（ベレット：従者）はMacミニマニストのためのLaravel開発環境です。Vagrantも不要、/etc/hostsファイルも不要です。更に、ローカルトンネルを使って、サイトを公開し、シェアすることもできます。**ええ、私達はこういうのも好きなんですよね。**
+Valet（ベレット：従者）はMacミニマニストのためのLaravel開発環境です。Vagrantも不要、/etc/hostsファイルも不要です。さらに、ローカルトンネルを使って、サイトを公開し、シェアすることもできます。**ええ、私達はこういうのも好きなんですよね。**
 
-Laravel Valetはマシン起動時にバックグランドで[Nginx](https://www.nginx.com/)がいつも実行されるように、Macを設定します。そのため、[DnsMasq](https://en.wikipedia.org/wiki/Dnsmasq)を使用し、Valetは`*.test`ドメインへの全リクエストを、ローカルマシンへインストール済みサイトへ向けプロキシ動作します。
+Laravel Valetはマシン起動時にバックグランドで[Nginx](https://www.nginx.com/)がいつも実行されるように、Macを設定します。そのため、[DnsMasq](https://en.wikipedia.org/wiki/Dnsmasq)を使用し、Valetは`*.test`ドメインへの全リクエストを、ローカルマシンのインストール済みサイトへ向けるようにプロキシ動作します。
 
-言い換えれば、大体7MBのRAMを使う、とても早いLaravelの開発環境です。ValetはVagrantやHomesteadを完全に置き換えるものではありませんが、柔軟な基礎、特にスピード重視であるか、RAMが限られているマシンで動作させるのには、素晴らしい代替になります。
+言い換えれば、大体7MBのRAMを使うとても早いLaravelの開発環境です。ValetはVagrantやHomesteadを完全に置き換えるものではありませんが柔軟な基礎、とくにスピード重視であるか、RAMが限られているマシンで動作させるのに素晴らしい代替になります。
 
 Valetは以下をサポートしていますが、これらに限定されません。
 
@@ -81,7 +81,7 @@ ValetとHomesteadのどちらを選んでも、Laravelの開発環境に向け�
 - `valet install`コマンドを実行してください。これによりValetとDnsMasqがインストール／設定され、システム起動時に起動されるValetのデーモンが登録されます。
 </div>
 
-Valetがインストールできたら、`ping foobar.test`のようなコマンドで、ターミナルから`*.test`ドメインに対してpingを実行してください。Valetが正しくインストールされていれば、このドメインは`127.0.0.1`へ対応していることが分かるでしょう。
+Valetがインストールできたら、`ping foobar.test`のようなコマンドで、ターミナルから`*.test`ドメインに対してpingを実行してください。Valetが正しくインストールされていれば、このドメインは`127.0.0.1`へ対応していることがわかるでしょう。
 
 Valetはマシンが起動されると、毎回デーモンを自動的に起動します。Valetが完全にインストールされていれば、`valet start`や`valet install`を再び実行する必要は永久にありません。
 
@@ -107,7 +107,7 @@ Valetでは`valet use php@version`コマンドにより、PHPバージョンを�
 
 #### インストレーションのリセット
 
-Valetインストレーションが正しく動作せずに問題が起きた時は、`composer global update`の後に、`valet install`を実行してください。これによりインストール済みのValetがリセットされ、様々な問題が解決されます。稀にValetを「ハードリセット」する必要がある場合があり、その場合は`valet install`の前に`valet uninstall --force`を実行してください。
+Valetインストレーションが正しく動作せずに問題が起きた時は、`composer global update`の後に、`valet install`を実行してください。これによりインストール済みのValetがリセットされ、さまざまな問題が解決されます。稀にValetを「ハードリセット」する必要がある場合もあり、その場合は`valet install`の前に`valet uninstall --force`を実行してください。
 
 <a name="upgrading"></a>
 ### アップグレード
@@ -128,7 +128,7 @@ Valetがインストールできたら、サイトを動作させる準備がで
 - `http://blog.test`をブラウザで開きます。
 </div>
 
-**必要なのはこれだけです。** これで"parked"ディレクトリ内で作成されたLaravelプロジェクトは、`http://フォルダ名.test`規約に従い、自動的に動作します。
+**必要なのはこれだけです。** これで"parked"ディレクトリ内に作成されたLaravelプロジェクトは、`http://フォルダ名.test`規約に従い、自動的に動作します。
 
 <a name="the-link-command"></a>
 #### `link`コマンド
@@ -172,7 +172,7 @@ Valetはローカルサイトをモバイルでテストしたり、チームメ
 
 Valetは内部の`127.0.0.1`インターフェイスへ送信されるトラフィックをデフォルトで制限しています。これにより、開発マシンをインターネットからのセキュリティリスクに晒すのを防いでいます。
 
-たとえば、`192.168.1.10/app-name.test`のようにIPアドレスにより、あなたのマシン上のValetサイトへ、ローカルネットワーク上の他のデバイスからのアクセスを許す場合は、８０ポートと４４３ポートへ向けての`127.0.0.1:`プレフィックスを削除することで、`listen`ディレクティブの制限を解除するために、適切なNginx設定ファイルを編集する必要があります、
+たとえば、`192.168.1.10/app-name.test`のようにIPアドレスにより、あなたのマシン上のValetサイトへローカルネットワーク上の他のデバイスからのアクセスを許す必要があるとしましょう。８０ポートと４４３ポートへ向けての`127.0.0.1:`プレフィックスを削除することで、`listen`ディレクティブの制限を解除するために、適切なNginx設定ファイルを編集する必要があります、
 
 プロジェクトで`valet secure`を実行していない場合は、`/usr/local/etc/nginx/valet/valet.conf`ファイルを編集し、HTTPSではないサイトへのネットワークアクセスを開けます。あるサイトに対し`valet secure`を実行することで、HTTPSにてプロジェクトサイトを動かしている場合は、`~/.config/valet/Nginx/app-name.test`ファイルを編集する必要があります。
 
@@ -326,7 +326,7 @@ Valet環境の問題を追求／解決するときに役立つ、ディレクト
 --------- | -----------
 `~/.config/valet/` | Valetの設定すべてが含まれます。このフォルダのバックアップを管理しておきましょう。
 `~/.config/valet/dnsmasq.d/` | DNSMasqの設定が含まれます。
-`~/.config/valet/Drivers/` | Contains custom Valet drivers.カスタムValetドライバが含まれます。
+`~/.config/valet/Drivers/` | カスタムValetドライバが含まれます。
 `~/.config/valet/Extensions/` | カスタムValet拡張／コマンドが含まれます。
 `~/.config/valet/Nginx/` | Valetが生成したNginxサイト設定すべてが含まれます。生成済みファイルは`install`、`secure`、`tld`コマンド実行時に再生成されます。
 `~/.config/valet/Sites/` | リンク済みプロジェクへのシンボリックリンクすべてが含まれます。
@@ -336,6 +336,6 @@ Valet環境の問題を追求／解決するときに役立つ、ディレクト
 `~/.config/valet/Log/nginx-error.log` | Nginxエラーのユーザーログです。
 `/usr/local/var/log/php-fpm.log` | PHP-FPMエラーのシステムログです。
 `/usr/local/var/log/nginx` | Nginxのアクセスとエラーログが含まれます。
-`/usr/local/etc/php/X.X/conf.d` | 様々なPHP設定に使用される`*.ini`ファイルが含まれます。
+`/usr/local/etc/php/X.X/conf.d` | さまざまなPHP設定に使用される`*.ini`ファイルが含まれます。
 `/usr/local/etc/php/X.X/php-fpm.d/valet-fpm.conf` | PHP-FPMプール設定ファイルです。
 `~/.composer/vendor/laravel/valet/cli/stubs/secure.valet.conf` | サイト認証を構築するのに使用されるデフォルトNginx設定です。

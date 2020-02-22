@@ -101,7 +101,7 @@ Laravelの各通知は、（通常、`app/Notifications`ディレクトリに設
 
 > {tip} TelegramやPusherのような、他の配信チャンネルを利用したい場合は、コミュニティが管理している、[Laravel Notification Channels website](http://laravel-notification-channels.com)をご覧ください。
 
-`via`メソッドは、通知を送っているクラスのインスタンスである、`$notifiable`インスタンスを引数に受け取ります。`$notifiable`を使い、通知をどこに配信するチャンネルなのかを判定することができます。
+`via`メソッドは、通知を送っているクラスのインスタンスである、`$notifiable`インスタンスを引数に受け取ります。`$notifiable`を使い、通知をどこに配信するチャンネルなのかを判定できます。
 
     /**
      * 通知の配信チャンネルを取得
@@ -119,7 +119,7 @@ Laravelの各通知は、（通常、`app/Notifications`ディレクトリに設
 
 > {note} 通知のキューイングを行う前に、キューを設定し、[ワーカを起動](/docs/{{version}}/queues)する必要があります。
 
-通知の送信には時間が取られます。特にそのチャンネルが通知を配信するために、外部のAPIを呼び出す必要がある場合は特にです。アプリケーションのレスポンスタイムを向上させるには、クラスに`ShouldQueue`インターフェイスと、`Queueable`トレイトを追加し、キューイングしましょう。このインターフェイスとトレイトは、`make:notification`を使用して生成された全通知でインポート済みですから、すぐに通知クラスに追加できます。
+通知の送信には時間が取られます。とくにそのチャンネルが通知を配信するために、外部のAPIを呼び出す必要がある場合はとくにです。アプリケーションのレスポンスタイムを向上させるには、クラスに`ShouldQueue`インターフェイスと、`Queueable`トレイトを追加し、キューイングしましょう。このインターフェイスとトレイトは、`make:notification`を使用して生成された全通知でインポート済みですから、すぐに通知クラスに追加できます。
 
     <?php
 
@@ -149,7 +149,7 @@ Laravelの各通知は、（通常、`app/Notifications`ディレクトリに設
 <a name="on-demand-notifications"></a>
 ### オンデマンド通知
 
-場合により、アプリケーションの「ユーザー」として保存されていない誰かに対し、通知を送る必要が起きることがあります。`Notification::route`メソッドを使い、通知を送る前にアドホックな通知ルーティング情報を指定できます。
+場合により、アプリケーションの「ユーザー」として保存されていない誰かに対し、通知を送る必要が起き得ます。`Notification::route`メソッドを使い、通知を送る前にアドホックな通知ルーティング情報を指定できます。
 
     Notification::route('mail', 'taylor@example.com')
                 ->route('nexmo', '5555555555')
@@ -191,7 +191,7 @@ Laravelの各通知は、（通常、`app/Notifications`ディレクトリに設
 
 #### 他の通知フォーマットオプション
 
-通知クラスの中にテキストの「行(line)」を定義する代わりに、通知メールをレンダーするためのカスタムテンプレートを`view`メソッドを使い、指定することができます。
+通知クラスの中にテキストの「行(line)」を定義する代わりに、通知メールをレンダーするためのカスタムテンプレートを`view`メソッドを使い、指定できます。
 
     /**
      * 通知のメールプレゼンテーションを取得
@@ -404,17 +404,17 @@ Markdownメール通知ではBladeコンポーネントとMarkdown記法が利�
 <a name="customizing-the-components"></a>
 ### コンポーネントカスタマイズ
 
-自身のアプリケーション向きにカスタマイズできるように、Markdown通知コンポーネントは全てエクスポートできます。コンポーネントをエクスポートするには、`vendor:publish` Artisanコマンドを使い、`laravel-mail`アセットを公開します。
+自身のアプリケーション向きにカスタマイズできるように、Markdown通知コンポーネントはすべてエクスポートできます。コンポーネントをエクスポートするには、`vendor:publish` Artisanコマンドを使い、`laravel-mail`アセットを公開します。
 
     php artisan vendor:publish --tag=laravel-mail
 
-このコマンドにより、`resources/views/vendor/mail`ディレクトリ下にMarkdownメールコンポーネントが公開されます。`mail`ディレクトリ下に、`html`と`text`ディレクトリがあります。各ディレクトリは名前が示す形式で、利用できるコンポーネント全てのレスポンシブなプレゼンテーションを持っています。これらのコンポーネントはお好きなように自由にカスタマイズしてください。
+このコマンドにより、`resources/views/vendor/mail`ディレクトリ下にMarkdownメールコンポーネントが公開されます。`mail`ディレクトリ下に、`html`と`text`ディレクトリがあります。各ディレクトリは名前が示す形式で、利用できるコンポーネントすべてのレスポンシブなプレゼンテーションを持っています。これらのコンポーネントはお好きなよう、自由にカスタマイズしてください。
 
 #### CSSのカスタマイズ
 
 コンポーネントをエクスポートすると、`resources/views/vendor/mail/html/themes`ディレクトリに、`default.css`ファイルが用意されます。このファイル中のCSSをカスタマイズすれば、Markdownメール通知変換後のHTML形式の中に、インラインCSSとして自動的に取り込まれます。
 
-LaravelのMarkdownコンポーネントの全く新しいテーマを作成したい場合は、`html/themes`ディレクトリの中にCSSファイルを設置してください。CSSファイルに名前をつけ保存したら、`mail`設定ファイルの`theme`オプションを新しいテーマの名前に更新してください。
+LaravelのMarkdownコンポーネントの完全に新しいテーマを作成したい場合は、`html/themes`ディレクトリの中にCSSファイルを設置してください。CSSファイルに名前をつけ保存したら、`mail`設定ファイルの`theme`オプションを新しいテーマの名前に更新してください。
 
 個別の通知にカスタムテーマを使いたい場合は、通知のメールメッセージを構築する時に、`theme`メソッドを呼び出してください。`theme`メソッドの引数は、その通知送信で使用するテーマの名前です。
 
@@ -440,7 +440,7 @@ LaravelのMarkdownコンポーネントの全く新しいテーマを作成し�
 
 `database`通知チャンネルは、通知情報をデータベーステーブルへ保存します。このテーブルは通知タイプのような情報と同時に、通知を説明するカスタムJSONデータを含みます。
 
-アプリケーションのユーザーインターフェイスで通知を表示するために、テーブルをクエリすることができます。しかし、その前に通知を保存するデータベーステーブルを作成する必要があります。実際のテーブルスキーマのマイグレーションを生成するために、`notifications:table`を使用してください。
+アプリケーションのユーザーインターフェイスで通知を表示するために、テーブルをクエリできます。しかし、その前に通知を保存するデータベーステーブルを作成する必要があります。実際のテーブルスキーマのマイグレーションを生成するために、`notifications:table`を使用してください。
 
     php artisan notifications:table
 
@@ -526,7 +526,7 @@ LaravelのMarkdownコンポーネントの全く新しいテーマを作成し�
 <a name="formatting-broadcast-notifications"></a>
 ### ブロードキャスト通知のフォーマット
 
-`broadcast`チャンネルは、リアルタイムでJavaScriptクライアントが通知を補足できるようにする、Laravelの[イベントブロードキャスト](/docs/{{version}}/broadcasting)サービスを用い、通知をブロードキャストします。通知でブロードキャストをサポートする場合、通知クラスで`toBroadcast`メソッドを定義することができます。このメソッドは`$notifiable`エンティティを受け取り、`BroadcastMessage`インスタンスを返す必要があります。`toBroadcast`メソッドが存在しない場合は、ブロードキャストするデータをまとめるために`toArray`メソッドが使用されます。返されるデータはJSONへエンコードされ、JavaScriptクライアントへブロードキャストされます。`toBroadcast`メソッドの例を見てみましょう。
+`broadcast`チャンネルは、リアルタイムでJavaScriptクライアントが通知を補足できるようにする、Laravelの[イベントブロードキャスト](/docs/{{version}}/broadcasting)サービスを用い、通知をブロードキャストします。通知でブロードキャストをサポートする場合、通知クラスで`toBroadcast`メソッドを定義ができます。このメソッドは`$notifiable`エンティティを受け取り、`BroadcastMessage`インスタンスを返す必要があります。`toBroadcast`メソッドが存在しない場合は、ブロードキャストするデータをまとめるために`toArray`メソッドが使用されます。返されるデータはJSONへエンコードされ、JavaScriptクライアントへブロードキャストされます。`toBroadcast`メソッドの例を見てみましょう。
 
     use Illuminate\Notifications\Messages\BroadcastMessage;
 
@@ -546,7 +546,7 @@ LaravelのMarkdownコンポーネントの全く新しいテーマを作成し�
 
 #### ブロードキャストキュー設定
 
-全てのブロードキャスト通知はキューへ投入されます。ブロードキャスト操作に使用されるキューの接続や名前を設定したい場合は、`BroadcastMessage`の`onConnection`と`onQueue`メソッドを使用してください。
+すべてのブロードキャスト通知はキューへ投入されます。ブロードキャスト操作に使用されるキューの接続や名前を設定したい場合は、`BroadcastMessage`の`onConnection`と`onQueue`メソッドを使用してください。
 
     return (new BroadcastMessage($data))
                     ->onConnection('sqs')
@@ -597,7 +597,7 @@ LaravelのMarkdownコンポーネントの全く新しいテーマを作成し�
 <a name="sms-prerequisites"></a>
 ### 事前要件
 
-LaravelのSMS通知送信は、[Nexmo](https://www.nexmo.com/)を使用します。Nexmoにより通知を送れるようにする前に、`laravel/nexmo-notification-channel` Composerパッケージをインストールしてください。
+LaravelのSMS通知送信は、[Nexmo](https://www.nexmo.com/)を使用します。Nexmoで通知を送る前に、`laravel/nexmo-notification-channel` Composerパッケージをインストールしてください。
 
     composer require laravel/nexmo-notification-channel
 
@@ -809,7 +809,7 @@ Slackメッセージに「添付」を追加することもできます。添付
 
 <img src="https://laravel.com/img/docs/basic-slack-attachment.png">
 
-添付ではさらに、ユーザーに対し表示すべきデータの配列を指定することもできます。指定したデータは簡単に読めるように、テーブルスタイルの形式で表示されます。
+添付ではさらに、ユーザーに対し表示すべきデータの配列を指定することもできます。簡単によめるよう指定したデータは、テーブルスタイルの形式で表示されます。
 
     /**
      * 通知のSlackプレゼンテーションを取得

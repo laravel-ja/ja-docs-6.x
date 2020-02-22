@@ -23,14 +23,14 @@ Laravelは、アプリケーションにより管理されているアクティ�
 
 #### CSRFトークンとJavaScript
 
-JacaScriptで駆動するアプリケーションを構築する場合、JavaScript HTTPライブラリーに対し、全ての送信リクエストへCSRFトークンを自動的に追加させると便利です。`resources/js/bootstrap.js`ファイルの中でデフォルトとして、Axios HTTPライブラリにより暗号化された`XSRF-TOKEN`クッキーの値を用い`X-XSRF-TOKEN`ヘッダを自動的に送信しています。このライブラリを使用しない場合、自身のアプリケーションでこの振る舞いを用意する必要があります。
+JacaScriptで駆動するアプリケーションを構築する場合、JavaScript HTTPライブラリーに対し、すべての送信リクエストへCSRFトークンを自動的に追加させると便利です。`resources/js/bootstrap.js`ファイルの中でデフォルトとして、Axios HTTPライブラリにより暗号化された`XSRF-TOKEN`クッキーの値を用い`X-XSRF-TOKEN`ヘッダを自動的に送信しています。このライブラリを使用しない場合、自身のアプリケーションでこの振る舞いを用意する必要があります。
 
 <a name="csrf-excluding-uris"></a>
 ## URIの除外
 
 一連のURIをCSRF保護より除外したい場合もあります。たとえば、[Stripe](https://stripe.com)を課金処理に採用しており、そのWebフックシステムを利用している時、LaravelのCSRF保護よりWebフック処理ルートを除外する必要があるでしょう。なぜならルートに送るべきCSRFトークンがどんなものか、Stripeは知らないからです。
 
-通常、この種のルートは`RouteServiceProvider`が`routes/web.php`ファイル中の全ルートへ適用する、`web`ミドルウェアから外しておくべきです。しかし、`VerifyCsrfToken`ミドルウェアの`$except`プロパティへ、そうしたURIを追加することによっても、ルートを除外することができます。
+通常、この種のルートは`RouteServiceProvider`が`routes/web.php`ファイル中の全ルートへ適用する、`web`ミドルウェアから外しておくべきです。しかし、`VerifyCsrfToken`ミドルウェアの`$except`プロパティへ、そうしたURIを追加することによっても、ルートを除外できます。
 
     <?php
 
@@ -57,7 +57,7 @@ JacaScriptで駆動するアプリケーションを構築する場合、JavaScr
 <a name="csrf-x-csrf-token"></a>
 ## X-CSRF-TOKEN
 
-更に追加でPOSTパラメーターとしてCSRFトークンを確認したい場合は、Laravelの`VerifyCsrfToken`ミドルウェアが`X-CSRF-TOKEN`リクエストヘッダもチェックします。たとえば、HTML中の`meta`タグにトークンを保存します。
+さらに追加でPOSTパラメーターとしてCSRFトークンを確認したい場合は、Laravelの`VerifyCsrfToken`ミドルウェアが`X-CSRF-TOKEN`リクエストヘッダもチェックします。たとえば、HTML中の`meta`タグにトークンを保存します。
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

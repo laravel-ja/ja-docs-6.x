@@ -21,7 +21,7 @@
 <a name="introduction"></a>
 ## イントロダクション
 
-LaravelはFrank de Jongeさんが作成した拝みたいほど素晴らしい、抽象ファイルシステムである[Flysystem](https://github.com/thephpleague/flysystem) PHPパッケージを提供しています。Laravel Flysystem統合は、ローカルのファイルシステムとAmazon S3をシンプルに操作できるドライバを提供しています。更に素晴らしいことにそれぞれのシステムに対し同じAPIを使用しているため、ストレージをとても簡単に変更できるのです。
+LaravelはFrank de Jongeさんが作成した拝みたいほど素晴らしい、抽象ファイルシステムである[Flysystem](https://github.com/thephpleague/flysystem) PHPパッケージを提供しています。Laravel Flysystem統合は、ローカルのファイルシステムとAmazon S3をシンプルに操作できるドライバを提供しています。さらに素晴らしいことにそれぞれのシステムに対し同じAPIを使用しているため、ストレージをとても簡単に変更できるのです。
 
 <a name="configuration"></a>
 ## 設定
@@ -233,7 +233,7 @@ Laravelのファイルシステム統合はSFTPできちんと動作します。
 <a name="storing-files"></a>
 ## ファイル保存
 
-`put`メソッドはファイル内容をディスクに保存するために使用します。`put`メソッドにはPHPの`resource`も渡すことができ、Flysystemの裏で動いているストリームサポートを使用します。すべてのファイルパスは、ディスクの"root"として設定した場所からの相対位置で指定する必要があることを忘ないでください。
+`put`メソッドはファイル内容をディスクへ保存するために使用します。`put`メソッドにはPHPの`resource`も渡すことができ、Flysystemの裏で動いているストリームサポートを使用します。すべてのファイルパスは、ディスクの"root"として設定した場所からの相対位置で指定する必要があることを忘ないでください。
 
     use Illuminate\Support\Facades\Storage;
 
@@ -254,9 +254,9 @@ Laravelのファイルシステム統合はSFTPできちんと動作します。
     // ファイル名を指定する
     Storage::putFileAs('photos', new File('/path/to/photo'), 'photo.jpg');
 
-`putFile`メソッドにはいくつか重要な注意点があります。ファイル名ではなく、ディレクトリ名を指定することに注意してください。`putFile`メソッドは一意のIDを保存ファイル名として生成します。ファイルの拡張子は、MIMEタイプの検査により決まります。`putFile`メソッドからファイルへのパスが返されますので、生成されたファイル名も含めたパスをデータベースへ保存することができます。
+`putFile`メソッドにはいくつか重要な注意点があります。ファイル名ではなく、ディレクトリ名を指定することに注意してください。`putFile`メソッドは一意のIDを保存ファイル名として生成します。ファイルの拡張子は、MIMEタイプの検査により決まります。`putFile`メソッドからファイルへのパスが返されますので、生成されたファイル名も含めたパスをデータベースへ保存できます。
 
-`putFile`と`putFileAs`メソッドはさらに、保存ファイルの「視認性」を指定する引数も受け付けます。これは特にS3などのクラウドディスクにファイルを保存し、一般公開の視認性を設定したい場合に便利です。
+`putFile`と`putFileAs`メソッドはさらに、保存ファイルの「視認性」を指定する引数も受け付けます。これはとくにS3などのクラウドディスクにファイルを保存し、一般公開の視認性を設定したい場合に便利です。
 
     Storage::putFile('photos', new File('/path/to/photo'), 'public');
 
@@ -355,7 +355,7 @@ LaravelのFlysystem統合では、複数のプラットフォームにおける�
 
     Storage::put('file.jpg', $contents, 'public');
 
-もし、ファイルが既に保存済みであるなら、`getVisibility`と`setVisibility`により、視認性を取得／設定できます。
+もし、ファイルがすでに保存済みであるなら、`getVisibility`と`setVisibility`により、視認性を取得／設定できます。
 
     $visibility = Storage::getVisibility('file.jpg');
 
@@ -415,7 +415,7 @@ LaravelのFlysystem統合では、複数のプラットフォームにおける�
 <a name="custom-filesystems"></a>
 ## カスタムファイルシステム
 
-LaravelのFlysystem統合には、最初から様々な「ドライバ」が含まれています。しかしFlysystemはこれらのドライバに限定されず、他の保存領域システムにも適用できます。皆さんのLaravelアプリケーションに適合した保存システムのカスタムドライバを作成することができます。
+LaravelのFlysystem統合には、最初からさまざまな「ドライバ」が含まれています。しかしFlysystemはこれらのドライバに限定されず、他の保存領域システムにも適用できます。皆さんのLaravelアプリケーションに適した保存システムに対するカスタムドライバを作成できます。
 
 カスタムファイルシステムを準備するには、Flysystemアダプタが必要です。プロジェクトへコミュニティによりメンテナンスされているDropboxアダプタを追加してみましょう。
 

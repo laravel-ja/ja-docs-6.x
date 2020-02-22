@@ -7,7 +7,7 @@
 <a name="introduction"></a>
 ## イントロダクション
 
-Laravelのエンクリプタ(encrypter)はOpenSSLを使い、AES-256とAES-128暗号化を提供しています。Laravelに組み込まれている暗号化機能を使用し、「自前」の暗号化アルゴリズムに走らないことを強くおすすめします。Laravelの全暗号化済み値は、メッセージ認証コード(MAC)を使用し署名され、一度暗号化されると値を変更できません。
+Laravelのエンクリプタ(encrypter)はOpenSSLを使い、AES-256とAES-128暗号化を提供しています。Laravelに組み込まれている暗号化機能を使用し、「自前」の暗号化アルゴリズムに走らないことを強く推奨します。Laravelの全暗号化済み値は、メッセージ認証コード(MAC)を使用し署名され、一度暗号化されると値を変更できません。
 
 <a name="configuration"></a>
 ## 設定
@@ -19,7 +19,7 @@ Laravelのエンクリプタを使用する準備として、`config/app.php`設
 
 #### 値の暗号化
 
-`encrypt`ヘルパを使用し、値を暗号化できます。OpenSSLと`AES-256-CBC`アルゴリズムが使用され、全ての値は暗号化されます。さらに、全暗号化済み値はメッセージ認証コード(MAC)を使用し署名されますので、暗号化済み値の変更は感知されます。
+`encrypt`ヘルパを使用し、値を暗号化できます。OpenSSLと`AES-256-CBC`アルゴリズムが使用され、すべての値は暗号化されます。さらに、全暗号化済み値はメッセージ認証コード(MAC)を使用し署名されますので、暗号化済み値の変更は感知されます。
 
     <?php
 
@@ -60,7 +60,7 @@ Laravelのエンクリプタを使用する準備として、`config/app.php`設
 
 #### 値の復号
 
-`decrypt`ヘルパにより、値を復号することができます。MACが無効な場合など、その値が正しくない時は`Illuminate\Contracts\Encryption\DecryptException`が投げられます。
+`decrypt`ヘルパにより、値を復号できます。MACが無効な場合など、その値が正しくない時は`Illuminate\Contracts\Encryption\DecryptException`が投げられます。
 
     use Illuminate\Contracts\Encryption\DecryptException;
 

@@ -49,7 +49,7 @@ CSSのコンパイルを始める前に、プロジェクトのフロントエ�
 
     npm run dev
 
-Laravelのフロントエンドスカフォールドを含んでいる`webpack.mix.js`ファイルは、`resources/sass/app.scss` SASSファイルをコンパイルします。この`app.scss`ファイルはSASS変数をインポートし、大抵のアプリケーションでよりスタートポイントとなるBootstrapをロードします。お好みに合わせ、もしくは全く異なったプリプロセッサを使うならば、[Laravel Mixの設定](/docs/{{version}}/mix)に従い自由に`app.scss`ファイルをカスタマイズしてください。
+Laravelのフロントエンドスカフォールドを含んでいる`webpack.mix.js`ファイルは、`resources/sass/app.scss` SASSファイルをコンパイルします。この`app.scss`ファイルはSASS変数をインポートし、大抵のアプリケーションでよりスタートポイントとなるBootstrapをロードします。お好みに合わせ、もしくはまったく異なったプリプロセッサを使うならば、[Laravel Mixの設定](/docs/{{version}}/mix)に従い自由に`app.scss`ファイルをカスタマイズしてください。
 
 <a name="writing-javascript"></a>
 ## JavaScriptの出力
@@ -60,7 +60,7 @@ Laravelのフロントエンドスカフォールドを含んでいる`webpack.m
 
 > {tip} デフォルトで`package.json`ファイルは、JavaScriptアプリケーションを構築する良い開始点を手助けする`lodash`や`axios`のようなわずかなパッケージを含んでいるだけです。アプリケーションの必要に応じ、自由に`package.json`に追加や削除を行ってください。
 
-`webpack.mix.js` file:パッケージをインストールしたら、`npm run dev`コマンドで[アセットをコンパイル](/docs/{{version}}/mix)できます。Webpackは、モダンなJavaScriptアプリケーションのための、モジュールビルダです。`npm run dev`コマンドを実行すると、Webpackは`webpack.mix.js`ファイル中の指示を実行します。
+`webpack.mix.js` file:パッケージをインストールしたら、`npm run dev`コマンドで[アセットをコンパイル](/docs/{{version}}/mix)できます。webpackは、モダンなJavaScriptアプリケーションのための、モジュールビルダです。`npm run dev`コマンドを実行すると、webpackは`webpack.mix.js`ファイル中の指示を実行します。
 
     npm run dev
 

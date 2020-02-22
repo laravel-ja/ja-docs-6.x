@@ -21,7 +21,7 @@
 
 #### 文字列と配列
 
-当然ながら全てのルートやコントローラは、ユーザーのブラウザーに対し、何らかのレスポンスを返す必要があります。Laravelはレスポンスを返すために様々な手段を用意しています。一番基本的なレスポンスは、ルートかコントローラから文字列を返します。フレームワークが自動的に、文字列を完全なHTTPレスポンスへ変換します。
+当然ながらすべてのルートやコントローラは、ユーザーのブラウザーに対し、何らかのレスポンスを返す必要があります。Laravelはレスポンスを返すためにさまざまな手段を用意しています。一番基本的なレスポンスは、ルートかコントローラから文字列を返します。フレームワークが自動的に、文字列を完全なHTTPレスポンスへ変換します。
 
     Route::get('/', function () {
         return 'Hello World';
@@ -39,7 +39,7 @@
 
 通常、皆さんは単純な文字列や配列をルートアクションから返すだけじゃありませんよね。代わりに、`Illuminate\Http\Response`インスタンスか[views](/docs/{{version}}/views)を返したいですよね。
 
-完全な`Response`インスタンスを返せば、レスポンスのHTTPステータスコードやヘッダをカスタマイズできます。`Response`インスタンスは、`Symfony\Component\HttpFoundation\Response`クラスを継承しており、HTTPレスポンスを構築するために様々なメソッドを提供しています。
+完全な`Response`インスタンスを返せば、レスポンスのHTTPステータスコードやヘッダをカスタマイズできます。`Response`インスタンスは、`Symfony\Component\HttpFoundation\Response`クラスを継承しており、HTTPレスポンスを構築するためにさまざまなメソッドを提供しています。
 
     Route::get('home', function () {
         return response('Hello World', 200)
@@ -67,7 +67,7 @@
 
 ##### キャッシュコントロール・ミドルウェア
 
-ルートグループへ`Cache-Control`ヘッダを簡単に指定できるように、Laravelは`cache.headers`を用意しています。ディレクティブのリストの中で`etag`が指定されていると、レスポンスコンテンツのMD5ハッシュが、ETag識別子へ自動的にセットされます。
+ルートグループへ`Cache-Control`ヘッダを簡単に指定できるよう、Laravelは`cache.headers`を用意しています。ディレクティブのリストの中で`etag`が指定されていると、レスポンスコンテンツのMD5ハッシュが、ETag識別子へ自動的にセットされます。
 
     Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
         Route::get('privacy', function () {
@@ -101,7 +101,7 @@
 <a name="cookies-and-encryption"></a>
 #### クッキーと暗号化
 
-Laravelにより生成されるクッキーは、クライアントにより変更されたり読まれたりされないようにデフォルトで暗号化され、署名されます。アプリケーションで生成する特定のクッキーで暗号化を無効にしたい場合は、`app/Http/Middleware`ディレクトリ中に存在する、`App\Http\Middleware\EncryptCookies`ミドルウェアの`$except`プロパティで指定してください。
+Laravelにより生成されるクッキーは、クライアントにより変更されたり、読まれたりされないようにデフォルトで暗号化され、署名されます。アプリケーションで生成する特定のクッキーで暗号化を無効にしたい場合は、`app/Http/Middleware`ディレクトリ中に存在する、`App\Http\Middleware\EncryptCookies`ミドルウェアの`$except`プロパティで指定してください。
 
     /**
      * 暗号化しないクッキー名
@@ -115,13 +115,13 @@ Laravelにより生成されるクッキーは、クライアントにより変�
 <a name="redirects"></a>
 ## リダイレクト
 
-リダイレクトのレスポンスは`Illuminate\Http\RedirectResponse`クラスのインスタンスであり、ユーザーを他のURLへリダイレクトさせるために必要なしっかりとしたヘッダを含んでいます。`RedirectResponse`インスタンスを生成するには様々な方法があります。一番簡単な方法は、グローバルな`redirect`ヘルパを使う方法です。
+リダイレクトのレスポンスは`Illuminate\Http\RedirectResponse`クラスのインスタンスであり、ユーザーを他のURLへリダイレクトさせるために必要なしっかりとしたヘッダを含んでいます。`RedirectResponse`インスタンスを生成するにはさまざまな方法があります。一番簡単な方法は、グローバルな`redirect`ヘルパを使う方法です。
 
     Route::get('dashboard', function () {
         return redirect('home/dashboard');
     });
 
-例えば送信されたフォーム内容にエラーがある場合など、直前のページヘユーザーをリダイレクトさせたい場合もあります。グローバルな`back`ヘルパ関数を使ってください。この機能は[セッション](/docs/{{version}}/session)を利用しているため、`back`関数を使用するルートは`web`ミドルウェアグループに属しているか、セッションミドルウェアが適用されることを確認してください。
+たとえば送信されたフォーム内容にエラーがある場合など、直前のページヘユーザーをリダイレクトさせたい場合もあります。グローバルな`back`ヘルパ関数を使ってください。この機能は[セッション](/docs/{{version}}/session)を利用しているため、`back`関数を使用するルートは`web`ミドルウェアグループに属しているか、セッションミドルウェアが適用されることを確認してください。
 
     Route::post('user/profile', function () {
         // レスポンスのバリデーション処理…
@@ -178,7 +178,7 @@ Eloquentモデルの"ID"をルートパラメーターとしてリダイレク�
 <a name="redirecting-external-domains"></a>
 ### 外部ドメインへのリダイレクト
 
-アプリケーション外のドメインへリダイレクトする必要が時々起きます。このためには`away`メソッドを呼び出してください。これは`RedirectResponse`を生成しますが、URLエンコードを追加せず、バリデーションも検証も行いません。
+アプリケーション外のドメインへリダイレクトする必要がときどき起きます。このためには`away`メソッドを呼び出してください。これは`RedirectResponse`を生成しますが、URLエンコードを追加せず、バリデーションも検証も行いません。
 
     return redirect()->away('https://www.google.com');
 
@@ -204,7 +204,7 @@ Eloquentモデルの"ID"をルートパラメーターとしてリダイレク�
 <a name="other-response-types"></a>
 ## 他のレスポンスタイプ
 
-`response`ヘルパは、他のタイプのレスポンスインスタンスを生成するために便利です。`response`ヘルパが引数なしで呼び出されると、`Illuminate\Contracts\Routing\ResponseFactory`[契約](/docs/{{version}}/contracts)が返されます。この契約はレスポンスを生成するための、様々なメソッドを提供しています。
+`response`ヘルパは、他のタイプのレスポンスインスタンスを生成するために便利です。`response`ヘルパが引数なしで呼び出されると、`Illuminate\Contracts\Routing\ResponseFactory`[契約](/docs/{{version}}/contracts)が返されます。この契約はレスポンスを生成するための、さまざまなメソッドを提供しています。
 
 <a name="view-responses"></a>
 ### Viewレスポンス
@@ -236,7 +236,7 @@ JSONPレスポンスを生成したい場合は、`json`メソッドと`withCall
 <a name="file-downloads"></a>
 ### Fileダウンロード
 
-`download`メソッドは指定したパスのファイルをダウンロードようにブラウザに強要するレスポンスを生成するために使用します。`download`メソッドはファイル名を第２引数として受け取り、ユーザーがダウンロードするファイル名になります。第３引数にHTTPヘッダの配列を渡すこともできます。
+`download`メソッドは指定したパスのファイルをダウンロードように、ブラウザへ強要するレスポンスを生成するために使用します。`download`メソッドはファイル名を第２引数として受け取り、ユーザーがダウンロードするファイル名になります。第３引数にHTTPヘッダの配列を渡すこともできます。
 
     return response()->download($pathToFile);
 
@@ -292,6 +292,6 @@ JSONPレスポンスを生成したい場合は、`json`メソッドと`withCall
         }
     }
 
-`macro`メソッドは登録名を第１引数、クロージャを第２引数に取ります。マクロのクロージャは`ResponseFactory`の実装か、`response`ヘルパに対し、登録名で呼び出すことで、実行されます。
+`macro`メソッドは登録名を第１引数、クロージャを第２引数に取ります。マクロのクロージャは`ResponseFactory`の実装か`response`ヘルパに対し、登録名を呼び出すことで実行されます。
 
     return response()->caps('foo');

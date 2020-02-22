@@ -25,7 +25,7 @@
 
     composer global require laravel/envoy
 
-グローバルComposerライブラリは、時々パッケージバージョンのコンフリクトを起こすため、`composer global require`コマンドの代替として、`cgr`の使用を考慮してください。`cgr`ライブラリのインストール方法は、[GitHubで見つけられます](https://github.com/consolidation-org/cgr)。
+グローバルComposerライブラリは、ときどきパッケージバージョンのコンフリクトを起こすため、`composer global require`コマンドの代替として、`cgr`の使用を考慮してください。`cgr`ライブラリのインストール方法は、[GitHubで見つけられます](https://github.com/consolidation-org/cgr)。
 
 > {note} `envoy`コマンドを端末で実行するときに`envoy`の実行ファイルが見つかるように、`~/.composer/vendor/bin`ディレクトリに実行パスを通しておくのを忘れないでください。
 
@@ -155,7 +155,7 @@ Envoyでは、複数のサーバに渡りタスクを実行するのも簡単で
 <a name="confirming-task-execution"></a>
 ### タスク実行の確認
 
-サーバ上の特定タスク実行前に、確認のプロンプトを出したい場合は、タスク宣言で`confirm`ディレクティブを追加してください。このオプションは、破壊的な操作を行う場合に特に便利です。
+サーバ上の特定タスク実行前に、確認のプロンプトを出したい場合は、タスク宣言で`confirm`ディレクティブを追加してください。このオプションは、破壊的な操作を行う場合にとくに便利です。
 
     @task('deploy', ['on' => 'web', 'confirm' => true])
         cd site

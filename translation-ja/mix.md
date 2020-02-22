@@ -15,7 +15,7 @@
     - [ベンダの抽出](#vendor-extraction)
     - [React](#react)
     - [バニラJS](#vanilla-js)
-    - [Webpackカスタム設定](#custom-webpack-configuration)
+    - [webpackカスタム設定](#custom-webpack-configuration)
 - [ファイル／ディレクトリコピー](#copying-files-and-directories)
 - [バージョン付け／キャッシュ対策](#versioning-and-cache-busting)
 - [Browsersyncリロード](#browsersync-reloading)
@@ -25,12 +25,12 @@
 <a name="introduction"></a>
 ## イントロダクション
 
-[Laravel Mix](https://github.com/JeffreyWay/laravel-mix)は多くの一般的なCSSとJavaScriptのプリプロセッサを使用し、Laravelアプリケーションために、構築過程をWebpackでスラスラと定義できるAPIを提供しています。シンプルなメソッドチェーンを使用しているため、アセットパイプラインを流暢に定義できます。例を見てください。
+[Laravel Mix](https://github.com/JeffreyWay/laravel-mix)は多くの一般的なCSSとJavaScriptのプリプロセッサを使用し、Laravelアプリケーションために、構築過程をwebpackでスラスラと定義できるAPIを提供しています。シンプルなメソッドチェーンを使用しているため、アセットパイプラインを流暢に定義できます。例を見てください。
 
     mix.js('resources/js/app.js', 'public/js')
         .sass('resources/sass/app.scss', 'public/css');
 
-Webpackやアセットのコンパイルを始めようとして、混乱と圧倒を感じているならLaravel Mixを気に入ってもらえるでしょう。しかし、アプリケーションの開発時に必要だというわけではありません。どんなアセットパイプラインツールを使用してもかまいませんし、使わなくても良いのです。
+webpackやアセットのコンパイルを始めようとして、混乱と圧倒を感じているならLaravel Mixを気に入ってもらえるでしょう。しかし、アプリケーションの開発時に必要だというわけではありません。どんなアセットパイプラインツールを使用してもかまいませんし、使わなくても良いのです。
 
 <a name="installation"></a>
 ## インストールと準備
@@ -46,14 +46,14 @@ Laravel Homesteadならデフォルトのままでも必要なものが全部そ
 
 #### Laravel Mix
 
-残っているステップはLaravel Mixのインストールだけです。新しくLaravelをインストールすると、ルートディレクトリに`package.json`があることに気づくでしょう。PHPの代わりにNodeの依存パッケージが定義されている所が異なりますが、`composer.json`ファイルと同じようなものだと考えてください。以下のコマンドで、依存パッケージをインストールしてください。
+残っているステップはLaravel Mixのインストールだけです。新しくLaravelをインストールすると、ルートディレクトリに`package.json`があることに気づくでしょう。PHPの代わりにNodeの依存パッケージが定義されている所が異なりますが、`composer.json`ファイルに似た構成ファイルだと考えてください。以下のコマンドで、依存パッケージをインストールしてください。
 
     npm install
 
 <a name="running-mix"></a>
 ## Mixの実行
 
-Mixは[Webpack](https://webpack.js.org)上の設定レイヤーですから、Laravelに含まれる`package.json`ファイル上のNPMスクリプトの一つをMixの実行で起動してください。
+Mixは[webpack](https://webpack.js.org)上の設定レイヤーですから、Laravelに含まれる`package.json`ファイル上のNPMスクリプトの一つをMixの実行で起動してください。
 
     // 全タスク実行
     npm run dev
@@ -63,23 +63,23 @@ Mixは[Webpack](https://webpack.js.org)上の設定レイヤーですから、La
 
 #### アセット変更の監視
 
-`npm run watch`コマンドはターミナルで実行し続け、関連ファイル全部の変更を監視します。Webpackは変更を感知すると、アセットを自動的に再コンパイルします。
+`npm run watch`コマンドはターミナルで実行し続け、関連ファイル全部の変更を監視します。webpackは変更を感知すると、アセットを自動的に再コンパイルします。
 
     npm run watch
 
-特定の環境のWebpackでは、ファイル変更時に更新されないことがあります。自分のシステムでこれが起きた場合は、`watch-poll`コマンドを使用してください。
+特定の環境のwebpackでは、ファイル変更時に更新されないことがあります。自分のシステムでこれが起きた場合は、`watch-poll`コマンドを使用してください。
 
     npm run watch-poll
 
 <a name="working-with-stylesheets"></a>
 ## スタイルシートの操作
 
-`webpack.mix.js`ファイルは全アセットコンパイルのエントリポイントです。Webpackの軽い設定ラッパーだと考えてください。Mixタスクはアセットをどのようにコンパイルすべきかを正確に定義するため、チェーンでつなげます。
+`webpack.mix.js`ファイルは全アセットコンパイルのエントリポイントです。webpackの軽い設定ラッパーだと考えてください。Mixタスクはアセットをどのようにコンパイルすべきかを正確に定義するため、チェーンでつなげます。
 
 <a name="less"></a>
 ### Less
 
-[Less](http://lesscss.org/)をCSSへコンパイルするには`less`メソッドを使用します。最も主要な`app.less`ファイルを`public/css/app.css`としてコンパイルしてみましょう。
+[Less](http://lesscss.org/)をCSSへコンパイルするには`less`メソッドを使用します。一番主要な`app.less`ファイルを`public/css/app.css`としてコンパイルしてみましょう。
 
     mix.less('resources/less/app.less', 'public/css');
 
@@ -123,7 +123,7 @@ LessやSassと同様に、`stylus`メソッドにより、[Stylus](http://stylus
 
     mix.stylus('resources/stylus/app.styl', 'public/css');
 
-さらに、[Rupture](https://github.com/jescalan/rupture)のような、追加のStylusプラグインをインストールすることもできます。最初に、NPM （`npm install rupture`）による質問でプラグインをインストールし、それから`mix.stylus()`の中で呼び出してください。
+さらに、[Rupture](https://github.com/jescalan/rupture)のような、追加のStylusプラグインをインストールすることもできます。最初に、NPM（`npm install rupture`）による質問でプラグインをインストールし、それから`mix.stylus()`の中で呼び出してください。
 
     mix.stylus('resources/stylus/app.styl', 'public/css', {
         use: [
@@ -146,7 +146,7 @@ LessやSassと同様に、`stylus`メソッドにより、[Stylus](http://stylus
 <a name="plain-css"></a>
 ### 平文CSS
 
-平文のCSSスタイルシートを一つのファイルへ結合したい場合は、`styles`メソッドを使って下さい。
+平文のCSSスタイルシートを一つのファイルへ結合したい場合は、`styles`メソッドを使ってください。
 
     mix.styles([
         'public/css/vendor/normalize.css',
@@ -156,7 +156,7 @@ LessやSassと同様に、`stylus`メソッドにより、[Stylus](http://stylus
 <a name="url-processing"></a>
 ### URL処理
 
-Laravel MixはWebpack上に構築されているため、Webpackのコンセプトを理解することが重要です。CSSコンパイルのため、Webpackはスタイルシート中の`url()`呼び出しをリライトし、最適化します。最初は奇妙に聴こえるかもしれませんが、これは非常に強力な機能の一部です。画像への相対URLを含んだSassをコンパイルするのを想像してください。
+Laravel Mixはwebpack上に構築されているため、webpackのコンセプトを理解することが重要です。CSSコンパイルのため、webpackはスタイルシート中の`url()`呼び出しをリライトし、最適化します。最初は奇妙に聴こえるかもしれませんが、これは非常に強力な機能の一部です。画像への相対URLを含んだSassをコンパイルするのを想像してください。
 
     .example {
         background: url('../images/example.png');
@@ -164,7 +164,7 @@ Laravel MixはWebpack上に構築されているため、Webpackのコンセプ�
 
 > {note} 絶対パスを`url()`へ指定しても、URL書き換えの対象外になります。たとえば、`url('/images/thing.png')`や、`url('http://example.com/images/thing.png')`は変更されません。
 
-デフォルト動作として、Laravel MixとWebpackが`example.png`を見つけると、それを`public/images`フォルダへコピーします。それから、生成したスタイルシート中の`url()`を書き換えます。
+デフォルト動作として、Laravel Mixとwebpackが`example.png`を見つけると、それを`public/images`フォルダへコピーします。それから、生成したスタイルシート中の`url()`を書き換えます。
 
     .example {
         background: url(/images/example.png?d41d8cd98f00b204e9800998ecf8427e);
@@ -193,7 +193,7 @@ Laravel MixはWebpack上に構築されているため、Webpackのコンセプ�
 
 #### ソースマップのスタイル
 
-Webpackは様々な[ソースマップスタイル](https://webpack.js.org/configuration/devtool/#devtool)を提供しています。Mixはソースマッピングスタイルのデフォルトとして、ブルド時間の早い `eval-source-map`をセットしています。マッピングスタイルを変更したい場合は、 `sourceMaps`メソッドを使用してください。
+webpackはさまざまな[ソースマップスタイル](https://webpack.js.org/configuration/devtool/#devtool)を提供しています。Mixはソースマッピングスタイルのデフォルトとして、ブルド時間の早い `eval-source-map`をセットしています。マッピングスタイルを変更したい場合は、 `sourceMaps`メソッドを使用してください。
 
     let productionSourceMaps = false;
 
@@ -203,7 +203,7 @@ Webpackは様々な[ソースマップスタイル](https://webpack.js.org/confi
 <a name="working-with-scripts"></a>
 ## JavaScriptの操作
 
-MixはECMAScript 2015のコンパイル、モジュール結合、圧縮やJavaScriptファイルの結合などの操作を手助けする、多くの機能を提供しています。それだけでなく、設定をカスタマイズする必要は全く無く、全てがシームレスに動作します。
+MixはECMAScript 2015のコンパイル、モジュール結合、圧縮やJavaScriptファイルの結合などの操作を手助けする、多くの機能を提供しています。それだけでなく、設定をカスタマイズする必要はまったく無く、すべてがシームレスに動作します。
 
     mix.js('resources/js/app.js', 'public/js');
 
@@ -219,7 +219,7 @@ MixはECMAScript 2015のコンパイル、モジュール結合、圧縮やJavaS
 <a name="vendor-extraction"></a>
 ### ベンダの抽出
 
-全てのアプリケーション固有のJavaScriptとベンダーライブラリを結合することにより、発生する可能性がある欠点は、長期間のキャッシュが効きづらくなることです。たとえば、アプリケーションコードの一箇所を更新すれば、変更のないベンダーライブラリーの全てを再度ダウンロードするように、ブラウザに共用することになります。
+すべてのアプリケーション固有のJavaScriptとベンダーライブラリを結合することにより、発生する可能性がある欠点は、長期間のキャッシュが効きづらくなることです。たとえば、アプリケーションコードの一箇所を更新すれば、変更のないベンダーライブラリーのすべてを再度ダウンロードするように、ブラウザに強要します。
 
 アプリケーションのJavaScriptを頻繁に更新したい場合は、全ベンダーライブラリを専用のファイルへ分ける方法を考慮する必要があります。これにより、アプリケーションコードの変更は、大きな`vendor.js`ファイルのキャッシュへ影響しなくなります。Mixの`extract`メソッドで簡単に実現できます。
 
@@ -229,7 +229,7 @@ MixはECMAScript 2015のコンパイル、モジュール結合、圧縮やJavaS
 `extract`メソッドは全ライブラリとモジュールの配列を受け取り、`vendor.js`へ別にまとめます。上記のコードを例にすると、Mix配下のファイルを生成します。
 
 <div class="content-list" markdown="1">
-- `public/js/manifest.js`: **Webpackマニフェストランタイム**
+- `public/js/manifest.js`: **webpackマニフェストランタイム**
 - `public/js/vendor.js`: **ベンダーライブラリ**
 - `public/js/app.js`: **アプリケーションコード**
 </div>
@@ -259,18 +259,18 @@ MixはReactをサポートするために、Babelプラグインを自動的に�
         'public/js/dashboard.js'
     ], 'public/js/all.js');
 
-この選択肢は特にWebpackによる操作を必要としないレガシープロジェクトに便利です。
+この選択肢はとくにwebpackによる操作を必要としないレガシープロジェクトに便利です。
 
-> {tip} `mix.scripts()`のちょっとしたバリエーションとして`mix.babel()`があります。このメソッドは`scripts`と同じ使い方です。しかし、結合したファイルはBabelにより編集され、ES2015コードを全てのブラウザーが理解できるバニラJavaScriptへ変換します。
+> {tip} `mix.scripts()`のちょっとしたバリエーションとして`mix.babel()`があります。このメソッドは`scripts`と同じ使い方です。しかし、結合したファイルはBabelにより編集され、ES2015コードをすべてのブラウザーが理解できるバニラJavaScriptへ変換します。
 
 <a name="custom-webpack-configuration"></a>
-### Webpackカスタム設定
+### webpackカスタム設定
 
-Laravel Mixはできるだけ素早く実行できるように、裏で事前に設定済みの`webpack.config.js`ファイルを参照しています。時々、このファイルを変更する必要が起きるでしょう。参照する必要がある特別なローダやプラグインがあったり、Sassの代わりにStylusを使うのが好みであるかもしれません。そうした場合、２つの選択肢があります。
+Laravel Mixはできるだけ素早く実行できるように、裏で事前に設定済みの`webpack.config.js`ファイルを参照しています。ときどき、このファイルを変更する必要が起きるでしょう。参照する必要がある特別なローダやプラグインがあったり、Sassの代わりにStylusを使うのが好みであるかもしれません。そうした場合、２つの選択肢があります。
 
 #### カスタム設定のマージ
 
-Mixはオーバーライドする短いWebpack設定をマージできるように、便利な`webpackConfig`メソッドを提供しています。これは、`webpack.config.js`ファイルをコピーし、独自バージョンをメンテナンスする必要がないため、やや魅力的な選択しです。`webpackConfig`メソッドは、適用したい[Webpack限定設定](https://webpack.js.org/configuration/)を含むオブジェクトを引数に取ります。
+Mixはオーバーライドする短いwebpack設定をマージできるように、便利な`webpackConfig`メソッドを提供しています。これは、`webpack.config.js`ファイルをコピーし、独自バージョンをメンテナンスする必要がないため、やや魅力的な選択しです。`webpackConfig`メソッドは、適用したい[webpack限定設定](https://webpack.js.org/configuration/)を含むオブジェクトを引数に取ります。
 
     mix.webpackConfig({
         resolve: {
@@ -282,7 +282,7 @@ Mixはオーバーライドする短いWebpack設定をマージできるよう�
 
 #### カスタム設定ファイル
 
-Webpack設定をすべてカスタマイズしたい場合は、`node_modules/laravel-mix/setup/webpack.config.js`をプロジェクトのルートディレクトリへコピーしてください。次に、`package.json`ファイル中の`--config`参照を全て新しくコピーした設定ファイルに変更します。カスタマイズにこのアプローチを取る場合は、Mixの`webpack.config.js`に対するアップストリームの機能変更を自分でカスタマイズするファイルへマージする必要があります。
+webpack設定をすべてカスタマイズしたい場合は、`node_modules/laravel-mix/setup/webpack.config.js`をプロジェクトのルートディレクトリへコピーしてください。次に、`package.json`ファイル中の`--config`参照をすべて新しくコピーした設定ファイルに変更します。カスタマイズにこのアプローチを取る場合は、Mixの`webpack.config.js`に対するアップストリームの機能変更を自分でカスタマイズするファイルへマージする必要があります。
 
 <a name="copying-files-and-directories"></a>
 ## ファイル／ディレクトリコピー
@@ -341,7 +341,7 @@ MixのURLを設定後、`mix`関数はアセットへのURLを生成する場合
         proxy: 'my-domain.test'
     });
 
-このメソッドには文字列（プロキシ）かオブジェクト（BrowserSync設定）のどちらかを渡します。次に、`npm run watch`コマンドにより、Webpackの開発サーバを起動します。これでスクリプトかPHPファイルを変更すると、すぐにページが再読込され、変更が反映されるのを目にするでしょう。
+このメソッドには文字列（プロキシ）かオブジェクト（BrowserSync設定）のどちらかを渡します。次に、`npm run watch`コマンドにより、webpackの開発サーバを起動します。これでスクリプトかPHPファイルを変更すると、すぐにページが再読込され、変更が反映されるのを目にするでしょう。
 
 <a name="environment-variables"></a>
 ## 環境変数

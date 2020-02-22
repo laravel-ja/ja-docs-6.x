@@ -14,7 +14,7 @@ LaravelのHash[ファサード](/docs/{{version}}/facades)は保存するユー�
 <a name="configuration"></a>
 ## 設定
 
-アプリケーションのデフォルトハッシュドライバーは、`config/hashing.php`設定ファイルで指定します。現在、[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt)と[Argon2](https://en.wikipedia.org/wiki/Argon2)（Argon2iとArgon2id）、３つのドライバーをサポートしています。
+アプリケーションのデフォルトハッシュドライバーは、`config/hashing.php`設定ファイルで指定します。現在、[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt)および、[Argon2](https://en.wikipedia.org/wiki/Argon2)（Argon2iとArgon2id）の３ドライバーをサポートしています。
 
 > {note} Argon2iドライバーはPHP7.2.0以上、Argon2idドライバーはPHP7.3.0以上が必要です。
 

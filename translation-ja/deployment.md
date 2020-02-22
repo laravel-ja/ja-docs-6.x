@@ -77,7 +77,7 @@ Nginxを実行しているサーバにアプリケーションをデプロイす
 
 このコマンドは、Laravelの全設定ファイルをキャッシュされる一つのファイルへまとめるため、設定値をロードする場合に、フレームワークがファイルシステムを数多くアクセスする手間を大いに減らします。
 
-> {note} 開発時に`config:cache`コマンドを実行する場合は、設定ファイルの中だけで、`env`関数を呼び出していることを確認してください。設定ファイルがキャッシュされてしまうと、`.env`ファイルはロードされなくなり、`env`関数の呼び出し結果は全て`null`になります。
+> {note} 開発時に`config:cache`コマンドを実行する場合は、設定ファイルの中だけで、`env`関数を呼び出していることを確認してください。設定ファイルがキャッシュされてしまうと、`.env`ファイルはロードされなくなり、`env`関数の呼び出し結果はすべて`null`になります。
 
 <a name="optimizing-route-loading"></a>
 ### ルートロードの最適化
@@ -93,6 +93,6 @@ Nginxを実行しているサーバにアプリケーションをデプロイす
 <a name="deploying-with-forge"></a>
 ## Forgeによるデプロイ
 
-自分のサーバ設定管理に準備不足であったり、堅牢なLaravelアプリケーション実行に必要な数多くのサービス全ての設定について慣れていなければ、[Laravel Forge](https://forge.laravel.com)は素晴らしい代替案です。
+自分のサーバ設定管理に準備不足であったり、堅牢なLaravelアプリケーション実行に必要な数多くのサービスすべての設定について慣れていなければ、[Laravel Forge](https://forge.laravel.com)は素晴らしい代替案です。
 
-Laravel ForgeはDigitalOcean、Linode、AWSなど数多くのインフラプロバイダー上に、サーバを作成できます。それに加え、ForgeはNginx、MySQL、Redis、Memcached、Beanstalkなどのような、堅牢なLaravelアプリケーションを構築するために必要なツールを全てインストールし、管理します。
+Laravel ForgeはDigitalOcean、Linode、AWSなど数多くのインフラプロバイダー上に、サーバを作成できます。それに加え、ForgeはNginx、MySQL、Redis、Memcached、Beanstalkなどのような、堅牢なLaravelアプリケーションを構築するために必要なツールを全部インストールし、管理します。
