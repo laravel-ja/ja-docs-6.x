@@ -2237,7 +2237,7 @@ staticの`unwrap`メソッドは適用可能な場合、指定値からコレク
 <a name="method-whennotempty"></a>
 #### `whenNotEmpty()` {#collection-method}
 
-`whenNotEmpty`メソッドは、コレクションがから出ない場合に、指定したコールバックを実行します。
+`whenNotEmpty`メソッドは、コレクションが空でない場合に、指定したコールバックを実行します。
 
     $collection = collect(['michael', 'tom']);
 
