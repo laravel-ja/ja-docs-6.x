@@ -2106,7 +2106,7 @@ sliceメソッドはデフォルトでキー値を保持したまま返します
 <a name="method-unless"></a>
 #### `unless()` {#collection-method}
 
-`unless`メソッドは最初の引数が`true`と評価されなくなるまで、コールバックを実行します。
+`unless`メソッドは最初の引数が`true`と評価されない場合、コールバックを実行します。
 
     $collection = collect([1, 2, 3]);
 
