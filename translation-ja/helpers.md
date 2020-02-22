@@ -1373,7 +1373,7 @@ NULL値を指定すると、空の配列が返ってきます。
 <a name="method-blank"></a>
 #### `blank()` {#collection-method}
 
-`blank`関数は指定値が"blank"であるかどうかを返します。
+`blank`関数は指定値が空白（"blank"）であることを判定して返します。
 
     blank('');
     blank('   ');
@@ -1539,7 +1539,7 @@ NULL値を指定すると、空の配列が返ってきます。
 <a name="method-filled"></a>
 #### `filled()` {#collection-method}
 
-`filled`関数は、指定値が"blank"であるかどうかを返します。
+`filled`関数は、指定値が空白（"blank"）でないことを判定して返します。
 
     filled(0);
     filled(true);
