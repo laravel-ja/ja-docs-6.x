@@ -188,6 +188,8 @@
 [whereNotBetween](#method-wherenotbetween)
 [whereNotIn](#method-wherenotin)
 [whereNotInStrict](#method-wherenotinstrict)
+[whereNotNull](#method-wherenotnull)
+[whereNull](#method-wherenull)
 [wrap](#method-wrap)
 [zip](#method-zip)
 
@@ -2367,8 +2369,8 @@ staticの`unwrap`メソッドは適用可能な場合、指定値からコレク
 
     /*
         [
-            ['product' => 'Bookcase', 'price' => 150],
             ['product' => 'Desk', 'price' => 200],
+            ['product' => 'Bookcase', 'price' => 150],
         ]
     */
 
@@ -2452,6 +2454,50 @@ staticの`unwrap`メソッドは適用可能な場合、指定値からコレク
 #### `whereNotInStrict()` {#collection-method}
 
 このメソッドは、[`whereNotIn`](#method-wherenotin)と使い方は同じですが、全値の比較が「厳密」に行われる点が異なります。
+
+<a name="method-wherenotnull"></a>
+#### `whereNotNull()` {#collection-method}
+
+`whereNotNull`メソッドは、指定したキーがNULL値ではないアイテムを抜き出します。
+
+    $collection = collect([
+        ['name' => 'Desk'],
+        ['name' => null],
+        ['name' => 'Bookcase'],
+    ]);
+
+    $filtered = $collection->whereNotNull('name');
+
+    $filtered->all();
+
+    /*
+        [
+            ['name' => 'Desk'],
+            ['name' => 'Bookcase'],
+        ]
+    */
+
+<a name="method-wherenull"></a>
+#### `whereNull()` {#collection-method}
+
+`whereNull`メソッドは、指定したキーがNULL値のアイテムを抜き出します
+
+    $collection = collect([
+        ['name' => 'Desk'],
+        ['name' => null],
+        ['name' => 'Bookcase'],
+    ]);
+
+    $filtered = $collection->whereNull('name');
+
+    $filtered->all();
+
+    /*
+        [
+            ['name' => null],
+        ]
+    */
+
 
 <a name="method-wrap"></a>
 #### `wrap()` {#collection-method}

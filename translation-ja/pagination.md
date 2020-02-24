@@ -196,7 +196,8 @@ Laravelのペジネーター結果クラスは`Illuminate\Contracts\Support\Json
 `$results->firstItem()`  |  現在ページの最初のアイテムが何番目か取得
 `$results->getOptions()`  |  ペジネータオプション取得
 `$results->getUrlRange($start, $end)`  |  一定範囲のペジネーションURLを取得
-`$results->hasMorePages()`  |  複数ページへアイテムを分割できる数があるか判定
+`$results->hasPages()`  |  複数ページに分割できるだけのアイテムがあるか判定
+`$results->hasMorePages()`  |  データストレージにまだアイテムが存在しているか判定
 `$results->items()`  |  現在ページのアイテムを取得
 `$results->lastItem()`  |  現在ページの最後のアイテムが何番目か取得
 `$results->lastPage()`  |  利用可能な最終ページ数取得（`simplePaginate`では使用できない）

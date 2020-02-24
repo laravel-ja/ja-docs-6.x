@@ -226,6 +226,15 @@ LaravelクエリビルダはアプリケーションをSQLインジェクショ�
                     ->orderByRaw('updated_at - created_at DESC')
                     ->get();
 
+### `groupByRaw`
+
+`groupByRaw`メソッドは、文字列を`group by`節の値として指定するために使用します。
+
+    $orders = DB::table('orders')
+                    ->select('city', 'state')
+                    ->groupByRaw('city, state')
+                    ->get();
+
 <a name="joins"></a>
 ## JOIN
 

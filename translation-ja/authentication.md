@@ -89,6 +89,22 @@ Laravelの`laravel/ui`パッケージは、認証に必要なルートとビュ�
 
     public const HOME = '/home';
 
+ユーザー認証後に返すレスポンスをもっとがっちりカスタマイズする必要があるなら、必要に応じオーバーライトできるよう空の`authenticated(Request $request, $user)`メソッドもLaravelは提供できます。
+
+    /**
+     * ユーザーが認証された
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        return response([
+            //
+        ]);
+    }
+
 #### ユーザー名のカスタマイズ
 
 デフォルトでLaravelは`email`フィールドを認証に利用します。これをカスタマイズしたい場合は、`LoginController`で`username`メソッドを定義してください。

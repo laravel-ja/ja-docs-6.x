@@ -28,6 +28,7 @@ Laravelはさまざまな、グローバル「ヘルパ」PHP関数を用意し�
 
 [Arr::add](#method-array-add)
 [Arr::collapse](#method-array-collapse)
+[Arr::crossJoin](#method-array-crossjoin)
 [Arr::divide](#method-array-divide)
 [Arr::dot](#method-array-dot)
 [Arr::except](#method-array-except)
@@ -44,6 +45,7 @@ Laravelはさまざまな、グローバル「ヘルパ」PHP関数を用意し�
 [Arr::pull](#method-array-pull)
 [Arr::random](#method-array-random)
 [Arr::set](#method-array-set)
+[Arr::shuffle](#method-array-shuffle)
 [Arr::sort](#method-array-sort)
 [Arr::sortRecursive](#method-array-sort-recursive)
 [Arr::where](#method-array-where)
@@ -104,6 +106,7 @@ Laravelはさまざまな、グローバル「ヘルパ」PHP関数を用意し�
 [Str::startsWith](#method-starts-with)
 [Str::studly](#method-studly-case)
 [Str::title](#method-title-case)
+[Str::ucfirst](#method-str-ucfirst)
 [Str::uuid](#method-str-uuid)
 [Str::words](#method-str-words)
 [trans](#method-trans)
@@ -224,6 +227,39 @@ Laravelはさまざまな、グローバル「ヘルパ」PHP関数を用意し�
     $array = Arr::collapse([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
 
     // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+<a name="method-array-crossjoin"></a>
+#### `Arr::crossJoin()` {#collection-method}
+
+`Arr::crossJoin`メソッドは指定した配列をクロス結合し、可能性があるすべての順列の直積集合を返します。
+
+    use Illuminate\Support\Arr;
+
+    $matrix = Arr::crossJoin([1, 2], ['a', 'b']);
+
+    /*
+        [
+            [1, 'a'],
+            [1, 'b'],
+            [2, 'a'],
+            [2, 'b'],
+        ]
+    */
+
+    $matrix = Arr::crossJoin([1, 2], ['a', 'b'], ['I', 'II']);
+
+    /*
+        [
+            [1, 'a', 'I'],
+            [1, 'a', 'II'],
+            [1, 'b', 'I'],
+            [1, 'b', 'II'],
+            [2, 'a', 'I'],
+            [2, 'a', 'II'],
+            [2, 'b', 'I'],
+            [2, 'b', 'II'],
+        ]
+    */
 
 <a name="method-array-divide"></a>
 #### `Arr::divide()` {#collection-method}
@@ -499,6 +535,17 @@ Laravelはさまざまな、グローバル「ヘルパ」PHP関数を用意し�
     Arr::set($array, 'products.desk.price', 200);
 
     // ['products' => ['desk' => ['price' => 200]]]
+
+<a name="method-array-shuffle"></a>
+#### `Arr::shuffle()` {#collection-method}
+
+`Arr::shuffle`メソッドは、配列中のアイテムをランダムにシャッフルします。
+
+    use Illuminate\Support\Arr;
+
+    $array = Arr::shuffle([1, 2, 3, 4, 5]);
+
+    // [3, 2, 5, 1, 4] - (無作為に入れ替えた結果)
 
 <a name="method-array-sort"></a>
 #### `Arr::sort()` {#collection-method}
@@ -974,6 +1021,17 @@ NULL値を指定すると、空の配列が返ってきます。
     $matches = Str::is('baz*', 'foobar');
 
     // false
+
+<a name="method-str-ucfirst"></a>
+#### `Str::ucfirst()` {#collection-method}
+
+`Str::ucfirst`メソッドは、指定した文字列の最初の１文字目を大文字にします。
+
+    use Illuminate\Support\Str;
+
+    $string = Str::ucfirst('foo bar');
+
+    // Foo bar
 
 <a name="method-str-is-uuid"></a>
 #### `Str::isUuid()` {#collection-method}

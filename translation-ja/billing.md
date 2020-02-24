@@ -9,7 +9,9 @@
     - [通貨設定](#currency-configuration)
     - [ログ](#logging)
 - [顧客](#customers)
+    - [顧客の取得](#retrieving-customers)
     - [顧客の生成](#creating-customers)
+    - [顧客の更新](#updating-customers)
 - [支払い方法](#payment-methods)
     - [支払い方法の保存](#storing-payment-methods)
     - [支払い方法の取得](#retrieving-payment-methods)
@@ -130,19 +132,41 @@ Caishierの通貨設定に付け加え、インボイスで表示する金額の
 
 Stripeに関連する例外をすべてログする時に使用できるログチャンネルをCashierでは指定できます。`CASHIER_LOGGER`環境変数を使用し、ログチャンネルを指定します。
 
-    CASHIER_LOGGER=default
+    CASHIER_LOGGER=stack
 
 <a name="customers"></a>
 ## 顧客
 
+<a name="retrieving-customers"></a>
+### 顧客の取得
+
+`Cashier::findBillable`メソッドによりStripe IDで顧客を取得できます。Billableモデルのインスタンスを返します。
+
+    use Laravel\Cashier\Cashier;
+
+    $user = Cashier::findBillable($stripeId);
+
 <a name="creating-customers"></a>
 ### 顧客の生成
 
-ときどきサブスクリプションを開始しなくてもStripeで顧客を作成したい場合があります。`createAsStripeCustomer`を使い、作成できます。
+サブスクリプションを開始しなくてもStripeで顧客を作成したい場合が、ときどき起きるでしょう。`createAsStripeCustomer`を使い、作成できます。
 
-    $user->createAsStripeCustomer();
+    $stripeCustomer = $user->createAsStripeCustomer();
 
-Stripeで顧客を生成しておけば、後からサブスクリプションを開始できます。
+一度顧客をStripe上に作成しておき、後日サブスクリプションを開始することもできます。また、Stripe APIが提供するオプション（`$options`）を配列として、追加引数に渡すことも可能です。
+
+    $stripeCustomer = $user->createAsStripeCustomer($options);
+
+すでにStripe上に顧客が登録されているときは、Billableエンティティとして顧客オブジェクトを返してもらいたい場合、`createOrGetStripeCustomer`メソッドが使用できます。
+
+    $stripeCustomer = $user->createOrGetStripeCustomer();
+
+<a name="updating-customers"></a>
+### 顧客の更新
+
+まれに、Stripeの顧客を追加情報と一緒に直接更新したい状況もあります。`updateStripeCustomer`メソッドを使用してください。
+
+    $stripeCustomer = $user->updateStripeCustomer($options);
 
 <a name="payment-methods"></a>
 ## 支払い方法

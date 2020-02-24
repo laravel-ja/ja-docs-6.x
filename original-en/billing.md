@@ -9,7 +9,9 @@
     - [Currency Configuration](#currency-configuration)
     - [Logging](#logging)
 - [Customers](#customers)
+    - [Retrieving Customers](#retrieving-customers)
     - [Creating Customers](#creating-customers)
+    - [Updating Customers](#updating-customers)
 - [Payment Methods](#payment-methods)
     - [Storing Payment Methods](#storing-payment-methods)
     - [Retrieving Payment Methods](#retrieving-payment-methods)
@@ -130,19 +132,41 @@ In addition to configuring Cashier's currency, you may also specify a locale to 
 
 Cashier allows you to specify the log channel to be used when logging all Stripe related exceptions. You may specify the log channel using the `CASHIER_LOGGER` environment variable:
 
-    CASHIER_LOGGER=default
+    CASHIER_LOGGER=stack
 
 <a name="customers"></a>
 ## Customers
+
+<a name="retrieving-customers"></a>
+### Retrieving Customers
+
+You can retrieve a customer by their Stripe ID using the `Cashier::findBillable` method. This will return an instance of the Billable model:
+
+    use Laravel\Cashier\Cashier;
+
+    $user = Cashier::findBillable($stripeId);
 
 <a name="creating-customers"></a>
 ### Creating Customers
 
 Occasionally, you may wish to create a Stripe customer without beginning a subscription. You may accomplish this using the `createAsStripeCustomer` method:
 
-    $user->createAsStripeCustomer();
+    $stripeCustomer = $user->createAsStripeCustomer();
 
-Once the customer has been created in Stripe, you may begin a subscription at a later date.
+Once the customer has been created in Stripe, you may begin a subscription at a later date. You can also use an optional `$options` array to pass in any additional parameters which are supported by the Stripe API:
+
+    $stripeCustomer = $user->createAsStripeCustomer($options);
+
+You may also use the `createOrGetStripeCustomer` method if you want to return the customer object if the billable entity is already a customer within Stripe.
+
+    $stripeCustomer = $user->createOrGetStripeCustomer();
+
+<a name="updating-customers"></a>
+### Updating Customers
+
+Occasionally, you may wish to update the Stripe customer directly with additional information. You may accomplish this using the `updateStripeCustomer` method:
+
+    $stripeCustomer = $user->updateStripeCustomer($options);
 
 <a name="payment-methods"></a>
 ## Payment Methods
