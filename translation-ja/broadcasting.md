@@ -79,11 +79,19 @@
         key: 'your-pusher-channels-key'
     });
 
+最後に、`.env`ファイル中のブロードキャストドライバーを`pusher`へ変更する必要があります。
+
+    BROADCAST_DRIVER=pusher
+
 #### Redis
 
 Redisブロードキャスタを使用する場合は、phpredis PHP拡張をPECLを使いインストールするか、PredisライブラリをComposerを使用しインストールする必要があります。
 
     composer require predis/predis
+
+次に、`.env`ファイル中のブロードキャストドライバーを`redis`へ変更する必要があります。
+
+    BROADCAST_DRIVER=redis
 
 RedisブロードキャスタはRedisのpub/sub機能を使用し、メッセージをブロードキャストします。Redisからのメッセージを受け、WebSocketチャンネルへブロードキャストできるように、これをWebSocketとペアリングする必要があります。
 

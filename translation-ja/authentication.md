@@ -28,7 +28,7 @@
 <a name="introduction"></a>
 ## イントロダクション
 
-> {tip} **さくっと始めたいですか？** 真新しくインストールしたLaravelアプリケーションに`laravel/ui` Composerパッケージをインストールし、`php artisan ui vue --auth`を実行してください。データベースをマイグレーションし、`http://your-app.test/register`かアプリケーションに割り付けた別のURLをブラウザでアクセスしましょう。これらのコマンドが、認証システム全体のスカフォールドの面倒見ます。
+> {tip} **さくっと始めたいですか？** 真新しくインストールしたLaravelアプリケーションに`laravel/ui` (1.0) Composerパッケージをインストールし、`php artisan ui vue --auth`を実行してください。データベースをマイグレーションし、`http://your-app.test/register`かアプリケーションに割り付けた別のURLをブラウザでアクセスしましょう。これらのコマンドが、認証システム全体のスカフォールドの面倒見ます。
 
 Laravelでは簡単に認証が実装できます。実のところ、ほぼすべて最初から設定済みです。認証の設定ファイルは`config/auth.php`に用意してあり、認証サービスの振る舞いを調整できるように、読みやすいコメント付きでたくさんのオプションが用意されています。
 
@@ -57,7 +57,7 @@ Laravelの認証機能は「ガード」と「プロバイダ」を中心概念�
 
 Laravelの`laravel/ui`パッケージは、認証に必要なルートとビューをすべてあっという間にスカフォールドするための、シンプルなコマンドを少々提供しています。
 
-    composer require laravel/ui --dev
+    composer require laravel/ui "^1.0" --dev
 
     php artisan ui vue --auth
 

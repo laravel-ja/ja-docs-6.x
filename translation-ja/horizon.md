@@ -1,10 +1,10 @@
 # Laravel Horizon
 
 - [イントロダクション](#introduction)
-- [Horizonのアップグレード](#upgrading)
 - [インストール](#installation)
     - [設定](#configuration)
     - [ダッシュボードの認可](#dashboard-authorization)
+- [Horizonのアップグレード](#upgrading-horizon)
 - [Horizonの実行](#running-horizon)
     - [Horizonのデプロイ](#deploying-horizon)
 - [タグ](#tags)
@@ -21,15 +21,6 @@ Horizon（水平線、展望）は、Laravelで動作するRedisキューのた�
 <p align="center">
 <img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1537195039/photos/Test.png">
 </p>
-
-<a name="upgrading"></a>
-## Horizonのアップグレード
-
-Horizonの新しいメジャーバージョンへアップグレードする場合は、[アップグレードガイド](https://github.com/laravel/horizon/blob/master/UPGRADE.md)を注意深く読み込むことが重要です。
-
-付け加えて、Horizonのアセットを再公開も必要です。
-
-    php artisan horizon:assets
 
 <a name="installation"></a>
 ## インストール
@@ -105,6 +96,15 @@ Horizonは、`/horizon`でダッシュボードを表示します。デフォル
     }
 
 > {note} LaravelはGateへ自動的に**認証済み**ユーザーを依存注入します。IP制限のような別のHorizonセキュリティ方法をアプリケーションで提供する場合は、Horizonユーザーは「ログイン」している必要はいらないでしょう。そのため、上記の`function ($user)`を`function ($user = null)`へ変更し、Laravelに認証は必要ないと強制的に知らせてください。
+
+<a name="upgrading-horizon"></a>
+## Horizonのアップグレード
+
+Horizonの新しいメジャーバージョンへアップグレードする場合は、注意深く[アップグレードガイド](https://github.com/laravel/horizon/blob/master/UPGRADE.md)を確認するのが重要です。
+
+付け加えて、Horizonのアセットを再公開する必要があります。
+
+    php artisan horizon:assets
 
 <a name="running-horizon"></a>
 ## Horizonの実行

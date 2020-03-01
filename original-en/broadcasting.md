@@ -79,11 +79,19 @@ When using Channels and [Laravel Echo](#installing-laravel-echo), you should spe
         key: 'your-pusher-channels-key'
     });
 
+Finally, you will need to change your broadcast driver to `pusher` in your `.env` file:
+
+    BROADCAST_DRIVER=pusher
+
 #### Redis
 
 If you are using the Redis broadcaster, you should either install the phpredis PHP extension via PECL or install the Predis library via Composer:
 
     composer require predis/predis
+
+Next, you should update your broadcast driver to `redis` in your `.env` file:
+
+    BROADCAST_DRIVER=redis
 
 The Redis broadcaster will broadcast messages using Redis' pub / sub feature; however, you will need to pair this with a WebSocket server that can receive the messages from Redis and broadcast them to your WebSocket channels.
 

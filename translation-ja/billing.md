@@ -31,6 +31,7 @@
 - [サブスクリプションのトレイト](#subscription-trials)
     - [支払いの事前登録あり](#with-payment-method-up-front)
     - [支払いの事前登録なし](#without-payment-method-up-front)
+    - [試用期限の延長](#extending-trials)
 - [StripeのWebフック処理](#handling-stripe-webhooks)
     - [Webフックハンドラの定義](#defining-webhook-event-handlers)
     - [サブスクリプション不可](#handling-failed-subscriptions)
@@ -606,6 +607,8 @@ Stripeがサポートしている追加のフィールドについてのさら�
 <a name="subscription-trials"></a>
 ## サブスクリプションのトレイト
 
+> {note} Cashierのサブスクリプション試用期日はStripeのプランを使用せず、独自に管理しています。Cashierで試用期間を管理するため、Stripeのプランでは試用期間を０に設定する必要があります。
+
 <a name="with-payment-method-up-front"></a>
 ### 支払いの事前登録あり
 
@@ -669,10 +672,27 @@ Stripeがサポートしている追加のフィールドについてのさら�
 
     $user->newSubscription('default', 'monthly')->create($paymentMethod);
 
+<a name="extending-trials"></a>
+### 試用期限の延長
+
+一度作成したあとに、サブスクリプションの試用期間を延長したい場合は、`extendTrial`メソッドを使用します。
+
+    // 今から７日後に試用期限を終える
+    $subscription->extendTrial(
+        now()->addDays(7)
+    );
+
+    // 使用期限を５日間延長する
+    $subscription->extendTrial(
+        $subscription->trial_ends_at->addDays(5)
+    );
+
+試用期間が過ぎ、顧客がサブスクリプションをすでに購入している場合でも、追加の試用期限を与えられます。試用期間で費やされた時間は、その顧客の次回のインボイスから差し引かれます。
+
 <a name="handling-stripe-webhooks"></a>
 ## StripeのWebフック処理
 
-> {tip} ローカル環境でWebhooksのテストの手助けをするために、[Laravel Valet](/docs/{{version}}/valet)の`valet share`コマンドが使用できます。
+> {tip} ローカル環境でWebhooksのテストするには、[Stripe CLI](https://stripe.com/docs/stripe-cli)が役立つでしょう。
 
 StripeはWebフックにより、アプリケーションへさまざまなイベントを通知できます。デフォルトで、CashierのWebhookを処理するルートのコントローラは、Cashierのサービスプロバイダで設定されています。このコントローラはWebhookの受信リクエストをすべて処理します。
 

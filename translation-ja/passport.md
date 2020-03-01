@@ -12,6 +12,7 @@
     - [クライアント管理](#managing-clients)
     - [トークンのリクエスト](#requesting-tokens)
     - [トークンのリフレッシュ](#refreshing-tokens)
+    - [トークンの破棄](#purging-tokens)
 - [PKCEを使った認可コードグラント](#code-grant-pkce)
     - [クライアント生成](#creating-a-auth-pkce-grant-client)
     - [トークンのリクエスト](#requesting-auth-pkce-grant-tokens)
@@ -456,6 +457,33 @@ JSON APIは`web`と`auth`ミドルウェアにより保護されています。�
     return json_decode((string) $response->getBody(), true);
 
 この`/oauth/token`ルートは、`access_token`、`refresh_token`、`expires_in`属性を含むJSONレスポンスを返します。`expires_in`属性は、アクセストークンが無効になるまでの秒数を含んでいます。
+
+<a name="purging-tokens"></a>
+### トークンの破棄
+
+トークンが無効、もしくは期限切れになったら、データベースから一掃する必要があります。Passportはこのためのコマンドを用意しています。
+
+    # 無効・期限切れのトークンと認可コードを破棄する
+    php artisan passport:purge
+
+    # 無効なトークンと認可コードのみ破棄する
+    php artisan passport:purge --revoked
+
+    # 期限切れのトークンと認可コードのみ破棄する
+    php artisan passport:purge --expired
+
+スケジュールに従い自動的にトークンを整理するため、コンソールの`Kernel`クラスで[スケジュール済みジョブ](/docs/{{version}}/scheduling)として設定することも可能です。
+
+    /**
+     * アプリケーションのコマンドスケジュール定義
+     *
+     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @return void
+     */
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('passport:purge')->hourly();
+    }
 
 <a name="code-grant-pkce"></a>
 ## PKCEを使った認可コードグラント

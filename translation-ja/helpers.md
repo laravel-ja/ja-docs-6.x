@@ -44,6 +44,7 @@ Laravelはさまざまな、グローバル「ヘルパ」PHP関数を用意し�
 [Arr::prepend](#method-array-prepend)
 [Arr::pull](#method-array-pull)
 [Arr::random](#method-array-random)
+[Arr::query](#method-array-query)
 [Arr::set](#method-array-set)
 [Arr::shuffle](#method-array-shuffle)
 [Arr::sort](#method-array-sort)
@@ -522,6 +523,19 @@ Laravelはさまざまな、グローバル「ヘルパ」PHP関数を用意し�
     $items = Arr::random($array, 2);
 
     // [2, 5] - (retrieved randomly)
+
+<a name="method-array-query"></a>
+#### `Arr::query()` {#collection-method}
+
+`Arr::query`メソッドは、配列をクエリ文字列へ変換します。
+
+    use Illuminate\Support\Arr;
+
+    $array = ['name' => 'Taylor', 'order' => ['column' => 'created_at', 'direction' => 'desc']];
+
+    Arr::query($array);
+
+    // name=Taylor&order[column]=created_at&order[direction]=desc
 
 <a name="method-array-set"></a>
 #### `Arr::set()` {#collection-method}
