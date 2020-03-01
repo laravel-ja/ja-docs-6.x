@@ -175,7 +175,7 @@ Laravelの`Schema`[ファサード](/docs/{{version}}/facades)は、テーブル
 -----------------------------------  |  -----------------------------------------------------------
 `$table->engine = 'InnoDB';`  |  テーブルストレージエンジンの指定(MySQL)
 `$table->charset = 'utf8';`  |  テーブルのデフォルトキャラクターセットの指定(MySQL)
-`$table->collation = 'utf8_unicode_ci';`  |  テーブルのデフォルトコロケーションの指定(MySQL)
+`$table->collation = 'utf8_unicode_ci';`  |  テーブルのデフォルトコレーションの指定(MySQL)
 `$table->temporary();`  |  一時テーブルの作成(SQL Server以外)
 
 <a name="renaming-and-dropping-tables"></a>
@@ -289,7 +289,7 @@ Laravelの`Schema`[ファサード](/docs/{{version}}/facades)は、テーブル
 `->after('column')`  |  指定カラムの次に他のカラムを設置(MySQLのみ)
 `->autoIncrement()`  |  整数カラムを自動増分ID（主キー）へ設定
 `->charset('utf8')`  |  カラムへキャラクタセットを指定(MySQLのみ)
-`->collation('utf8_unicode_ci')`  |  カラムへコロケーションを指定(MySQL/PostgreSQL/SQL Serverのみ)
+`->collation('utf8_unicode_ci')`  |  カラムへコレーションを指定(MySQL/PostgreSQL/SQL Serverのみ)
 `->comment('my comment')`  |  カラムにコメント追加(MySQL/PostgreSQLのみ)
 `->default($value)`  |  カラムのデフォルト(default)値設定
 `->first()`  |  カラムをテーブルの最初(first)に設置する(MySQLのみ)
