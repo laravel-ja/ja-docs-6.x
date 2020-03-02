@@ -1329,7 +1329,7 @@ Eloquentは新しいモデルをリレーションへ追加するために便利
         ],
     ]);
 
-[リレーション上のモデルを作成、変更](https://laravel.com/docs/{{version}}/eloquent#other-creation-methods)するために、`findOrNew`、`firstOrNew`、`firstOrCreate`、`updateOrCreate`メソッドも使用できます。
+[リレーション上のモデルを作成、変更](/docs/{{version}}/eloquent#other-creation-methods)するために、`findOrNew`、`firstOrNew`、`firstOrCreate`、`updateOrCreate`メソッドも使用できます。
 
 <a name="updating-belongs-to-relationships"></a>
 ### Belongs To関係

@@ -462,7 +462,7 @@ PHPコードをビューへ埋め込むと便利な場合もあります。Blade
 <a name="csrf-field"></a>
 ### CSRFフィールド
 
-アプリケーションでHTMLフォームを定義する場合、[CSRF保護](https://laravel.com/docs/{{version}}/csrf)ミドルウェアがリクエストを検査できるようにするため、隠しCSRFトークンフィールドを含める必要があります。このトークンフィールドを生成するには、`@csrf` Bladeディレクティブを使用します。
+アプリケーションでHTMLフォームを定義する場合、[CSRF保護](/docs/{{version}}/csrf)ミドルウェアがリクエストを検査できるようにするため、隠しCSRFトークンフィールドを含める必要があります。このトークンフィールドを生成するには、`@csrf` Bladeディレクティブを使用します。
 
     <form method="POST" action="/profile">
         @csrf

@@ -968,7 +968,7 @@ Eloquentモデルは多くのイベントを発行します。`creating`、`crea
         ];
     }
 
-Eloquentイベントの定義とマップができたら、[イベントリスナ](https://laravel.com/docs/{{version}}/events#defining-listeners)を使用し、イベントを処理できます。
+Eloquentイベントの定義とマップができたら、[イベントリスナ](/docs/{{version}}/events#defining-listeners)を使用し、イベントを処理できます。
 
 <a name="observers"></a>
 ### オブザーバ

@@ -62,7 +62,7 @@
         return "{$this->first_name} {$this->last_name}";
     }
 
-> {tip} これらの計算済みの値をモデルのarray／JSON表現に追加したい場合は、プロパティに[追加する必要があります](https://laravel.com/docs/{{version}}/eloquent-serialization#appending-values-to-json)。
+> {tip} これらの計算済みの値をモデルのarray／JSON表現に追加したい場合は、プロパティに[追加する必要があります](/docs/{{version}}/eloquent-serialization#appending-values-to-json)。
 
 <a name="defining-a-mutator"></a>
 ### ミューテタの定義

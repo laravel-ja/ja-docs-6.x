@@ -150,7 +150,7 @@ Laravel6ではこのロジックをジョブミドルウェアへ移すことが
 
 **レージーコレクションは、[Joseph Silber](https://github.com/JosephSilber)により改善されました。**
 
-すでに多くの開発者がLaravelの強力な[コレクションメソッド](https://laravel.com/docs/collections)を楽しんで利用しています。すでに強力な`Collection`クラスを補足するために、`LazyCollection`クラスはPHPの[PHPジェネレータ](https://www.php.net/manual/ja/language.generators.overview.php)を活用しています。巨大なデータセットをメモリ使用を抑えて利用する目的のためです。
+すでに多くの開発者がLaravelの強力な[コレクションメソッド](/docs/{{version}}/collections)を楽しんで利用しています。すでに強力な`Collection`クラスを補足するために、`LazyCollection`クラスはPHPの[PHPジェネレータ](https://www.php.net/manual/ja/language.generators.overview.php)を活用しています。巨大なデータセットをメモリ使用を抑えて利用する目的のためです。
 
 たとえば、アプリケーションで数ギガバイトのログを処理する必要があり、ログを解析するためにLaravelのコレクションメソッドを活用するとしましょう。ファイル全体をメモリへまとめて読み込む代わりに、レイジーコレクションなら毎回ファイルの小さな部分だけをメモリに保持するだけで済みます。
 
