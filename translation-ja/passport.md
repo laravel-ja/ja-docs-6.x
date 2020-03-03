@@ -163,7 +163,7 @@ Passport Vueコンポーネントを公開（Laravel用語で開発者が変更�
         require('./components/passport/PersonalAccessTokens.vue').default
     );
 
-> {note} バージョン5.7.19以前のLaravelでは、コンポーネントを登録する時にコンソールエラーが出る時に、`.default`を追加します。この変さらについては、[Laravel Mix v4.0.0リリースノート](https://github.com/JeffreyWay/laravel-mix/releases/tag/v4.0.0)で説明がなされています。
+> {note} バージョン5.7.19以前のLaravelでは、コンポーネントを登録する時にコンソールエラーが出る時に、`.default`を追加します。この変更については、[Laravel Mix v4.0.0リリースノート](https://github.com/JeffreyWay/laravel-mix/releases/tag/v4.0.0)で説明がなされています。
 
 コンポーネントを登録したら、アセットを再コンパイルするため`npm run dev`を確実に実行してください。アセットの再コンパイルが済んだら、クライアントとパーソナルアクセストークンを作成し始めるために、アプリケーションのテンプレートへコンポーネントを指定しましょう。
 
