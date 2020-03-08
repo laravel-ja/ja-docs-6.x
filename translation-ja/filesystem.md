@@ -133,7 +133,7 @@ Laravelのファイルシステム統合はSFTPできちんと動作します。
     's3' => [
         'driver' => 's3',
 
-        // Other Disk Options...
+        // 他のディスク設定…
 
         'cache' => [
             'store' => 'memcached',
