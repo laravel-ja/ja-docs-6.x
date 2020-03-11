@@ -673,7 +673,7 @@ SupervisorはLinuxオペレーティングシステムのプロセスモニタ�
 
     sudo apt-get install supervisor
 
-> {tip} Supervisoの設定に圧倒されそうならば、Laravelプロジェクトのために、Supervisorを自動的にインストールし、設定する[Laravel Forge](https://forge.laravel.com)の使用を考慮してください。
+> {tip} Supervisorの設定に圧倒されそうならば、Laravelプロジェクトのために、Supervisorを自動的にインストールし、設定する[Laravel Forge](https://forge.laravel.com)の使用を考慮してください。
 
 #### Supervisorの設定
 
