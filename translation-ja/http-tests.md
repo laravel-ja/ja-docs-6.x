@@ -563,7 +563,7 @@ JSONレスポンスの特定パスに、指定したデータが含まれてい�
 <a name="assert-see-text-in-order"></a>
 #### assertSeeTextInOrder
 
-指定した文字列が、順番通りにレンスポンステキストへ含まれていることを宣言。
+指定した文字列が、順番通りにレスポンステキストへ含まれていることを宣言。
 
     $response->assertSeeTextInOrder(array $values);
 

@@ -955,7 +955,7 @@ NULL値を指定すると、空の配列が返ってきます。
 <a name="method-str-contains"></a>
 #### `Str::contains()` {#collection-method}
 
-`Str::contains`メソッドは指定した文字列が、２つ目の文字列を含んでいるか調べます。（大文字小文字の区別あり）
+`Str::contains`メソッドは指定した文字列が、指定値を含んでいるか調べます。（大文字小文字の区別あり）
 
     use Illuminate\Support\Str;
 

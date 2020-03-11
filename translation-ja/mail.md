@@ -51,7 +51,7 @@ Mailgunドライバを使用する場合、最初にGuzzleをインストール�
         'endpoint' => 'api.eu.mailgun.net',
     ],
 
-#### Postmark Driver
+#### Postmarkドライバ
 
 Postmarkドライバを使用する場合は、ComposerでPostmarkのSwiftMailerトランスポータをインストールしてください。
 
