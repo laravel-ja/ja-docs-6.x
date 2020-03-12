@@ -29,7 +29,7 @@ local環境では`APP_DEBUG`環境変数を`true`に設定すべきでしょう�
 
 例外はすべて、`App\Exceptions\Handler`クラスで処理されます。このクラスは`report`と`render`二つのメソッドで構成されています。両メソッドの詳細を見ていきましょう。`report`メソッドは例外をログするか、[Flare](https://flareapp.io)や[BugSnag](https://bugsnag.com)、[Sentry](https://github.com/getsentry/sentry-laravel)のような外部サービスへ送信するために使います。デフォルト状態の`report`メソッドは、渡された例外をベースクラスに渡し、そこで例外はログされます。しかし好きなように例外をログすることが可能です。
 
-たとえば異なった例外を別々の方法レポートする必要がある場合、PHPの`instanceof`比較演算子を使ってください。
+たとえば異なった例外を別々の方法でレポートする必要がある場合、PHPの`instanceof`比較演算子を使ってください。
 
     /**
      * 例外をレポート、もしくはログする
