@@ -411,4 +411,4 @@ CSRF攻撃の可能性を防ぐため、Laravelの組み込みメール確認を
 <a name="miscellaneous"></a>
 ### その他
 
-`laravel/laravel`の[GitHubリポジトリ](https://github.com/laravel/laravel)で、変更を確認することを推奨します。これらの変更は必須でありませんが、皆さんのアプリケーションではファイルの同期を保つほうが良いでしょう。変更のいくつかは、このアップグレードガイドで取り扱っていますが、設定ファイルやコメントなどの変更は取り扱っていません。変更は簡単に[GitHubの比較ツール](https://github.com/laravel/laravel/compare/5.8...master)で閲覧でき、みなさんにとって重要な変更を選択できます。
+`laravel/laravel`の[GitHubリポジトリ](https://github.com/laravel/laravel)で、変更を確認することを推奨します。これらの変更は必須でありませんが、皆さんのアプリケーションではファイルの同期を保つほうが良いでしょう。変更のいくつかは、このアップグレードガイドで取り扱っていますが、設定ファイルやコメントなどの変更は取り扱っていません。変更は簡単に[GitHubの比較ツール](https://github.com/laravel/laravel/compare/5.8...6.x)で閲覧でき、みなさんにとって重要な変更を選択できます。

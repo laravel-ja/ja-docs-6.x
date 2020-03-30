@@ -9,9 +9,11 @@
     - ["Link"コマンド](#the-link-command)
     - [TLSによる安全なサイト](#securing-sites)
 - [サイトの共有](#sharing-sites)
+- [Serving A Default Site](#serving-a-default-site)
 - [サイト限定環境変数](#site-specific-environment-variables)
 - [カスタムValetドライバ](#custom-valet-drivers)
     - [ローカルドライバ](#local-drivers)
+- [PHP Configuration](#php-configuration)
 - [その他のValetコマンド](#other-valet-commands)
 - [Valetのディレクトリとファイル](#valet-directories-and-files)
 
@@ -40,7 +42,7 @@ Valetは以下をサポートしていますが、これらに限定されませ
 - [CakePHP 3](https://cakephp.org)
 - [Concrete5](https://www.concrete5.org/)
 - [Contao](https://contao.org/en/)
-- [Craft](https://craftcms.com)
+- [Craft CMS](https://craftcms.com)
 - [Drupal](https://www.drupal.org/)
 - [Jigsaw](https://jigsaw.tighten.co)
 - [Joomla](https://www.joomla.org/)
@@ -199,6 +201,13 @@ Nginx設定を更新したら、設定の変更を反映するために`valet re
         ],
     ];
 
+<a name="serving-a-default-site"></a>
+## デフォルトサイトの提供
+
+場合により、未知のテストドメインを訪れた場合は`404`とする代わりに、デフォルト("default")サイトをValetに提供してもらいたいこともあります。これを実現するには、`~/.config/valet/config.json`設定ファルでデフォルトサイトにしたいサイトへのパスを`default`オプションとして追加します。
+
+    "default": "/Users/Sally/Sites/foo",
+
 <a name="custom-valet-drivers"></a>
 ## カスタムValetドライバ
 
@@ -302,6 +311,19 @@ Valetでサポートされていない、他のフレームワークやCMSでPHP
             return $sitePath.'/public_html/index.php';
         }
     }
+
+<a name="php-configuration"></a>
+## PHP設定
+
+インストールしたPHPをカスタマイズするための`/usr/local/etc/php/7.X/conf.d/`ディレクトリへ、PHP設定の`.ini`ファイルを追加できます。設定を追加、もしくは更新したら`valet restart php`を実行してください。
+
+### PHPメモリ制限
+
+Valetは、`/usr/local/etc/php/7.X/conf.d/php-memory-limits.ini`設定ファイルで最大メモリ制限とアップロードファイルの最大サイズをデフォルトとして指定しています。これはCLIとFPMのPHPプロセス両方に影響します。
+
+### PHP-FPMのPoolプロセス
+
+ValetのPHP−FPM設定は、`/usr/local/etc/php/7.X/php-fpm.d/valet-fpm.conf`設定ファイルに含まれています。このファイルでPHPアプリケーションにより使用されるFPMサーバと子プロセスの数を増やすことができます。
 
 <a name="other-valet-commands"></a>
 ## その他のValetコマンド

@@ -14,7 +14,7 @@ LaravelはJavaScriptやCSSプリプロセッサの使用を規定してはいま
 
 Laravelが提供するBootstrapとVueのスカフォールドは、Composerを使いインストールする`laravel/ui`パッケージに用意してあります。
 
-    composer require laravel/ui --dev
+    composer require laravel/ui:^1.0 --dev
 
 `laravel/ui`パッケージをインストールできたら、`ui` Artisanコマンドを使いフロントエンドのスカフォールドをインストールします。
 

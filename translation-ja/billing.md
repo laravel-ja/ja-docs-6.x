@@ -12,6 +12,7 @@
     - [顧客の取得](#retrieving-customers)
     - [顧客の生成](#creating-customers)
     - [顧客の更新](#updating-customers)
+    - [メールアドレスのカスタマイズ](#custom-email-addresses)
 - [支払い方法](#payment-methods)
     - [支払い方法の保存](#storing-payment-methods)
     - [支払い方法の取得](#retrieving-payment-methods)
@@ -168,6 +169,23 @@ Stripeに関連する例外をすべてログする時に使用できるログ�
 まれに、Stripeの顧客を追加情報と一緒に直接更新したい状況もあります。`updateStripeCustomer`メソッドを使用してください。
 
     $stripeCustomer = $user->updateStripeCustomer($options);
+
+<a name="custom-email-addresses"></a>
+### メールアドレスのカスタマイズ
+
+Stripeに顧客を作成するために、CashierはデフォルトでBillableモデルの`email`属性を使用します。これは`stripeEmail`メソッドを使い、オーバーライドできます。
+
+    /**
+     * Stripeの顧客作成に使用するメールアドレスの取得
+     *
+     * @return string|null
+     */
+    public function stripeEmail()
+    {
+        return $this->email;
+    }
+
+Stripeでの顧客生成にメールアドレスが不必要ならば、`null`を返すこともできます。メールアドレスを提供しない場合、メールでの督促、支払い失敗のリマインダーなどのメールに関連するStripeの機能は使用できません。
 
 <a name="payment-methods"></a>
 ## 支払い方法
@@ -908,4 +926,4 @@ CashierのオブジェクトはStripe SDKオブジェクト上にラップされ
 
     $stripeSubscription = $subscription->asStripeSubscription();
 
-    $stripeSubscription->update(['application_fee_percent' => 5]);
+    $stripeSubscription->update($subscription->stripe_id, ['application_fee_percent' => 5]);

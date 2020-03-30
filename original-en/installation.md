@@ -22,6 +22,7 @@ However, if you are not using Homestead, you will need to make sure your server 
 - PHP >= 7.2.0
 - BCMath PHP Extension
 - Ctype PHP Extension
+- Fileinfo PHP extension
 - JSON PHP Extension
 - Mbstring PHP Extension
 - OpenSSL PHP Extension
@@ -49,7 +50,7 @@ Make sure to place Composer's system-wide vendor bin directory in your `$PATH` s
 - GNU / Linux Distributions: `$HOME/.config/composer/vendor/bin` or `$HOME/.composer/vendor/bin`
 </div>
 
-You could also find the composer's global installation path by running `composer global about` and looking up from the first line.
+You could also find Composer's global installation path by running `composer global about` and looking up from the first line.
 
 Once installed, the `laravel new` command will create a fresh Laravel installation in the directory you specify. For instance, `laravel new blog` will create a directory named `blog` containing a fresh Laravel installation with all of Laravel's dependencies already installed:
 
@@ -59,7 +60,7 @@ Once installed, the `laravel new` command will create a fresh Laravel installati
 
 Alternatively, you may also install Laravel by issuing the Composer `create-project` command in your terminal:
 
-    composer create-project --prefer-dist laravel/laravel blog
+    composer create-project --prefer-dist laravel/laravel blog "6.*"
 
 #### Local Development Server
 
