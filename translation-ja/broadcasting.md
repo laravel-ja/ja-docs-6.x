@@ -605,7 +605,7 @@ Echoで使用したいPusherチャンネルやSocket.ioクライアントを前�
         return new PresenceChannel('room.'.$this->message->room_id);
     }
 
-パブリックやプライベートイベントと同様に、プレゼンスチャンネルイベントは`broadcast`関数を使用しブロードキャストします。他のイベントと同様に、ブロードキャストが届けるイベントから現在のユーザーを除くため、`[toOthers](https://twitter.com/HiroKws/status/1231010805392371712)`メソッドも利用できます。
+パブリックやプライベートイベントと同様に、プレゼンスチャンネルイベントは`broadcast`関数を使用しブロードキャストします。他のイベントと同様に、ブロードキャストが届けるイベントから現在のユーザーを除くため、`toOthers`メソッドも利用できます。
 
     broadcast(new NewMessage($message));
 
