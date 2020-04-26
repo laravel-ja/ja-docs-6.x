@@ -62,7 +62,7 @@
 
 メール確認に必要なビューは、`laravel/ui` Composerパッケージを使用して生成します。
 
-    composer require laravel/ui --dev
+    composer require laravel/ui  "^1.2" --dev
 
     php artisan ui vue --auth
 
